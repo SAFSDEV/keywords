@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="ComboListBoxFunctions" 
+                 doc="ComboListBoxFunctions.htm" 
+                 sourcecode="ComboListBoxFunctions.sbl" 
+                 chainTo="GenericObjectFunctions"
+                 class="COMBOLISTBOX">
+
+        <description>
+           <short_desc> 
+              Actions for ComboListBox objects
+           </short_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="Robot" version="2002" />
+    <keywords> 
+    
+    <keyword name="SELECT" 
+             displayText="Select" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description>
+              <short_desc> 
+                 Select an item by its text value from an exposed combobox dropdown list.
+              </short_desc>
+              <detailed_desc> 
+                 <p>Select an item by its text value from an exposed combobox dropdown list.  
+                    This method requires that the list already be exposed via a ComboBox 
+                    Click command.  To combine both the Click and the Selection in a single
+                    command use the ComboBox Select command.</p>
+                 <p>
+                 We first test to make sure the item to select is actually in the list.
+                 If it is not, we report the failure and issue an ESCAPE character to 
+                 close the list.</p> 
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ComboListBoxFunctions" 
+                            doc="ComboListBoxFunctions.htm" 
+                            sourcecode="ComboListBoxFunctions.sbl" 
+                            class="COMBOLISTBOX" />
+           </engine>
+           <engine name="WinRunner" 
+	   		       since="20020903" 
+	   		       tool="WinRunner" 
+	   		       vendor="Mercury Interactive">
+	   	       <libraryInfo class="COMBOLISTBOX" 
+	   				name="ComboListBoxFunctions" 
+	   				sourcecode="ListboxFunctions">
+	   	       </libraryInfo>
+           </engine>
+           <engine name="Test Complete" 
+		   	   		       since="20081028" 
+		   	   		       tool="TestComplete" 
+		   	   		       vendor="Automated QA">
+		   	   	       <libraryInfo class="COMBOLISTBOX" 
+		   	   				name="ComboListBoxFunctions" 
+		   	   				sourcecode="ListboxFunctions.SVB">
+		   	   	       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 The case-sensitive text item to select
+              </short_desc>
+              <detailed_desc> 
+               TextValue should contain the case-sensitive text item to select.
+               You can enclose this text in double-quotes to ensure proper retrieval.
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+
+        <example>
+           <usage> T, Window, ComboListBox, SELECT, "my text"</usage>
+           <description>
+              <short_desc> 
+                 Select the item "my text" from the ComboListBox object.
+              </short_desc>
+           </description>
+        </example>
+
+     </examples></keyword>
+     
+  <keyword name="SELECTINDEX" 
+           displayText="SelectIndex" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Select an item by its index from a combolistbox.
+              </short_desc>
+              <detailed_desc> 
+                <p>Select an item by its index from a combolistbox.  
+                The list must already be exposed via a preceeding ComboBox Click.</p>
+                <p>
+                The routine will attempt to see if the index exists in the list. 
+                It will fail if it cannot validate the index or cannot 
+                read the array of items.</p>
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ComboListBoxFunctions" 
+                            doc="ComboListBoxFunctions.htm" 
+                            sourcecode="ComboListBoxFunctions.sbl" 
+                            class="COMBOLISTBOX" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   		       since="20020903" 
+	   	   		       tool="WinRunner" 
+	   	   		       vendor="Mercury Interactive">
+	   	   	       <libraryInfo class="COMBOLISTBOX" 
+	   	   				name="ComboListBoxFunctions" 
+	   	   				sourcecode="ListboxFunctions">
+	   	   	       </libraryInfo>
+           </engine>
+           <engine name="Test Complete" 
+		   		   	   		       since="20081028" 
+		   		   	   		       tool="TestComplete" 
+		   		   	   		       vendor="Automated QA">
+		   		   	   	       <libraryInfo class="COMBOLISTBOX" 
+		   		   	   				name="ComboListBoxFunctions" 
+		   		   	   				sourcecode="ListboxFunctions.SVB">
+		   		   	   	       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="INDEXVALUE" displayText="IndexValue" optional="NO">
+           <description>
+              <short_desc> 
+                 The item index in the exposed list to select.
+              </short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+
+        <example>
+           <usage>T, WINDOW, ComboListBox, SELECTINDEX, "1"</usage>
+           <description>
+              <short_desc> 
+                 This action attempts to Select item #1 from the exposed ComboListBox list.
+              </short_desc>
+           </description>
+        </example>
+
+     </examples></keyword>
+</keywords></keyword_library>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="LabelFunctions" 
+                 doc="LabelFunctions.htm" 
+                 sourcecode="LabelFunctions.sbl" 
+                 chainTo="GenericObjectFunctions"
+                 class="LABEL">
+
+        <description>
+           <short_desc> 
+              Actions for Label objects
+           </short_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="Robot" version="2002" />
+    <keywords>
+    
+    <keyword name="CLICK" 
+             displayText="Click" 
+             deprecated="YES" 
+             deprecatedFor="GenericObject Click"
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description>
+              <short_desc> 
+                 Attempts to perform a standard Click on the Label
+              </short_desc>
+              <detailed_desc> 
+                <p>Attempts to perform a standard Click on the Object.  </p>
+                  Attempts to click on the Label that is indicated in the map file by the 
+                  Step command. This should provide for a click on any type of Label. 
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine name="WinRunner" 
+	   	   		       since="20020903" 
+	   	   		       tool="WinRunner" 
+	   	   		       vendor="Mercury Interactive">
+	   	   	       <libraryInfo class="LABEL" 
+	   	   				name="LabelFunctions" 
+	   	   				sourcecode="LabelFunctions">
+	   	   	       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters /><examples>
+
+        <example>
+           <usage>T, AWindow, ALabel, CLICK</usage>
+           <description>
+              <short_desc> 
+                 Attempts to perform a standard Label Click on ALabel in AWindow.
+              </short_desc>
+              <detailed_desc>
+                 <p>Attempts to click on ALabel in AWindow as defined in the current 
+                    App Map.  This should provide for a click on any type of Label object.</p>
+              </detailed_desc>
+           </description>
+        </example>
+
+     </examples></keyword>
+</keywords>
+</keyword_library>

@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="TabControlFunctions" 
+                 doc="TabControlFunctions.htm" 
+                 sourcecode="TabControlFunctions.sbl" 
+                 chainTo="GenericObjectFunctions"
+                 class="TABCONTROL">
+
+        <description>
+           <short_desc> 
+              Actions for working with TabControl objects
+           </short_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="Robot" version="2002" />
+    <keywords>
+    
+    <keyword name="CLICK" 
+             displayText="Click" 
+             deprecated="YES" 
+             deprecatedFor="ClickTab" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description>
+              <short_desc> 
+                 Use ClickTab instead (where available).
+              </short_desc>
+              <detailed_desc> 
+                Attempts to perform a standard Click on a particular Tab on the TabControl.
+                The routine will set the StepDriverTestInfo.statuscode and
+                log any pass/warning/fail info using the StepDriverTestInfo.fac LogFacility.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine name="WinRunner" 
+	   			       since="20000909" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="TABCONTROL" 
+	   					name="TabControlFunctions" 
+	   					sourcecode="TabControlFunctions">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text* on the tab to identify which tab to click.
+              </short_desc>
+              <detailed_desc> 
+                 TextValue is the case-sensitive text on the tab to identify which tab to click.
+                 *For Sheridan SSActiveTabs this will be treated as an AppMap reference to an item
+                  that contains coordinates in the form of "xcoord,ycoord".  The item will be 
+                  retrieved from the section in the AppMap with the Components name (Field #3).
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="PROCESS" displayText="process" optional="YES">
+           <description>
+              <short_desc> 
+                 Indicator for unverified click.
+              </short_desc>
+              <detailed_desc> 
+                 When process=1, this indicates we are performing an unverified click.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+
+        <example>
+           <usage>T, WINDOW, TabControl, CLICK, "StatsTab"</usage>
+           <description>
+              <short_desc> 
+                A single-click is performed on the "StatsTab" tab located on the TabControl object.
+              </short_desc>
+              <detailed_desc><p> 
+                  A single-click is performed on the "StatsTab" tab located on the TabControl object.
+                  For Sheridan SSActiveTabs this click location is determined by coordinates stored 
+                  in the AppMap.  Given the example, the AppMap will contain the following entry:</p>
+                  <p>
+                  [TabControl]<br />
+                  StatsTab="100, 12"</p>
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="CLICKTAB" 
+           displayText="ClickTab" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Attempts to perform a standard Click on a particular Tab on the TabControl
+              </short_desc>
+              <detailed_desc> 
+                Attempts to perform a standard Click on a particular Tab on the TabControl.
+                The routine will set the StepDriverTestInfo.statuscode and
+                log any pass/warning/fail info using the StepDriverTestInfo.fac LogFacility.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="TabControlFunctions" 
+                            doc="TabControlFunctions.htm" 
+                            sourcecode="TabControlFunctions.sbl" 
+                            class="TABCONTROL" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFPageTabList" 
+                            doc="org/safs/rational/CFPageTabList.html" 
+                            sourcecode="org.safs.rational.CFPageTabList.java" 
+                            class="TABCONTROL" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   			       since="20040608" 
+	   	   			       tool="WinRunner" 
+	   	   			       vendor="Mercury Interactive">
+	   	   		       <libraryInfo class="TABCONTROL" 
+	   	   					name="TabControlFunctions" 
+	   	   					sourcecode="TabControlFunctions">
+	   	   		       </libraryInfo>
+           </engine>
+           <engine vendor="Automated QA" tool="TestComplete" name="Test Complete" since="20111213" >
+	       		<libraryInfo name="TabControlFunctions"
+                            sourcecode="TabControlFunctions.SVB" 
+                            class="TabControl" />
+               <domains>
+                   <domain name="NET" since="20120515">
+                       <libraryInfo name="TabControlFunctions" 
+                                    class="TabControl" 
+                                    subClass="NET" 
+                                    sourcecode="TabControlFunctions.SVB" />
+                   </domain>
+                   <domain name="FLEX" since="20120515">
+                       <libraryInfo name="TabControlFunctions" 
+                                    class="TabControl" 
+                                    subClass="FLEX"
+                                    sourcecode="TabControlFunctions.SVB" />                  
+                   </domain>
+               </domains>                            
+           </engine>
+           <engine vendor="Google" tool="Android" name="Android" since="20121019" >
+				<libraryInfo name="CFTabControlFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFTabControlFunctions.html" 
+					 sourcecode="org.safs.android.CFTabControlFunctions.java" 
+					 class="TabControl" />
+            	<domains>
+            		<domain name="DEV" since="20121019">
+	        			<libraryInfo name="TabControlProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/TabControlProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.TabControlProcessor.java" 
+                             class="TabControl" />
+                    </domain>
+                </domains>
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140422" >
+	           <libraryInfo name="CFTabControl" 
+                            doc="org/safs/selenium/webdriver/CFTabControl.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFTabControl.java" 
+                            class="MISC"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text on the tab to identify which tab to click.
+              </short_desc>
+              <detailed_desc> 
+                 TextValue is the case-sensitive text on the tab to identify which tab to click.
+                 *For Sheridan SSActiveTabs this will be treated as an AppMap reference to an item
+                  that contains coordinates in the form of "xcoord,ycoord".  The item will be 
+                  retrieved from the section in the AppMap with the Components name (Field #3).
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+
+        <example>
+           <usage>T, WINDOW, TabControl, CLICKTAB, "StatsTab"</usage>
+           <description>
+              <short_desc> 
+                A single-click is performed on the "StatsTab" tab located on the TabControl object.
+              </short_desc>
+              <detailed_desc><p> 
+                  A single-click is performed on the "StatsTab" tab located on the TabControl object.
+                  For Sheridan SSActiveTabs this click location is determined by coordinates stored 
+                  in the AppMap.  Given the example, the AppMap will contain the following entry:</p>
+                  <p>
+                  [TabControl]<br />
+                  StatsTab="100, 12"</p>
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="MAKESELECTION" 
+           displayText="MakeSelection" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Attempts to perform a standard Click on a particular Tab on the TabControl
+              </short_desc>
+              <detailed_desc> 
+                Attempts to perform a standard Click on a particular Tab on the TabControl.
+                The routine will set the StepDriverTestInfo.statuscode and
+                log any pass/warning/fail info using the StepDriverTestInfo.fac LogFacility.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="TabControlFunctions" 
+                            doc="TabControlFunctions.htm" 
+                            sourcecode="TabControlFunctions.sbl" 
+                            class="TABCONTROL" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFPageTabList" 
+                            doc="org/safs/rational/CFPageTabList.html" 
+                            sourcecode="org.safs.rational.CFPageTabList.java" 
+                            class="TABCONTROL" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   	   			       since="20040608" 
+	   	   	   			       tool="WinRunner" 
+	   	   	   			       vendor="Mercury Interactive">
+	   	   	   		       <libraryInfo class="TABCONTROL" 
+	   	   	   					name="TabControlFunctions" 
+	   	   	   					sourcecode="TabControlFunctions">
+	   	   	   		       </libraryInfo>
+           </engine>
+           <engine vendor="Automated QA" tool="TestComplete" name="Test Complete" since="20111213" >
+	       		<libraryInfo name="TabControlFunctions"
+                            sourcecode="TabControlFunctions.SVB" 
+                            class="TabControl" />
+               <domains>
+                   <domain name="NET" since="20120515">
+                       <libraryInfo name="TabControlFunctions" 
+                                    class="TabControl" 
+                                    subClass="NET" 
+                                    sourcecode="TabControlFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20120515">
+                       <libraryInfo name="TabControlFunctions" 
+                                    class="TabControl" 
+                                    subClass="FLEX"
+                                    sourcecode="TabControlFunctions.SVB" />                  
+                   </domain>
+               </domains>                             
+           </engine> 
+           <engine vendor="Google" tool="Android" name="Android" since="20121019" >
+				<libraryInfo name="CFTabControlFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFTabControlFunctions.html" 
+					 sourcecode="org.safs.android.CFTabControlFunctions.java" 
+					 class="TabControl" />
+            	<domains>
+            		<domain name="DEV" since="20121019">
+	        			<libraryInfo name="TabControlProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/TabControlProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.TabControlProcessor.java" 
+                             class="TabControl" />
+                    </domain>
+                </domains>
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140422" >
+	           <libraryInfo name="CFTabControl" 
+                            doc="org/safs/selenium/webdriver/CFTabControl.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFTabControl.java" 
+                            class="MISC"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text on the tab to identify which tab to click.
+              </short_desc>
+              <detailed_desc> 
+                 TextValue is the case-sensitive text on the tab to identify which tab to click.
+                 *For Sheridan SSActiveTabs this will be treated as an AppMap reference to an item
+                  that contains coordinates in the form of "xcoord,ycoord".  The item will be 
+                  retrieved from the section in the AppMap with the Components name (Field #3).
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+
+        <example>
+           <usage>T, WINDOW, TabControl, MAKESELECTION, "StatsTab"</usage>
+           <description>
+              <short_desc> 
+                A single-click is performed on the "StatsTab" tab located on the TabControl object.
+              </short_desc>
+              <detailed_desc><p> 
+                  A single-click is performed on the "StatsTab" tab located on the TabControl object.
+                  For Sheridan SSActiveTabs this click location is determined by coordinates stored 
+                  in the AppMap.  Given the example, the AppMap will contain the following entry:</p>
+                  <p>
+                  [TabControl]<br />
+                  StatsTab="100, 12"</p>
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="UNVERIFIEDCLICK" 
+           displayText="UnverifiedClick" 
+           deprecated="YES" 
+           deprecatedFor="UnverifiedClickTab" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Use UnverifiedClickTab instead (where available).
+              </short_desc>
+              <detailed_desc> 
+                Attempts to perform an unverified Click on a particular Tab on the TabControl.
+                The routine will set the StepDriverTestInfo.statuscode and
+                log any pass/warning/fail info using the StepDriverTestInfo.fac LogFacility.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine name="WinRunner" 
+	   	   	   			       since="20040608" 
+	   	   	   			       tool="WinRunner" 
+	   	   	   			       vendor="Mercury Interactive">
+	   	   	   		       <libraryInfo class="TABCONTROL" 
+	   	   	   					name="TabControlFunctions" 
+	   	   	   					sourcecode="TabControlFunctions">
+	   	   	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text* on the tab to identify which tab to click.
+              </short_desc>
+              <detailed_desc> 
+                 TextValue is the case-sensitive text on the tab to identify which tab to click.
+                 *For Sheridan SSActiveTabs this will be treated as an AppMap reference to an item
+                  that contains coordinates in the form of "xcoord,ycoord".  The item will be 
+                  retrieved from the section in the AppMap with the Components name (Field #3).
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+
+        <example>
+           <usage>T, WINDOW, TabControl, UNVERIFIEDCLICK, "StatsTab"</usage>
+           <description>
+              <short_desc> 
+                A single-click is performed on the "StatsTab" tab located on the TabControl object.
+              </short_desc>
+              <detailed_desc><p> 
+                  A single-click is performed on the "StatsTab" tab located on the TabControl object.
+                  For Sheridan SSActiveTabs this click location is determined by coordinates stored 
+                  in the AppMap.  Given the example, the AppMap will contain the following entry:</p>
+                  <p>
+                  [TabControl]<br />
+                  StatsTab="100, 12"</p>
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword name="UNVERIFIEDCLICKTAB" 
+           displayText="UnverifiedClickTab" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Attempts to perform an unverified Click on a particular Tab on the TabControl
+              </short_desc>
+              <detailed_desc> 
+                Attempts to perform an unverified Click on a particular Tab on the TabControl.
+                The routine will set the StepDriverTestInfo.statuscode and
+                log any pass/warning/fail info using the StepDriverTestInfo.fac LogFacility.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20051017" >
+	       <libraryInfo name="TabControlFunctions" 
+                            doc="TabControlFunctions.htm" 
+                            sourcecode="TabControlFunctions.sbl" 
+                            class="TABCONTROL" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080509" >
+	       <libraryInfo name="CFPageTabList" 
+                            doc="org/safs/rational/CFPageTabList.html" 
+                            sourcecode="org.safs.rational.CFPageTabList.java" 
+                            class="TABCONTROL" />
+           </engine> 
+           <engine vendor="Automated QA" tool="TestComplete" name="Test Complete" since="20111213" >
+	       		<libraryInfo name="TabControlFunctions"
+                            sourcecode="TabControlFunctions.SVB" 
+                            class="TabControl" />
+               <domains>
+                   <domain name="NET" since="20120515">
+                       <libraryInfo name="TabControlFunctions" 
+                                    class="TabControl" 
+                                    subClass="NET" 
+                                    sourcecode="TabControlFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20120515">
+                       <libraryInfo name="TabControlFunctions" 
+                                    class="TabControl" 
+                                    subClass="FLEX"
+                                    sourcecode="TabControlFunctions.SVB" />                  
+                   </domain>
+               </domains>                             
+           </engine> 
+           <engine vendor="Google" tool="Android" name="Android" since="20121019" >
+				<libraryInfo name="CFTabControlFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFTabControlFunctions.html" 
+					 sourcecode="org.safs.android.CFTabControlFunctions.java" 
+					 class="TabControl" />
+            	<domains>
+            		<domain name="DEV" since="20121019">
+	        			<libraryInfo name="TabControlProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/TabControlProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.TabControlProcessor.java" 
+                             class="TabControl" />
+                    </domain>
+                </domains>
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140422" >
+	           <libraryInfo name="CFTabControl" 
+                            doc="org/safs/selenium/webdriver/CFTabControl.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFTabControl.java" 
+                            class="MISC"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text* on the tab to identify which tab to click.
+              </short_desc>
+              <detailed_desc> 
+                 TextValue is the case-sensitive text on the tab to identify which tab to click.
+                 *For Sheridan SSActiveTabs this will be treated as an AppMap reference to an item
+                  that contains coordinates in the form of "xcoord,ycoord".  The item will be 
+                  retrieved from the section in the AppMap with the Components name (Field #3).
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+
+        <example>
+           <usage>T, WINDOW, TabControl, UnverifiedClickTab, "StatsTab"</usage>
+           <description>
+              <short_desc> 
+                A single-click is performed on the "StatsTab" tab located on the TabControl object.
+              </short_desc>
+              <detailed_desc><p> 
+                  A single-click is performed on the "StatsTab" tab located on the TabControl object.
+                  For Sheridan SSActiveTabs this click location is determined by coordinates stored 
+                  in the AppMap.  Given the example, the AppMap will contain the following entry:</p>
+                  <p>
+                  [TabControl]<br />
+                  StatsTab="100, 12"</p>
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+     <keyword name="CLICKTABCONTAINS" 
+           displayText="ClickTabContains" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Attempts to perform a Click on a Tab according to a partial match of its text value.
+              </short_desc>
+              <detailed_desc><p> 
+                Attempts to perform a Click on a Tab according to a partial match of its text value.
+                The routine will set the StepDriverTestInfo.statuscode and
+                log any pass/warning/fail info using the StepDriverTestInfo.fac LogFacility.</p>
+                <p>Note: this keyword used to be UnverifiedClickTabContains, and it was renamed on 01/26/2011 due to conflict.</p>
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20100628" >
+	       <libraryInfo name="CFPageTabList" 
+                            doc="org/safs/rational/CFPageTabList.html" 
+                            sourcecode="org.safs.rational.CFPageTabList.java" 
+                            class="TABCONTROL" />
+           </engine> 
+           <engine vendor="Automated QA" tool="TestComplete" name="Test Complete" since="20111213" >
+	       		<libraryInfo name="TabControlFunctions"
+                            sourcecode="TabControlFunctions.SVB" 
+                            class="TabControl" />
+               <domains>
+                   <domain name="NET" since="20120515">
+                       <libraryInfo name="TabControlFunctions" 
+                                    class="TabControl" 
+                                    subClass="NET" 
+                                    sourcecode="TabControlFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20120515">
+                       <libraryInfo name="TabControlFunctions" 
+                                    class="TabControl" 
+                                    subClass="FLEX"
+                                    sourcecode="TabControlFunctions.SVB" />                  
+                   </domain>
+               </domains>                             
+           </engine>
+           <engine vendor="Google" tool="Android" name="Android" since="20121019" >
+				<libraryInfo name="CFTabControlFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFTabControlFunctions.html" 
+					 sourcecode="org.safs.android.CFTabControlFunctions.java" 
+					 class="TabControl" />
+            	<domains>
+            		<domain name="DEV" since="20121019">
+	        			<libraryInfo name="TabControlProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/TabControlProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.TabControlProcessor.java" 
+                             class="TabControl" />
+                    </domain>
+                </domains>
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140422" >
+	           <libraryInfo name="CFTabControl" 
+                            doc="org/safs/selenium/webdriver/CFTabControl.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFTabControl.java" 
+                            class="MISC"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Partial case-sensitive text on the tab to identify which tab to click.
+              </short_desc>
+              <detailed_desc> 
+                 TextValue is the partial case-sensitive text on the tab to identify which tab to click.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+
+        <example>
+           <usage>T, PropertiesWin, TabControl, ClickTabContains, "StatsTab"</usage>
+           <description>
+              <short_desc> 
+                A single-click is performed on the tab item whose name contains "StatsTab".
+              </short_desc>
+              <detailed_desc><p> 
+                  A single-click is performed on the tab item whose name contains "StatsTab".</p>
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SELECTTAB" 
+           displayText="SelectTab" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Attempts to perform a standard SelectTab on a particular Tab on the TabControl
+              </short_desc>
+              <detailed_desc> <p>
+                Attempts to perform a standard Selection on a particular Tab on the TabControl.
+                The routine will set the StepDriverTestInfo.statuscode and
+                log any pass/warning/fail info using the StepDriverTestInfo.fac LogFacility.</p><p>
+                Note, this routine will call the CLICK function to try 
+                default CLICK processing if it is not able to locate all 
+                the component properties it needs for success.</p><p>
+                This command has been provided for times when it might 
+                work and the other TabControl CLICK alternatives do not.</p>
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="TabControlFunctions" 
+                            doc="TabControlFunctions.htm" 
+                            sourcecode="TabControlFunctions.sbl" 
+                            class="TABCONTROL" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFPageTabList" 
+                            doc="org/safs/rational/CFPageTabList.html" 
+                            sourcecode="org.safs.rational.CFPageTabList.java" 
+                            class="TABCONTROL" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   	   			       since="20040608" 
+	   	   	   			       tool="WinRunner" 
+	   	   	   			       vendor="Mercury Interactive">
+	   	   	   		       <libraryInfo class="TABCONTROL" 
+	   	   	   					name="TabControlFunctions" 
+	   	   	   					sourcecode="TabControlFunctions">
+	   	   	   		       </libraryInfo>
+           </engine>
+           <engine vendor="Automated QA" tool="TestComplete" name="Test Complete" since="20111213" >
+	       		<libraryInfo name="TabControlFunctions"
+                            sourcecode="TabControlFunctions.SVB" 
+                            class="TabControl" />
+               <domains>
+                   <domain name="NET" since="20120515">
+                       <libraryInfo name="TabControlFunctions" 
+                                    class="TabControl" 
+                                    subClass="NET" 
+                                    sourcecode="TabControlFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20120515">
+                       <libraryInfo name="TabControlFunctions" 
+                                    class="TabControl" 
+                                    subClass="FLEX"
+                                    sourcecode="TabControlFunctions.SVB" />                  
+                   </domain>
+               </domains>                             
+           </engine>
+           <engine vendor="Google" tool="Android" name="Android" since="20121019" >
+				<libraryInfo name="CFTabControlFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFTabControlFunctions.html" 
+					 sourcecode="org.safs.android.CFTabControlFunctions.java" 
+					 class="TabControl" />
+            	<domains>
+            		<domain name="DEV" since="20121019">
+	        			<libraryInfo name="TabControlProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/TabControlProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.TabControlProcessor.java" 
+                             class="TabControl" />
+                    </domain>
+                </domains>
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140422" >
+	           <libraryInfo name="CFTabControl" 
+                            doc="org/safs/selenium/webdriver/CFTabControl.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFTabControl.java" 
+                            class="MISC"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text on the tab to identify which tab to click.
+              </short_desc>
+              <detailed_desc> 
+                TextValue is the case-sensitive text on the tab to identify which tab to click.
+                If the provided text value contains ampersands (for hotkey characters) then 
+                ampersands will be retained in the TabControl text for comparisons performed 
+                to identify the correct tab to click.  
+                Otherwise, ampersands are stripped out of the TabControl text to facilitate 
+                these comparisons.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+
+        <example>
+           <usage>T, WINDOW, TabControl, SelectTab, "StatsTab"</usage>
+           <description>
+              <short_desc> 
+                A single-click is performed on the "StatsTab" tab located on the TabControl object.
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword name="SELECTTABINDEX" 
+           displayText="SelectTabIndex" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Attempts to select a particular Tab by Index.
+              </short_desc>
+              <detailed_desc>
+                Attempts to select a particular Tab by Index.
+                The routine will set the StepDriverTestInfo.statuscode and
+                log any pass/warning/fail info using the StepDriverTestInfo.fac LogFacility.
+                <p>
+                For some engines, like Rational Robot, the user must know whether the indices of 
+                the TabControl are 0-based or 1-based and use the raw index number.  
+                </p>
+                <p>
+                For Rational Functional Tester we attempt to enforce that all indices are 
+                1-based whenever possible.  Thus, the first tab would be specified as TabIndex=1 
+                even if the control itself uses 0-based tab indices.
+                </p>
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20080325" >
+	       <libraryInfo name="TabControlFunctions" 
+                            doc="TabControlFunctions.htm" 
+                            sourcecode="TabControlFunctions.sbl" 
+                            class="TABCONTROL" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080730" >
+	       <libraryInfo name="CFPageTabList" 
+                            doc="org/safs/rational/CFPageTabList.html" 
+                            sourcecode="org.safs.rational.CFPageTabList.java" 
+                            class="TABCONTROL" />
+           </engine>
+           <engine vendor="Automated QA" tool="TestComplete" name="Test Complete" since="20111213" >
+	       		<libraryInfo name="TabControlFunctions"
+                            sourcecode="TabControlFunctions.SVB" 
+                            class="TabControl" />
+               <domains>
+                   <domain name="NET" since="20120515">
+                       <libraryInfo name="TabControlFunctions" 
+                                    class="TabControl" 
+                                    subClass="NET" 
+                                    sourcecode="TabControlFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20120515">
+                       <libraryInfo name="TabControlFunctions" 
+                                    class="TabControl" 
+                                    subClass="FLEX"
+                                    sourcecode="TabControlFunctions.SVB" />                  
+                   </domain>
+               </domains>                             
+           </engine>
+           <engine vendor="Google" tool="Android" name="Android" since="20121019" >
+				<libraryInfo name="CFTabControlFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFTabControlFunctions.html" 
+					 sourcecode="org.safs.android.CFTabControlFunctions.java" 
+					 class="TabControl" />
+            	<domains>
+            		<domain name="DEV" since="20121019">
+	        			<libraryInfo name="TabControlProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/TabControlProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.TabControlProcessor.java" 
+                             class="TabControl" />
+                    </domain>
+                </domains>
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140422" >
+	           <libraryInfo name="CFTabControl" 
+                            doc="org/safs/selenium/webdriver/CFTabControl.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFTabControl.java" 
+                            class="MISC"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TABINDEX" displayText="TabIndex" optional="NO">
+           <description>
+              <short_desc> 
+                 Index of the tab to click.
+              </short_desc>
+              <detailed_desc> 
+                The index of the tab to click.  The user needs to know whether 
+                the TabControl indices are 0-based or 1-based.  SAFS for RFT attempts to 
+                allow the user to use 1-based indices for all controls.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+
+        <example>
+           <usage>T, WINDOW, TabControl, SelectTabIndex, 2</usage>
+           <description>
+              <short_desc> 
+                A single-click is performed on the 2nd tab of a 1-based TabControl.  
+              </short_desc>
+              <detailed_desc> 
+                The 2nd tab of a 1-based TabControl will likely correspond to the 3rd 
+                tab of a 0-based TabControl.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+</keywords>
+</keyword_library>

@@ -1,0 +1,2887 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+  <libraryType type="DRIVER">
+  </libraryType>
+  <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+    <description>
+      <short_desc>
+        Driver Commands for File Manipulations
+      </short_desc>
+      <detailed_desc>
+         It is important to note that file command usage cannot readily be mixed and matched across 
+         different SAFS engines.  For example, Files opened by Robot(RC) are only known to RC.  So 
+         attempting to use SDC or RJ commands on files opened by RC are not likely to work in this 
+         scenario.  This will be fixed in future releases.
+      </detailed_desc>
+    </description>
+  </libraryInfo>
+  <runtime engine="Robot" platform="Windows" version="2000">
+  </runtime>
+  <keywords>
+    <keyword deprecated="NO" displayText="IsEndOfFile" expectFailSupport="NO" expectWarnSupport="NO" name="ISENDOFFILE">
+      <description>
+        <short_desc>
+           If the specified file is at the end of file, a 'variable' gets true assigned, otherwise it gets false
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031201" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileNumber" name="FILENUMBER" optional="NO">
+          <description>
+            <short_desc>
+              The file number for the file to be closed.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="Variable" name="VARIABLE" optional="NO">
+          <description>
+            <short_desc>
+              Variable to assign true or false
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, IsEndOfFile, 8, variable
+          </usage>
+          <description>
+            <short_desc>
+              if the file with file number 8 is at the end of file, 'variable' gets true assigned, otherwise it gets false
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword deprecated="NO" displayText="IfExistDir" expectFailSupport="NO" expectWarnSupport="NO" name="IFEXISTDIR">
+      <description>
+        <short_desc>
+          If the specified directory exists, then execute the following driver command.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20030923" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="DirectoryName" name="DIRECTORYNAME" optional="NO">
+          <description>
+            <short_desc>
+              The full path name of directory to test for
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="ThenDriverCommand" name="THENDRIVERCOMMAND" optional="NO">
+          <description>
+            <short_desc>
+              Actually, the rest of the parameters include this,                     which is the driver command to execute if the                     directory exists, followed by the remaining driver                     parameters for that command
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, IfExistDir, "C:\temp\9\7", DeleteDirectory, "C:\temp\9\7"
+          </usage>
+          <description>
+            <short_desc>
+              only delete the directory if it exists.
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword deprecated="NO" displayText="IfExistFile" expectFailSupport="NO" expectWarnSupport="NO" name="IFEXISTFILE">
+      <description>
+        <short_desc>
+          If the specified file exists, then execute the following driver command.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20030923" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileName" name="FILENAME" optional="NO">
+          <description>
+            <short_desc>
+              The full path name of file to test for
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="ThenDriverCommand" name="THENDRIVERCOMMAND" optional="NO">
+          <description>
+            <short_desc>
+              Actually, the rest of the parameters include this,                     which is the driver command to execute if the                     file exists, followed by the remaining driver                     parameters for that command
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, IfExistFile, "C:\temp\9\7\6.txt", DeleteFile, "C:\temp\9\7\6.txt"
+          </usage>
+          <description>
+            <short_desc>
+              only delete the file if it exists.
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword  name="GETSUBSTRINGSINFILE" 
+             displayText="GetSubstringsInFile" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO" >
+            <description> <short_desc> 
+                  Extract dynamic substrings from a file using regular expressions.
+               </short_desc>
+               <detailed_desc> 
+                  <p>
+                  This command opens the file, reads it line by line, and sets DDVariables (based on rootname) for each occurrence of string identified by the substring formed between regexstart and regexstop (1 match per line, currently).  regexstart and regexstop must both be valid, non-empty strings or no matching substrings will be found.
+                  </p><p>
+                  Fully qualified filename is opened and read line by line.  
+                  Each line is parsed, searching for a match to the substring formed between regexstart and regexstop.
+                  </p><p>
+                  When a match is found, the string between regexstart and regexstop is saved in a newly created DDVariable based on rootname and the number of occurrences.  There will be one DDVariable for each match found and a unique "Count" variable specifying how many matches were found.
+                  </p><p>
+                  The rootname is used as a base to build the DDVariable names which contain the located substring(s) and Count.  For example, if rootname is "Chart" and two substring matches are found, then 2 DDVariables are created to store those substrings and another is created to store the count of matches: 
+                  </p>
+                  <ol>
+                     <li>DDVariable Chart1 contains the first substring, and</li>
+                     <li>DDVariable Chart2 contains the second substring. </li>
+                     <li>DDVariable ChartCount contains the number of matches found. </li>
+                  </ol>
+               </detailed_desc> </description>
+      <engines>
+        <engine name="RobotJ" since="20031121" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+         <parameter       name="file" 
+                   displayText="file" 
+                   optional="NO">
+            <description>  <short_desc> 
+                  Fully-qualified filename
+               </short_desc> </description> </parameter>
+         <parameter       name="regexstart" 
+                   displayText="regexstart" 
+                   optional="NO">
+            <description>  <short_desc> 
+                  The starting regular expression.  Should not be empty.
+               </short_desc> </description> </parameter>
+         <parameter       name="regexstop" 
+                   displayText="regexstop" 
+                   optional="NO">
+            <description>  <short_desc> 
+                  The stopping regular expression.  Should not be empty.
+               </short_desc> </description> </parameter>
+         <parameter       name="rootname" 
+                   displayText="rootname" 
+                   optional="NO">
+            <description>  <short_desc> 
+                  The root name of the returned variable(s).  
+               </short_desc>
+               <detailed_desc>
+                  The rootname is used as a base to build the DDVariable names which contain the located substring(s).  For example, if rootname is "Chart" and two substring matches are found, then 2 DDVariables are created to store those substrings and another is created to store the count of matches: 
+                  <ol>
+                     <li>DDVariable Chart1 contains the first substring, and</li>
+                     <li>DDVariable Chart2 contains the second substring. </li>
+                     <li>DDVariable ChartCount contains the number of matches found. </li>
+                  </ol>
+               </detailed_desc> </description> </parameter>
+      </parameters>     
+      <examples>
+         <example>
+            <usage>C GetSubstringsInFile ^file=^fullfilename ^regexstart="img id=""idChart" ^regexstop="""" ^rootname="Chart"</usage>
+            <description> <short_desc> 
+                  Assuming 2 strings are found in file, this command will create:<br/>
+                    DDVariable Chart1, which contains the first substring, and <br/>
+                    DDVariable Chart2, which contains the second substring. <br/>
+                    DDVariable ChartCount, which contains the count of matches found.
+              </short_desc> </description> </example>
+      </examples>        
+    </keyword>
+    <keyword  name="GETSTRINGCOUNTINFILE" 
+             displayText="GetStringCountInFile" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO" >
+            <description> <short_desc> 
+                  Count the number of occurrences of a target string in a File.
+               </short_desc>
+               <detailed_desc> 
+                  This command opens and reads a file line by line, then sets a specified DDVariable to the number of times the target string is found in the file. 
+                  String comparisons are case-sensitive by default. The file is assumed to be in the system default encoding unless specified otherwise.
+               </detailed_desc> </description>
+      <engines>
+        <engine name="RobotJ" since="20110526" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20110526" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20110526" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+         <parameter       name="file" 
+                   displayText="File" 
+                   optional="NO">
+            <description>  <short_desc> 
+                  The File to be searched.
+               </short_desc> 
+               <detailed_desc>
+               	  This can be a full filepath, a relative path, or a simple filename. A relative path is appended to 
+               	  the Project's path to deduce the full filename. For a simple filename, the filename is appended to the Project's Datapool\Test 
+               	  directory path to deduce the full filename. An error will be logged if the file does not exist, or cannot be read.
+               </detailed_desc>
+            </description> </parameter>
+         <parameter       name="string" 
+                   displayText="String" 
+                   optional="NO">
+            <description>  <short_desc> 
+                  The string to match and count in the file.
+               </short_desc> </description> </parameter>
+         <parameter       name="varname" 
+                   displayText="VarName" 
+                   optional="YES"
+                   default="GetStringCountInFile">
+            <description>  <short_desc> 
+                  The name of the variable to receive the count.
+               </short_desc> 
+               <detailed_desc>
+               	  Optional. This command should automatically clear the variable value to "0" before counting. If no variable name is provided, then 
+               	  a default variable name of 'GetStringCountInFile' will be used.
+               </detailed_desc>
+            </description> </parameter>
+         <parameter       name="casesensitive" 
+                   displayText="CaseSensitive" 
+                   optional="YES">
+            <description>  <short_desc> 
+                  Set to 'CaseInsensitive' so comparisons are NOT case-sensitive.  
+               </short_desc>
+               <detailed_desc>
+               	  Optional. Comparisons are case-sensitive by default.
+               </detailed_desc> </description> </parameter>
+         <parameter       name="encoding" 
+                   displayText="Encoding" 
+                   optional="YES">
+            <description>  <short_desc> 
+                  Charset encoding string like "UTF-8", etc...
+               </short_desc>
+               <detailed_desc>
+               	  Optional. If not specified the default system encoding is assumed.
+               </detailed_desc> </description> </parameter>
+      </parameters>     
+      <examples>
+         <example>
+            <usage>C, GetStringCountInFile, "\tidtest.ini", "SAFS_TEST"</usage>
+            <description> <short_desc> 
+            	Count the number of times "SAFS_TEST" is found and store in variable "GetStringCountInFile".
+              </short_desc> 
+              <detailed_desc>
+              	Open project-relative file at "[project]\tidtest.ini", count the number of times "SAFS_TEST" appears in that file, 
+              	and store the result in the default variable "GetStringCountInFile".  The text comparisons are case-sensitive.  The text in the file 
+              	is assumed to be in the system default encoding when it is read.  
+              </detailed_desc>
+            </description> </example>
+         <example>
+            <usage>C, GetStringCountInFile, "somefile.txt", "sample text", MyCounter</usage>
+            <description> <short_desc> 
+            	Count the number of times "sample text" is found and store in variable "MyCounter".
+              </short_desc> 
+              <detailed_desc>
+              	Open project-relative file at "[project]\Datapool\Test\somefile.txt", count the number of times "sample text" appears in that file, 
+              	and store the result in the default variable "MyCounter". The text comparisons are case-sensitive.
+              </detailed_desc>
+            </description> </example>
+         <example>
+            <usage>C, GetStringCountInFile, "somefile.txt", "SamPLe TexT", MyCounter, "CaseInsensitive"</usage>
+            <description> <short_desc> 
+            	Count the number of times "SamPLe TexT" is found and store in variable "MyCounter".
+              </short_desc> 
+              <detailed_desc>
+              	Open project-relative file at "[project]\Datapool\Test\somefile.txt", count the number of times "SamPLe TexT" appears in that file, 
+              	and store the result in the default variable "MyCounter". The text comparisons are NOT case-sensitive.
+              </detailed_desc>
+            </description> </example>
+         <example>
+            <usage>C, GetStringCountInFile, "somefile.txt", "SamPLe TexT", MyCounter, "CaseInsensitive", "UTF-8"</usage>
+            <description> <short_desc> 
+            	Count the number of times "SamPLe TexT" is found and store in variable "MyCounter".
+              </short_desc> 
+              <detailed_desc>
+              	Open project-relative file at "[project]\Datapool\Test\somefile.txt", count the number of times "SamPLe TexT" appears in that file, 
+              	and store the result in the default variable "MyCounter". The text comparisons are NOT case-sensitive.  The text in the file 
+              	is assumed to be UTF-8 encoded when it is read.              	
+              </detailed_desc>
+            </description> </example>
+      </examples>        
+    </keyword>
+    
+    
+    <keyword name="OPENFILE" displayText="OpenFile" expectFailSupport="NO" expectWarnSupport="NO" deprecated="NO">
+      <description>
+        <short_desc>
+          Open an existing file with the filename, mode and access provided.<br/>
+		  <b>TID Note: </b>Three ways to open a file:
+			<ol>
+				<li>Mode=Input, Access=Read</li>
+				<li>Mode=Output, Access=Write</li>
+				<li>Mode=Append, Access=Write</li>
+			</ol>	
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+        <engine name="RobotJ" since="20030923" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileName" name="FILENAME" optional="NO">
+          <description>
+            <short_desc>
+              The full path file name of the file to be opened.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="Mode" name="MODE" optional="NO">
+          <description>
+            <short_desc>
+              Mode to be used to open the file, Input, Output or Append. Random and Binary not supported
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="Access" name="ACCESS" optional="NO">
+          <description>
+            <short_desc>
+              Access to be used to open the file. Read, Write or Read Write.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="FileNumberVariable" name="FILENUMBERVARIABLE" optional="NO">
+          <description>
+            <short_desc>
+              DDE Variable name of the variable to store the file number.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="FileNumber" name="FILENUMBER" optional="Yes">
+          <description>
+            <short_desc>
+              Optional File number to be used to open the file                       Otherwise next available file number is used
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, OpenFile, "C:\Test\FileTest.txt", "Input", "Read","test_filenum"
+          </usage>
+          <description>
+            <short_desc>
+              Open the existing file FileTest.txt for Input and reading and store the                        file number in DDE variable ^test_filenum
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, OpenFile, "C:\Test\FileTest.txt", "Output", "Write","test_filenum",8
+          </usage>
+          <description>
+            <short_desc>
+              Open the file FileTest.txt for Output and Writing with the file number 8                    and store the file number 8 in DDE variable ^test_filenum
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword name="OPENUTF8FILE" deprecated="NO" displayText="OpenUTF8File" expectFailSupport="NO" expectWarnSupport="NO">
+      <description>
+        <short_desc>
+          Open an existing UTF-8 file with the filename, mode and access provided.<br/>
+	      <b>TID Note: </b>Three ways to open a file:
+			<ol>
+				<li>Mode=Input, Access=Read</li>
+				<li>Mode=Output, Access=Write</li>
+				<li>Mode=Append, Access=Write</li>
+			</ol>
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20061219" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20061219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20061219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileName" name="FILENAME" optional="NO">
+          <description>
+            <short_desc>
+              The full path file name of the UTF-8 file to be opened.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="Mode" name="MODE" optional="NO">
+          <description>
+            <short_desc>
+              Mode to be used to open the UTF-8 file, Input, Output or Append. Random and Binary not supported
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="Access" name="ACCESS" optional="NO">
+          <description>
+            <short_desc>
+              Access to be used to open the UTF-8 file. Read, Write or Read Write.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="FileNumberVariable" name="FILENUMBERVARIABLE" optional="NO">
+          <description>
+            <short_desc>
+              DDE Variable name of the variable to store the file number.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="FileNumber" name="FILENUMBER" optional="Yes">
+          <description>
+            <short_desc>
+              Optional File number to be used to open the UTF-8 file, 
+              otherwise, next available file number is used.
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, OpenUTF8File, "C:\Test\FileTestUTF8.txt", "Input", "Read","test_filenum"
+          </usage>
+          <description>
+            <short_desc>
+              Open the existing UTF-8 file FileTestUTF8.txt for Input and reading and 
+              store the file number in DDE variable ^test_filenum
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, OpenUTF8File, "C:\Test\FileTestUTF8.txt", "Output", "Write","test_filenum",8
+          </usage>
+          <description>
+            <short_desc>
+              Open the UTF-8 file FileTestUTF8.txt for Output and Writing with the file number 8 
+              and store the file number 8 in DDE variable ^test_filenum
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword deprecated="NO" displayText="CreateFile" expectFailSupport="NO" expectWarnSupport="NO" name="CREATEFILE">
+      <description>
+        <short_desc>
+          Open a new file with the filename, mode and access provided.<BR/>
+          <b>TID Note: </b>Three ways to create a file:
+			<ol>
+				<li>Mode=Input, Access=Read</li>
+				<li>Mode=Output, Access=Write</li>
+				<li>Mode=Append, Access=Write</li>
+			</ol>	
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+        <engine name="RobotJ" since="20031006" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileName" name="FILENAME" optional="NO">
+          <description>
+            <short_desc>
+              The full path file name of the file to be opened.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="Mode" name="MODE" optional="NO">
+          <description>
+            <short_desc>
+              Mode to be used to create and open the file, Input, Output or Append.                    Random and Binary not supported
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="Access" name="ACCESS" optional="NO">
+          <description>
+            <short_desc>
+              Access to be used to create and open the file. Read, Write or Read Write.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="FileNumberVariable" name="FILENUMBERVARIABLE" optional="NO">
+          <description>
+            <short_desc>
+              DDE Variable name of the variable to store the file number.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="FileNumber" name="FILENUMBER" optional="Yes">
+          <description>
+            <short_desc>
+              Optional File number to be used to open the file                       Otherwise next available file number is used
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, CreateFile, "C:\Test\FileTest.txt", "Output", "Write","^test_filenum"
+          </usage>
+          <description>
+            <short_desc>
+              CreateFile a new file FileTest.txt for Output and writing and store the                        file number in DDE variable ^test_filenum
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, CreateFile, "C:\Test\FileTest.txt", "Output", "Write","^test_filenum", 8
+          </usage>
+          <description>
+            <short_desc>
+              CreateFile a new file FileTest.txt for Output and Writing with the file number 8                    and store the file number 8 in DDE variable ^test_filenum
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword deprecated="NO" displayText="CloseFile" expectFailSupport="NO" expectWarnSupport="NO" name="CLOSEFILE">
+      <description>
+        <short_desc>
+          Close the open file with the file number provided
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+        <engine name="RobotJ" since="20030923" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileNumber" name="FILENUMBER" optional="NO">
+          <description>
+            <short_desc>
+              The file number for the file to be closed.
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, CloseFile, 8
+          </usage>
+          <description>
+            <short_desc>
+              Close the open file with the file number 8
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, CloseFile, ^file_number
+          </usage>
+          <description>
+            <short_desc>
+              Close the open file with the file number contained in DDE variable file_number
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    
+    <keyword deprecated="NO" displayText="DeleteFile" expectFailSupport="NO" expectWarnSupport="NO" name="DELETEFILE">
+      <description>
+        <short_desc>
+          Delete the file for the file name provided
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+        <engine name="RobotJ" since="20031006" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileName" name="FILENAME" optional="NO">
+          <description>
+            <short_desc>
+              The file name for the file to be deleted.  Normally, the full file path is specified. 
+              If a relative path is specified, it is relative to the project directory. 
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="NoVerify" name="NOVERIFY" optional="Yes">
+          <description>
+            <short_desc>
+              String Equal to "NOVERIFY" if file is not verified prior to deleting.
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, DeleteFile, "Test1.txt"
+          </usage>
+          <description>
+            <short_desc>
+              Delete the file /Datapool/Test/Test1.txt
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, DeleteFile, "C:/test/Test1.tst"
+          </usage>
+          <description>
+            <short_desc>
+              Delete the file Test1.txt in directory C:/test
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, DeleteFile, "C:/test/Test1.tst", "NoVerify"
+          </usage>
+          <description>
+            <short_desc>
+              Delete the file Test1.txt in directory C:/test no file existence verification
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    
+    <keyword deprecated="NO" displayText="CopyFile" expectFailSupport="NO" expectWarnSupport="NO" name="COPYFILE">
+      <description>
+        <short_desc>
+          Copy the specified filename to the target filename.          
+        </short_desc>
+        <detailed_desc>
+           For the Java-based engines--RJ, TID, and SDC:
+           <p>
+	   If the filenames provided are not full absolute paths then we will attempt to deduce a full Project-relative or Datapool\Test-relative path from the relative path provided. If the relative path already contains path separators (ex: "\subpath\filename.ext") then we attempt to deduce a fullpath relative to the SAFS Project.  If no path separators exist (ex: "filename.txt") then we attempt to deduce a fullpath relative to the project's Datapool\Test directory.  We do not actually attempt to see if the directories or files exists before executing the command.
+	   </p>
+        </detailed_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+        <engine name="RobotJ" since="20031006" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FromFileName" name="FROMFILENAME" optional="NO">
+          <description>
+            <short_desc>
+              The file path and file name for the file to be copied.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="ToFileName" name="TOFILENAME" optional="NO">
+          <description>
+            <short_desc>
+              The file path and file name to copy the file to.
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, CopyFile, "C:/Test/Test1.txt" , "C:/Test/Test2.txt"
+          </usage>
+          <description>
+            <short_desc>
+              Copy the file C:/Test/Test1.txt to C:/Test/Test2.txt
+            </short_desc>
+            <detailed_desc>
+              Fullpath filename specs should be supported by all engines.
+            </detailed_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, CopyFile, "C:/Test/Test1.txt" , "Test2.txt"
+          </usage>
+          <description>
+            <short_desc>
+              Copy the file C:/Test/Test1.txt to C:/MyProject/Datapool/Test/Test2.txt
+            </short_desc>
+            <detailed_desc>
+              Supported only by the Java-based engines (RJ, SDC, TID) at this time.
+            </detailed_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, CopyFile, "Test1.txt" , "Test2.txt"
+          </usage>
+          <description>
+            <short_desc>
+              Copy the file C:/MyProject/Datapool/Test/Test1.txt to C:/MyProject/Datapool/Test/Test2.txt
+            </short_desc>
+            <detailed_desc>
+              Supported only by the Java-based engines (RJ, SDC, TID) at this time.
+            </detailed_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, CopyFile, "Test1.txt" , "/w32/Results/Test1.txt"
+          </usage>
+          <description>
+            <short_desc>
+              Copy the file C:/MyProject/Datapool/Test/Test1.txt to C:/MyProject/w32/Results/Test1.txt
+            </short_desc>
+            <detailed_desc>
+              Supported only by the Java-based engines (RJ, SDC, TID) at this time.
+            </detailed_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    
+    <keyword deprecated="NO" displayText="RenameFile" expectFailSupport="NO" expectWarnSupport="NO" name="RENAMEFILE">
+      <description>
+        <short_desc>
+          Rename the file from the old file name to the new filename
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+        <engine name="RobotJ" since="20031006" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="OldFileName" name="OLDFILENAME" optional="NO">
+          <description>
+            <short_desc>
+              The file path and file name of the file to be renamed.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="NewFileName" name="NEWFILENAME" optional="NO">
+          <description>
+            <short_desc>
+              The new file path and file name of the file.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="NoVerify" name="NOVERIFY" optional="Yes">
+          <description>
+            <short_desc>
+              String Equal to "NOVERIFY" if file is not verified prior to renaming.
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, RenameFile, "C:/Test/Test1.txt" , "C:/Test/Test2.txt"
+          </usage>
+          <description>
+            <short_desc>
+              Rename file C:/Test/Test1.txt to C:/Test/Test2.txt
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, RenameFile, "C:/Test/Test1.txt" , "C:/Test/Test2.txt","NOVERIFY"
+          </usage>
+          <description>
+            <short_desc>
+              Rename file C:/Test/Test1.txt to C:/Test/Test2.txt no file existence verification
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword deprecated="NO" displayText="FindSqaFile" expectFailSupport="NO" expectWarnSupport="NO" name="FINDSQAFILE">
+      <description>
+        <short_desc>
+          Find the file for the SQA relative path and file name provided.  If a                 full file path is provided the file will be located using the full                 file path and name.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+        <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20041221" >
+	    <libraryInfo name="DCDriverFileCommands" 
+                         doc="org/safs/DCDriverFileCommands.html" 
+                         sourcecode="org.safs.DCDriverFileCommands.java" 
+                         class="FILE" />
+        </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20041221" >
+	    <libraryInfo name="DCDriverFileCommands" 
+                         doc="org/safs/DCDriverFileCommands.html" 
+                         sourcecode="org.safs.DCDriverFileCommands.java" 
+                         class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileName" name="FILENAME" optional="NO">
+          <description>
+            <short_desc>
+              The file path and file name of the file to be found.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="FilePathVariable" name="FILEPATHVARIABLE" optional="NO">
+          <description>
+            <short_desc>
+              Name of the DDV variable to be used to store the full file path of the                 found file. If file not found blank string is assigned to variable
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, FindSqaFile, "Test1.txt" , "^filepath"
+          </usage>
+          <description>
+            <short_desc>
+              Test1.txt file is looked for at Project/Datapool/Test1.txt and if found the                  full file path is assigned to the DDV variable filepath
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, FindSqaFile, "C:Test1.txt" , "^filepath"
+          </usage>
+          <description>
+            <short_desc>
+              Test1.txt file is looked for at C:Test1.txt and if found the                  full file path is assigned the DDV variable filepath
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    
+    <keyword deprecated="NO" displayText="GetFileSize" expectFailSupport="NO" expectWarnSupport="NO" name="GETFILESIZE">
+      <description>
+        <short_desc>
+          Determine the file size for file name provided and assign it to a DDV variable.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+        <engine name="RobotJ" since="20031006" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileName" name="FILENAME" optional="NO">
+          <description>
+            <short_desc>
+              The file path and file name of the file to get file size.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="FileSizeVariable" name="FILESIZEVARIABLE" optional="NO">
+          <description>
+            <short_desc>
+              Name of the DDV variable to be used to store the file size of the file.
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, GetFileSize, "Test1.txt" , "^filesize"
+          </usage>
+          <description>
+            <short_desc>
+              Size of file Project/Datapool/Test1.txt is determined and assigned to                   the DDV variable filesize
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, GetFileSize, "C:Test1.txt" , "^filepath"
+          </usage>
+          <description>
+            <short_desc>
+              Size of Test1.txt file located at C:Test1.txt is obtained                   and assigned to the DDV variable filepath
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword deprecated="NO" displayText="GetFileDateTime" expectFailSupport="NO" expectWarnSupport="NO" name="GETFILEDATETIME">
+      <description>
+        <short_desc>
+          Determine the date and time the file created/last changed/last accessed for file name provided and assign it to a DDV variable.
+        </short_desc>
+		<detailed_desc>
+                Determine the date and time the file created/last changed/last accessed 
+                for file name provided and assign it to a DDV variable.
+                This date is in the format MM-DD-YYYY HH:MM:SS, it is in AM-PM 12-hours
+                format (1-12) be default; If you set the third parameter 'GetMilitaryTime'
+                to True, the time will be 24-hours military format (0-23). Use military time
+                is recommanded, as am-pm time has confusion without AM or PM
+                (example: 18:00 and 06:00 will be both 06:00)
+                You can get different date and time by providing a different value to the fourth
+                optional parameter DateTimeType.
+        </detailed_desc>
+        <note><value><b>For Operating System other than Windows, only "lastModified" time is supported.</b></value></note>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+        <engine name="RobotJ" since="20031006" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileName" name="FILENAME" optional="NO">
+          <description>
+            <short_desc>
+              The file path and file name of the file to get the file date and time.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="FileDateVariable" name="FILEDATEVARIABLE" optional="NO">
+          <description>
+            <short_desc>
+              Name of the DDV variable to be used to store the file date and time
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter name="GETMILITARYTIME" displayText="GetMilitaryTime" optional="YES">
+           <description> <short_desc> 
+                 If true, the converted time is in 24-hours military time format
+              </short_desc> <detailed_desc> 
+                 If this is true, the converted time will be in 24-hours military time
+                 format (0-23). If this parameter is omitted, it is false be default,
+                 the converted time will be in AM-PM 12-hours format (1-12).
+                 If not provided, by default it is false.
+              </detailed_desc> 
+           </description> 
+        </parameter>
+        <parameter name="DATETIMETYPE" displayText="DateTimeType" optional="YES">
+           <description> <short_desc> 
+                 You can get different date and time by providing a different value.
+              </short_desc> <detailed_desc> 
+                 You have 3 options:
+                 <ol>
+                   <li><b>Created</b>:			get the created date and time for the file</li>
+                   <li><b>LastModified</b>:	get the last modified date and time for the file</li>
+                   <li><b>LastAccessed</b>:	get the last accessed date and time for the file</li>
+                 </ol>
+                 If not provided, by default it is "LastModified".
+              </detailed_desc> 
+           </description> 
+        </parameter>                 
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, GetFileDateTime, "Test1.txt" , "^filedate"
+          </usage>
+          <description>
+            <short_desc>
+              Date and time of last change to  Project/Datapool/Test1.txt is determined and assigned to the DDV variable filedate.
+              The time format is '12-hours am-pm'.
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, GetFileDateTime, "C:\Test1.txt" , "^filedate"
+          </usage>
+          <description>
+            <short_desc>
+              Date and time of last change to  C:\Test1.txt is obtained and assigned to the DDV variable filedate.
+              The time format is '12-hours am-pm'.
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, GetFileDateTime, "C:\Test1.txt" , "^filedate", true, "Created"
+          </usage>
+          <description>
+            <short_desc>
+              Date and time of created to  C:\Test1.txt is obtained and assigned to the DDV variable filedate.
+              The time format is '24-hours military time' (0-23).
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, GetFileDateTime, "C:\Test1.txt" , "^filedate", , "LastAccessed"
+          </usage>
+          <description>
+            <short_desc>
+              Date and time of last accessed to  C:Test1.txt is obtained and assigned to the DDV variable filedate.
+              The time format is '12-hours am-pm'.
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword deprecated="NO" displayText="SetFileProtections" expectFailSupport="NO" expectWarnSupport="NO" name="SETFILEPROTECTIONS">
+      <description>
+        <short_desc>
+          Change the file attribute for the file name provided to the value of the new file protection provided.
+        </short_desc>
+        <detailed_desc>
+          Change the file attribute for the file name provided to the value of the new file protection provided. An integer containing the new attributes for the file. Here is a description of attributes that can be modified: 
+          <p>0 Normal file (Windows PC Only)</p>
+          <p>1 Read-only file</p>
+          <p>2 Hidden file (Windows PC Only)</p>
+          <p>4 System file (Windows PC Only)</p>
+          <p>32 Archive - file has changed since last backup (Windows PC Only)</p>
+          <p>Note: Java-based support like RJ, TID, SDC currently only support setting one 
+          file protection at a time--0, 1, 2, 3, 32. They do not yet support Integer values OR'd 
+          together to combine settings in a single call.</p>
+          <p>Note: On platforms other than windows we currently only support setting the READ-ONLY 
+          attribute.
+          </p>
+        </detailed_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+        <engine name="RobotJ" since="20031014" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileName" name="FILENAME" optional="NO">
+          <description>
+            <short_desc>
+              The file path and file name of the file change the file attribute.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="FileProtection" name="FILEPROTECTION" optional="NO">
+          <description>
+            <short_desc>
+              New value of the attribute of the file to be changed
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, SetFileProtections, "Test1.txt" , 1
+          </usage>
+          <description>
+            <short_desc>
+              File attribute of the file Project/Datapool/Test1.txt is changed to 1 (read-only)
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, SetFileProtections, "C:Test1.txt" , 0
+          </usage>
+          <description>
+            <short_desc>
+              File attribute of the file C:Test1.txt is change to 0 (read-write)
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword deprecated="NO" displayText="GetFileProtections" expectFailSupport="NO" expectWarnSupport="NO" name="GETFILEPROTECTIONS">
+      <description>
+        <short_desc>
+          Save the file attributes for the file name to the variable provided.
+        </short_desc>
+        <detailed_desc>
+          Save the file attributes for the file name to the variable provided. 
+          The variable will be an integer containing the attributes for the file, it may be any combination of them.
+          Here is a description of attributes:
+          <p>0  - Normal file</p>
+          <p>1  - Read Only file</p>
+          <p>2  - Hidden file</p>
+          <p>4  - System file (Windows OS Only)</p>
+          <p>16 - Directory</p>
+          <p>32 - Archive file (Windows OS: attrib with 'A'; Other OS: file suffix is .jar, .tar, .rar, .gz etc.)</p>
+        </detailed_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031014" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileName" name="FILENAME" optional="NO">
+          <description>
+            <short_desc>
+              The file path and file name of the file to get the file attribute.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="VarName" name="VARNAME" optional="NO">
+          <description>
+            <short_desc>
+              variable name to place the attributes in
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, GetFileProtections, "C:\afile.txt" , varName
+          </usage>
+          <description>
+            <short_desc>
+              File attributes of the file C:\afile.txt are placed in variable 'varName'. It could be something like 33, which is a read-only file with the archive bit on.
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword deprecated="NO" displayText="ReadFileChars" expectFailSupport="NO" expectWarnSupport="NO" name="READFILECHARS">
+      <description>
+        <short_desc>
+          Read the number of characters from the file defined by file number                 and assign a string containing the characters read to a DDV variable.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+        <engine name="RobotJ" since="20031006" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileNumber" name="FILENUMBER" optional="NO">
+          <description>
+            <short_desc>
+              The file number of the file to be read from.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="NumberOfChar" name="NUMBEROFCHAR" optional="NO">
+          <description>
+            <short_desc>
+              Number of characters to be read from the file
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="VariableName" name="VARIABLENAME" optional="NO">
+          <description>
+            <short_desc>
+              Name of the DDV variable in which to store the characters                 read from the file
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, ReadFileChars, ^filenum , 5,"^charread"
+          </usage>
+          <description>
+            <short_desc>
+              Five characters are read from the file identified by the                 value in filenumb and they are assigned to the                  DDV variable charread
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, ReadFileChars, 8, 5,"^charread"
+          </usage>
+          <description>
+            <short_desc>
+              Five characters are read from the file identified by filenumber 8                 and they are assigned to the DDV variable charread
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword deprecated="NO" displayText="ReadFileLine" expectFailSupport="NO" expectWarnSupport="NO" name="READFILELINE">
+      <description>
+        <short_desc>
+          Read a line from the file defined by file number                 and assign a string containing the line read to a DDV variable.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+        <engine name="RobotJ" since="20030923" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileNumber" name="FILENUMBER" optional="NO">
+          <description>
+            <short_desc>
+              The file number of the file to be read from.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="VariableName" name="VARIABLENAME" optional="NO">
+          <description>
+            <short_desc>
+              Name of the DDV variable in which to store the line                 read from the file
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, ReadFileLine, ^filenum , "^line"
+          </usage>
+          <description>
+            <short_desc>
+              Line is read from the file identified by the                 value in filenum and the string containing the line read                 assigned to the DDV variable line
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword deprecated="NO" displayText="ReadFileString" expectFailSupport="NO" expectWarnSupport="NO" name="READFILESTRING">
+      <description>
+        <short_desc>
+          Read a comma-separated value from a file and store it in a DDVariable.
+        </short_desc>
+        <detailed_desc>
+          This command provides old Basic 'Input' style handling of file data.  It expects that 
+          the file contains comma-separated values and only a single value is read from the 
+          specified file for each call.
+        </detailed_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileNumber" name="FILENUMBER" optional="NO">
+          <description>
+            <short_desc>
+              The file number of the file to be read from.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="VariableName" name="VARIABLENAME" optional="NO">
+          <description>
+            <short_desc>
+              Name of the DDVariable in which to store the value read from the file.
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, ReadFileString, ^filenum , "value"
+          </usage>
+          <description>
+            <short_desc>
+              The next value is read from file ^filenum and assigned to the DDVariable ^value
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword deprecated="NO" displayText="PrintToFile" expectFailSupport="NO" expectWarnSupport="NO" name="PRINTTOFILE">
+      <description>
+        <short_desc>
+          Write output to a sequential file already opened for writing.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+        <engine name="RobotJ" since="20030923" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileNumber" name="FILENUMBER" optional="NO">
+          <description>
+            <short_desc>
+              The file number of the file to be written to.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="ExpressionListVariable" name="ExpressionListVariable" optional="NO">
+          <description>
+            <short_desc>
+              DDV variable name of the variable that contains the "Expression List";                 NOTE: for RobotJ it is the Expression List, if it                 begins with ^ then it is treated as a variable.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="PrintOutputPlacement" name="PRINTOUTPUTPLACEMENT" optional="YES">
+          <description>
+            <short_desc>
+              Print Output Placement Parameter determines where the next output to the same file should begin
+              <ol>
+			  <li>; will place the output immediately following this print output</li>
+              <li>, will start output at the next print zone on the same line</li>
+              <li>Absence of this parameter (Default) will place the next output at the beginning of a new line following a carriage return line feed.</li>
+              </ol>
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, PrinttoFile, 3, ^printexp="This text printed to file",";"
+          </usage>
+          <description>
+            <short_desc>
+              The text "This text printed to file" is printed to the file opened with file                  number 3.  The next thing printed to the file will start immediately following                 this output
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, PrinttoFile, ^filenumb, ^tempstring,","
+          </usage>
+          <description>
+            <short_desc>
+              The contents of the DDV variable ^tempstring  is printed to the file                   opened with filenumber contained in DDV Variable ^filenumb.  The next thing                  printed to the file will start at the next print zone on the same line
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, PrinttoFile, ^filenumb, ^tempstring
+          </usage>
+          <description>
+            <short_desc>
+              The contents of the DDV variable ^tempstring  is printed to the file                   opened with filenumber contained in DDV Variable ^filenumb.  The next thing                  printed to the file will start at the beginning of the next line following                 a carriage return line feed.
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword deprecated="NO" displayText="WriteFileChars" expectFailSupport="NO" expectWarnSupport="NO" name="WRITEFILECHARS">
+      <description>
+        <short_desc>
+          Write the specified number of characters to a file already opened for writing.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20030923" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileNumber" name="FILENUMBER" optional="NO">
+          <description>
+            <short_desc>
+              The file number/identifier of the file to be written to.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="NumberOfChars" name="NUMBEROFCHARS" optional="NO">
+          <description>
+            <short_desc>
+              The number of characters to write to the file;                 however, if this parameter is equal to 'all' then all                 of the characters from the expression list are written.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="ExpressionList" name="ExpressionList" optional="NO">
+          <description>
+            <short_desc>
+              Expression List, if it begins with ^ then it is treated as a variable.
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, WriteFileChars, 3, all, ^expression
+          </usage>
+          <description>
+            <short_desc>
+              All of the text from the expression is written to the file opened with file                  number 3.  The next thing written to the file will start immediately following                 this output, no additional CRLF is assumed.
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, WriteFileChars, ^filenumb, 4, "Text Output"
+          </usage>
+          <description>
+            <short_desc>
+              The first four characters of string "Text Output" are written to the file                   opened with filenumber contained in DDV Variable ^filenumb.  The next thing                  written to the file will start immediately following                 this output, no additional CRLF is assumed.
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    
+    <keyword deprecated="NO" displayText="GetFiles" expectFailSupport="NO" expectWarnSupport="NO" name="GETFILES">
+      <description>
+        <short_desc>
+          Search the directory provided for files according to possible attribute and write the list of filenames found into the output file.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+        <engine name="RobotJ" since="20031006" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="Directory" name="DIRECTORY" optional="NO">
+          <description>
+            <short_desc>
+              The full name of the directory to be searched for files.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="FileName" name="FILENAME" optional="NO">
+          <description>
+            <short_desc>
+              Full file path and name of the file to store list of                  files found in the directory
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="FileAttributes" name="FILEATTRIBUTES" optional="YES">
+          <description>
+            <short_desc>
+              Optional File Attributes parameter specifying file attributes to select with Dir directory 
+              search command. Default if unspecified is normal files. It may be any combination of them.
+            </short_desc>
+            <detailed_desc>
+                 <p>Search directory using following file attributes. Default value is 0 - normal file.</p>
+                 <p>0  - Normal file, returns only files without other attributes set</p>
+                 <p>1  - Read Only file</p>
+                 <p>2  - Hidden file</p>
+                 <p>4  - System file (Window OS Only)</p>
+                 <p>8  - Volume Label (Exclusive, if set, no other attribute counts.)</p>
+                 <p>16 - Directory</p>
+          		 <p>32 - Archive file (Windows OS: attrib with 'A'; Other OS: file suffix is .jar, .tar, .rar, .gz etc.)</p>
+                 <p>The values in the table can be added together to select multiple attributes.</p>
+                 <p>For example, to list hidden and system files in addition to normal files set FileAttributes to 6 (6=2+4).</p>
+                 <p></p>
+                 <p>If FileAttributes is set to 8 (Volume Label), then returns the volume label of the drive specified in the pathname$,
+                 or of the current drive if drive is not explicitly specified.</p>
+                 <p>If volume label attribute is set, all other attributes are ignored.</p>
+              </detailed_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, GetFiles, "C:/Test", "D:/Test/filelist.txt", "16"
+          </usage>
+          <description>
+            <short_desc>
+              <p>Directory C:/Test is searched for files with normal and directory attributes set
+                 and list of files found is written to file D:/Test/filelist.txt</p>
+            </short_desc>
+          </description>
+        </example> 
+	<example>
+          <usage>
+            C, GetFiles, "C:/Test", "D:/Test/filelist.txt"
+          </usage>
+          <description>
+            <short_desc>
+              Directory C:/Test is searched and list of files found is                 written to file D:/Test/filelist.txt
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, GetFiles,"^directory", "^file_list"
+          </usage>
+          <description>
+            <short_desc>
+              Directory defined in ^directory DDV variable searched and                  list of files found is written to file identified by                  ^file_List DDV variable
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword deprecated="NO" displayText="CreateDirectory" expectFailSupport="NO" expectWarnSupport="NO" name="CREATEDIRECTORY">
+      <description>
+        <short_desc>
+          Create the directory for the provided directory pathname
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+        <engine name="RobotJ" since="20031006" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="DirectoryName" name="DIRECTORYNAME" optional="NO">
+          <description>
+            <short_desc>
+              The full directory path name for the directory to be created.
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, CreateDirectory, "C:/Test/SubTest"
+          </usage>
+          <description>
+            <short_desc>
+              Create the sub folder SubTest in the C:Test directory
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword deprecated="NO" displayText="DeleteDirectory" expectFailSupport="NO" expectWarnSupport="NO" name="DELETEDIRECTORY">
+      <description>
+        <short_desc>
+          Delete the directory for the provided directory pathname
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+        <engine name="RobotJ" since="20031006" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="DirectoryName" name="DIRECTORYNAME" optional="NO">
+          <description>
+            <short_desc>
+              The full directory path name for the directory to be deleted.
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, DeleteDirectory, "C:/Test/SubTest"
+          </usage>
+          <description>
+            <short_desc>
+              Delete the sub folder SubTest in the C:Test directory
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword name="FILTERTEXTFILE" 
+           displayText="FilterTextFile" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Filter a text file based on the given parameters.
+              </short_desc> <detailed_desc>
+                 Filter a text file based on the given parameters.
+                 <p>
+                 This command can be used to process a text file based on the
+                 provided parameters, such as replacing text in a file that
+                 matches a specific pattern. This command is experimental.
+                 command name/parameters are subject to change without notice.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCommands" 
+                            doc="DDDriverCommands.htm" 
+                            sourcecode="DDDriverCommands.sbl" 
+                            class="MISC" />
+           </engine>
+           <engine name="RobotJ" since="20041217" tool="RobotJ" vendor="Rational">
+              <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java">
+          </libraryInfo>
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20041217" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20041217" >
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+           </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="FILE" displayText="File" optional="NO">
+           <description> <short_desc> 
+                 The file to be filtered.
+              </short_desc> <detailed_desc> 
+                 The file to be filtered.
+                 This can be a full path, a relative path, or a file name.
+                 For relative path, it is appended to the project's path to
+                 build the full path of the file. For file name, the file
+                 is saved under the project's Datapool\Test directory. In
+                 any case the parent folder of the file must exist.
+              </detailed_desc> </description> </parameter>
+        <parameter name="FILTERMODE" displayText="FilterMode" optional="NO">
+           <description> <short_desc> 
+                 The filter mode.
+              </short_desc> <detailed_desc> 
+                 The filter mode.<br/>
+                 "REGEXP" (Regular Expressions) is currently the only supported FILTERMODE that 
+                 actually filters anything.                   
+              </detailed_desc> </description> </parameter>
+        <parameter name="FILTEROPTIONS" displayText="FilterOptions" optional="YES">
+           <description> <short_desc> 
+                 Additional filter options.
+              </short_desc> <detailed_desc> 
+                 Additional filter options.
+                 Depending on the filter mode, some filter options are required.
+                 <table border="1" cellspacing="1">
+                 <tr bgcolor="#C0C0C0" align="center"><td>FILTERMODE</td><td>FIELDS</td><td>COMMENTS</td></tr>
+                 <tr><td align="center">Default(empty)</td>
+                     <td align="center">(None)</td>
+                     <td>Default filtering. File is unchanged.</td></tr>
+                 <tr><td rowspan="3" align="center">&quot;RegExp&quot;</td>
+                     <td>5 - PATTERN (Required)</td>
+                     <td valign="top">REGEXP pattern to match for filtering. All occurrences of 
+                      text in a file that match regular expression PATTERN will be removed and 
+                      replaced with the REPLACE string (if any).</td></tr>
+                 <tr><td>6 - REPLACE (Optional)</td>
+                     <td>Default value for REPLACE is "" (empty string). This tells REGEXP to 
+                      remove matching PATTERN text from the file.  Specifying a REPLACE string 
+                      will remove matching PATTERN text from the file and insert the REPLACE string 
+                      in its place.</td></tr>
+                 <tr><td>7 - CASE (Optional)</td>
+                     <td>CASE specifies the case-sensitivity used when searching for matching 
+                      text in the file.  Use "CaseInsensitive" to ignore case when searching.<br/>
+                      If not specified the default implementation is a CaseSensitive compare.</td></tr></table>
+              </detailed_desc> </description> </parameter>
+        <parameter name="ENCODING" displayText="Encoding" optional="YES">
+           <description> <short_desc> 
+                 The encoding to use to read and write file.
+              </short_desc> <detailed_desc>
+				  If user doesn't provide this parameter, program will detect the encoding automatically.
+				  If no encoding is provided and detected, program will use system default encoding.<br/>
+				  If user provide this paramter, FilterOptions must be present (can be blank).
+              </detailed_desc> </description> </parameter>              
+     </parameters><examples>
+        <example>
+           <usage>C, FilterTextFile, C:\Temp\myfile.txt </usage>
+           <description> <short_desc> 
+                 Performs the default filtering on C:\Temp\myfile.txt (does nothing).
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, FilterTextFile, C:\Temp\myfile.txt, RegExp, "19\d\d BC", "Last Centry" </usage>
+           <description> <short_desc> 
+                 Performs a case-sensitive regular expression filtering on C:\Temp\myfile.txt.
+              </short_desc><detailed_desc> 
+                 Performs a case-sensitive regular expression filtering on C:\Temp\myfile.txt.
+                 All occurrences of year "19xx BC" (case-sensitive) are replaced with "Last Centry".
+              </detailed_desc>  </description> </example>
+        <example>
+           <usage>C, FilterTextFile, myfile.txt, RegExp, "19\d\d BC", "Last Centry", CaseInsensitive </usage>
+           <description> <short_desc> 
+                 Performs a case-insensitive regular expression filtering on Datapool\Test\myfile.txt.
+              </short_desc><detailed_desc> 
+                 Performs a case-insensitive regular expression filtering on Datapool\Test\myfile.txt.
+                 All occurrences of year "19xx BC" (case-insensitive) are replaced with "Last Centry".
+              </detailed_desc>  </description> </example>
+        <example>
+           <usage>C, FilterTextFile, Datapool\myfile.txt, RegExp, "19\d\d BC" </usage>
+           <description> <short_desc> 
+                 Performs a case-sensitive regular expression filtering on Datapool\myfile.txt.
+              </short_desc><detailed_desc> 
+                 Performs a case-sensitive regular expression filtering on Datapool\myfile.txt.
+                 All occurrences of year "19xx BC" (case-sensitive) are removed.
+              </detailed_desc>  </description> </example>
+        <example>
+           <usage>C, FilterTextFile, Datapool\myfile.txt, RegExp, "19\d\d BC", , , "UTF-8" </usage>
+           <description> <short_desc> 
+                 Performs a case-sensitive regular expression filtering on Datapool\myfile.txt.
+                 File will be read and wrote by encoding "UTF-8".
+              </short_desc><detailed_desc> 
+                 Performs a case-sensitive regular expression filtering on Datapool\myfile.txt.
+                 All occurrences of year "19xx BC" (case-sensitive) are removed.
+                 File will be read and wrote by encoding "UTF-8".
+              </detailed_desc>  </description> </example>              
+        </examples>
+     </keyword>
+     
+     <keyword deprecated="NO" displayText="GetINIFileValue" expectFailSupport="NO" expectWarnSupport="NO" name="GETINIFILEVALUE">
+      <description>
+        <short_desc>
+          Get value from INI file.
+        </short_desc>
+      </description>
+      <engines>
+         <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20060116" >
+	 	<libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" 
+	 		    name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java" />
+	 </engine>
+         <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20060116" >
+	 	<libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+         </engine>
+         <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20060116" >
+	 	<libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+         </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+	       <libraryInfo name="DCDriverFileCommands" 
+                            doc="org/safs/DCDriverFileCommands.html" 
+                            sourcecode="org.safs.DCDriverFileCommands.java" 
+                            class="FILE" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="FileName" name="FILENAME" optional="NO">
+          <description>
+            <short_desc>
+              The name of the file.
+            </short_desc>
+            <detailed_desc>
+              Note: For Java-based tools like RJ, TID, and SDC this can be a relative path filename.  
+              If the value is a simple filename with no path information then the file will be sought 
+              in the Project\Datapool\Runtime directory.  If there is some relative path information provided then the file will be sought relative to the Project directory.
+              then the file will be sought
+            </detailed_desc>
+          </description>
+        </parameter>
+        <parameter displayText="Section" name="SECTION" optional="NO">
+          <description>
+            <short_desc>
+              The Section of the file to look in.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="Item" name="ITEM" optional="NO">
+          <description>
+            <short_desc>
+              The item to look for.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="Variable" name="VARIABLE" optional="NO">
+          <description>
+            <short_desc>
+              Name of the DDV variable to be used to store the file date and time
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, GetINIFileValue, "test.INI", Section, Item, Variable
+          </usage>
+          <description>
+            <short_desc>
+             Look in Project\Datapool\Runtime\test.INI for Item under "[Section]" and store the value in Variable
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, GetINIFileValue, "C:\test.INI", Section, Item, Variable         
+          </usage>
+          <description>
+            <short_desc>
+               Look in C:\test.INI for Item under [Section] and store the value in Variable
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    
+    <keyword deprecated="NO" displayText="FilterImage" expectFailSupport="NO" expectWarnSupport="NO" name="FILTERIMAGE">
+          <description>
+            <short_desc>
+              	Filter out specific parts of an image.
+            </short_desc>
+            <detailed_desc>
+	        Filter out specific parts of an image and save to a new or existing image file.
+	        The filtered portions of the image are blacked out so as to remove dynamic visible
+	        content from the image.
+	        The available formats for the input and output files are BITMAP (*.bmp) and JPEG
+	        (*.jpg).
+	        <p>
+	        <B>Specific Notes:</B><br />
+	        	This command requires that Java Advanced Imaging (JAI) be installed
+	                on the test machine.
+	        </p>
+       	    </detailed_desc>
+          </description>
+          
+          <engines>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20060816" >
+	       <libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" 
+	    		        name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java" />
+	        </engine>
+            <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20060816" >
+    	       <libraryInfo name="DCDriverFileCommands" 
+                                doc="org/safs/DCDriverFileCommands.html" 
+                                sourcecode="org.safs.DCDriverFileCommands.java" 
+                                class="FILE" />
+            </engine>
+            <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20060816" >
+    	       <libraryInfo name="DCDriverFileCommands" 
+                                doc="org/safs/DCDriverFileCommands.html" 
+                                sourcecode="org.safs.DCDriverFileCommands.java" 
+                                class="FILE" />
+            </engine>
+		    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+		       <libraryInfo name="DCDriverFileCommands" 
+	                            doc="org/safs/DCDriverFileCommands.html" 
+	                            sourcecode="org.safs.DCDriverFileCommands.java" 
+	                            class="FILE" />
+	        </engine>
+          </engines>
+          <parameters>
+            <parameter displayText="InputFilename" name="INPUTFILENAME" optional="NO">
+              <description>
+                <short_desc>
+                  The input image file (FULL PATH)
+                </short_desc>
+              </description>
+            </parameter>
+            <parameter displayText="OutputFilename" name="OUTPUTFILENAME" optional="NO">
+              <description>
+                <short_desc>
+                  The output image file after filtering (FULL PATH)
+                </short_desc>
+                <detailed_desc>
+                  The output image file after filtering (FULL PATH).  The output image may overwrite the 
+                  input image.
+                </detailed_desc>
+              </description>
+            </parameter>
+            <parameter displayText="FilterMode" name="FILTERMODE" optional="NO">
+              <description>
+                <short_desc>
+                  Mode by which the image is filtered
+                </short_desc>
+                <detailed_desc>
+                  Mode by which the image is filtered. Currently, the only supported FilterMode is COORD.
+                </detailed_desc>
+              </description>
+            </parameter>
+            <parameter displayText="Coords" name="COORDS" optional="NO">
+              <description> 
+              	<short_desc>
+	      		Required parameter for the COORD FilterMode that defines the rectangle(s) of the input image that are to be filtered out.
+	        </short_desc> 
+	        <detailed_desc>
+	                Required parameter for the COORD FilterMode that defines the rectangles of the input image that are to be filtered out.
+	                Value of this app map reference must be in the format of a
+	                top-left and bottom-right pair, and can be either absolute
+	                coordinates or percentages ("x1,y1,x2,y2" or "x1%,y1%,x2%,y2%").
+	                Coordinates are relative to the image, i.e. (0,0) and
+	                (0%,0%) are the minimum, and (image width, image height)
+	                and (100%,100%) are the maximum. Values exceeding the minimum/
+	                maximum are forced to the nearest limiting value. Absolute and
+	                percent values can be mixed, so "0,0,50%,50%" is valid.
+	                <p>
+	                Note: Java-based engines like RFT should support using either 
+	                a comma (,) or a semi-colon (;) as the Coords item separator.  
+	                Also, there should be a space char separating each set of
+	                rectangle coordinates.
+	                </p>
+              	</detailed_desc> 
+              </description>
+            </parameter>
+          </parameters>
+          
+          <examples>
+            <example>
+              <usage>
+                C, FilterImage, "C:\in.jpg", "C:\out.jpg", COORD, 30;40;50;60 50%;30%;75%;50%
+              </usage>
+              <description>
+                <short_desc>
+                 Filter input image file "C:\in.jpg" by blacking out 2 rectangles: 1) 30,40 to 50,60 and;
+                 2) from 50%,30% to 75%,50%.  Write output image to C:\out.jpg.
+                </short_desc>
+              </description>
+            </example>
+            <example>
+              <usage>
+                C_ FilterImage_ "C:\in.jpg"_ "C:\out.jpg"_ COORD_ 30,40,50,60
+              </usage>
+              <description>
+                <short_desc>
+                 Filter input image file "C:\in.jpg" by blacking out 1 rectangles at 30,40 to 50,60.
+                 Write to output image file "C:\out.jpg".
+                </short_desc>
+              </description>
+            </example>
+          </examples>
+    </keyword> 
+    
+    <keyword deprecated="NO" displayText="DeleteDirectoryContents" expectFailSupport="NO" expectWarnSupport="NO" name="DELETEDIRECTORYCONTENTS">
+    	<description>
+        	<short_desc>
+            		Delete the contents (files and sub-directories) of a provided directory and optionally, 
+            		the directory itself.
+            	</short_desc>
+            	<detailed_desc>
+			<b>Note: This is a very powerful DriverCommand, please use with caution!</b>
+            	</detailed_desc>
+     	</description>
+        <engines>
+        	<engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20061107" >
+			<libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" 
+				name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java" />
+		    </engine>
+               	<engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20061107" >
+    	       		<libraryInfo name="DCDriverFileCommands" 
+                                doc="org/safs/DCDriverFileCommands.html" 
+                                sourcecode="org.safs.DCDriverFileCommands.java" 
+                                class="FILE" />
+               	</engine>
+               	<engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20061107" >
+    	       		<libraryInfo name="DCDriverFileCommands" 
+                                doc="org/safs/DCDriverFileCommands.html" 
+                                sourcecode="org.safs.DCDriverFileCommands.java" 
+                                class="FILE" />
+               	</engine>
+		    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+		       <libraryInfo name="DCDriverFileCommands" 
+	                            doc="org/safs/DCDriverFileCommands.html" 
+	                            sourcecode="org.safs.DCDriverFileCommands.java" 
+	                            class="FILE" />
+	        </engine>
+		</engines>
+        <parameters>
+        	<parameter displayText="DirectoryName" name="DIRECTORYNAME" optional="NO">
+              		<description>
+                		<short_desc>
+                  			The directory name in which the contents will be deleted.
+                		</short_desc>
+                		<detailed_desc>
+				        The directory name in which the contents will be deleted. The directory can be a  
+				        fully-qualified path or a path that is relative to the SAFS Automation Project Directory.
+                		</detailed_desc>
+              		</description>
+            	</parameter>
+            	<parameter displayText="DeleteDir" name="DELETEDIR" optional="YES">
+		       	<description>
+		         	<short_desc>
+		                	Indicate whether you want to also delete the directory with true or false.  Default is false.
+		                </short_desc>
+		        </description>
+            	</parameter>
+      	</parameters>
+        <examples>
+        	<example>
+              		<usage>
+                		C, DeleteDirectoryContents, "Datapool\Test"
+              		</usage>
+              		<description>
+                		<short_desc>
+                  			Delete all of the files and sub-directories under directory 
+                  			&lt;SAFS_Automation_Project_Dir&gt;\Datapool\Test. By default, do not also delete 
+                  			&lt;SAFS_Automation_Project_Dir&gt;\Datapool\Test.
+                		</short_desc>
+              		</description>
+            	</example>
+            	<example>
+			<usage>
+				C, DeleteDirectoryContents, "C:\Test\SubTest", true
+			</usage>
+			<description>
+				<short_desc>
+					Delete all of the files and sub-directories under directory C:\Test\SubTest.  
+					Also delete C:\Test\SubTest.
+				</short_desc>
+			</description>
+            	</example>
+     	</examples>
+    </keyword>
+    
+    <keyword deprecated="NO" displayText="CopyMatchingFiles" expectFailSupport="NO" expectWarnSupport="NO" name="COPYMATCHINGFILES">
+    	<description>
+        	<short_desc>
+            		Copy multiple files/sub-directories, based on matching the provided pattern, from one directory to another.
+            	</short_desc>
+            	<detailed_desc>
+            		<b>Note: This is a very powerful DriverCommand, please use with caution!</b>
+            	</detailed_desc>
+     	</description>
+        <engines>
+        	<engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20061107" >
+			<libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" 
+		          	name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java" />
+		    </engine>
+               	<engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20061107" >
+    	       		<libraryInfo name="DCDriverFileCommands" 
+                                doc="org/safs/DCDriverFileCommands.html" 
+                                sourcecode="org.safs.DCDriverFileCommands.java" 
+                                class="FILE" />
+               	</engine>
+               	<engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20061107" >
+    	       		<libraryInfo name="DCDriverFileCommands" 
+                                doc="org/safs/DCDriverFileCommands.html" 
+                                sourcecode="org.safs.DCDriverFileCommands.java" 
+                                class="FILE" />
+               	</engine>
+		    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+		       <libraryInfo name="DCDriverFileCommands" 
+	                            doc="org/safs/DCDriverFileCommands.html" 
+	                            sourcecode="org.safs.DCDriverFileCommands.java" 
+	                            class="FILE" />
+	        </engine>
+		</engines>
+        <parameters>
+        	<parameter displayText="FromDirectoryName" name="FROMDIRECTORYNAME" optional="NO">
+              		<description>
+                		<short_desc>
+                  			The directory name where the files are located.
+                		</short_desc>
+                		<detailed_desc>
+					The directory name where the files are located. The directory can be a fully-qualified 
+					path or a path that is relative to the SAFS Automation Project Directory.
+                		</detailed_desc>
+              		</description>
+            	</parameter>
+            	<parameter displayText="ToDirectoryName" name="TODIRECTORYNAME" optional="NO">
+		       	<description>
+		         	<short_desc>
+		                	The directory name where the files are copied.
+		                </short_desc>
+		                <detailed_desc>
+					The directory name where the files are copied. The directory can be a fully-qualified 
+					path or a path that is relative to the SAFS Automation Project Directory. This 
+					directory must already exist prior to execution.
+                		</detailed_desc>
+		        </description>
+            	</parameter>
+            	<parameter displayText="Pattern" name="PATTERN" optional="NO">
+		       	<description>
+				<short_desc>
+					The pattern used to distinguish the files/sub-directories to be copied.
+				</short_desc>
+			</description>
+            	</parameter>
+            	<parameter displayText="FilterMode" name="FILTERMODE" optional="YES">
+			<description> 
+				<short_desc> 
+		                 	The filter mode used for matching the files/sub-directories to be copied.  
+		                 	Default is WILDCARD.
+		              	</short_desc> 
+		              	<detailed_desc> 
+		                 	Supported filter modes include:<br/>
+		                 	<table border="1" cellspacing="2">
+						<tr bgcolor="#C0C0C0" align="center">
+							<td>FilterMode</td>
+							<td>Comments</td>
+						</tr>
+					        <tr>
+					        	<td align="center">WILDCARD</td>
+					                <td>Default.  Includes support for * and ? wildcard characters</td>
+					        </tr>
+					        <tr>
+							<td align="center">REGEXP</td>
+							<td>Includes support for Regular Expression pattern matching</td>
+					        </tr>
+					 </table>             
+              			</detailed_desc> 
+              		</description> 
+              	</parameter>
+      	</parameters>
+        <examples>
+        	<example>
+              		<usage>
+                		C, CopyMatchingFiles, "C:\Test", "C\Test2", "file?.*"
+              		</usage>
+              		<description>
+                		<short_desc>
+                  			Copy all of the files and sub-directories that match the file?.* pattern.  By default, the
+                  			WILDCARD FilterMode is used.  As a result, all files/subdirectories in C:\Test that begin
+                  			with "file" followed by exactly one character before a "." followed by zero or more 
+                  			characters are copied to C:\Test2.
+                		</short_desc>
+              		</description>
+            	</example>
+            	<example>
+			<usage>
+			      	C, CopyMatchingFiles, "Datapool\Test\MyTestOutput", "C:\MyTestOutput", "file.*\.java", REGEXP
+			</usage>
+			<description>
+			        <short_desc>
+			             	Copy all of the files and sub-directories that match the file.*\.java pattern.  Since the 
+			             	REGEXP FilterMode is used, all files/subdirectories in 
+			             	&lt;SAFS_Automation_Project_Dir&gt;\Datapool\Test\MyTestOutput that begin with "file" 
+			             	followed by zero or more characters before a "." followed by "java" are copied to 
+			             	C:\MyTestOutput.
+			       	</short_desc>
+              		</description>
+            	</example>
+     	</examples>
+    </keyword>    
+
+  <keyword name="GETTEXTFROMIMAGE" 
+           displayText="GetTextFromImage" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> 
+          <short_desc>
+             Incorporate OCR technology to detect the text in an image file and save the text to a variable.
+          </short_desc> 
+          <detailed_desc>
+             Two open-source OCRs are integrated into SAFS. One is TesseractOCR (TOCR) at 
+             http://code.google.com/p/tesseract-ocr; the other GOCR at http://jocr.sourceforge.net. 
+             <p>
+             TOCR 2.0.4 and GOCR 0.48 are the latest release. They are available in SAFS and only 
+             support English. Both two OCR owners claim to support more languages in next release. Chinese, 
+             Japanese, and Korean are going to be supported in TOCR's next release 3.00.
+			</p>
+       	  </detailed_desc> 
+       	</description>           
+       	<engines>
+		    <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20100302" >
+			<libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" 
+				name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java" />
+		    </engine>
+		    <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20100302" >
+			<libraryInfo name="DCDriverFileCommands" 
+				doc="org/safs/DCDriverFileCommands.html" 
+				sourcecode="org.safs.DCDriverFileCommands.java" 
+				class="FILE" />
+		    </engine>
+	            <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20100302" >
+	    	       <libraryInfo name="DCDriverFileCommands" 
+	                                doc="org/safs/DCDriverFileCommands.html" 
+	                                sourcecode="org.safs.DCDriverFileCommands.java" 
+	                                class="FILE" />
+	        </engine>
+		    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+		       <libraryInfo name="DCDriverFileCommands" 
+	                            doc="org/safs/DCDriverFileCommands.html" 
+	                            sourcecode="org.safs.DCDriverFileCommands.java" 
+	                            class="FILE" />
+	        </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="IMAGEFILE" displayText="ImageFile" optional="NO">
+           <description> <short_desc>
+               The name of the image file used to detect text in it.
+             </short_desc> 
+             <detailed_desc>
+             The name of the image file used to detect text in it. The name of the text file used to store 
+             detected text. By default, the files will be stored in the active "Test" directory. If you specify 
+             a relative path, the path will be relative to the project directory. The directory for a full or 
+             relative path must already exist.
+             <p>
+             The extension of the image file can be .bmp, .jpg, .gif, .tif, .png or .pnm.
+             </p>
+             </detailed_desc> 
+           </description> 
+         </parameter>
+        <parameter name="VARIABLENAME" displayText="VariableName" optional="NO">
+           <description> <short_desc>
+             The name of the variable to receive detected text.
+              </short_desc> <detailed_desc>
+              The name of the variable to receive detected text. Note, if you supply the name of the variable 
+              and include the leading caret (^) symbol then the variable must be enclosed in quotes. Otherwise, 
+              that variable will be used like any other variable and the substituted value of that variable will 
+              be interpreted as the name of the variable you wish to use.
+              </detailed_desc>
+           </description>
+		</parameter>		   
+        <parameter name="OCRID" displayText="OCRId" optional="YES">
+           <description> <short_desc>
+             OCRId indicating the OCR used to recognize text.
+             </short_desc> <detailed_desc>
+             Two OCR engines are supported. "TOCR" will be taken as default if the parameter is blank.
+             "TOCR" stands for Tesseract OCR; "GOCR" stands for GOCR.
+             <p>
+             Note: Seems TOCR performs a bit better than GOCR (personal experience). 
+             </p>
+             </detailed_desc> 
+           </description> 
+         </parameter>
+        <parameter name="LANGID" displayText="LangId" optional="YES">
+           <description> <short_desc>
+             Optional LangId representing the language in use for selected OCR to recognize text. 
+             </short_desc> <detailed_desc>
+             For both TOCR and GOCR, only English is supported so far. Language Id takes standard language code, 
+             which can be gotten by calling Locale.ENGLISH.getLanguage(). 
+             <p><pre>
+				LangId      Language
+				"en"   ---  English
+				"cn"   ---  Chinese
+			 </pre></p>
+             <p>
+             If LangId is not specified with blank or empty string, the language of System locale will be 
+             used as default. 
+             </p>
+             </detailed_desc> 
+           </description> 
+         </parameter>
+        <parameter name="SCALERATIO" displayText="ScaleRatio" optional="YES">
+           <description> <short_desc>
+             Optional ScaleRatio indicating the scale ratio for resizing the original image.
+             </short_desc> <detailed_desc>
+             To fit in font size and DPI required by OCR, SAFS needs to resize images before sending them 
+             to OCR engines. For screen-captured images with 96DPI, TOCR takes 1.9 as default; GOCR takes 1.5 
+             as default. You may try different ScaleRatio to find an appropriate value if default setting is 
+             unable to meet your requirement.
+             </detailed_desc> 
+           </description> 
+         </parameter>
+
+     </parameters>
+	  <examples>
+        <example>
+           <usage>C, GetTextFromImage, image.gif, Var1, TOCR, en, 2.0</usage>
+           <description> <short_desc>
+               Detect the text in [project]\Datapool\Bench\image.gif using TOCR with English and ScaleRatio 2.0, 
+               then save the text to variable Var1.
+              </short_desc> <detailed_desc>
+              </detailed_desc> </description> 
+        </example>
+     </examples>
+   </keyword>	
+
+  <keyword name="SAVETEXTFROMIMAGE" 
+           displayText="SaveTextFromImage" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc>
+             Incorporate OCR technology to detect the text in an image file and save the text to a text file.
+             </short_desc> <detailed_desc>
+             Two open-source OCRs are integrated into SAFS. One is TesseractOCR (TOCR) at 
+             http://code.google.com/p/tesseract-ocr; the other GOCR at http://jocr.sourceforge.net. 
+             <p>
+             TOCR 2.0.4 and GOCR 0.48 are the latest release. They are available in SAFS and only 
+             support English. Both two OCR owners claim to support more languages in next release. Chinese, 
+             Japanese, and Korean are going to be supported in TOCR's next release 3.00.
+			</p>
+       	     </detailed_desc> </description>           
+       	<engines>
+		    <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20100302" >
+			<libraryInfo class="FILE" doc="org/safs/DCDriverFileCommand.html" 
+				name="DCDriverFileCommand" sourcecode="org.safs.DCDriverFileCommand.java" />
+		    </engine>
+		    <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20100302" >
+			<libraryInfo name="DCDriverFileCommands" 
+				doc="org/safs/DCDriverFileCommands.html" 
+				sourcecode="org.safs.DCDriverFileCommands.java" 
+				class="FILE" />
+		    </engine>
+	            <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20100302" >
+	    	       <libraryInfo name="DCDriverFileCommands" 
+	                                doc="org/safs/DCDriverFileCommands.html" 
+	                                sourcecode="org.safs.DCDriverFileCommands.java" 
+	                                class="FILE" />
+	         </engine>
+		    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141119">
+		       <libraryInfo name="DCDriverFileCommands" 
+	                            doc="org/safs/DCDriverFileCommands.html" 
+	                            sourcecode="org.safs.DCDriverFileCommands.java" 
+	                            class="FILE" />
+	        </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="IMAGEFILE" displayText="ImageFile" optional="NO">
+           <description> <short_desc>
+             The name of the image file used to detect text in it.
+             </short_desc> <detailed_desc>
+             The name of the image file used to detect text in it. The name of the text file used to store 
+             detected text. By default, the files will be stored in the active "Test" directory. If you specify 
+             a relative path, the path will be relative to the project directory. The directory for a full or 
+             relative path must already exist.
+             <p>
+             The extension of the image file can be .bmp, .jpg, .gif, .tif, .png or .pnm.
+             </p>
+             </detailed_desc> 
+           </description> 
+         </parameter>
+        <parameter name="OUTPUTFILE" displayText="OutputFile" optional="NO">
+           <description> <short_desc>
+             The name of the text file used to store detected text.
+              </short_desc> <detailed_desc>
+              The name of the text file used to store detected text. By default, the files will be stored in 
+              the active "Test" directory. If you specify a relative path, the path will be relative to the 
+              project directory. The directory for a full or relative path must already exist.
+              </detailed_desc>
+           </description>
+		</parameter>		   
+        <parameter name="OCRID" displayText="OCRId" optional="YES">
+           <description> <short_desc>
+             OCRId indicating the OCR used to recognize text.
+             </short_desc> <detailed_desc>
+             Two OCR engines are supported. "TOCR" will be taken as default if the parameter is blank.
+             "TOCR" stands for Tesseract OCR; "GOCR" stands for GOCR.
+             <p>
+             Note: Seems TOCR performs a bit better than GOCR (personal experience). 
+             </p>
+             </detailed_desc> 
+           </description> 
+         </parameter>
+        <parameter name="LANGID" displayText="LangId" optional="YES">
+           <description> <short_desc>
+             Optional LangId representing the language in use for selected OCR to recognize text. 
+             </short_desc> <detailed_desc>
+             For both TOCR and GOCR, only English is supported so far. Language Id takes standard language code, 
+             which can be gotten by calling Locale.ENGLISH.getLanguage(). 
+             <p><pre>
+				LangId      Language
+				"en"   ---  English
+				"cn"   ---  Chinese
+			 </pre></p>
+             <p>
+             If LangId is not specified with blank or empty string, the language of System locale will be 
+             used as default. 
+             </p>
+             </detailed_desc> 
+           </description> 
+         </parameter>
+        <parameter name="SCALERATIO" displayText="ScaleRatio" optional="YES">
+           <description> <short_desc>
+             Optional ScaleRatio indicating the scale ratio for resizing the original image.
+             </short_desc> <detailed_desc>
+             To fit in font size and DPI required by OCR, SAFS needs to resize images before sending them 
+             to OCR engines. For screen-captured images with 96DPI, TOCR takes 1.9 as default; GOCR takes 1.5 
+             as default. You may try different ScaleRatio to find an appropriate value if default setting is 
+             unable to meet your requirement.
+             </detailed_desc> 
+           </description> 
+         </parameter>
+
+     </parameters>
+	  <examples>
+        <example>
+           <usage>C, SaveTextFromImage, image.gif, ocr.txt, TOCR, en, </usage>
+           <description> <short_desc>
+               Detect the text in [project]\Datapool\Bench\image.gif using TOCR with English and default ScaleRatio(1.9), 
+               then save the text to [project]\Datapool\test\ocr.txt.
+              </short_desc> <detailed_desc>
+              </detailed_desc> </description> 
+        </example>
+     </examples>
+   </keyword>	
+    
+  </keywords>
+</keyword_library>

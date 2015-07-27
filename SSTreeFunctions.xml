@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="SSTreeFunctions" 
+                 doc="SSTreeFunctions.htm" 
+                 sourcecode="SSTreeFunctions.sbl" 
+                 chainTo="GenericObjectFunctions"
+                 class="GENERIC_SSTREE">
+
+        <description>
+           <short_desc> 
+              Actions for working with Sheridan Class=SSTree objects
+           </short_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="Robot" version="2002" />
+    <keywords> 
+    
+    <keyword name="VERIFYSELECTEDTEXT" 
+             displayText="VerifySelectedText" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description>
+              <short_desc> 
+                Routine to verify the text of the currently selected node.
+              </short_desc>
+              <detailed_desc> 
+                Routine to verify the text of the currently selected node.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="SSTreeFunctions" 
+                            doc="SSTreeFunctions.htm" 
+                            sourcecode="SSTreeFunctions.sbl" 
+                            class="GENERIC_SSTREE" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   	   		       since="20040607" 
+	   	   	   		       tool="WinRunner" 
+	   	   	   		       vendor="Mercury Interactive">
+	   	   	   	       <libraryInfo class="GENERIC_SSTREE" 
+	   	   	   				name="TreeViewFunctions" 
+	   	   	   				sourcecode="TreeViewFunctions">
+	   	   	   	       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                Case-sensitive text expected in the selected node.
+              </short_desc>
+              <detailed_desc>
+                Case-sensitive text expected in the selected node.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+
+        <example>
+           <usage>T, WINDOW, DirectoryTree, SELECTTEXTNODE, "My Node"</usage>
+           <description>
+              <short_desc> 
+                This action verifies "My Node" is already selected in the DirectoryTree.
+              </short_desc>
+              <detailed_desc> 
+                Field  5 : TQ String.  The case-sensitive text of the node we expect is already selected. 
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="VERIFYEXPANDEDSTATE" 
+           displayText="VerifyExpandedState" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to verify the state of the Expanded property--True or False--
+                for the node with the provided text.
+              </short_desc>
+              <detailed_desc> 
+                Routine to verify the state of the Expanded property--True or False--
+                for the node with the provided text.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="SSTreeFunctions" 
+                            doc="SSTreeFunctions.htm" 
+                            sourcecode="SSTreeFunctions.sbl" 
+                            class="GENERIC_SSTREE" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   	   	   		       since="20040607" 
+	   	   	   	   		       tool="WinRunner" 
+	   	   	   	   		       vendor="Mercury Interactive">
+	   	   	   	   	       <libraryInfo class="GENERIC_SSTREE" 
+	   	   	   	   				name="TreeViewFunctions" 
+	   	   	   	   				sourcecode="TreeViewFunctions">
+	   	   	   	   	       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                Case-sensitive text of the node to check.
+              </short_desc>
+              <detailed_desc>
+                Case-sensitive text of the node to check.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="EXPECTEDSTATE" displayText="ExpectedState" optional="NO">
+           <description>
+              <short_desc> 
+                Expected State: "True" or "False" (not case-sensitive)
+              </short_desc>
+              <detailed_desc>
+                Expected State: "True" or "False" (not case-sensitive)
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, DirectoryTree, VERIFYEXPANDEDSTATE, "My Node", "True"</usage>
+           <description>
+              <short_desc> 
+                This action verifies "My Node" expanded property is True
+              </short_desc>
+              <detailed_desc> 
+                Field  5 : TQ String.  The case-sensitive text of the node to check.
+                Field  6 : Expected State: "True" or "False" (not case-sensitive) 
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="COLLAPSENODE" 
+           displayText="CollapseNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to DblClick a node according to its AppMap reference.
+              </short_desc>
+              <detailed_desc> 
+                Routine to DblClick a node according to its AppMap reference.  Because 
+                the SSTree is unsupported, this reference is the x,y coordinate of a 
+                GenericObject DblClick command in the form x,y (i.e. "25,10").
+                Because of the nature of the reference, we cannot check whether or 
+                not the node is collapsed/expanded before or after this routine or 
+                even if we clicked on the right node.  Verify the selection and 
+                expanded state of the node before and/or after to check.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="SSTreeFunctions" 
+                            doc="SSTreeFunctions.htm" 
+                            sourcecode="SSTreeFunctions.sbl" 
+                            class="GENERIC_SSTREE" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   	   	   		       since="20040607" 
+	   	   	   	   		       tool="WinRunner" 
+	   	   	   	   		       vendor="Mercury Interactive">
+	   	   	   	   	       <libraryInfo class="GENERIC_SSTREE" 
+	   	   	   	   				name="TreeViewFunctions" 
+	   	   	   	   				sourcecode="TreeViewFunctions">
+	   	   	   	   	       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="APPMAPSUBKEY" displayText="AppMapSubkey" optional="NO">
+           <description>
+              <short_desc> 
+                The named reference of the coordinates to expand/collapse
+              </short_desc>
+              <detailed_desc>
+                The named reference of the coordinates to expand/collapse
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+
+        <example>
+           <usage>T, WINDOW, DirectoryTree, COLLAPSENODE, MyNode</usage>
+           <description>
+              <short_desc> 
+                A double-click will be performed to collapse the Node at x,y coordinate
+                indicated by the MyNode reference in the Application Map.               
+              </short_desc>
+              <detailed_desc> 
+                Field  5 : TQ String. A reference identified in the Application Map identifying coordinates
+                on which to double-click
+                A double-click will be performed to collapse the Node at x,y coordinate
+                indicated by the MyNode reference in the Application Map.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="EXPANDNODE" 
+           displayText="ExpandNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to DblClick a node according to its AppMap reference.
+              </short_desc>
+              <detailed_desc> 
+                Routine to DblClick a node according to its AppMap reference.  Because 
+                the SSTree is unsupported, this reference is the x,y coordinate of a 
+                GenericObject DblClick command in the form x,y (i.e. "25,10").
+                Because of the nature of the reference, we cannot check whether or 
+                not the node is collapsed/expanded before or after this routine or 
+                even if we clicked on the right node.  Verify the selection and 
+                expanded state of the node before and/or after to check.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="SSTreeFunctions" 
+                            doc="SSTreeFunctions.htm" 
+                            sourcecode="SSTreeFunctions.sbl" 
+                            class="GENERIC_SSTREE" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   	   	   		       since="20040607" 
+	   	   	   	   		       tool="WinRunner" 
+	   	   	   	   		       vendor="Mercury Interactive">
+	   	   	   	   	       <libraryInfo class="GENERIC_SSTREE" 
+	   	   	   	   				name="TreeViewFunctions" 
+	   	   	   	   				sourcecode="TreeViewFunctions">
+	   	   	   	   	       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="APPMAPSUBKEY" displayText="AppMapSubkey" optional="NO">
+           <description>
+              <short_desc> 
+                The named reference of the coordinates to expand/collapse
+              </short_desc>
+              <detailed_desc>
+                The named reference of the coordinates to expand/collapse
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+
+        <example>
+           <usage>T, WINDOW, DirectoryTree, EXPANDNODE, MyNode</usage>
+           <description>
+              <short_desc> 
+                A double-click will be performed to expand the Node at x,y coordinate
+                indicated by the MyNode reference in the Application Map.               
+              </short_desc>
+              <detailed_desc> 
+                Field  5 : TQ String. A reference identified in the Application Map identifying coordinates
+                on which to double-click
+                A double-click will be performed to expand the Node at x,y coordinate
+                indicated by the MyNode reference in the Application Map.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SELECTNODE" 
+           displayText="SelectNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to select a node according to its AppMap reference.
+              </short_desc>
+              <detailed_desc> 
+                Routine to select a node according to its AppMap reference.  Because 
+                the SSTree is unsupported this reference is the x,y coordinate of a 
+                GenericObject Click command in the form x,y (i.e. "25,10").
+                Because of the nature of the reference, we cannot check whether or 
+                not the node is collapsed/expanded before or after this routine or 
+                even if we clicked on the right node.  Verify the selection and 
+                expanded state of the node before and/or after to check.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="SSTreeFunctions" 
+                            doc="SSTreeFunctions.htm" 
+                            sourcecode="SSTreeFunctions.sbl" 
+                            class="GENERIC_SSTREE" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   	   	   		       since="20040607" 
+	   	   	   	   		       tool="WinRunner" 
+	   	   	   	   		       vendor="Mercury Interactive">
+	   	   	   	   	       <libraryInfo class="GENERIC_SSTREE" 
+	   	   	   	   				name="TreeViewFunctions" 
+	   	   	   	   				sourcecode="TreeViewFunctions">
+	   	   	   	   	       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="APPMAPSUBKEY" displayText="AppMapSubkey" optional="NO">
+           <description>
+              <short_desc> 
+                The named reference of the coordinates to click
+              </short_desc>
+              <detailed_desc>
+                The named reference of the coordinates to click
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+
+        <example>
+           <usage>T, WINDOW, DirectoryTree, SELECTNODE, MyNode</usage>
+           <description>
+              <short_desc> 
+                A single click will be performed to select the Node at x,y coordinate
+                indicated by the MyNode reference in the Application Map.               
+              </short_desc>
+              <detailed_desc> 
+                Field  5 : TQ String. A reference identified in the Application Map identifying coordinates
+                on which to click
+                A single click will be performed to select the Node at x,y coordinate
+                indicated by the MyNode reference in the Application Map.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+</keywords>
+</keyword_library>

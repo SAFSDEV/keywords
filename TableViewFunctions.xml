@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="TableViewFunctions" 
+                 doc="TableViewFunctions.htm" 
+                 sourcecode="TableViewFunctions" 
+                 chainTo="GenericObjectFunctions"
+                 class="TABLEVIEW">
+
+        <description>
+           <short_desc> 
+              Actions for working with TableView objects
+           </short_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="Winrunner" version="7.5" />
+    <keywords>
+    
+    <keyword name="SETSELECTEDROW" 
+             displayText="SetSelectedRow" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description>
+              <short_desc> 
+		    Set the current row of to the one specified.
+		 </short_desc>
+			<detailed_desc> 
+		    In the tableview the current row will be set to the one specified
+		    in the command parameter.
+		 </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine name="WinRunner" 
+	   			       since="20000909" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="TABLEVIEW" 
+	   					name="TableViewFunctions" 
+	   					sourcecode="TableViewFunctions">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+	<parameters>
+	        <parameter name="ROW" displayText="Row" optional="NO">
+	           <description>
+	              <short_desc> 
+	                 The row number that the TableView should be set to.
+	              </short_desc>
+	              <detailed_desc> 
+	                 Set the current row to the one specified in this parameter.
+	              </detailed_desc>
+	           </description>
+        	</parameter>
+        </parameters>
+       <examples>
+        <example>
+           <usage>T, WINDOWNAME, COMPNAME, SETSELECTEDROW, 5</usage>
+           <description>
+              <short_desc> 
+                 Sets the current row to row number 5
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     <keyword name="ACTIVATETABLEROW" 
+                  displayText="ActivateTableRow" 
+                  deprecated="NO" 
+                  expectFailSupport="NO" 
+                  expectWarnSupport="NO">
+                  
+              <description>
+                   <short_desc> 
+     		    Activate the specified row in the table.
+     		 </short_desc>
+		<detailed_desc> 
+     		    Activate the specified row in the table.
+     		 </detailed_desc>
+                </description>
+                
+            <engines>
+                <engine name="WinRunner" 
+     	   			       since="20000909" 
+     	   			       tool="WinRunner" 
+     	   			       vendor="Mercury Interactive">
+     	   		       <libraryInfo class="TABLEVIEW" 
+     	   					name="TableViewFunctions" 
+     	   					sourcecode="TableViewFunctions">
+     	   		       </libraryInfo>
+                </engine>
+            </engines>
+     	<parameters>
+     	        <parameter name="ROW" displayText="Row" optional="NO">
+     	           <description>
+     	              <short_desc> 
+     	                 The row number to activate.
+     	              </short_desc>
+     	              <detailed_desc> 
+     	                 Activates the row to the one specified here
+     	              </detailed_desc>
+     	           </description>
+             	</parameter>
+             </parameters>
+            <examples>
+             <example>
+                <usage>T, WINDOWNAME, COMPNAME, ACTIVATETABLEROW, 5</usage>
+                <description>
+                   <short_desc> 
+                      Activates row number 5
+                   </short_desc>
+                </description>
+             </example>
+     </examples></keyword>
+     <keyword name="SETTABLECELLDATA" 
+                       displayText="SetTableCellData" 
+                       deprecated="NO" 
+                       expectFailSupport="NO" 
+                       expectWarnSupport="NO">
+                       
+                   <description>
+                        <short_desc> 
+          		    Set a specific cell to the specified value.
+          		 </short_desc>
+     		<detailed_desc> 
+          		    Set the cell at the specified position in the table to a specific value.
+          		    The user must make sure that the values indicated in the command are 
+          		    valid as far as the row and column specification of the table.
+          		 </detailed_desc>
+                     </description>
+                     
+                 <engines>
+                     <engine name="WinRunner" 
+          	   			       since="20000909" 
+          	   			       tool="WinRunner" 
+          	   			       vendor="Mercury Interactive">
+          	   		       <libraryInfo class="TABLEVIEW" 
+          	   					name="TableViewFunctions" 
+          	   					sourcecode="TableViewFunctions">
+          	   		       </libraryInfo>
+                     </engine>
+                 </engines>
+          	<parameters>
+          	        <parameter name="ROW" displayText="Row" optional="NO">
+          	           <description>
+          	              <short_desc> 
+          	                 The row that the cell you want to set is in.
+          	              </short_desc>
+          	           </description>
+                  	</parameter>
+                  	<parameter name="COLUMN" displayText="Column" optional="NO">
+			   <description>
+			      <short_desc> 
+				 The column that the cell you want to set is in.
+			      </short_desc>
+			   </description>
+                  	</parameter>
+                  	<parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+			   <description>
+			      <short_desc> 
+				 The text value to set the cell value to.
+			      </short_desc>
+			   </description>
+                  	</parameter>
+                  </parameters>
+                 <examples>
+                  <example>
+                     <usage>T, WINDOWNAME, COMPNAME, SETTABLECELLDATA, 5, 7, "Cell Value"</usage>
+                     <description>
+                        <short_desc> 
+                           Sets the cell in the table at position 5, 7, to the value "Cell Value"
+                        </short_desc>
+                     </description>
+                  </example>
+                  <example>
+		       <usage>T, WINDOWNAME, COMPNAME, SETTABLECELLDATA, 5, 7, ^CellValue</usage>
+		       <description>
+			  <short_desc> 
+			     Sets the cell in the table at position 5, 7, to the value of ^CellValue
+			  </short_desc>
+		       </description>
+                  </example>
+     </examples></keyword>
+     <keyword name="SETSELECTEDCOLUMN" 
+                  displayText="SetSelectedColumn" 
+                  deprecated="NO" 
+                  expectFailSupport="NO" 
+                  expectWarnSupport="NO">
+                  
+              <description>
+                   <short_desc> 
+     		    Set the current column of to the one specified.
+     		 </short_desc>
+     			<detailed_desc> 
+     		    In the tableview the current column will be set to the one specified
+     		    in the command parameter.
+     		 </detailed_desc>
+                </description>
+                
+            <engines>
+                <engine name="WinRunner" 
+     	   			       since="20000909" 
+     	   			       tool="WinRunner" 
+     	   			       vendor="Mercury Interactive">
+     	   		       <libraryInfo class="TABLEVIEW" 
+     	   					name="TableViewFunctions" 
+     	   					sourcecode="TableViewFunctions">
+     	   		       </libraryInfo>
+                </engine>
+            </engines>
+     	<parameters>
+     	        <parameter name="COLUMN" displayText="Column" optional="NO">
+     	           <description>
+     	              <short_desc> 
+     	                 The column number that the TableView should be set to.
+     	              </short_desc>
+     	              <detailed_desc> 
+     	                 Set the current column to the one specified in this parameter.
+     	              </detailed_desc>
+     	           </description>
+             	</parameter>
+             </parameters>
+            <examples>
+             <example>
+                <usage>T, WINDOWNAME, COMPNAME, SETSELECTEDCOLUMN, 5</usage>
+                <description>
+                   <short_desc> 
+                      Sets the current column to column number 5
+                   </short_desc>
+                </description>
+             </example>
+     </examples></keyword>
+     <keyword name="GETCELLVALUE" 
+                       displayText="GetCellValue" 
+                       deprecated="NO" 
+                       expectFailSupport="NO" 
+                       expectWarnSupport="NO">
+                       
+                   <description>
+                        <short_desc> 
+          		    Get the value of a cell at a certain row and column
+          		 </short_desc>
+          			<detailed_desc> 
+          		    The variable in the parameter will be set to the value of the specified
+          		    row and column.
+          		 </detailed_desc>
+                     </description>
+                     
+                 <engines>
+                     <engine name="WinRunner" 
+          	   			       since="20000909" 
+          	   			       tool="WinRunner" 
+          	   			       vendor="Mercury Interactive">
+          	   		       <libraryInfo class="TABLEVIEW" 
+          	   					name="TableViewFunctions" 
+          	   					sourcecode="TableViewFunctions">
+          	   		       </libraryInfo>
+                     </engine>
+                 </engines>
+          	<parameters>
+			<parameter name="VariableName" displayText="VariableName" optional="NO">
+			   <description>
+			      <short_desc> 
+				 The variable that the data will be stored in.
+			      </short_desc>
+			   </description>
+                  	</parameter>
+			<parameter name="ROW" displayText="Row" optional="NO">
+			   <description>
+			      <short_desc> 
+				 The row that the data will be extracted from
+			      </short_desc>
+			   </description>
+                  	</parameter>
+          	        <parameter name="COLUMN" displayText="Column" optional="NO">
+          	           <description>
+          	              <short_desc> 
+          	                 The column that the data will be extracted from.
+          	              </short_desc>
+          	           </description>
+                  	</parameter>
+                  </parameters>
+                 <examples>
+                  <example>
+                     <usage>T, WINDOWNAME, COMPNAME, GetCellValue, VARIABLENAME, 1, 1</usage>
+                     <description>
+                        <short_desc> 
+                           The variable VARIABLENAME will be created with the value of the cell
+                           at location 1, 1 in the table.
+                        </short_desc>
+                     </description>
+                  </example>
+                  <example>
+		       <usage>T, WINDOWNAME, COMPNAME, GetCellValue, "^VARIABLENAME", 1, 1</usage>
+		       <description>
+			  <short_desc> 
+			     The variable VARIABLENAME will be created with the value of the cell
+			     at location 1, 1 in the table.
+			  </short_desc>
+		       </description>
+                  </example>
+                  <example>
+		       <usage>T, WINDOWNAME, COMPNAME, GetCellValue, VARIABLENAME, ^row=1, ^column=1</usage>
+		       <description>
+			  <short_desc> 
+			     The variable VARIABLENAME will be created with the value of the cell
+			     at location 1, 1 in the table.
+			  </short_desc>
+		       </description>
+                  </example>
+     </examples></keyword>
+     <keyword name="GETROWCOUNT" 
+                            displayText="GetRowCount" 
+                            deprecated="NO" 
+                            expectFailSupport="NO" 
+                            expectWarnSupport="NO">
+                            
+                        <description>
+                             <short_desc> 
+               		    Get a count of how many rows are in the table
+               		 </short_desc>
+               			<detailed_desc> 
+               		    The variable in the parameter will be set to the number of rows
+               		    in the table.
+               		 </detailed_desc>
+                          </description>
+                          
+                      <engines>
+                          <engine name="WinRunner" 
+               	   			       since="20000909" 
+               	   			       tool="WinRunner" 
+               	   			       vendor="Mercury Interactive">
+               	   		       <libraryInfo class="TABLEVIEW" 
+               	   					name="TableViewFunctions" 
+               	   					sourcecode="TableViewFunctions">
+               	   		       </libraryInfo>
+                          </engine>
+                      </engines>
+               	<parameters>
+			<parameter name="RowCount" displayText="RowCount" optional="NO">
+			   <description>
+			      <short_desc> 
+				 The variable that the number of rows will be stored in.
+			      </short_desc>
+			   </description>
+			</parameter>
+		       </parameters>
+		      <examples>
+		       <example>
+			  <usage>T, WINDOWNAME, COMPNAME, GetRowCount, VARIABLENAME</usage>
+			  <description>
+			     <short_desc> 
+				The variable VARIABLENAME will be created with the value number
+				of rows will be assigned to the variable.
+			     </short_desc>
+			  </description>
+			</example>
+     </examples></keyword>
+     <keyword name="VERIFYCELLVALUE" 
+                                 displayText="VerifyCellValue" 
+                                 deprecated="NO" 
+                                 expectFailSupport="NO" 
+                                 expectWarnSupport="NO">
+                                 
+                             <description>
+                                  <short_desc> 
+                    		    Verify the contents of a particular cell at position
+                    		    row, column.
+                    		 </short_desc>
+                    			<detailed_desc> 
+                    		    The data is verified to equal the value of EXPECTED value
+                    		    at the specified row and column.
+                    		 </detailed_desc>
+                               </description>
+                               
+                           <engines>
+                               <engine name="WinRunner" 
+                    	   			       since="20000909" 
+                    	   			       tool="WinRunner" 
+                    	   			       vendor="Mercury Interactive">
+                    	   		       <libraryInfo class="TABLEVIEW" 
+                    	   					name="TableViewFunctions" 
+                    	   					sourcecode="TableViewFunctions">
+                    	   		       </libraryInfo>
+                               </engine>
+                           </engines>
+                    	<parameters>
+     			<parameter name="EXPECTEDTEXT" displayText="ExpectedText" optional="NO">
+     			   <description>
+     			      <short_desc> 
+     				 The value that the data in the cell is expected to equal.
+     			      </short_desc>
+     			   </description>
+     			</parameter>
+     			<parameter name="ROW" displayText="Row" optional="NO">
+			   <description>
+			      <short_desc> 
+				 The row number of the cell to be verified.
+			      </short_desc>
+			   </description>
+     			</parameter>
+     			<parameter name="COLUMN" displayText="Column" optional="NO">
+			   <description>
+			      <short_desc> 
+				 The column number of the cell to be verified.
+			      </short_desc>
+			   </description>
+     			</parameter>
+     		       </parameters>
+     		      <examples>
+     		       <example>
+     			  <usage>T, WINDOWNAME, COMPNAME, VERIFYCELLVALUE, "The string to equal", ROW, COLUMN</usage>
+     			  <description>
+     			     <short_desc> 
+     				The cell at ROW, COLUMN is verified equal to "The string to equal"
+     			     </short_desc>
+     			  </description>
+     			</example>
+     			<example>
+			  <usage>T, WINDOWNAME, COMPNAME, VERIFYCELLVALUE, ^ExpectedString, ROW, COLUMN</usage>
+			  <description>
+			     <short_desc> 
+				The cell at ROW, COLUMN is verified equal to the DDVariable value
+				^ExpectedString.
+			     </short_desc>
+			  </description>
+     			</example>
+     </examples></keyword>
+</keywords>
+</keyword_library>

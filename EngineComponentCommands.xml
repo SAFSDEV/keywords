@@ -1,0 +1,2674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="ENGINE" />
+    
+    <libraryInfo name="EngineComponentCommands" 
+                 doc="EngineComponentCommands.htm" 
+                 class="COMPONENT"
+                 sourcecode="org.safs.EngineCommandProcessor.java" >
+                 
+        <description>
+            <short_desc>Engine commands for components.</short_desc>
+            <detailed_desc>
+            <p>
+            These commands are generally for interrogating engines about 
+            the Windows and Components they can find.  These are not normally 
+            used during testing.  (But they can be used during testing like any 
+            other command record.)  
+            </p><p>
+            For example, these commands are heavily 
+            used by 
+            <a href="http://safsdev.sourceforge.net/doc/org/safs/tools/drivers/STAFProcessContainer.html" target="_blank">STAFProcessContainer</a> 
+            during test design time.
+            </p><p>
+            Each engine command has different parameters 
+            as described in its documentation.  For reference, the 
+            first fields of ALL Engine Command test records are defined 
+            below:</p>
+            <p>
+            Field #1 -- "E" = ENGINE COMMAND record type specifier.
+            </p><p>
+            Field #2 -- The Engine Command keyword.
+            </p><p>
+            Example:
+            </p><p>
+            <code>E, GetTopLevelWindows</code>
+            </p><p>
+            Engine Command parameters must be placed in the test record 
+            in the field position specified in the documentation.  
+            Some parameters are optional.  However, the field associated 
+            with that parameter must be honored.  If you wish to skip an 
+            optional parameter you must still provide an empty field for 
+            that parameter.</p>
+            <p>
+            Example:</p>
+
+            <code>E, SomeCommand, Value1, Value2, , , Value5</code>
+
+            <p>
+            The above example shows two optional fields after Value2 
+            which are given no value(skipped).</p>
+            <p>
+            Engine commands that return a value do so in the 
+            <b>SAFS/Hook/statusinfo</b> variable of SAFSVARS which is populated 
+            via TestRecordData.statusinfo.
+            </p><p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            <p>
+            The TestComplete Engine (TCAFS) also persists these values as SAFS variables.
+            </p><pre>            
+            ^TCAFS.Command    = [command]
+            ^TCAFS.StatusCode = [statuscode string]
+            ^TCAFS.StatusInfo = [statusinfo]
+            ^TCAFS.FullName   = [object.FullName] -- the TestObjects.FullName string--if command returns only 1 reference.
+            ^TCAFS.UID.Count  = [Number of UID References created last]
+            ^TCAFS.UID.1      = [First UID Reference created]
+            ^TCAFS.UID.n      = [UID Reference number n]            
+            </pre>
+            <p>
+            The TestRecordData.statuscode is set to 
+            <a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.STATUS_NO_SCRIPT_FAILURE" 
+            target="_blank">NO_SCRIPT_FAILURE</a> 
+            if the engine supports and processes the command. This is true even if the 
+            command results in an empty, missing, or null return value.  
+            </p><p>
+            <a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.STATUS_SCRIPT_NOT_EXECUTED" 
+            target="_blank">SCRIPT_NOT_EXECUTED</a> 
+            should be returned in TestRecordData.statuscode if the engine does not support 
+            the command.
+            </p>
+            <p>
+            Note that the full availablility of all Engine Commands may be  
+            spread across several files.  Together, all of these files define 
+            all the Engine Commands available to the core framework.</p>
+            </detailed_desc>
+        </description>
+    </libraryInfo>
+    
+    <keywords>
+    <keyword name="ENABLEDOMAINS" 
+             displayText="EnableDomains" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Enable searching domains.</short_desc>
+            <detailed_desc>
+                Enable the domains for searching target main window within these domains.
+                Up to now, RobotJ engine supports Java, DotNet, Win, Html, SWT and Flex.
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20090806" >
+	        <libraryInfo name="Domains" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/Domains.html" 
+                             sourcecode="org.safs.Domains.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="DOMAINS" displayText="Domains" optional="NO" >
+                <description>
+                    <short_desc>A string that contains at least one domain.</short_desc>
+                    <detailed_desc>
+                        More than one domain, if have, are delimited with ',' or ';'.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, EnableDomains, "Java;Html"</usage>
+                <description>
+                    <short_desc>Enable Java and Html domains for searching target main window within the two domains.</short_desc>
+                    <detailed_desc>
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETCAPTION" 
+             displayText="GetCaption" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the Caption of a component, if any.</short_desc>
+            <detailed_desc>
+                Normally, this is only valid for window or child window components.  
+                If no caption is present, or the component does not support captions, the 
+                engine should return &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectRecognition" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectRecognition.html" 
+                             sourcecode="org.safs.rational.RGuiObjectRecognition.java" 
+                             class="COMPONENT" />
+            </engine>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getMatchingParentObject, 
+                        or one of the other engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetCaption, TheComponentReference</usage>
+                <description>
+                    <short_desc>Get the Caption of the TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns the String caption or "&lt;SAFS_NULL>" if no caption was available.
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETCLASSINDEX" 
+             displayText="GetClassIndex" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the ClassIndex of the component, if any.</short_desc>
+            <detailed_desc>
+                If no ClassIndex is present the engine should return "0".
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getMatchingParentObject, 
+                        or one of the other engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetClassIndex, TheComponentReference</usage>
+                <description>
+                    <short_desc>Get the ClassIndex of the Class of the TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns the String ClassIndex or "0" if no ClassIndex was available.
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+
+    <keyword name="GETCHILDCOUNT" 
+             displayText="GetChildCount" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the number of children, if any, for the provided container component.</short_desc>
+            <detailed_desc>
+                This is only valid for windows and other containers of child components.
+                If no children are present (or supported) then the returned count should be 0.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectVector" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectVector.html" 
+                             sourcecode="org.safs.rational.RGuiObjectVector.java" 
+                             class="COMPONENT" />
+            </engine>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getMatchingParentObject, getMatchingChildObjects, 
+                        or one of the other engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetChildCount, TheComponentReference</usage>
+                <description>
+                    <short_desc>Get the count of children contained in TheComponentReference, if any.</short_desc>
+                    <detailed_desc>
+                        Returns the count of children, or 0 if none exist.
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETCHILDREN" 
+             displayText="GetChildren" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get references to the children, if any, for the provided container component.</short_desc>
+            <detailed_desc>
+                Normally, this is only valid for windows or other container components.  
+                If no children exist then an empty string is returned.  If children are present then 
+                a single string of separated values is returned.  The first character in the 
+	        returned string defines the delimiter character used to separate child references.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectVector" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectVector.html" 
+                             sourcecode="org.safs.rational.RGuiObjectVector.java" 
+                             class="COMPONENT" />
+            </engine>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getMatchingParentObject, getMatchingChildObjects, 
+                        or one of the other engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetChildren, TheComponentReference</usage>
+                <description>
+                    <short_desc>Get references, if any, of the children for TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns a string containing a delimited list of child references.  The first character 
+                        in the list is the delimiter used to separate subsequent child references.  
+                        If no children exist then the list is simply an empty string.
+                        <p>
+                        Example return string: ",Child1Ref,Child2Ref,Child3Ref"
+                        </p>
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETCLASSNAME" 
+             displayText="GetClassname" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the Classname of a component.</short_desc>
+            <detailed_desc>
+                If no classname is returned, or the domain does not support "classes", the 
+                engine should return &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectRecognition" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectRecognition.html" 
+                             sourcecode="org.safs.rational.RGuiObjectRecognition.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getMatchingParentObject, getChildren, or one of the other 
+                        engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetClassname, TheComponentReference</usage>
+                <description>
+                    <short_desc>Get the Classname of the TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns the classname of the provided reference or "&lt;SAFS_NULL>".
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETID" 
+             displayText="GetId" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the ID of a component, if any.</short_desc>
+            <detailed_desc>
+                If no ID is present, or the component does not support IDs, the 
+                engine should return &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectRecognition" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectRecognition.html" 
+                             sourcecode="org.safs.rational.RGuiObjectRecognition.java" 
+                             class="COMPONENT" />
+            </engine>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getMatchingParentObject, getChildren, or one of the other 
+                        engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetId, TheComponentReference</usage>
+                <description>
+                    <short_desc>Get the ID of the TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns the ID or "&lt;SAFS_NULL>" if no ID was available.
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETLEVEL" 
+             displayText="GetLevel" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the Z-order of a component--usually a Window.</short_desc>
+            <detailed_desc>
+	    	Level is generally considered to be the Z-Order information of the object--where in 
+		the Window Z-Order the object (usually a Window) resides.
+		Level is combined with another recognition method when the other method does not uniquely identify 
+		the windows. For example, if there are multiple windows with the same caption, and Caption is the 
+		recognition method being used. The Level qualifier specifies which one of the similarly-identified 
+		windows should be targeted for the action, based on the Windows' Z-Order. The first window is a
+		ssigned "Level=1", the second "Level=2", and so on. Level serves as a clarifier only and is used 		
+		only after all other methods have been attempted.
+		<p>
+		If the Level cannot be determined then the engine should return -1.
+		</p>
+	</detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectRecognition" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectRecognition.html" 
+                             sourcecode="org.safs.rational.RGuiObjectRecognition.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getMatchingParentObject, or one of the other 
+                        engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetLevel, TheComponentReference</usage>
+                <description>
+                    <short_desc>Get the Level (Z-Order) of the TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns the 1-based Level or -1 if the Level could not be determined.
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETMATCHINGCHILDOBJECTS" 
+             displayText="GetMatchingChildObjects" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Retrieve an array of child objects that match a recognition string.</short_desc>
+            <detailed_desc>
+                Normally, this is only valid for window or other container components.  
+                If no matching child objects exist then the engine should return 
+                &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+                <p>
+                Returns a character delimited string of child references. The first character in the returned string 
+                defines the delimiter used to separate the items. 
+                </p><p>
+                Currently, the engine command processors only support returning the first child matching the recognition string.
+            </p><p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectVector" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectVector.html" 
+                             sourcecode="org.safs.rational.RGuiObjectVector.java" 
+                             class="COMPONENT" />
+            </engine>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows or getMatchingParentObject, or one of the other 
+                        engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+            <parameter name="RECOGNITION" displayText="Recognition" optional="NO" >
+                <description>
+                    <short_desc>Recognition string describing the children to find.</short_desc>
+                    <detailed_desc>
+			The recognition string is normally considered to be relative to the parent Component 
+			provided.  Thus, information identifying the parent should normally NOT be 
+			part of the provided recognition string.  For details on Recognition strings see:
+			<a href="http://safsdev.sourceforge.net/doc/org/safs/GuiObjectRecognition.html" target="_blank">Gui Object Recognition</a>;
+                    </detailed_desc>
+                </description>
+            </parameter>
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetMatchingChildObjects, TheParentReference, "Type=PushButton;Name=submit_Button"</usage>
+                <description>
+                    <short_desc>Attempt to locate a pushbutton named 'submit_Button' in TheParentReference container.</short_desc>
+                    <detailed_desc>
+                        Returns '&lt;SAFS_NULL>' if no match is found, or a character delimited list of references 
+                        to child pushbuttons named 'submit_Button'.  (Currently, the only implementation we 
+                        have returns only the first matching child in the character delimited list.)
+                    </detailed_desc>
+                </description>
+            </example>
+            <example>
+                <usage>E, GetMatchingChildObjects, TheWebBrowser, "Type=HTMLDocument;Index=1;\;Type=HTMLLink;HTMLId=logonLink"</usage>
+                <description>
+                    <short_desc>Locate the HTMLLink identified as 'logonLink' in the first HTMLDocument in TheWebBrowser</short_desc>
+                    <detailed_desc>
+                        Attempts to locate the grandchild HTMLLink in the child HTMLDocument of TheWebBrowser.
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETMATCHINGPARENTOBJECT" 
+             displayText="GetMatchingParentObject" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get a reference to the toplevel Window\Parent that matches the recognition string provided.</short_desc>
+            <detailed_desc>
+            	Locate a toplevel Window\Parent matching the recognition string and return a unique 
+            	reference to that component.  If no match is found the engine should return 
+            	&quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectVector" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectVector.html" 
+                             sourcecode="org.safs.rational.RGuiObjectVector.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="RECOGNITION" displayText="Recognition" optional="NO" >
+                <description>
+                    <short_desc>Recognition string describing the Window\Parent to find.</short_desc>
+                    <detailed_desc>
+                    	Topmost parent windows are usually identified with Type or Class information. The recognition string 
+                    	should uniquely identify the target window or incorrect matches will result.
+                    	<p>
+			For details on Recognition strings see:
+			<a href="http://safsdev.sourceforge.net/doc/org/safs/GuiObjectRecognition.html" target="_blank">Gui Object Recognition</a>;
+			</p>
+                    </detailed_desc>
+                </description>
+            </parameter>
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetMatchingParentObject, "Type=Window;Caption={*caption substring*}"</usage>
+                <description>
+                    <short_desc>Locate the first toplevel Window matching the Caption expression.</short_desc>
+                    <detailed_desc>
+                        Returns a reference to the matching Window or '&lt;SAFS_NULL>' if no match was found. 
+                        The returned reference is what is used in all subsequent attempts to locate child objects 
+                        relative to this toplevel Window\Object.
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETMATCHINGPATHOBJECT" 
+             displayText="GetMatchingPathObject" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the subitem object\node matching the provided Path.</short_desc>
+            <detailed_desc>
+                Normally, this is only valid for components whose subitems, nodes, or children are located 
+                by Path syntax: Root->Branch->Leaf.  This is often the case for Menus, MenuItems, and Tree nodes.
+                <p>
+                If no match is found the engine should return: 
+                &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+                </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectRecognition" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectRecognition.html" 
+                             sourcecode="org.safs.rational.RGuiObjectRecognition.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getMatchingParentObject, getMatchingChildObjects, 
+                        getChildren, or one of the other engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+            <parameter name="PATH" displayText="Path" optional="NO" >
+                <description>
+                    <short_desc>The Path object\node to locate relative to the Component.</short_desc>
+                    <detailed_desc>
+                        Path syntax: "Root->Branch->Leaf"
+                    </detailed_desc>
+                </description>
+            </parameter>
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetMatchingPathObject, TheMainMenuReference, "Help->About"</usage>
+                <description>
+                    <short_desc>Get the reference to MenuItem "Help->About" from the Main menu.</short_desc>
+                    <detailed_desc>
+                        Searched the Main menu for the Help menu and returns a reference to 
+                        the About menuitem.  If not found, returns '&lt;SAFS_NULL>'.
+                    </detailed_desc>
+                </description>
+            </example>
+            <example>
+                <usage>E, GetMatchingPath, SwingAppJTree2Ref, "Last Node->Branch Nodes->Child Nodes->2ListItem1"</usage>
+                <description>
+                    <short_desc>Get the reference to Tree node '2ListItem1'.</short_desc>
+                    <detailed_desc>
+                        Search the SwingAppJTree2Ref for tree node "2ListItem1" along the tree node path 
+                        provided.  If not found, returns '&lt;SAFS_NULL>'.
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETNAME" 
+             displayText="GetName" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the Name (AccessibleName or Name) of the component, if any. The AccessibleName shall be found first and returned, if any.</short_desc>
+            <detailed_desc>
+                If no Name is present the engine should return 
+                &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectRecognition" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectRecognition.html" 
+                             sourcecode="org.safs.rational.RGuiObjectRecognition.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getMatchingChildObjects, getChildren, 
+                        or one of the other engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetName, TheComponentReference</usage>
+                <description>
+                    <short_desc>Get the Name (AccessibleName or Name) of the TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns the Name or "&lt;SAFS_NULL>" if no name was available.
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+
+    <keyword name="GETACCESSIBLENAME" 
+             displayText="GetAccessibleName" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the AccessibleName of the component, if any.</short_desc>
+            <detailed_desc>
+                If no AccessibleName is present the engine should return 
+                &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20081203" >
+	        <libraryInfo name="RGuiObjectRecognition" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectRecognition.html" 
+                             sourcecode="org.safs.rational.RGuiObjectRecognition.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getMatchingChildObjects, getChildren, 
+                        or one of the other engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetAccessibleName, TheComponentReference</usage>
+                <description>
+                    <short_desc>Get the AccessibleName of the TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns the AccessibleName or "&lt;SAFS_NULL>" if no AccessibleName was available.
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+
+    <keyword name="GETNONACCESSIBLENAME" 
+             displayText="GetNonAccessibleName" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the non-AccessibleName (Name except for AccessibleName) of the component, if any.</short_desc>
+            <detailed_desc>
+                If no non-AccessibleName is present the engine should return 
+                &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20081203" >
+	        <libraryInfo name="RGuiObjectRecognition" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectRecognition.html" 
+                             sourcecode="org.safs.rational.RGuiObjectRecognition.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getMatchingChildObjects, getChildren, 
+                        or one of the other engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetNonAccessibleName, TheComponentReference</usage>
+                <description>
+                    <short_desc>Get the non-AccessibleName (Name except for AccessibleName) of the TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns the non-AccessibleName or "&lt;SAFS_NULL>" if no non-AccessibleName was available.
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETPROPERTY" 
+             displayText="GetProperty" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the value of a specific property from a component.</short_desc>
+            <detailed_desc>
+                Retrieves the value of the specified property.  Property names are case-sensitive.
+                If the property name provided is invalid or unsupported the engine should return 
+                &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectRecognition" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectRecognition.html" 
+                             sourcecode="org.safs.rational.RGuiObjectRecognition.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getMatchingChildObjects, getChildren, 
+                        or one of the other engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+            <parameter name="PROPERTY" displayText="Property" optional="NO" >
+                <description>
+                    <short_desc>The property name to retrieve.</short_desc>
+                    <detailed_desc>
+			Property names are case-sensitive.
+                    </detailed_desc>
+                </description>
+            </parameter>
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetProperty, TheComponentReference, "Text"</usage>
+                <description>
+                    <short_desc>Get the value of the "Text" property from TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns the "Text" property value or "&lt;SAFS_NULL>" if "Text" is not a 
+                        valid property name for the component.
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETPROPERTYNAMES" 
+             displayText="GetPropertyNames" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the names of all available properties for a component.</short_desc>
+            <detailed_desc>
+                Returns a delimited string list of case-sensitive property names for the component.  
+                The first character in the string is the delimiter used to separate each 
+                property name in the list.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectRecognition" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectRecognition.html" 
+                             sourcecode="org.safs.rational.RGuiObjectRecognition.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getMatchingChildObjects, getChildren, 
+                        or one of the other engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetPropertyNames, TheComponentReference</usage>
+                <description>
+                    <short_desc>Get the list of valid property names for TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns the String of case-sensitive property names as a delimited list.
+                        The first character is the delimiter.
+                        <p>
+                        Example return string: ",Property1,Property2,property3,Property4"
+                        </p>
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETSTRINGDATA" 
+             displayText="GetStringData" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the values, text, or data associated with the component.</short_desc>
+            <detailed_desc>
+                This is returned as a String containing a delimited list of values forming a 
+                2D array or table of values.  The first character in the string specifies the 
+                delimiter used to separate values.  The first value between delimiters specifies 
+                the number of rows of data.  The second value between delimiters specifies the number of 
+                columns of data.  This is immediately followed by all the values separated by delimiters.
+                <p>
+                Example return string showing a single value (1 row and 1 column): ",1,1,MyValue"
+                </p><p>
+                Missing values are represented simply by two delimiters back-to-back with no value 
+                between them.
+                </p><p>
+                Example return string of 3 rows with 2 columns with missing values in the last two rows:
+                </p><p>
+                ",3,2,a,b,,d,e,"
+                </p><p>
+                Whitespace in a value is retained.  Everything between delimiters is treated as 
+                part of the value.
+                </p><p>
+                If there is no retrievable text or data the engine should return 
+                &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+                </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+        	<!-- NO ENGINE HAS THIS IMPLEMENTED YET! -->
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getMatchingChildObjects, getChildren, 
+                        or one of the other engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetStringData, TheComponentReference</usage>
+                <description>
+                    <short_desc>Get the value, text, or data associated with TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns the data as a delimited list of values or "&lt;SAFS_NULL>" if 
+                        no data is available or supported by the component.
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETSUPERCLASSNAMES" 
+             displayText="GetSuperClassnames" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the hierarchy of superclasses for the component.</short_desc>
+            <detailed_desc>
+                Returns a delimited string list of case-sensitive classnames for the component.  
+                The first character in the string is the delimiter used to separate each 
+                classname in the hierarchy.  
+                <p>If there is no superclass or hierarchy the engine will return a delimited 
+                list of one value--the component's classname.  (Ex: ",Html.BUTTON")
+                </p><p>                
+                When a superclass hierarchy does exist the first value after the delimiter 
+                is the component's classname.  Each delimited value after that goes one higher 
+                in the hierarchy until the topmost superclass has been processed.<br/>
+                (Ex: ",CustomButton,java.awt.Button,java.awt.Component,java.lang.Object")
+                </p><p>
+                If the component itself has no classname and no hierarchy (unusual!) then 
+                the engine should simply return an empty, 0-length string.
+                </p>
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectRecognition" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectRecognition.html" 
+                             sourcecode="org.safs.rational.RGuiObjectRecognition.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getMatchingChildObjects, getChildren, 
+                        or one of the other engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetSuperClassnames, TheComponentReference</usage>
+                <description>
+                    <short_desc>Get the class hierarchy of TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns the class hierarchy for TheComponentReference.
+                        <p>
+                        Example 1: ",CustomButton,java.awt.Button,java.awt.Component,java.lang.Object"<br/>
+                        Example 2: ",Html.BUTTON"<br/>
+                        Example 3: ""
+                        </p>
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETTEXT" 
+             displayText="GetText" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the (text) value of a component, if any.</short_desc>
+            <detailed_desc>
+                If the component does not have text or any "value" the engine should return 
+                &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+             <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectRecognition" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectRecognition.html" 
+                             sourcecode="org.safs.rational.RGuiObjectRecognition.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getMatchingChildObjects, getChildren, 
+                        or one of the other engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetText, TheComponentReference</usage>
+                <description>
+                    <short_desc>Get the text value of the TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns the text value or "&lt;SAFS_NULL>" if no text was available.
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETTOPLEVELCOUNT" 
+             displayText="GetTopLevelCount" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the number of visible top-level items (Windows?) for the engine.</short_desc>
+            <detailed_desc>
+                Returns the number of visible top-level items, or 0.  Not all engines can see all items. 
+                For example, Selenium only looks for Web clients.  Some engines may only look for 
+                Java clients, etc..  Some engines can see other top-level items that are not 
+                Windows--like Processes, or Threads, etc...
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            <p>
+            The TestComplete Engine (TCAFS) also persists these values as SAFS variables.
+            </p><pre>            
+            ^TCAFS.Command    = [command]
+            ^TCAFS.StatusCode = [statuscode string]
+            ^TCAFS.StatusInfo = [statusinfo]
+            </pre>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectVector" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectVector.html" 
+                             sourcecode="org.safs.rational.RGuiObjectVector.java" 
+                             class="COMPONENT" />
+            </engine>
+           <engine vendor="AutomatedQA" tool="TestComplete" name="Test Complete" since="20130722" >
+	       <libraryInfo name="EngineCommands" 
+			       doc="EngineComponentCommandsReference.htm"
+			       sourcecode="EngineCommands.SVB" 
+			       class="COMPONENT" />
+           </engine>
+            
+        </engines>
+
+        <parameters /><!-- none -->
+       
+        <examples>
+            <example>
+                <usage>E, GetTopLevelCount</usage>
+                <description>
+                    <short_desc>Get the number of top-level items visible to the engine.</short_desc>
+                    <detailed_desc>
+                        Returns the count of top-level items or 0 if the engine "sees" no top-level items.
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETTOPLEVELWINDOWS" 
+             displayText="GetTopLevelWindows" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Return references to all known top-level items (Windows).</short_desc>
+            <detailed_desc>
+                The engine can only return references to those top-level items it has 
+                knowledge of.  Not all engines can see all items. 
+                For example, Selenium only looks for Web clients.  Some engines may only look for 
+                Java clients, etc..  Some engines can see other top-level items that are not 
+                Windows--like Processes, or Threads, etc...
+                <p>
+                The engine's array of objects will be returned as a delimited list of fields. 
+                The first character in the String will identify the separator used between 
+                each reference.  If no top level windows were found then the engine will return 
+                an empty string.
+                </p>
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            <p>
+            The TestComplete Engine (TCAFS) also persists these values as SAFS variables.
+            </p><pre>            
+            ^TCAFS.Command    = [command]
+            ^TCAFS.StatusCode = [statuscode string]
+            ^TCAFS.StatusInfo = [statusinfo]
+            ^TCAFS.UID.Count  = [Number of UID References created last]
+            ^TCAFS.UID.1      = [First UID Reference created]
+            ^TCAFS.UID.n      = [UID Reference number n]            
+            </pre>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+           <engine vendor="AutomatedQA" tool="TestComplete" name="Test Complete" since="20130722" >
+	       <libraryInfo name="EngineCommands" 
+			       doc="EngineComponentCommandsReference.htm"
+			       sourcecode="EngineCommands.SVB" 
+			       class="COMPONENT" />
+           </engine>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectVector" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectVector.html" 
+                             sourcecode="org.safs.rational.RGuiObjectVector.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters /><!-- none -->
+       
+       
+        <examples>
+            <example>
+                <usage>E, GetTopLevelWindows</usage>
+                <description>
+                    <short_desc>Get references to all known top-level items.</short_desc>
+                    <detailed_desc>
+                        Sample return strings:
+                        <p>
+                        Example 1: ",Ref1,Ref2,Ref3"
+                        Example 2: ""
+                        </p><p>
+                        The first character in Example 1 (a comma in this case) signifies that the 
+                        list of references will be separated by commas.  The references 
+                        then follow.
+                        </p><p>
+                        Example 2 shows no top-level items are visible to the engine.
+                        </p>
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="GETCURRENTWINDOW" 
+             displayText="GetCurrentWindow" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Return a reference to the top-most active (Window) with focus.</short_desc>
+            <detailed_desc>
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            <p>
+            The TestComplete Engine (TCAFS) also persists these values as SAFS variables.
+            </p><pre>            
+            ^TCAFS.Command    = [command]
+            ^TCAFS.StatusCode = [statuscode string]
+            ^TCAFS.StatusInfo = [statusinfo]
+            ^TCAFS.FullName   = [object.FullName] -- the TestObjects.FullName string--if command returns only 1 reference.
+            ^TCAFS.UID.Count  = [Number of UID References created last]
+            ^TCAFS.UID.1      = [First UID Reference created]
+            </pre>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+           <engine vendor="AutomatedQA" tool="TestComplete" name="Test Complete" since="20130722" >
+	       <libraryInfo name="EngineCommands" 
+			       doc="EngineComponentCommandsReference.htm"
+			       sourcecode="EngineCommands.SVB" 
+			       class="COMPONENT" />
+           </engine>            
+        </engines>
+
+        <parameters /><!-- none -->
+       
+       
+        <examples>
+            <example>
+                <usage>E, GetCurrentWindow</usage>
+                <description>
+                    <short_desc>Get a reference to the top-most active Window with focus.</short_desc>
+                    <detailed_desc>
+                        Sample return strings:
+                        <p>
+                        Example 1: "Ref1"
+                        Example 2: ""
+                        </p><p>
+                        Example 2 shows no top-level item was visible to the engine.
+                        </p>
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="ISMATCHINGPATH" 
+             displayText="IsMatchingPath" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Determine if there is a matching Path object.</short_desc>
+            <detailed_desc>
+                <p>
+                Normally, this is only valid for components whose subitems, nodes, or 
+                children are found by Path syntax: Root->Branch->Leaf.  This is often 
+                the case for Menus, MenuItems, and Tree nodes.</p>
+                <p>
+                Returns text "true" if an object matching the provided Path was found.  
+                Returns text "false" if no such object was found.</p>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectRecognition" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectRecognition.html" 
+                             sourcecode="org.safs.rational.RGuiObjectRecognition.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to a component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getChildren, or one of the other 
+                        engine commands that return such references.  The Path sought 
+                        is expected to be relative to this object.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+            <parameter name="PATH" displayText="Path" optional="NO" >
+                <description>
+                    <short_desc>The Path to locate relative to the Component.</short_desc>
+                    <detailed_desc>
+                        Path syntax: "Root->Branch->Leaf"
+                    </detailed_desc>
+                </description>
+            </parameter>
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, IsMatchingPath, TheMainMenuReference, "Help->About"</usage>
+                <description>
+                    <short_desc>See if MenuItem "About" exists in the "Help" menu.</short_desc>
+                    <detailed_desc>
+                        Returns text "true" or "false".  In this case, we seek to 
+                        find if there is a "Help" menu in the Main Menu and then we check 
+                        to see if there is an "About" menuitem in the Help menu.
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="ISSHOWING" 
+             displayText="IsShowing" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Is the component visible?</short_desc>
+            <detailed_desc>
+                Returns text "true" if the component is set to be visible.
+                Returns text "false" if the component is set to be hidden or 
+                otherwise is not visible.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            <p>
+            The TestComplete Engine (TCAFS) also persists these values as SAFS variables.
+            </p><pre>            
+            ^TCAFS.Command    = [command]
+            ^TCAFS.StatusCode = [statuscode string]
+            ^TCAFS.StatusInfo = [statusinfo]
+            ^TCAFS.FullName   = [object.FullName] -- the TestObjects.FullName string--if command returns only 1 reference.
+            </pre>
+           </detailed_desc>
+        </description>
+           
+        <engines>
+           <engine vendor="AutomatedQA" tool="TestComplete" name="Test Complete" since="20130722" >
+	       <libraryInfo name="EngineCommands" 
+			       doc="EngineComponentCommandsReference.htm"
+			       sourcecode="EngineCommands.SVB" 
+			       class="COMPONENT" />
+           </engine>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectRecognition" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectRecognition.html" 
+                             sourcecode="org.safs.rational.RGuiObjectRecognition.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getChildren, or one of the other 
+                        engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, IsShowing, TheComponentReference</usage>
+                <description>
+                    <short_desc>Checks the visibility of TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns text "true" or "false".
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="ISVALID" 
+             displayText="IsValid" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Does the component still exist as a valid object?</short_desc>
+            <detailed_desc>
+                Should return text "true" if the component is still valid. 
+                Return text "false" if it is not.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            <p>
+            The TestComplete Engine (TCAFS) also persists these values as SAFS variables.
+            </p><pre>            
+            ^TCAFS.Command    = [command]
+            ^TCAFS.StatusCode = [statuscode string]
+            ^TCAFS.StatusInfo = [statusinfo]
+            ^TCAFS.FullName   = [object.FullName] -- the TestObjects.FullName string--if command returns only 1 reference.
+            </pre>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+           <engine vendor="AutomatedQA" tool="TestComplete" name="Test Complete" since="20130722" >
+	       <libraryInfo name="EngineCommands" 
+			       doc="EngineComponentCommandsReference.htm"
+			       sourcecode="EngineCommands.SVB" 
+			       class="COMPONENT" />
+           </engine>
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectVector" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectVector.html" 
+                             sourcecode="org.safs.rational.RGuiObjectVector.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getChildren, or one of the other 
+                        engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, IsValid, TheComponentReference</usage>
+                <description>
+                    <short_desc>Validate the existence of TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns text "true" or "false".
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+
+    <keyword name="ISENABLED" 
+             displayText="IsEnabled" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Is the component Enabled (vs. disabled)? </short_desc>
+            <detailed_desc>
+                Should return text "true" if the component is Enabled. 
+                Return text "false" if it is not.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            <p>
+            The TestComplete Engine (TCAFS) also persists these values as SAFS variables.
+            </p><pre>            
+            ^TCAFS.Command    = [command]
+            ^TCAFS.StatusCode = [statuscode string]
+            ^TCAFS.StatusInfo = [statusinfo]
+            ^TCAFS.FullName   = [object.FullName] -- the TestObjects.FullName string--if command returns only 1 reference.
+            </pre>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+           <engine vendor="AutomatedQA" tool="TestComplete" name="Test Complete" since="20130722" >
+	       <libraryInfo name="EngineCommands" 
+			       doc="EngineComponentCommandsReference.htm"
+			       sourcecode="EngineCommands.SVB" 
+			       class="COMPONENT" />
+           </engine>        
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getChildren, or one of the other 
+                        engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, IsEnabled, TheComponentReference</usage>
+                <description>
+                    <short_desc>Check the Enabled state of TheComponentReference.</short_desc>
+                    <detailed_desc>
+                        Returns text "true" or "false".
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="ISTOPLEVELPOPUPCONTAINER" 
+             displayText="IsTopLevelPopupContainer" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Is the component a top-level Popup Container? </short_desc>
+            <detailed_desc>
+                Should return text "true" if the component is. Return text "false" if it is not.
+                Different domains or environs will have different classes or types that are Popup Windows or 
+                Popup containers.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            <p>
+            The TestComplete Engine (TCAFS) also persists these values as SAFS variables.
+            </p><pre>            
+            ^TCAFS.Command    = [command]
+            ^TCAFS.StatusCode = [statuscode string]
+            ^TCAFS.StatusInfo = [statusinfo]
+            ^TCAFS.FullName   = [object.FullName] -- the TestObjects.FullName string--if command returns only 1 reference.
+            </pre>
+            </detailed_desc>
+        </description>
+           
+        <engines>
+           <engine vendor="AutomatedQA" tool="TestComplete" name="Test Complete" since="20130722" >
+	       <libraryInfo name="EngineCommands" 
+			       doc="EngineComponentCommandsReference.htm"
+			       sourcecode="EngineCommands.SVB" 
+			       class="COMPONENT" />
+           </engine>        
+            <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getChildren, or one of the other 
+                        engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, IsTopLevelPopupContainer, TheComponentReference</usage>
+                <description>
+                    <short_desc>Is TheComponentReference a PopupWindow or Popup container.</short_desc>
+                    <detailed_desc>
+                        Returns text "true" or "false".
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="SETACTIVEWINDOW" 
+             displayText="SetActiveWindow" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Make the component the active (topmost?) Window or Component.</short_desc>
+            <detailed_desc>
+                Normally, this is only valid for window or child window components.  
+                There is currently nothing defined to be returned by this command.
+            <p>
+            The Android Engine also persists these values as SAFS variables.
+            </p><pre>
+            ^DroidEngine.Command    = [command]
+            ^DroidEngine.StatusCode = [statuscode string]
+            ^DroidEngine.StatusInfo = [statusinfo]
+            </pre><p>
+            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
+            </p>
+            <p>
+            The TestComplete Engine (TCAFS) also persists these values as SAFS variables.
+            </p><pre>            
+            ^TCAFS.Command    = [command]
+            ^TCAFS.StatusCode = [statuscode string]
+            ^TCAFS.StatusInfo = [statusinfo]
+            ^TCAFS.FullName   = [object.FullName] -- the TestObjects.FullName string--if command returns only 1 reference.
+            </pre>
+           </detailed_desc>
+        </description>
+           
+        <engines>
+           <engine vendor="AutomatedQA" tool="TestComplete" name="Test Complete" since="20130722" >
+	       <libraryInfo name="EngineCommands" 
+			       doc="EngineComponentCommandsReference.htm"
+			       sourcecode="EngineCommands.SVB" 
+			       class="COMPONENT" />
+           </engine>        
+           <engine vendor="Google" tool="Android" name="Android" since="20120501" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20120501">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20070815" >
+	        <libraryInfo name="RGuiObjectVector" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/RGuiObjectVector.html" 
+                             sourcecode="org.safs.rational.RGuiObjectVector.java" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENT" displayText="Component" optional="NO" >
+                <description>
+                    <short_desc>An object reference or proxy reference to the component.</short_desc>
+                    <detailed_desc>
+                        A reference to a particular component previously returned from 
+                        a call to getTopLevelWindows, getChildren, or one of the other 
+                        engine commands that return such references.
+                    </detailed_desc>
+                </description>
+            </parameter>
+
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, SetActiveWindow, TheComponentReference</usage>
+                <description>
+                    <short_desc>Set TheComponentReference to be the active/topmost Window.</short_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+
+    <keyword name="HIGHLIGHTMATCHINGCHILDOBJECT" 
+             displayText="HighlightMatchingChildObject" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Find the component according to Recognition String and highlight it.</short_desc>
+            <detailed_desc>
+                According to the Window's and Component's Recognition String, find the Component Test Object
+                and highlight it by a red rectangle. 
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080814" >
+	        <libraryInfo name="REngineCommandProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/REngineCommandProcessor.html" 
+                             sourcecode="org.safs.rational.REngineCommandProcessor" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="WINDOWRS" displayText="WindowRS" optional="NO" >
+                <description>
+                    <short_desc>A string represents the window's Recognition String.</short_desc>
+                    <detailed_desc>
+                        A string represents the window's Recognition String. The format of Recognition String
+                        may be different for different engine.
+                    </detailed_desc>
+                </description>
+            </parameter>
+            <parameter name="COMPONENTRS" displayText="ComponentRS" optional="NO" >
+                <description>
+                    <short_desc>A string represents the component's Recognition String.</short_desc>
+                    <detailed_desc>
+                        A string represents the component's Recognition String. The format of Recognition String
+                        may be different for different engine.
+                    </detailed_desc>
+                </description>
+            </parameter>
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, HighlightMatchingChildObject, "Type=FlexWindow;Name=flexwebdemo.swf", "Type=FlexWindow;Name=flexwebdemo.swf;\;Type=FlexMenuBar;Index=1"</usage>
+                <description>
+                    <short_desc>Find a flex menubar object and highlight it.</short_desc>
+                    <detailed_desc>
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>    
+
+    <keyword name="HIGHLIGHTMATCHINGCHILDOBJECTBYKEY" 
+             displayText="HighlightMatchingChildObjectByKey" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Find the component according to Window/Component Test Object's key and highlight it.</short_desc>
+            <detailed_desc>
+                According to the Window's and Component's Test Object key, get the Component Test Object and highlight it 
+                by a red rectangle. 
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080814" >
+	        <libraryInfo name="REngineCommandProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/REngineCommandProcessor.html" 
+                             sourcecode="org.safs.rational.REngineCommandProcessor" 
+                             class="COMPONENT" />
+            </engine>
+            <engine vendor="Google" tool="Android" name="Android" since="20130129" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20130129">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>            
+        </engines>
+
+        <parameters>
+            <parameter name="WINDOWKEY" displayText="WindowKey" optional="NO" >
+                <description>
+                    <short_desc>A string represents the key of window's Test Object.</short_desc>
+                    <detailed_desc>
+                        A string represents the key of window's Test Object. This key is generated
+                        by engine and used to get the Window Test Object from a cache.
+                    </detailed_desc>
+                </description>
+            </parameter>
+            <parameter name="COMPONENTKEY" displayText="ComponentKey" optional="NO" >
+                <description>
+                    <short_desc>A string represents the key of component's Test Object.</short_desc>
+                    <detailed_desc>
+                        A string represents the key of component's Test Object. This key is generated
+                        by engine and used to get the Component Test Object from a cache.
+                    </detailed_desc>
+                </description>
+            </parameter>
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, HighlightMatchingChildObjectByKey, "WindowKey", "ComponentKey"</usage>
+                <description>
+                    <short_desc>According the Test Object's Key, get the Component Test Object from cache and highlight it.
+                    </short_desc>
+                    <detailed_desc>
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword> 
+
+    <keyword name="GETMATCHINGCHILDKEYSATPOINT" 
+             displayText="GetMatchingChildKeysAtPoint" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>According to screen location, find the test object at that point and return all matching keys in cache.</short_desc>
+            <detailed_desc>
+                According to screen location, find the test object at that point and return all matching keys in cache. The keys
+                will be separaged by a separator, the separator is determinated dynamically and it may be "," "|" ":" ";" "_" "#" "!"
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080814" >
+	        <libraryInfo name="REngineCommandProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/REngineCommandProcessor.html" 
+                             sourcecode="org.safs.rational.REngineCommandProcessor" 
+                             class="COMPONENT" />
+            </engine>
+            <engine vendor="Google" tool="Android" name="Android" since="20130129" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20130129">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>            
+        </engines>
+
+        <parameters>
+            <parameter name="WINDOWKEY" displayText="WindowKey" optional="NO" >
+                <description>
+                    <short_desc>A string represents the key of window's Test Object.</short_desc>
+                    <detailed_desc>
+                        A string represents the key of window's Test Object. This key is generated
+                        by engine and used to get the Window/Component Test Object from a cache.
+                    </detailed_desc>
+                </description>
+            </parameter>
+            <parameter name="COMPONENTLOCATIONX" displayText="ComponentLocationX" optional="NO" >
+                <description>
+                    <short_desc>A string represents the component's x location on screen.</short_desc>
+                    <detailed_desc>
+                        A string represents the component's x location on screen.
+                    </detailed_desc>
+                </description>
+            </parameter>
+            <parameter name="COMPONENTLOCATIONY" displayText="ComponentLocationY" optional="NO" >
+                <description>
+                    <short_desc>A string represents the component's y location on screen.</short_desc>
+                    <detailed_desc>
+                        A string represents the component's y location on screen.
+                    </detailed_desc>
+                </description>
+            </parameter>            
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetMatchingChildKeysAtPoint, "WindowKey", "358", "598"</usage>
+                <description>
+                    <short_desc>According the screen location(358, 598) find a component at that point, this
+                    	component belongs to the window described by "WindowKey". Finally 
+                    	return all the keys corresponding to that component in the cache.
+                    </short_desc>
+                    <detailed_desc>
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+    
+    <keyword name="CLEARHIGHLIGHTEDDIALOG" 
+             displayText="ClearHighlightedDialog" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Clean the highlight rectangle.</short_desc>
+            <detailed_desc>
+                Clean the highlight rectangle. When a component is highlighted, a red rectangle may be drawn by us around
+                that component, this keyword is used to clean that rectangle.
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080814" >
+	        <libraryInfo name="REngineCommandProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/REngineCommandProcessor.html" 
+                             sourcecode="org.safs.rational.REngineCommandProcessor" 
+                             class="COMPONENT" />
+            </engine>
+            <engine vendor="Google" tool="Android" name="Android" since="20130129" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20130129">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>            
+        </engines>
+
+        <parameters>
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, ClearHighlightedDialog</usage>
+                <description>
+                    <short_desc>Clean the highlight rectangle of the previous highlighted component.
+                    </short_desc>
+                    <detailed_desc>
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword> 
+      
+    <keyword name="CLEARREFERENCECACHE" 
+             displayText="ClearReferenceCache" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Clear the Object reference cache used in a remote engine.</short_desc>
+            <detailed_desc>
+                Clear the Object reference cache used in a remote engine. 
+                When a driver or controller requests a unique reference for a remote Object the Object and a String 
+                Key are stored in an internal cache in the remote engine.  This command instructs the remote engine 
+                to clear its internal cache of Objects and Keys.
+            </detailed_desc>
+        </description>
+           
+        <engines>
+           <engine vendor="AutomatedQA" tool="TestComplete" name="Test Complete" since="20130722" >
+	       <libraryInfo name="EngineCommands" 
+			       doc="EngineComponentCommandsReference.htm"
+			       sourcecode="EngineCommands.SVB" 
+			       class="COMPONENT" />
+           </engine>
+            <engine vendor="Google" tool="Android" name="Android" since="20130129" >
+				<libraryInfo name="DEngineCommandProcessor" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html" 
+					 sourcecode="org.safs.android.DEngineCommandProcessor.java" 
+					 class="COMPONENT" />
+            	<domains>
+            		<domain name="DEV" since="20130129">
+	        			<libraryInfo name="EngineProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/EngineProcessor.html" 
+                             sourcecode="org.safs.android.engine.EngineProcessor.java" 
+                             class="COMPONENT" />
+                    </domain>
+                </domains>
+            </engine>            
+        </engines>
+
+        <parameters>
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, ClearReferenceCache</usage>
+                <description>
+                    <short_desc>Clear the Object reference cache used in the remote engine.
+                    </short_desc>
+                    <detailed_desc>
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword> 
+      
+    <keyword name="GETCOMPONENTRECTANGLE" 
+             displayText="GetComponentRectangle" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Find the component according to Component Test Object's key and get its screen location.</short_desc>
+            <detailed_desc>
+                Find the component according to Component Test Object's key and get its screen location. The component's
+                screen location is returned as a string "UpLeftX, UpLeftY, Width, Height". 
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080814" >
+	        <libraryInfo name="REngineCommandProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/REngineCommandProcessor.html" 
+                             sourcecode="org.safs.rational.REngineCommandProcessor" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENTKEY" displayText="ComponentKey" optional="NO" >
+                <description>
+                    <short_desc>A string represents the key of component's Test Object.</short_desc>
+                    <detailed_desc>
+                        A string represents the key of component's Test Object. This key is generated
+                        by engine and used to get the Component Test Object from a cache.
+                    </detailed_desc>
+                </description>
+            </parameter>
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetComponentRectangle, "ComponentKey"</usage>
+                <description>
+                    <short_desc>According the Component Test Object's Key, find the component from cache and 
+                    	return its screen location.
+                    </short_desc>
+                    <detailed_desc>
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+          
+    <keyword name="GETTOPWINDOWHANDLE" 
+             displayText="GetTopWindowHandle" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+        <description>
+            <short_desc>Get the Windows native handle of the top window containing the component.</short_desc>
+            <detailed_desc>
+                Get the Windows native handle of the top window containing the component. 
+            </detailed_desc>
+        </description>
+           
+        <engines>
+            <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080814" >
+	        <libraryInfo name="REngineCommandProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/rational/REngineCommandProcessor.html" 
+                             sourcecode="org.safs.rational.REngineCommandProcessor" 
+                             class="COMPONENT" />
+            </engine>
+        </engines>
+
+        <parameters>
+            <parameter name="COMPONENTKEY" displayText="ComponentKey" optional="NO" >
+                <description>
+                    <short_desc>A string represents the key of component's Test Object.</short_desc>
+                    <detailed_desc>
+                        A string represents the key of component's Test Object. This key is generated
+                        by engine and used to get the Component Test Object from a cache.
+                    </detailed_desc>
+                </description>
+            </parameter>
+        </parameters>
+       
+        <examples>
+            <example>
+                <usage>E, GetTopWindowHandle, "ComponentKey"</usage>
+                <description>
+                    <short_desc>According the Component Key, find the component from cache then find the
+                    	top window object and return the Windows native handle of the top window object.
+                    </short_desc>
+                    <detailed_desc>
+                    </detailed_desc>
+                </description>
+            </example>
+        </examples>
+    </keyword>
+                
+    </keywords>
+</keyword_library>
+    

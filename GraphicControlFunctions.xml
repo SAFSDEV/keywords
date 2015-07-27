@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="GraphicControlFunctions" 
+                 doc="GraphicControlFunctions.htm" 
+                 sourcecode="GraphicControlFunctions.sbl" 
+                 chainTo="GenericObjectFunctions"
+                 class="GRAPHICCONTROL">
+
+        <description>
+           <short_desc> 
+              Actions for working with GraphicControl objects
+           </short_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="Robot" version="2002" />
+    <keywords>
+    
+    <keyword name="CLICK" 
+             displayText="Click" 
+             deprecated="YES" 
+             deprecatedFor="Generic CLICK" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description>
+              <short_desc> 
+                 Attempts to perform a standard Click on the GraphicControl object
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine name="WinRunner" 
+			       since="20021025" 
+			       tool="WinRunner" 
+			       vendor="Mercury Interactive">
+		       <libraryInfo class="GRAPHICCONTROL" 
+					name="GraphicControlFunctions" 
+					sourcecode="GraphicControlFunctions">
+		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters /><examples>
+
+        <example>
+           <usage>T, WINDOW, GraphicControl, CLICK</usage>
+           <description>
+              <short_desc> 
+                 Performs a standard single-click on the GraphicControl object
+              </short_desc>
+           </description>
+        </example>
+
+     </examples></keyword>
+     
+  <keyword name="CLICKBUTTON" 
+           displayText="ClickButton" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Attempts to perform a standard Click on the GraphicControl object
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="GraphicControlFunctions" 
+                            doc="GraphicControlFunctions.htm" 
+                            sourcecode="GraphicControlFunctions.sbl" 
+                            class="GRAPHICCONTROL" />
+           </engine>
+           <engine name="WinRunner" 
+			       since="20021025" 
+			       tool="WinRunner" 
+			       vendor="Mercury Interactive">
+		       <libraryInfo class="GRAPHICCONTROL" 
+					name="GraphicControlFunctions" 
+					sourcecode="GraphicControlFunctions">
+		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters /><examples>
+
+        <example>
+           <usage>T, WINDOW, GraphicControl, CLICKBUTTON</usage>
+           <description>
+              <short_desc> 
+                 Performs a standard single-click on the GraphicControl object
+              </short_desc>
+           </description>
+        </example>
+
+     </examples></keyword>
+</keywords>
+</keyword_library>

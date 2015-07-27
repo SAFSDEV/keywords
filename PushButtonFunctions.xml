@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="PushButtonFunctions" 
+                 doc="PushButtonFunctions.htm" 
+                 sourcecode="PushButtonFunctions.sbl" 
+                 chainTo="GenericObjectFunctions"
+                 class="PUSHBUTTON">
+
+        <description>
+           <short_desc> 
+              Actions for working with PushButton objects
+           </short_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="Robot" version="2002" />
+    <keywords>
+    
+    <keyword name="CLICK" 
+             displayText="Click" 
+             deprecated="YES" 
+             deprecatedFor="GenericObject Click" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description>
+              <short_desc> 
+                 Attempts to perform a standard Click on the PushButton
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine name="WinRunner" 
+			       since="20000909" 
+			       tool="WinRunner" 
+			       vendor="Mercury Interactive">
+		       <libraryInfo class="PUSHBUTTON" 
+					name="PushButtonFunctions" 
+					sourcecode="PushButtonFunctions">
+		       </libraryInfo>
+           </engine>
+           <engine name="Test Complete" 
+				   since="20081028" 
+				   tool="TestComplete" 
+				   vendor="Automated QA">
+			   <libraryInfo class="PUSHBUTTON" 
+					name="PushButtonFunctions" 
+					sourcecode="PushButtonFunctions.SVB">
+			   </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters /><examples>
+        <example>
+           <usage>T, WINDOW, PushButton, CLICK</usage>
+           <description>
+              <short_desc> 
+                 Performs a standard single-click on the PushButton
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="CLICKBUTTON" 
+           displayText="ClickButton" 
+           deprecated="YES" 
+           deprecatedFor="GenericObject Click" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Attempts to perform a standard Click on the PushButton
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="PushButtonFunctions" 
+                            doc="PushButtonFunctions.htm" 
+                            sourcecode="PushButtonFunctions.sbl" 
+                            class="PUSHBUTTON" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20000909" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="PUSHBUTTON" 
+	   					name="PushButtonFunctions" 
+	   					sourcecode="PushButtonFunctions">
+	   		       </libraryInfo>
+           </engine>
+           <engine name="Test Complete" 
+		   				   since="20081028" 
+		   				   tool="TestComplete" 
+		   				   vendor="Automated QA">
+		   			   <libraryInfo class="PUSHBUTTON" 
+		   					name="PushButtonFunctions" 
+		   					sourcecode="PushButtonFunctions.SVB">
+		   			   </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters /><examples>
+        <example>
+           <usage>T, WINDOW, PushButton, CLICKBUTTON</usage>
+           <description>
+              <short_desc> 
+                 Performs a standard single-click on the PushButton
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+</keywords>
+</keyword_library>

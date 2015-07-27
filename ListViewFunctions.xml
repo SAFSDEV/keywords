@@ -1,0 +1,2976 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="ListViewFunctions" 
+                 doc="ListViewFunctions.htm" 
+                 sourcecode="ListViewFunctions.sbl" 
+                 chainTo="GenericObjectFunctions"
+                 class="LISTVIEW">
+
+        <description>
+           <short_desc> 
+              Actions for working with ListView objects
+           </short_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="Robot" version="2002" />
+    <keywords>
+    
+  <keyword name="CAPTUREITEMSTOFILE" 
+           displayText="CaptureItemsToFile" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc>
+                Capture Items To a File specified (if not abs, then to test dir)
+              </short_desc>
+              <detailed_desc> 
+                Capture Items To a File specified (if not abs, then to test dir)
+              </detailed_desc>
+           </description>
+           
+       <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20121012" >
+				<libraryInfo name="CFListViewFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFListViewFunctions.html" 
+					 sourcecode="org.safs.android.CFListViewFunctions.java" 
+					 class="LISTVIEW" />
+            	<domains>
+            		<domain name="DEV" since="20121012">
+	        			<libraryInfo name="ListViewProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/ListViewProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.ListViewProcessor.java" 
+                             class="LISTVIEW" />
+                    </domain>
+                </domains>
+            </engine>
+           <engine name="Test Complete" since="20130427" tool="TestComplete" vendor="AutomatedQA">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions.SVB">
+		       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20130427">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="NET" 
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20130427">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="FLEX"
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+               </domains> 
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="FILENAME" displayText="FileName" optional="NO">
+           <description>
+              <short_desc> 
+                 File name (if not absolute, then to test dir)
+              </short_desc>
+              <detailed_desc> 
+                 File name (if not absolute, then to test dir)
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="FILEENCODING" displayText="FileEncoding" optional="YES" default="">
+           <description> <short_desc>
+             Specify a character encoding to be used when saving data to a file.
+			 If it is not specified, the system default file encoding will be used.
+             The encoding should be a valid string supported by Java; if it is not valid,
+             the system default file encoding will be used instead.
+            </short_desc> </description>
+        </parameter>  
+     </parameters><examples>
+
+        <example>
+           <usage> T, WINDOW, ListBox, CaptureItemsToFile ,  afile.txt   </usage>
+           <description>
+              <short_desc> 
+                 Captures all the items in the list to ...\datapool\test\afile.txt
+              </short_desc>
+              <detailed_desc> 
+                 Captures all the items in the list to ...\datapool\test\afile.txt
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T, WINDOW, ListBox, CaptureItemsToFile ,  afile.txt, "UTF-8"   </usage>
+           <description>
+              <short_desc> 
+                 Captures all the items in the list to ...\datapool\test\afile.txt
+              </short_desc>
+              <detailed_desc> 
+                 Captures all the items in the list to ...\datapool\test\afile.txt<BR/>
+                 Writing file with "UTF-8" encoding.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+    <keyword name="VERIFYSELECTEDITEM" 
+             displayText="VerifySelectedItem" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description>
+              <short_desc> 
+                Verifies a particular case-sensitive text item is selected
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListViewFunctions" 
+                            doc="ListViewFunctions.htm" 
+                            sourcecode="ListViewFunctions.sbl" 
+                            class="LISTVIEW" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   			       since="20000403" 
+	   	   			       tool="WinRunner" 
+	   	   			       vendor="Mercury Interactive">
+	   	   		       <libraryInfo class="LISTVIEW" 
+	   	   					name="ListViewFunctions" 
+	   	   					sourcecode="ListViewFunctions">
+	   	   		       </libraryInfo>
+           </engine>
+           <engine name="Test Complete" since="20110426" tool="TestComplete" vendor="AutomatedQA">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions.SVB">
+		       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20110426">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="NET" 
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20110426">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="FLEX"
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+               </domains> 
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node that will be verified selected
+              </short_desc>
+              <detailed_desc> 
+                 TextValue should contain the case-sensitive text of the item expected to already be selected
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, ListView, VerifySelectedItem ,  "AParticularUserID"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that "AParticularUserID" is selected in the ListView.
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="VERIFYITEMUNSELECTED" 
+           displayText="VerifyItemUnselected" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Verifies a particular case-sensitive text item is NOT selected.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListViewFunctions" 
+                            doc="ListViewFunctions.htm" 
+                            sourcecode="ListViewFunctions.sbl" 
+                            class="LISTVIEW" />
+           </engine>
+           <engine name="WinRunner" 
+			       since="20000403" 
+			       tool="WinRunner" 
+			       vendor="Mercury Interactive">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions">
+		       </libraryInfo>
+           </engine>
+           <engine name="Test Complete" since="20110426" tool="TestComplete" vendor="AutomatedQA">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions.SVB">
+		       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20110426">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="NET" 
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20110426">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="FLEX"
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+               </domains> 
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node that will be verified unselected
+              </short_desc>
+              <detailed_desc> 
+                 TextValue should contain the case-sensitive text of the item that is expected NOT to be selected.
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, ListView, VerifyItemUnselected,  "AParticularUserID"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that "AParticularUserID" is NOT selected in the ListView.
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SELECTTEXTITEM" 
+           displayText="SelectTextItem" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to select (single click) an item according to its text value.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListViewFunctions" 
+                            doc="ListViewFunctions.htm" 
+                            sourcecode="ListViewFunctions.sbl" 
+                            class="LISTVIEW" />
+           </engine>
+           <engine name="WinRunner" 
+			       since="20000403" 
+			       tool="WinRunner" 
+			       vendor="Mercury Interactive">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions">
+		       </libraryInfo>
+           </engine>
+           <engine name="Test Complete" since="20110426" tool="TestComplete" vendor="AutomatedQA">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions.SVB">
+		       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20110426">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="NET" 
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20110426">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="FLEX"
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+               </domains> 
+           </engine>           
+            <engine vendor="Google" tool="Android" name="Android" since="20121012" >
+				<libraryInfo name="CFListViewFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFListViewFunctions.html" 
+					 sourcecode="org.safs.android.CFListViewFunctions.java" 
+					 class="LISTVIEW" />
+            	<domains>
+            		<domain name="DEV" since="20121012">
+	        			<libraryInfo name="ListViewProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/ListViewProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.ListViewProcessor.java" 
+                             class="LISTVIEW" />
+                    </domain>
+                </domains>
+            </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="SELECTTEXTVALUE" displayText="SelectTextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select
+              </short_desc>
+              <detailed_desc> 
+                 SelectTextValue should contain the case-sensitive text item to select.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="MATCHINDEX" displayText="MatchIndex" optional="YES">
+           <description>
+              <short_desc> 
+                 Optional index of the Nth duplicate item to match.
+              </short_desc>
+              <detailed_desc> 
+                 Allows us to match duplicate item N in a list containing duplicate 
+                 entries.  For example, match the 2nd (or specified Nth) item whose text matches 
+                 the provided text value.
+                 <p>
+                 The value of the parameter can have 2 forms:<br/>
+                 <ul>
+                 <li>A numeric value.  Ex: "3"</li>
+                 <li>Index prefixed value.  Ex: "Index=3"</li>
+                 </ul>
+                 </p>
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+        <example>
+           <usage> T, WINDOW, ListView, SelectTextItem ,  "AParticularUserID"   </usage>
+           <description>
+              <short_desc> 
+                 Selects "AParticularUserID" from the ListView object
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T, WINDOW, ListView, SelectTextItem ,  "AParticularUserID", "Index=2"   </usage>
+           <description>
+              <short_desc> 
+                 Selects the 2nd text item matching "AParticularUserID" from the ListView object
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword name="SELECTPARTIALMATCH" 
+           displayText="SelectPartialMatch" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to select (single click) an item according to a partial text match.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine name="Test Complete" since="20120224" tool="TestComplete" vendor="AutomatedQA">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions.SVB">
+		       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20120224">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="NET" 
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20120224">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="FLEX"
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+               </domains> 
+           </engine>             
+            <engine vendor="Google" tool="Android" name="Android" since="20121012" >
+				<libraryInfo name="CFListViewFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFListViewFunctions.html" 
+					 sourcecode="org.safs.android.CFListViewFunctions.java" 
+					 class="LISTVIEW" />
+            	<domains>
+            		<domain name="DEV" since="20121012">
+	        			<libraryInfo name="ListViewProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/ListViewProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.ListViewProcessor.java" 
+                             class="LISTVIEW" />
+                    </domain>
+                </domains>
+            </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="PARTIALTEXTVALUE" displayText="PartialTextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive substring of node to select
+              </short_desc>
+              <detailed_desc> 
+                 PartialTextValue should be a case-sensitive substring of text item to select.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="MATCHINDEX" displayText="MatchIndex" optional="YES">
+           <description>
+              <short_desc> 
+                 Optional index of the Nth duplicate item to match.
+              </short_desc>
+              <detailed_desc> 
+                 Allows us to match duplicate item N in a list containing duplicate 
+                 entries.  For example, match the 2nd (or specified Nth) item whose text matches 
+                 the provided text value.
+                 <p>
+                 The value of the parameter can have 2 forms:<br/>
+                 <ul>
+                 <li>A numeric value.  Ex: "3"</li>
+                 <li>Index prefixed value.  Ex: "Index=3"</li>
+                 </ul>
+                 </p>
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+        <example>
+           <usage> T, WINDOW, ListView, SelectPartialMatch ,  "APartialString"   </usage>
+           <description>
+              <short_desc> 
+                 Selects the first item containing "APartialString" in the ListView.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T, WINDOW, ListView, SelectPartialMatch ,  "APartialString", "Index=2"   </usage>
+           <description>
+              <short_desc> 
+                 Selects the 2nd text item containing "APartialString" in the ListView.
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SELECTTEXTITEMCOORDS" 
+           displayText="SelectTextItemCoords" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Single click a text item at specific Coords.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListViewFunctions" 
+                            doc="ListViewFunctions.htm" 
+                            sourcecode="ListViewFunctions.sbl" 
+                            class="LISTVIEW" />
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>           
+       </engines>
+
+       <parameters>
+        <parameter name="SELECTTEXTVALUE" displayText="SelectTextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select
+              </short_desc>
+              <detailed_desc> 
+                 SelectTextValue should contain the case-sensitive text item to select.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="COORDS" displayText="Coords" optional="NO">
+           <description>
+              <short_desc> 
+                The explicit coordinates ("x,y") or an App Map reference to 
+                pre-defined coordinates.
+              </short_desc>
+              <detailed_desc>
+                We first check to see if the field contains a reference to an 
+                App Map item.  If that cannot be found, we will assume the field 
+                contains explicit coordinates.
+                <p>We expect the coordinates in the format "x,y":</p>
+                <p>
+                [MyListView]<br/>
+                Center=5,120   OR<br/>
+                Center=Coords=5,120 </p>
+                <p>
+                The results from the lookup are appended to the "Coords=" string 
+                used by the Click command in Robot (if necessary).</p>
+                <p>
+                Both Fields #3(component name) and #6(coords reference name) 
+                are used to locate the item in the App Map.
+                This routine does not specify an App Map so only the current Map
+                is used and it is expected to be valid.</p>
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="MATCHINDEX" displayText="MatchIndex" optional="YES">
+           <description>
+              <short_desc> 
+                 Optional index of the Nth duplicate item to match.
+              </short_desc>
+              <detailed_desc> 
+                 Allows us to match duplicate item N in a list containing duplicate 
+                 entries.  For example, match the 2nd (or specified Nth) item whose text matches 
+                 the provided text value.
+                 <p>
+                 The value of the parameter can have 2 forms:<br/>
+                 <ul>
+                 <li>A numeric value.  Ex: "3"</li>
+                 <li>Index prefixed value.  Ex: "Index=3"</li>
+                 </ul>
+                 </p>
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage> T  WINDOW  MyList  SelectTextItemCoords  "AParticularUserID"  "5,20"   </usage>
+           <description>
+              <short_desc> 
+                 Single Click "AParticularUserID" at specific coords.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T  WINDOW  MyList  SelectTextItemCoords  "AParticularUserID"  "5,20"  "Index=2"  </usage>
+           <description>
+              <short_desc> 
+                 Single Click the 2nd text item matching "AParticularUserID" at specific coords.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T  WINDOW  MyList SelectTextItemCoords  "AParticularUserID"  "Coords=5,20"   </usage>
+           <description>
+              <short_desc> 
+                 Single Click "AParticularUserID" at specific coords.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T  WINDOW  MyList  SelectTextItemCoords  "AParticularUserID"  CENTER   </usage>
+           <description>
+              <short_desc> 
+                 Single Click "AParticularUserID" at coords defined in the App Map
+                 in a [MyList] section.
+              </short_desc>
+              <detailed_desc>
+                <p>Both Fields #3(component name) and #6(coords reference name) 
+                are used to locate the item in the App Map.
+                This routine does not specify an App Map so only the current Map
+                is used and it is expected to be valid.</p>
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SELECTUNVERIFIEDTEXTITEM" 
+           displayText="SelectUnverifiedTextItem" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to select (single click) an unverifiable item according to its text value.
+              </short_desc><detailed_desc>
+                An unverifiable item is one whose READ value is not the same as its SET value.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListViewFunctions" 
+                            doc="ListViewFunctions.htm" 
+                            sourcecode="ListViewFunctions.sbl" 
+                            class="LISTVIEW" />
+           </engine>
+           <engine name="Test Complete" since="20110426" tool="TestComplete" vendor="AutomatedQA">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions.SVB">
+		       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20110426">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="NET" 
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20110426">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="FLEX"
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+               </domains> 
+           </engine>             
+            <engine vendor="Google" tool="Android" name="Android" since="20121012" >
+				<libraryInfo name="CFListViewFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFListViewFunctions.html" 
+					 sourcecode="org.safs.android.CFListViewFunctions.java" 
+					 class="LISTVIEW" />
+            	<domains>
+            		<domain name="DEV" since="20121012">
+	        			<libraryInfo name="ListViewProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/ListViewProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.ListViewProcessor.java" 
+                             class="LISTVIEW" />
+                    </domain>
+                </domains>
+            </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="SELECTTEXTVALUE" displayText="SelectTextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select
+              </short_desc>
+              <detailed_desc> 
+                 SelectTextValue should contain the case-sensitive text item to select.
+                 The selection will not be verified.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="MATCHINDEX" displayText="MatchIndex" optional="YES">
+           <description>
+              <short_desc> 
+                 Optional index of the Nth duplicate item to match.
+              </short_desc>
+              <detailed_desc> 
+                 Allows us to match duplicate item N in a list containing duplicate 
+                 entries.  For example, match the 2nd (or specified Nth) item whose text matches 
+                 the provided text value.
+                 <p>
+                 The value of the parameter can have 2 forms:<br/>
+                 <ul>
+                 <li>A numeric value.  Ex: "3"</li>
+                 <li>Index prefixed value.  Ex: "Index=3"</li>
+                 </ul>
+                 </p>
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+        <example>
+           <usage> T, WINDOW, ListView, SelectUnverifiedTextItem ,  "AParticularUserID"   </usage>
+           <description>
+              <short_desc> 
+                 Selects "AParticularUserID" from the ListView object.
+              </short_desc>
+              <detailed_desc> 
+                 The selection will not (cannot) be verified.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T, WINDOW, ListView, SelectUnverifiedTextItem ,  "AParticularUserID", "Index=3"   </usage>
+           <description>
+              <short_desc> 
+                 Selects the 3rd text item matching "AParticularUserID" from the ListView object.
+              </short_desc>
+              <detailed_desc> 
+                 The selection will not (cannot) be verified.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword name="SELECTUNVERIFIEDTEXTITEMCOORDS" 
+           displayText="SelectUnverifiedTextItemCoords" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Single click an unverifiable text item at specific Coords.
+              </short_desc><detailed_desc>
+                An unverifiable item is one whose READ value is not the same as its SET value.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListViewFunctions" 
+                            doc="ListViewFunctions.htm" 
+                            sourcecode="ListViewFunctions.sbl" 
+                            class="LISTVIEW" />
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>           
+       </engines>
+
+       <parameters>
+        <parameter name="SELECTTEXTVALUE" displayText="SelectTextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select
+              </short_desc>
+              <detailed_desc> 
+                 SelectTextValue should contain the case-sensitive text item to select.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="COORDS" displayText="Coords" optional="NO">
+           <description>
+              <short_desc> 
+                The explicit coordinates ("x,y") or an App Map reference to 
+                pre-defined coordinates.
+              </short_desc>
+              <detailed_desc>
+                We first check to see if the field contains a reference to an 
+                App Map item.  If that cannot be found, we will assume the field 
+                contains explicit coordinates.
+                <p>We expect the coordinates in the format "x,y":</p>
+                <p>
+                [MyListView]<br/>
+                Center=5,120   OR<br/>
+                Center=Coords=5,120 </p>
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="MATCHINDEX" displayText="MatchIndex" optional="YES">
+           <description>
+              <short_desc> 
+                 Optional index of the Nth duplicate item to match.
+              </short_desc>
+              <detailed_desc> 
+                 Allows us to match duplicate item N in a list containing duplicate 
+                 entries.  For example, match the 2nd (or specified Nth) item whose text matches 
+                 the provided text value.
+                 <p>
+                 The value of the parameter can have 2 forms:<br/>
+                 <ul>
+                 <li>A numeric value.  Ex: "3"</li>
+                 <li>Index prefixed value.  Ex: "Index=3"</li>
+                 </ul>
+                 </p>
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+        <example>
+           <usage> T  WINDOW  MyList  SelectUnverifiedTextItemCoords  "AParticularUserID"  "5,20"   </usage>
+           <description>
+              <short_desc> 
+                 Single Click "AParticularUserID" at specific coords.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T  WINDOW  MyList  SelectUnverifiedTextItemCoords  "AParticularUserID"  "5,20"  "Index=3" </usage>
+           <description>
+              <short_desc> 
+                 Single Click the 3rd text item matching "AParticularUserID" at specific coords.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T  WINDOW  MyList SelectUnverifiedTextItemCoords  "AParticularUserID"  "Coords=5,20"   </usage>
+           <description>
+              <short_desc> 
+                 Single Click "AParticularUserID" at specific coords.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T  WINDOW  MyList  SelectUnverifiedTextItemCoords  "AParticularUserID"  CENTER   </usage>
+           <description>
+              <short_desc> 
+                 Single Click "AParticularUserID" at coords defined in the App Map
+                 in a [MyList] section.
+              </short_desc>
+              <detailed_desc>
+                <p>Both Fields #3(component name) and #6(coords reference name) 
+                are used to locate the item in the App Map.
+                This routine does not specify an App Map so only the current Map
+                is used and it is expected to be valid.</p>
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="ACTIVATEINDEX" 
+           displayText="ActivateIndex" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Activate (double-click) an item based on it's index in the list
+              </short_desc>
+              <detailed_desc> 
+                It is important to note that some ListViews index their values
+                differently.  For example, you may need to select an item by 
+                text by using a property whose starting index is 1.  Yet, 
+                if you request to seek an item strictly by index, the starting 
+                index is 0.  So, the test developer may need to evaluate their 
+                ListView object for these differences.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20121012" >
+				<libraryInfo name="CFListViewFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFListViewFunctions.html" 
+					 sourcecode="org.safs.android.CFListViewFunctions.java" 
+					 class="LISTVIEW" />
+            	<domains>
+            		<domain name="DEV" since="20121012">
+	        			<libraryInfo name="ListViewProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/ListViewProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.ListViewProcessor.java" 
+                             class="LISTVIEW" />
+                    </domain>
+                </domains>
+            </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="INDEX" displayText="Index" optional="NO">
+           <description>
+              <short_desc> 
+                 Index of the text item to select
+              </short_desc>
+              <detailed_desc> 
+                It is important to note that some ListViews index their values
+                differently.  For example, you may need to select an item by 
+                text by using a property whose starting index is 1.  Yet, 
+                if you request to seek an item strictly by index, the starting 
+                index is 0.  So, the test developer may need to evaluate their 
+                ListView object for these differences.
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+
+        <example>
+           <usage> T, WINDOW, ListBox, ActivateIndex ,  3   </usage>
+           <description>
+              <short_desc> 
+                 Selects the item in the list at the specified index.
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SELECTINDEX" 
+           displayText="SelectIndex" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Same as (Alias for) ListView SelectIndexItem
+              </short_desc>
+           </description>
+           
+       <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20121012" >
+				<libraryInfo name="CFListViewFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFListViewFunctions.html" 
+					 sourcecode="org.safs.android.CFListViewFunctions.java" 
+					 class="LISTVIEW" />
+            	<domains>
+            		<domain name="DEV" since="20121012">
+	        			<libraryInfo name="ListViewProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/ListViewProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.ListViewProcessor.java" 
+                             class="LISTVIEW" />
+                    </domain>
+                </domains>
+            </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="INDEX" displayText="Index" optional="NO">
+           <description>
+              <short_desc> 
+                 See ListView SelectIndexItem
+              </short_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+
+        <example>
+           <usage> T, WINDOW, ListBox, SelectIndex ,  3   </usage>
+           <description>
+              <short_desc> 
+                 Selects the item in the list at the provided index. (See ListView SelectIndexItem)
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SELECTINDEXITEM" 
+           displayText="SelectIndexItem" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to single click an item according to its Index value.
+              </short_desc>
+              <detailed_desc> 
+                It is important to note that some ListViews index their values
+                differently.  For example, you may need to select an item by 
+                text by using a property whose starting index is 1.  Yet, 
+                if you request to seek an item strictly by index, the starting 
+                index is 0.  So, the test developer may need to evaluate their 
+                ListView object for these differences.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListViewFunctions" 
+                            doc="ListViewFunctions.htm" 
+                            sourcecode="ListViewFunctions.sbl" 
+                            class="LISTVIEW" />
+           </engine>
+           <engine name="WinRunner" 
+			       since="20000403" 
+			       tool="WinRunner" 
+			       vendor="Mercury Interactive">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions">
+		       </libraryInfo>
+           </engine>
+           <engine name="Test Complete" since="20111115" tool="TestComplete" vendor="AutomatedQA">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions.SVB">
+		       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20111115">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="NET" 
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20111115">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="FLEX"
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+               </domains> 
+           </engine>            
+            <engine vendor="Google" tool="Android" name="Android" since="20121012" >
+				<libraryInfo name="CFListViewFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFListViewFunctions.html" 
+					 sourcecode="org.safs.android.CFListViewFunctions.java" 
+					 class="LISTVIEW" />
+            	<domains>
+            		<domain name="DEV" since="20121012">
+	        			<libraryInfo name="ListViewProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/ListViewProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.ListViewProcessor.java" 
+                             class="LISTVIEW" />
+                    </domain>
+                </domains>
+            </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="ItemIndex" displayText="ItemIndex" optional="NO">
+           <description>
+              <short_desc> 
+                 Index of node to select.
+              </short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage> T, WINDOW, ListView, SelectIndexItem ,  4   </usage>
+           <description>
+              <short_desc> 
+                 Selects the item at Index 4.
+              </short_desc>
+              <detailed_desc> 
+                It is important to note that some ListViews index their values
+                differently.  For example, you may need to select an item by 
+                text by using a property whose starting index is 1.  Yet, 
+                if you request to seek an item strictly by index, the starting 
+                index is 0.  So, the test developer may need to evaluate their 
+                ListView object for these differences.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="CLICKINDEX" 
+           displayText="ClickIndex" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Same as (Alias for) ListView ActivateIndexItem
+              </short_desc>
+           </description>
+           
+       <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20121012" >
+				<libraryInfo name="CFListViewFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFListViewFunctions.html" 
+					 sourcecode="org.safs.android.CFListViewFunctions.java" 
+					 class="LISTVIEW" />
+            	<domains>
+            		<domain name="DEV" since="20121012">
+	        			<libraryInfo name="ListViewProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/ListViewProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.ListViewProcessor.java" 
+                             class="LISTVIEW" />
+                    </domain>
+                </domains>
+            </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="INDEX" displayText="Index" optional="NO">
+           <description>
+              <short_desc> 
+                 See ListView ActivateIndexItem
+              </short_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+
+        <example>
+           <usage> T, WINDOW, ListBox, ClickIndex ,  3   </usage>
+           <description>
+              <short_desc> 
+                 Activates the item in the list at the provided index. (See ListView ActivateIndexItem)
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="CLICKINDEXITEM" 
+           displayText="ClickIndexItem" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Same as (Alias for) ListView ActivateIndexItem
+              </short_desc>
+           </description>
+           
+       <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20121012" >
+				<libraryInfo name="CFListViewFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFListViewFunctions.html" 
+					 sourcecode="org.safs.android.CFListViewFunctions.java" 
+					 class="LISTVIEW" />
+            	<domains>
+            		<domain name="DEV" since="20121012">
+	        			<libraryInfo name="ListViewProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/ListViewProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.ListViewProcessor.java" 
+                             class="LISTVIEW" />
+                    </domain>
+                </domains>
+            </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="INDEX" displayText="Index" optional="NO">
+           <description>
+              <short_desc> 
+                 See ListView ActivateIndexItem
+              </short_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+
+        <example>
+           <usage> T, WINDOW, ListBox, ClickIndexItem ,  3   </usage>
+           <description>
+              <short_desc> 
+                 Activates the item in the list at the provided index. (See ListView ActivateIndexItem)
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="ACTIVATEINDEXITEM" 
+           displayText="ActivateIndexItem" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to double click an item according to its index in the list.
+              </short_desc>
+              <detailed_desc> 
+                It is important to note that some ListViews index their values
+                differently.  For example, you may need to select an item by 
+                text by using a property whose starting index is 1.  Yet, 
+                if you request to seek an item strictly by index, the starting 
+                index is 0.  So, the test developer may need to evaluate their 
+                ListView object for these differences.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20121012" >
+				<libraryInfo name="CFListViewFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFListViewFunctions.html" 
+					 sourcecode="org.safs.android.CFListViewFunctions.java" 
+					 class="LISTVIEW" />
+            	<domains>
+            		<domain name="DEV" since="20121012">
+	        			<libraryInfo name="ListViewProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/ListViewProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.ListViewProcessor.java" 
+                             class="LISTVIEW" />
+                    </domain>
+                </domains>
+            </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="INDEXVALUE" displayText="IndexValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Index of item to activate.
+              </short_desc>
+              <detailed_desc> 
+                It is important to note that some ListViews index their values
+                differently.  For example, you may need to select an item by 
+                text by using a property whose starting index is 1.  Yet, 
+                if you request to seek an item strictly by index, the starting 
+                index is 0.  So, the test developer may need to evaluate their 
+                ListView object for these differences.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage> T, WINDOW, ListView, ActivateIndexItem ,  3   </usage>
+           <description>
+              <short_desc> 
+                 Double clicks the ListView item at the specified index.
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword name="SELECTINDEXITEMCOORDS" 
+           displayText="SelectIndexItemCoords" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to single click an item by Index at specific coordinates.
+              </short_desc>
+              <detailed_desc> 
+                It is important to note that some ListViews index their values
+                differently.  For example, you may need to select an item by 
+                text by using a property whose starting index is 1.  Yet, 
+                if you request to seek an item strictly by index, the starting 
+                index is 0.  So, the test developer may need to evaluate their 
+                ListView object for these differences.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListViewFunctions" 
+                            doc="ListViewFunctions.htm" 
+                            sourcecode="ListViewFunctions.sbl" 
+                            class="LISTVIEW" />
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140529" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="ItemIndex" displayText="ItemIndex" optional="NO">
+           <description>
+              <short_desc> 
+                 Index of node to select.
+              </short_desc>
+           </description>
+        </parameter>
+        <parameter name="COORDS" displayText="Coords" optional="NO">
+           <description>
+              <short_desc> 
+                The explicit coordinates ("x,y") or an App Map reference to 
+                pre-defined coordinates.
+              </short_desc>
+              <detailed_desc>
+                We first check to see if the field contains a reference to an 
+                App Map item.  If that cannot be found, we will assume the field 
+                contains explicit coordinates.
+                <p>We expect the coordinates in the format "x,y":</p>
+                <p>
+                [MyListView]<br/>
+                Center=5,120   OR<br/>
+                Center=Coords=5,120 </p>
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage> T  WINDOW  MyList  SelectIndexItemCoords  "2"  "5,20"   </usage>
+           <description>
+              <short_desc> 
+                 Single Click item index "2" at specific coords.
+              </short_desc>
+              <detailed_desc> 
+                It is important to note that some ListViews index their values
+                differently.  For example, you may need to select an item by 
+                text by using a property whose starting index is 1.  Yet, 
+                if you request to seek an item strictly by index, the starting 
+                index is 0.  So, the test developer may need to evaluate their 
+                ListView object for these differences.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T  WINDOW  MyList  SelectIndexItemCoords  "2"  "Coords=5,20"   </usage>
+           <description>
+              <short_desc> 
+                 Single Click item index "2" at specific coords.
+              </short_desc>
+              <detailed_desc> 
+                It is important to note that some ListViews index their values
+                differently.  For example, you may need to select an item by 
+                text by using a property whose starting index is 1.  Yet, 
+                if you request to seek an item strictly by index, the starting 
+                index is 0.  So, the test developer may need to evaluate their 
+                ListView object for these differences.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T  WINDOW  MyList  SelectIndexItemCoords  "2"  "Center"   </usage>
+           <description>
+              <short_desc> 
+                 Single Click item index "2" at coords defined in App Map.
+              </short_desc>
+              <detailed_desc>
+                <p>Both Fields #3(component name) and #6(coords reference name) 
+                are used to locate the item in the App Map.
+                This routine does not specify an App Map so only the current Map
+                is used and it is expected to be valid.</p>
+                <p>It is important to note that some ListViews index their values
+                differently.  For example, you may need to select an item by 
+                text by using a property whose starting index is 1.  Yet, 
+                if you request to seek an item strictly by index, the starting 
+                index is 0.  So, the test developer may need to evaluate their 
+                ListView object for these differences.</p>
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SELECTRANDOMITEMS" 
+           displayText="SelectRandomItems" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to randomly select multiple items in the ListView object.
+              </short_desc>
+              <detailed_desc>
+                Routine to randomly select multiple items in the ListView object.  
+                Each selection is done with a CTRL + Single Left Click.  
+                Items are selected by index, not by their text values. Items 
+                already selected are NOT unselected.  We add to existing 
+                selections.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListViewFunctions" 
+                            doc="ListViewFunctions.htm" 
+                            sourcecode="ListViewFunctions.sbl" 
+                            class="LISTVIEW" />
+           </engine>
+           <engine name="WinRunner" 
+			       since="20000403" 
+			       tool="WinRunner" 
+			       vendor="Mercury Interactive">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions">
+		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="ITEMCOUNT" displayText="ItemCount" optional="NO">
+           <description>
+              <short_desc> 
+                  The quantity of items to randomly select in the object.
+              </short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage> T, WINDOW, ListView, SelectRandomItems , "3"   </usage>
+           <description>
+              <short_desc> 
+                 Randomly selects 3 items from the ListView object.
+              </short_desc>
+           </description>
+        </example>
+
+     </examples></keyword>
+     
+  <keyword name="ACTIVATETEXTITEM" 
+           displayText="ActivateTextItem" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to double click an item according to its text value.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListViewFunctions" 
+                            doc="ListViewFunctions.htm" 
+                            sourcecode="ListViewFunctions.sbl" 
+                            class="LISTVIEW" />
+           </engine>
+           <engine name="WinRunner" 
+			       since="20000403" 
+			       tool="WinRunner" 
+			       vendor="Mercury Interactive">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions">
+		       </libraryInfo>
+           </engine>
+           <engine name="Test Complete" since="20110426" tool="TestComplete" vendor="AutomatedQA">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions.SVB">
+		       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20110426">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="NET" 
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20110426">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="FLEX"
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+               </domains> 
+           </engine>              
+            <engine vendor="Google" tool="Android" name="Android" since="20121012" >
+				<libraryInfo name="CFListViewFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFListViewFunctions.html" 
+					 sourcecode="org.safs.android.CFListViewFunctions.java" 
+					 class="LISTVIEW" />
+            	<domains>
+            		<domain name="DEV" since="20121012">
+	        			<libraryInfo name="ListViewProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor.ListViewProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.ListViewProcessor.java" 
+                             class="LISTVIEW" />
+                    </domain>
+                </domains>
+            </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="SELECTTEXTVALUE" displayText="SelectTextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select
+              </short_desc>
+              <detailed_desc> 
+                 SelectTextValue should contain the case-sensitive text item to select.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="MATCHINDEX" displayText="MatchIndex" optional="YES">
+           <description>
+              <short_desc> 
+                 Optional index of the Nth duplicate item to match.
+              </short_desc>
+              <detailed_desc> 
+                 Allows us to match duplicate item N in a list containing duplicate 
+                 entries.  For example, match the 2nd (or specified Nth) item whose text matches 
+                 the provided text value.
+                 <p>
+                 The value of the parameter can have 2 forms:<br/>
+                 <ul>
+                 <li>A numeric value.  Ex: "3"</li>
+                 <li>Index prefixed value.  Ex: "Index=3"</li>
+                 </ul>
+                 </p>
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage> T, WINDOW, ListView, ActivateTextItem ,  "AParticularUserID"   </usage>
+           <description>
+              <short_desc> 
+                 Double clicks "AParticularUserID" from the ListView object
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T, WINDOW, ListView, ActivateTextItem ,  "AParticularUserID", "Index=2"   </usage>
+           <description>
+              <short_desc> 
+                 Double clicks the 2nd item matching "AParticularUserID" from the ListView object
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword name="ACTIVATEPARTIALMATCH" 
+           displayText="ActivatePartialMatch" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to double click an item according to a partial text match.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine name="Test Complete" since="20110224" tool="TestComplete" vendor="AutomatedQA">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions.SVB">
+		       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20110224">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="NET" 
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20110224">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="FLEX"
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+               </domains> 
+           </engine> 
+            <engine vendor="Google" tool="Android" name="Android" since="20121012" >
+				<libraryInfo name="CFListViewFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFListViewFunctions.html" 
+					 sourcecode="org.safs.android.CFListViewFunctions.java" 
+					 class="LISTVIEW" />
+            	<domains>
+            		<domain name="DEV" since="20121012">
+	        			<libraryInfo name="ListViewProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/ListViewProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.ListViewProcessor.java" 
+                             class="LISTVIEW" />
+                    </domain>
+                </domains>
+            </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="PARTIALTEXTVALUE" displayText="PartialTextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive substring of text item to select
+              </short_desc>
+              <detailed_desc> 
+                 PartialTextValue should be a case-sensitive substring of text item to select.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="MATCHINDEX" displayText="MatchIndex" optional="YES">
+           <description>
+              <short_desc> 
+                 Optional index of the Nth duplicate item to match.
+              </short_desc>
+              <detailed_desc> 
+                 Allows us to match duplicate item N in a list containing duplicate 
+                 entries.  For example, match the 2nd (or specified Nth) item whose text matches 
+                 the provided text value.
+                 <p>
+                 The value of the parameter can have 2 forms:<br/>
+                 <ul>
+                 <li>A numeric value.  Ex: "3"</li>
+                 <li>Index prefixed value.  Ex: "Index=3"</li>
+                 </ul>
+                 </p>
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage> T, WINDOW, ListView, ActivatePartialMatch,  "ATextSubstring"   </usage>
+           <description>
+              <short_desc> 
+                 Double clicks the first item containing "ATextSubstring" in the ListView.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T, WINDOW, ListView, ActivatePartialMatch ,  "ATextSubstring", "Index=2"   </usage>
+           <description>
+              <short_desc> 
+                 Double clicks the 2nd item containing "ATextSubstring" in the ListView.
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="ACTIVATETEXTITEMCOORDS" 
+           displayText="ActivateTextItemCoords" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Double click a text item at specific Coords.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListViewFunctions" 
+                            doc="ListViewFunctions.htm" 
+                            sourcecode="ListViewFunctions.sbl" 
+                            class="LISTVIEW" />
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140529" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="SELECTTEXTVALUE" displayText="SelectTextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select
+              </short_desc>
+              <detailed_desc> 
+                 SelectTextValue should contain the case-sensitive text item to select.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="COORDS" displayText="Coords" optional="NO">
+           <description>
+              <short_desc> 
+                The explicit coordinates ("x,y") or an App Map reference to 
+                pre-defined coordinates.
+              </short_desc>
+              <detailed_desc>
+                We first check to see if the field contains a reference to an 
+                App Map item.  If that cannot be found, we will assume the field 
+                contains explicit coordinates.
+                <p>We expect the coordinates in the format "x,y":</p>
+                <p>
+                [MyListView]<br/>
+                Center=5,120   OR<br/>
+                Center=Coords=5,120 </p>
+                <p>
+                The results from the lookup are appended to the "Coords=" string 
+                used by the Click command in Robot (if necessary).</p>
+                <p>
+                Both Fields #3(component name) and #6(coords reference name) 
+                are used to locate the item in the App Map.
+                This routine does not specify an App Map so only the current Map
+                is used and it is expected to be valid.</p>
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="MATCHINDEX" displayText="MatchIndex" optional="YES">
+           <description>
+              <short_desc> 
+                 Optional index of the Nth duplicate item to match.
+              </short_desc>
+              <detailed_desc> 
+                 Allows us to match duplicate item N in a list containing duplicate 
+                 entries.  For example, match the 2nd (or specified Nth) item whose text matches 
+                 the provided text value.
+                 <p>
+                 The value of the parameter can have 2 forms:<br/>
+                 <ul>
+                 <li>A numeric value.  Ex: "3"</li>
+                 <li>Index prefixed value.  Ex: "Index=3"</li>
+                 </ul>
+                 </p>
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage> T  WINDOW  MyList  ActivateTextItemCoords  "AParticularUserID"  "5,20"   </usage>
+           <description>
+              <short_desc> 
+                 Double Click "AParticularUserID" at specific coords.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T  WINDOW  MyList  ActivateTextItemCoords  "AParticularUserID"  "5,20"  "Index=3" </usage>
+           <description>
+              <short_desc> 
+                 Double Click the 3rd item matching "AParticularUserID" at specific coords.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T  WINDOW  MyList ActivateTextItemCoords  "AParticularUserID"  "Coords=5,20"   </usage>
+           <description>
+              <short_desc> 
+                 Double Click "AParticularUserID" at specific coords.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T  WINDOW  MyList  ActivateTextItemCoords  "AParticularUserID"  CENTER   </usage>
+           <description>
+              <short_desc> 
+                 Double Click "AParticularUserID" at coords defined in the App Map
+                 in a [MyList] section.
+              </short_desc>
+              <detailed_desc>
+                <p>Both Fields #3(component name) and #6(coords reference name) 
+                are used to locate the item in the App Map.
+                This routine does not specify an App Map so only the current Map
+                is used and it is expected to be valid.</p>
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="ACTIVATEUNVERIFIEDTEXTITEM" 
+           displayText="ActivateUnverifiedTextItem" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to double click an unverifiable item according to its text value.
+              </short_desc><detailed_desc>
+                An unverifiable item is one whose READ value is not the same as its SET value.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListViewFunctions" 
+                            doc="ListViewFunctions.htm" 
+                            sourcecode="ListViewFunctions.sbl" 
+                            class="LISTVIEW" />
+           </engine>
+           <engine name="Test Complete" since="20110426" tool="TestComplete" vendor="AutomatedQA">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions.SVB">
+		       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20110426">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="NET" 
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20110426">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="FLEX"
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+               </domains> 
+           </engine> 
+            <engine vendor="Google" tool="Android" name="Android" since="20121012" >
+				<libraryInfo name="CFListViewFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFListViewFunctions.html" 
+					 sourcecode="org.safs.android.CFListViewFunctions.java" 
+					 class="LISTVIEW" />
+            	<domains>
+            		<domain name="DEV" since="20121012">
+	        			<libraryInfo name="ListViewProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/ListViewProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.ListViewProcessor.java" 
+                             class="LISTVIEW" />
+                    </domain>
+                </domains>
+            </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="SELECTTEXTVALUE" displayText="SelectTextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select
+              </short_desc>
+              <detailed_desc> 
+                 SelectTextValue should contain the case-sensitive text item to select.
+                 The selection will not be verified.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="MATCHINDEX" displayText="MatchIndex" optional="YES">
+           <description>
+              <short_desc> 
+                 Optional index of the Nth duplicate item to match.
+              </short_desc>
+              <detailed_desc> 
+                 Allows us to match duplicate item N in a list containing duplicate 
+                 entries.  For example, match the 2nd (or specified Nth) item whose text matches 
+                 the provided text value.
+                 <p>
+                 The value of the parameter can have 2 forms:<br/>
+                 <ul>
+                 <li>A numeric value.  Ex: "3"</li>
+                 <li>Index prefixed value.  Ex: "Index=3"</li>
+                 </ul>
+                 </p>
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage> T, WINDOW, ListView, ActivateUnverifiedTextItem ,  "AParticularUserID"   </usage>
+           <description>
+              <short_desc> 
+                 Double click "AParticularUserID" from the ListView object.
+              </short_desc>
+              <detailed_desc> 
+                 The selection will not (cannot) be verified.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T, WINDOW, ListView, ActivateUnverifiedTextItem ,  "AParticularUserID", "Index=3"   </usage>
+           <description>
+              <short_desc> 
+                 Double click the 3rd item matching "AParticularUserID" from the ListView object.
+              </short_desc>
+              <detailed_desc> 
+                 The selection will not (cannot) be verified.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="ACTIVATEUNVERIFIEDTEXTITEMCOORDS" 
+           displayText="ActivateUnverifiedTextItemCoords" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Double click an unverifiable text item at specific Coords.
+              </short_desc><detailed_desc>
+                An unverifiable item is one whose READ value is not the same as its SET value.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListViewFunctions" 
+                            doc="ListViewFunctions.htm" 
+                            sourcecode="ListViewFunctions.sbl" 
+                            class="LISTVIEW" />
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140529" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="SELECTTEXTVALUE" displayText="SelectTextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select
+              </short_desc>
+              <detailed_desc> 
+                 SelectTextValue should contain the case-sensitive text item to select.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="COORDS" displayText="Coords" optional="NO">
+           <description>
+              <short_desc> 
+                The explicit coordinates ("x,y") or an App Map reference to 
+                pre-defined coordinates.
+              </short_desc>
+              <detailed_desc>
+                We first check to see if the field contains a reference to an 
+                App Map item.  If that cannot be found, we will assume the field 
+                contains explicit coordinates.
+                <p>We expect the coordinates in the format "x,y":</p>
+                <p>
+                [MyListView]<br/>
+                Center=5,120   OR<br/>
+                Center=Coords=5,120 </p>
+                <p>
+                The results from the lookup are appended to the "Coords=" string 
+                used by the Click command in Robot (if necessary).</p>
+                <p>
+                Both Fields #3(component name) and #6(coords reference name) 
+                are used to locate the item in the App Map.
+                This routine does not specify an App Map so only the current Map
+                is used and it is expected to be valid.</p>
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="MATCHINDEX" displayText="MatchIndex" optional="YES">
+           <description>
+              <short_desc> 
+                 Optional index of the Nth duplicate item to match.
+              </short_desc>
+              <detailed_desc> 
+                 Allows us to match duplicate item N in a list containing duplicate 
+                 entries.  For example, match the 2nd (or specified Nth) item whose text matches 
+                 the provided text value.
+                 <p>
+                 The value of the parameter can have 2 forms:<br/>
+                 <ul>
+                 <li>A numeric value.  Ex: "3"</li>
+                 <li>Index prefixed value.  Ex: "Index=3"</li>
+                 </ul>
+                 </p>
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage> T  WINDOW  MyList  ActivateUnverifiedTextItemCoords  "AParticularUserID"  "5,20"   </usage>
+           <description>
+              <short_desc> 
+                 Double Click "AParticularUserID" at specific coords.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T  WINDOW  MyList  ActivateUnverifiedTextItemCoords  "AParticularUserID"  "5,20"  "Index=2" </usage>
+           <description>
+              <short_desc> 
+                 Double Click the 2nd item matching "AParticularUserID" at specific coords.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T  WINDOW  MyList ActivateUnverifiedTextItemCoords  "AParticularUserID"  "Coords=5,20"   </usage>
+           <description>
+              <short_desc> 
+                 Double Click "AParticularUserID" at specific coords.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T  WINDOW  MyList  ActivateUnverifiedTextItemCoords  "AParticularUserID"  CENTER   </usage>
+           <description>
+              <short_desc> 
+                 Double Click "AParticularUserID" at coords defined in the App Map
+                 in a [MyList] section.
+              </short_desc>
+              <detailed_desc>
+                <p>Both Fields #3(component name) and #6(coords reference name) 
+                are used to locate the item in the App Map.
+                This routine does not specify an App Map so only the current Map
+                is used and it is expected to be valid.</p>
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+</keywords>
+
+
+<keyword name="ASSIGNCELLVALUE"
+           displayText="AssignCellValue"
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       	   <description>
+              <short_desc> 
+                Assigns the value of a cell in a listview to a variable.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListViewFunctions" 
+                            doc="ListViewFunctions.htm" 
+                            sourcecode="ListViewFunctions.sbl" 
+                            class="LISTVIEW" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="VARIABLE" displayText="Varibale" optional="NO">
+           <description>
+              <short_desc> 
+                 Name of variable to assign value
+              </short_desc>
+              <detailed_desc> 
+                 The variable name that should be used to hold the value retrieved by this command.  
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="ROWCOORD" displayText="RowCoord" optional="NO">
+           <description>
+              <short_desc> 
+                The coordinate of the row in the listview that you want to capture the value.
+              </short_desc>
+              <detailed_desc>
+                We will capture the row, column value in the listview and assign it to the variable value.
+                First you identify the row and then the column.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="COLCOORD" displayText="ColCoord" optional="NO">
+           <description>
+              <short_desc> 
+                The coordinate of the column in the listview that you want to capture the value.
+              </short_desc>
+              <detailed_desc>
+                We will capture the row, column value in the listview and assign it to the variable value.
+                First you identify the row and then the column.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage> T  WINDOW  MyList  AssignCellValue  "^variablename"  2   3   </usage>
+           <description>
+              <short_desc> 
+                 Assigns the value in the 2nd row, 3rd column of the "MyList" listview to a variable named "variablename."              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+     <keyword name="RIGHTCLICKTEXTITEM" 
+                displayText="RightClickTextItem" 
+                deprecated="NO" 
+                expectFailSupport="NO" 
+                expectWarnSupport="NO">
+                
+            <description>
+                   <short_desc> 
+                     Routine to RightClick (single click) an item according to its text value.
+                   </short_desc>
+                </description>
+                
+            <engines>
+                <engine vendor="Rational" tool="Robot" name="Robot" since="20050210" >
+     	       <libraryInfo name="ListViewFunctions" 
+                                 doc="ListViewFunctions.htm" 
+                                 sourcecode="ListViewFunctions.sbl" 
+                                 class="LISTVIEW" />
+                </engine>
+	           <engine name="Test Complete" since="20120511" tool="TestComplete" vendor="AutomatedQA">
+			       <libraryInfo class="LISTVIEW" 
+						name="ListViewFunctions" 
+						sourcecode="ListViewFunctions.SVB">
+			       </libraryInfo>
+			       <domains>
+	                   <domain name="NET" since="20120511">
+	                       <libraryInfo name="ListViewFunctions" 
+	                                    class="LISTVIEW" 
+	                                    subClass="NET" 
+	                                    sourcecode="ListViewFunctions.SVB" />                  
+	                   </domain>
+	                   <domain name="FLEX" since="20120511">
+	                       <libraryInfo name="ListViewFunctions" 
+	                                    class="LISTVIEW" 
+	                                    subClass="FLEX"
+	                                    sourcecode="ListViewFunctions.SVB" />                  
+	                   </domain>
+	               </domains> 
+	           </engine>
+	           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140529" >
+		           <libraryInfo name="CFListView" 
+	                            doc="org/safs/selenium/webdriver/CFListView.html" 
+	                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+	                            class="LISTVIEW"/>
+	           </engine>
+            </engines>
+     
+            <parameters>
+             <parameter name="SELECTTEXTVALUE" displayText="SelectTextValue" optional="NO">
+                <description>
+                   <short_desc> 
+                      Case-sensitive text of node to RightClick
+                   </short_desc>
+                   <detailed_desc> 
+                      SelectTextValue should contain the case-sensitive text item to RightClick.
+                   </detailed_desc>
+                </description>
+             </parameter>
+             <parameter name="MATCHINDEX" displayText="MatchIndex" optional="YES">
+                <description>
+                   <short_desc> 
+                      Optional index of the Nth duplicate item to match.
+                   </short_desc>
+                   <detailed_desc> 
+                      Allows us to match duplicate item N in a list containing duplicate 
+                      entries.  For example, match the 2nd (or specified Nth) item whose text matches 
+                      the provided text value.
+                      <p>
+                      The value of the parameter can have 2 forms:<br/>
+                      <ul>
+                      <li>A numeric value.  Ex: "3"</li>
+                      <li>Index prefixed value.  Ex: "Index=3"</li>
+                      </ul>
+                      </p>
+                   </detailed_desc>
+                </description>
+             </parameter>
+     
+          </parameters><examples>
+             <example>
+                <usage> T, WINDOW, ListView, RightClickTextItem ,  "AParticularUserID"   </usage>
+                <description>
+                   <short_desc> 
+                      RightClick "AParticularUserID" from the ListView object
+                   </short_desc>
+                </description>
+             </example>
+             <example>
+                <usage> T, WINDOW, ListView, RightClickTextItem ,  "AParticularUserID", "Index=2"   </usage>
+                <description>
+                   <short_desc> 
+                      RightClick the 2nd text item matching "AParticularUserID" from the ListView object
+                   </short_desc>
+                </description>
+             </example>
+          </examples></keyword>
+          
+       <keyword name="RIGHTCLICKTEXTITEMCOORDS" 
+                displayText="RightClickTextItemCoords" 
+                deprecated="NO" 
+                expectFailSupport="NO" 
+                expectWarnSupport="NO">
+                
+            <description>
+                   <short_desc> 
+                     Right click a text item at specific Coords.
+                   </short_desc>
+                </description>
+                
+            <engines>
+                <engine vendor="Rational" tool="Robot" name="Robot" since="20050210" >
+     	       <libraryInfo name="ListViewFunctions" 
+                                 doc="ListViewFunctions.htm" 
+                                 sourcecode="ListViewFunctions.sbl" 
+                                 class="LISTVIEW" />
+                </engine>
+	           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140529" >
+		           <libraryInfo name="CFListView" 
+	                            doc="org/safs/selenium/webdriver/CFListView.html" 
+	                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+	                            class="LISTVIEW"/>
+	           </engine>
+            </engines>
+     
+            <parameters>
+             <parameter name="SELECTTEXTVALUE" displayText="SelectTextValue" optional="NO">
+                <description>
+                   <short_desc> 
+                      Case-sensitive text of node to RightClick
+                   </short_desc>
+                   <detailed_desc> 
+                      SelectTextValue should contain the case-sensitive text item to RightClick.
+                   </detailed_desc>
+                </description>
+             </parameter>
+             <parameter name="COORDS" displayText="Coords" optional="NO">
+                <description>
+                   <short_desc> 
+                     The explicit coordinates ("x,y") or an App Map reference to 
+                     pre-defined coordinates.
+                   </short_desc>
+                   <detailed_desc>
+                     We first check to see if the field contains a reference to an 
+                     App Map item.  If that cannot be found, we will assume the field 
+                     contains explicit coordinates.
+                     <p>We expect the coordinates in the format "x,y":</p>
+                     <p>
+                     [MyListView]<br/>
+                     Center=5,120   OR<br/>
+                     Center=Coords=5,120 </p>
+                     <p>
+                     The results from the lookup are appended to the "Coords=" string 
+                     used by the Click command in Robot (if necessary).</p>
+                     <p>
+                     Both Fields #3(component name) and #6(coords reference name) 
+                     are used to locate the item in the App Map.
+                     This routine does not specify an App Map so only the current Map
+                     is used and it is expected to be valid.</p>
+                   </detailed_desc>
+                </description>
+             </parameter>
+             <parameter name="MATCHINDEX" displayText="MatchIndex" optional="YES">
+                <description>
+                   <short_desc> 
+                      Optional index of the Nth duplicate item to match.
+                   </short_desc>
+                   <detailed_desc> 
+                      Allows us to match duplicate item N in a list containing duplicate 
+                      entries.  For example, match the 2nd (or specified Nth) item whose text matches 
+                      the provided text value.
+                      <p>
+                      The value of the parameter can have 2 forms:<br/>
+                      <ul>
+                      <li>A numeric value.  Ex: "3"</li>
+                      <li>Index prefixed value.  Ex: "Index=3"</li>
+                      </ul>
+                      </p>
+                   </detailed_desc>
+                </description>
+             </parameter>
+          </parameters><examples>
+             <example>
+                <usage> T  WINDOW  MyList  RightClickTextItemCoords  "AParticularUserID"  "5,20"   </usage>
+                <description>
+                   <short_desc> 
+                      Right Click "AParticularUserID" at specific coords.
+                   </short_desc>
+                </description>
+             </example>
+             <example>
+                <usage> T  WINDOW  MyList  RightClickTextItemCoords  "AParticularUserID"  "5,20"  "Index=2"  </usage>
+                <description>
+                   <short_desc> 
+                      Right Click the 2nd text item matching "AParticularUserID" at specific coords.
+                   </short_desc>
+                </description>
+             </example>
+             <example>
+                <usage> T  WINDOW  MyList RightClickTextItemCoords  "AParticularUserID"  "Coords=5,20"   </usage>
+                <description>
+                   <short_desc> 
+                      Right Click "AParticularUserID" at specific coords.
+                   </short_desc>
+                </description>
+             </example>
+             <example>
+                <usage> T  WINDOW  MyList  RightClickTextItemCoords  "AParticularUserID"  CENTER   </usage>
+                <description>
+                   <short_desc> 
+                      Right Click "AParticularUserID" at coords defined in the App Map
+                      in a [MyList] section.
+                   </short_desc>
+                   <detailed_desc>
+                     <p>Both Fields #3(component name) and #6(coords reference name) 
+                     are used to locate the item in the App Map.
+                     This routine does not specify an App Map so only the current Map
+                     is used and it is expected to be valid.</p>
+                   </detailed_desc>
+                </description>
+             </example>
+          </examples></keyword>
+          
+       <keyword name="RIGHTCLICKUNVERIFIEDTEXTITEM" 
+                displayText="RightClickUnverifiedTextItem" 
+                deprecated="NO" 
+                expectFailSupport="NO" 
+                expectWarnSupport="NO">
+                
+            <description>
+                   <short_desc> 
+                     Routine to RightClick (single click) an unverifiable item according to its text value.
+                   </short_desc><detailed_desc>
+                     An unverifiable item is one whose READ value is not the same as its SET value.
+                   </detailed_desc>
+                </description>
+                
+            <engines>
+                <engine vendor="Rational" tool="Robot" name="Robot" since="20050210" >
+     	       <libraryInfo name="ListViewFunctions" 
+                                 doc="ListViewFunctions.htm" 
+                                 sourcecode="ListViewFunctions.sbl" 
+                                 class="LISTVIEW" />
+                </engine>
+            </engines>
+     
+            <parameters>
+             <parameter name="SELECTTEXTVALUE" displayText="SelectTextValue" optional="NO">
+                <description>
+                   <short_desc> 
+                      Case-sensitive text of node to RightClick
+                   </short_desc>
+                   <detailed_desc> 
+                      SelectTextValue should contain the case-sensitive text item to RightClick.
+                      The selection will not be verified.
+                   </detailed_desc>
+                </description>
+             </parameter>
+             <parameter name="MATCHINDEX" displayText="MatchIndex" optional="YES">
+                <description>
+                   <short_desc> 
+                      Optional index of the Nth duplicate item to match.
+                   </short_desc>
+                   <detailed_desc> 
+                      Allows us to match duplicate item N in a list containing duplicate 
+                      entries.  For example, match the 2nd (or specified Nth) item whose text matches 
+                      the provided text value.
+                      <p>
+                      The value of the parameter can have 2 forms:<br/>
+                      <ul>
+                      <li>A numeric value.  Ex: "3"</li>
+                      <li>Index prefixed value.  Ex: "Index=3"</li>
+                      </ul>
+                      </p>
+                   </detailed_desc>
+                </description>
+             </parameter>
+     
+          </parameters><examples>
+             <example>
+                <usage> T, WINDOW, ListView, RightClickUnverifiedTextItem ,  "AParticularUserID"   </usage>
+                <description>
+                   <short_desc> 
+                      RightClick "AParticularUserID" from the ListView object.
+                   </short_desc>
+                   <detailed_desc> 
+                      The selection will not (cannot) be verified.
+                   </detailed_desc>
+                </description>
+             </example>
+             <example>
+                <usage> T, WINDOW, ListView, RightClickUnverifiedTextItem ,  "AParticularUserID", "Index=3"   </usage>
+                <description>
+                   <short_desc> 
+                      RightClick the 3rd text item matching "AParticularUserID" from the ListView object.
+                   </short_desc>
+                   <detailed_desc> 
+                      The selection will not (cannot) be verified.
+                   </detailed_desc>
+                </description>
+             </example>
+          </examples></keyword>
+     
+       <keyword name="RIGHTCLICKUNVERIFIEDTEXTITEMCOORDS" 
+                displayText="RightClickUnverifiedTextItemCoords" 
+                deprecated="NO" 
+                expectFailSupport="NO" 
+                expectWarnSupport="NO">
+                
+            <description>
+                   <short_desc> 
+                     Right Click an unverifiable text item at specific Coords.
+                   </short_desc><detailed_desc>
+                     An unverifiable item is one whose READ value is not the same as its SET value.
+                   </detailed_desc>
+                </description>
+                
+            <engines>
+                <engine vendor="Rational" tool="Robot" name="Robot" since="20050210" >
+     	       <libraryInfo name="ListViewFunctions" 
+                                 doc="ListViewFunctions.htm" 
+                                 sourcecode="ListViewFunctions.sbl" 
+                                 class="LISTVIEW" />
+                </engine>
+            </engines>
+     
+            <parameters>
+             <parameter name="SELECTTEXTVALUE" displayText="SelectTextValue" optional="NO">
+                <description>
+                   <short_desc> 
+                      Case-sensitive text of node to select
+                   </short_desc>
+                   <detailed_desc> 
+                      SelectTextValue should contain the case-sensitive text item to RightClick.
+                   </detailed_desc>
+                </description>
+             </parameter>
+             <parameter name="COORDS" displayText="Coords" optional="NO">
+                <description>
+                   <short_desc> 
+                     The explicit coordinates ("x,y") or an App Map reference to 
+                     pre-defined coordinates.
+                   </short_desc>
+                   <detailed_desc>
+                     We first check to see if the field contains a reference to an 
+                     App Map item.  If that cannot be found, we will assume the field 
+                     contains explicit coordinates.
+                     <p>We expect the coordinates in the format "x,y":</p>
+                     <p>
+                     [MyListView]<br/>
+                     Center=5,120   OR<br/>
+                     Center=Coords=5,120 </p>
+                   </detailed_desc>
+                </description>
+             </parameter>
+             <parameter name="MATCHINDEX" displayText="MatchIndex" optional="YES">
+                <description>
+                   <short_desc> 
+                      Optional index of the Nth duplicate item to match.
+                   </short_desc>
+                   <detailed_desc> 
+                      Allows us to match duplicate item N in a list containing duplicate 
+                      entries.  For example, match the 2nd (or specified Nth) item whose text matches 
+                      the provided text value.
+                      <p>
+                      The value of the parameter can have 2 forms:<br/>
+                      <ul>
+                      <li>A numeric value.  Ex: "3"</li>
+                      <li>Index prefixed value.  Ex: "Index=3"</li>
+                      </ul>
+                      </p>
+                   </detailed_desc>
+                </description>
+             </parameter>
+     
+          </parameters><examples>
+             <example>
+                <usage> T  WINDOW  MyList  RightClickUnverifiedTextItemCoords  "AParticularUserID"  "5,20"   </usage>
+                <description>
+                   <short_desc> 
+                      Right Click "AParticularUserID" at specific coords.
+                   </short_desc>
+                </description>
+             </example>
+             <example>
+                <usage> T  WINDOW  MyList  RightClickUnverifiedTextItemCoords  "AParticularUserID"  "5,20"  "Index=3" </usage>
+                <description>
+                   <short_desc> 
+                      RightClick the 3rd text item matching "AParticularUserID" at specific coords.
+                   </short_desc>
+                </description>
+             </example>
+             <example>
+                <usage> T  WINDOW  MyList RightClickUnverifiedTextItemCoords  "AParticularUserID"  "Coords=5,20"   </usage>
+                <description>
+                   <short_desc> 
+                      Right Click "AParticularUserID" at specific coords.
+                   </short_desc>
+                </description>
+             </example>
+             <example>
+                <usage> T  WINDOW  MyList  RightClickUnverifiedTextItemCoords  "AParticularUserID"  CENTER   </usage>
+                <description>
+                   <short_desc> 
+                      Right Click "AParticularUserID" at coords defined in the App Map
+                      in a [MyList] section.
+                   </short_desc>
+                   <detailed_desc>
+                     <p>Both Fields #3(component name) and #6(coords reference name) 
+                     are used to locate the item in the App Map.
+                     This routine does not specify an App Map so only the current Map
+                     is used and it is expected to be valid.</p>
+                   </detailed_desc>
+                </description>
+             </example>
+     </examples></keyword>     
+     
+     
+	<keyword name="VERIFYLISTCONTAINS" 
+           displayText="VerifyListContains" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+		<description> 
+			<short_desc>
+            	Verify that a list view contains the provided item.
+			</short_desc> 
+            <detailed_desc>
+            	The search of the item is expected to be a case-sensitive exact match of the item.
+            </detailed_desc> 
+    	</description>
+           
+		<engines>
+			<engine vendor="Rational" tool="Robot" name="Robot" since="20070625" >
+				<libraryInfo name="ListViewFunctions" 
+                            doc="ListViewFunctions.htm" 
+                            sourcecode="ListViewFunctions.sbl" 
+                            class="LISTVIEW" />
+			</engine>
+           <engine name="Test Complete" since="20130819" tool="TestComplete" vendor="AutomatedQA">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions.SVB">
+		       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20130819">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="NET" 
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20130819">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="FLEX"
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+               </domains> 
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+		</engines>
+
+		<parameters>
+			<parameter name="ITEMTEXT" displayText="ItemText" optional="NO">
+				<description> 
+					<short_desc>
+						The case-sensitive name of the item to verify.
+					</short_desc> 
+					<detailed_desc>
+						ItemText should contain the case-sensitive text item to find in the list view.
+						A message is sent to the log confirming whether or not the item is found in the list view.
+					</detailed_desc>
+				</description>
+			</parameter>
+		</parameters>
+     
+		<examples>
+			<example>
+				<usage>
+					T, WINDOW, ListView, VerifyListContains ,  "AParticularServerName"
+				</usage>
+				<description> 
+					<short_desc>
+						Verify the item "AParticularServerName" is found in the ListView object.
+					</short_desc>
+				</description> 
+			</example>
+		</examples>
+	</keyword>
+     
+
+	<keyword name="SETLISTCONTAINS" 
+           displayText="SetListContains" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+		<description> 
+			<short_desc>
+            	Set a variable with the result of checking that a listview contains the provided item.
+			</short_desc> 
+            <detailed_desc>
+            	The search of the item is expected to be a case-sensitive exact match of the item.  The
+            	   provided variable is set with 'TRUE' if the item is found or 'FALSE' if the item is not found.
+            </detailed_desc> 
+    	</description>
+           
+		<engines>
+			<engine vendor="Rational" tool="Robot" name="Robot" since="20070625" >
+				<libraryInfo name="ListViewFunctions" 
+                            doc="ListViewFunctions.htm" 
+                            sourcecode="ListViewFunctions.sbl" 
+                            class="LISTVIEW" />
+			</engine>
+           <engine name="Test Complete" since="20111115" tool="TestComplete" vendor="AutomatedQA">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions.SVB">
+		       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20111115">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="NET" 
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="2011115">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="FLEX"
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+               </domains> 
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140527" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+		</engines>
+
+		<parameters>
+			<parameter name="ITEMTEXT" displayText="ItemText" optional="NO">
+				<description> 
+					<short_desc>
+						The case-sensitive name of the sought item.
+					</short_desc> 
+					<detailed_desc>
+						ItemText should contain the case-sensitive text item to find in the list view.
+						A message is sent to the log confirming whether or not the item is found in the list view.
+					</detailed_desc>
+				</description>
+			</parameter>
+			<parameter name="RESULTVAR" displayText="ResultVar" optional="NO">
+				<description> 
+					<short_desc>
+						The name of the variable receiving the result.
+					</short_desc> 
+					<detailed_desc>
+						This variable is set with 'TRUE' if the item is found or 'FALSE' if the item is not found.
+					</detailed_desc>
+				</description>
+			</parameter>
+		</parameters>
+     
+		<examples>
+			<example>
+				<usage>
+					T, WINDOW, ListView, SetListContains ,  "AParticularServerName", isFound
+				</usage>
+				<description> 
+					<short_desc>
+						<p>Variable isFound is set to 'TRUE' if the item "AParticularServerName" is found 
+						   in the ListView object.  If the item is not found, the variable isFound is set
+						   to 'FALSE'.</p>
+					</short_desc>
+				</description> 
+			</example>
+		</examples>
+	</keyword>
+
+  	<keyword name="SELECTANOTHERTEXTITEM" 
+            displayText="SelectAnotherTextItem" 
+            deprecated="NO" 
+            expectFailSupport="NO" 
+            expectWarnSupport="NO">            
+           <description>
+              <short_desc> 
+                Routine for multiple selection to Control+Click on an item by its text value.
+              </short_desc>
+              <detailed_desc> 
+                This adds selected items to items already selected.<br/>
+
+              </detailed_desc> 
+           </description>
+     <engines>
+           <engine name="Test Complete" since="20111115" tool="TestComplete" vendor="AutomatedQA">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions.SVB">
+		       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20111115">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="NET" 
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="2011115">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="FLEX"
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+               </domains> 
+           </engine> 
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+     </engines>
+     <parameters>
+        <parameter       name="TEXTVALUE" 
+                  displayText="TextValue" 
+                  optional="NO" >
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select.
+              </short_desc>
+           </description>
+        </parameter>
+        <parameter name="MATCHINDEX" displayText="MatchIndex" optional="YES" default="1">
+           <description>
+              <short_desc> 
+                 Optional index of the Nth duplicate item to match. 
+              </short_desc>
+              <detailed_desc> 
+                 Allows us to match duplicate item N in a list containing duplicate 
+                 entries.  For example, match the 2nd (or specified Nth) item whose text matches 
+                 the provided text value.
+                 <p>
+                 The value of the parameter can have 2 forms:<br/>
+                 <ul>
+                 <li>A numeric value.  Ex: "3"</li>
+                 <li>Index prefixed value.  Ex: "Index=3"</li>
+                 </ul>
+                 </p>
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters>        
+     <examples>
+        <example>
+           <usage> T, WINDOW, ListView, SelectAnotherTextItem ,  "AParticularUserID"   </usage>
+           <description>
+              <short_desc> 
+                 Ctrl+Clicks "AParticularUserID" from the ListView object.
+              </short_desc>
+              <detailed_desc> 
+                 Ctrl+Clicks "AParticularUserID" from the ListView object.  
+                 This adds to any existing items already selected.<br/>
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+                <usage> T, WINDOW, ListView, SelectAnotherTextItem ,  "AParticularUserID", "Index=2" </usage>
+                <description>
+                   <short_desc> 
+                      Ctrl+Clicks the 2th item matching "AParticularUserID" from the ListView object.
+                   </short_desc>
+                </description>
+        </example>
+        
+
+     </examples>        
+  </keyword>
+  
+  <keyword name="SELECTANOTHERPARTIALMATCH" 
+            displayText="SelectAnotherPartialMatch" 
+            deprecated="NO" 
+            expectFailSupport="NO" 
+            expectWarnSupport="NO">            
+           <description>
+              <short_desc> 
+                Routine for multiple selection to Control+Click on an item according to a partial text match.
+              </short_desc>
+              <detailed_desc> 
+                This adds selected items to items already selected.<br/>
+
+              </detailed_desc> 
+           </description>
+     <engines>
+           <engine name="Test Complete" since="20120224" tool="TestComplete" vendor="AutomatedQA">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions.SVB">
+		       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20120224">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="NET" 
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20120224">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="FLEX"
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+               </domains> 
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+     </engines>
+     <parameters>
+        <parameter       name="PARTIALTEXTVALUE" 
+                  displayText="PartialTextValue" 
+                  optional="NO" >
+           <description>
+              <short_desc> 
+                 Case-sensitive substring of text item to select.
+              </short_desc>
+           </description>
+        </parameter>
+        <parameter name="MATCHINDEX" displayText="MatchIndex" optional="YES" default="1">
+           <description>
+              <short_desc> 
+                 Optional index of the Nth duplicate item to match. 
+              </short_desc>
+              <detailed_desc> 
+                 Allows us to match duplicate item N in a list containing duplicate 
+                 entries.  For example, match the 2nd (or specified Nth) item whose text matches 
+                 the provided text value.
+                 <p>
+                 The value of the parameter can have 2 forms:<br/>
+                 <ul>
+                 <li>A numeric value.  Ex: "3"</li>
+                 <li>Index prefixed value.  Ex: "Index=3"</li>
+                 </ul>
+                 </p>
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters>        
+     <examples>
+        <example>
+           <usage> T, WINDOW, ListView, SelectAnotherPartialMatch,  "ASubstring"   </usage>
+           <description>
+              <short_desc> 
+                 Ctrl+Clicks the first item containing "ASubstring" in the ListView.
+              </short_desc>
+              <detailed_desc> 
+                 Ctrl+Clicks the first item containing "ASubstring" in the ListView.  
+                 This adds to any existing items already selected.<br/>
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+                <usage> T, WINDOW, ListView, SelectAnotherPartialMatch,  "ASubstring", "Index=2" </usage>
+                <description>
+                   <short_desc> 
+                      Ctrl+Clicks the 2th item containing "ASubstring" in the ListView.
+                   </short_desc>
+                </description>
+        </example>
+        
+
+     </examples>        
+  </keyword>
+  
+    <keyword  name="EXTENDSELECTIONTOTEXTITEM" 
+            displayText="ExtendSelectionToTextItem" 
+            deprecated="NO"
+            expectFailSupport="NO"
+            expectWarnSupport="NO">
+           <description>
+              <short_desc> 
+                Routine to Shift+Click and Verify a selection according to its text value.
+              </short_desc>
+              <detailed_desc> 
+                This extends the current selection to include the specified selection and all other items inbetween.<br/>
+                NOTE: This may not work in all environments (Java, Web, etc...)
+              </detailed_desc> 
+           </description>
+     <engines>
+           <engine name="Test Complete" since="20121213" tool="TestComplete" vendor="AutomatedQA">
+		       <libraryInfo class="LISTVIEW" 
+					name="ListViewFunctions" 
+					sourcecode="ListViewFunctions.SVB">
+		       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20121213">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="NET" 
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20121213">
+                       <libraryInfo name="ListViewFunctions" 
+                                    class="LISTVIEW" 
+                                    subClass="FLEX"
+                                    sourcecode="ListViewFunctions.SVB" />                  
+                   </domain>
+               </domains> 
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140506" >
+	           <libraryInfo name="CFListView" 
+                            doc="org/safs/selenium/webdriver/CFListView.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFListView.java" 
+                            class="LISTVIEW"/>
+           </engine>
+     </engines>
+     <parameters>
+        <parameter name="TEXTVALUE" 
+                   displayText="TextValue" 
+                   optional="NO" >
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select and verify.
+              </short_desc>
+           </description>
+        </parameter>
+     </parameters>        
+     <examples>
+        <example>
+           <usage> T, WINDOW, ListView, ExtendSelectionToTextItem,  "AParticularUserID"</usage>
+           <description>
+              <short_desc> 
+                 Selects "AParticularUserID" from the ListView object with Shfit key pressedd down.
+              </short_desc>
+              <detailed_desc> 
+                 Selects "AParticularUserID" from the ListView object with Shfit key pressedd down.
+                 This adds "AParticularUserID" and any items inbetween to any existing items already selected.<br/>
+                 When possible, we will also attempt to verify the added selection was successful.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples>
+  </keyword>
+
+</keyword_library>

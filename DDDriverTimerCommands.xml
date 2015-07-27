@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+    <libraryType type="DRIVER"/>
+    <libraryInfo class="STRING" doc="DCDriverTimerCommands.htm" name="DDDriverTimerCommands" sourcecode="DCDriverTimerCommands.java">
+        <description>
+            <short_desc>Driver Commands for Timer functions</short_desc>
+            <detailed_desc>Driver Command record format:<br/>
+                <dl>
+                  <dd>
+                    Field #1
+                  </dd>
+                  <dt>
+                    The "C" = DRIVER COMMAND record type specifier.
+                  </dt>
+                  <dd>
+                    Field #2
+                  </dd>
+                  <dt>
+                    The Driver Command keyword.
+                  </dt>
+                </dl>
+                <p>
+                  Example:
+                </p>
+                <code>
+                  c , SetApplicationMap , "AppMap.map"
+                </code>                
+            </detailed_desc>
+        </description>
+    </libraryInfo>
+    <runtime engine="Robot" platform="Windows" version="2000">
+    </runtime>
+    <keywords>
+        <keyword deprecated="NO" displayText="StartTimer" expectFailSupport="NO" expectWarnSupport="NO" name="StartTimer">
+            <description>
+                <short_desc>
+                Will start a unique timer.
+                </short_desc>
+            </description>
+            <engines>
+                <engine name="RobotJ" since="20051216" tool="RobotJ" vendor="Rational">
+                  <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                  </libraryInfo>
+                </engine>
+                <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20051216" >
+                    <libraryInfo name="DCDriverTimerCommands" 
+                                    doc="org/safs/DCDriverTimerCommands.html" 
+                                    sourcecode="org.safs.DCDriverTimerCommands.java" 
+                                    class="Timer" />
+                </engine>
+                <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20051216" >
+                    <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                    </libraryInfo>
+                </engine>
+            </engines>
+            <parameters>
+                <parameter displayText="timerName" name="TIMERNAME" optional="NO">
+                    <description>
+                        <short_desc>
+                        timerName (should be unique)
+                        </short_desc>
+                    </description>
+                </parameter>
+                <parameter displayText="verifyValue" name="VERIFYVALUE" optional="YES">
+                    <description>
+                        <short_desc>
+                        verifyValue will be used to verify the timer was less then then given value. If the parameter isn't given then no check will occur.
+                        </short_desc>
+                    </description>
+                </parameter>
+            </parameters>
+            <examples>
+                <example>
+                    <usage>
+                    C, StartTimer, exampleTimer
+                    </usage>
+                    <description>
+                        <short_desc>
+                        Timer exampleTimer has been started.
+                        </short_desc>
+                    </description>
+                </example>
+                <example>
+                    <usage>
+                    C, StartTimer, exampleTimer, 30
+                    </usage>
+                    <description>
+                        <short_desc>
+                        Timer exampleTimer has been started and once StopTimer command has been issued a verification of the timer will be excuted with the value 30.
+                        </short_desc>
+                    </description>
+                </example>                
+            </examples>
+        </keyword>
+        <keyword deprecated="NO" displayText="StopTimer" expectFailSupport="NO" expectWarnSupport="NO" name="StopTimer">
+            <description>
+                <short_desc>
+                Will end a unique timer and perform a verify test if a value was supplied at start time.
+                </short_desc>
+            </description>
+            <engines>
+                <engine name="RobotJ" since="20051216" tool="RobotJ" vendor="Rational">
+                  <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                  </libraryInfo>
+                </engine>
+                <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20051216" >
+                    <libraryInfo name="DCDriverTimerCommands" 
+                                    doc="org/safs/DCDriverTimerCommands.html" 
+                                    sourcecode="org.safs.DCDriverTimerCommands.java" 
+                                    class="Timer" />
+                </engine>
+                <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20051216" >
+                    <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                    </libraryInfo>
+                </engine>
+            </engines>
+            <parameters>
+                <parameter displayText="timerName" name="TIMERNAME" optional="NO">
+                    <description>
+                        <short_desc>
+                        timerName (should be unique)
+                        </short_desc>
+                    </description>
+                </parameter>                
+            </parameters>
+            <examples>
+                <example>
+                    <usage>
+                    C, StopTimer, exampleTimer
+                    </usage>
+                    <description>
+                        <short_desc>
+                        Timer exampleTimer has been started.
+                        </short_desc>
+                    </description>
+                </example>                        
+            </examples>
+        </keyword>
+        <keyword deprecated="NO" displayText="ResetTimer" expectFailSupport="NO" expectWarnSupport="NO" name="RESETTIMER">
+            <description>
+                <short_desc>
+                Reset a "stopped" timer for reuse.
+                </short_desc>
+                <detailed_desc>
+                Returns internal status values to a reset state. This allows the timer to be used again with 
+                a new start time when StartTimer is called with the same name as this timer. It should be 
+                considered an error to attempt to reset a timer that is active (not stopped).
+                </detailed_desc>
+            </description>
+            <engines>
+                <engine name="RobotJ" since="20120727" tool="RobotJ" vendor="Rational">
+                  <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                  </libraryInfo>
+                </engine>
+                <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20120727" >
+                    <libraryInfo name="DCDriverTimerCommands" 
+                                    doc="org/safs/DCDriverTimerCommands.html" 
+                                    sourcecode="org.safs.DCDriverTimerCommands.java" 
+                                    class="Timer" />
+                </engine>
+                <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20120727" >
+                    <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                    </libraryInfo>
+                </engine>
+            </engines>
+            <parameters>
+                <parameter displayText="timerName" name="TIMERNAME" optional="NO">
+                    <description>
+                        <short_desc>
+                        timerName (should be unique)
+                        </short_desc>
+                    </description>
+                </parameter>                
+            </parameters>
+            <examples>
+                <example>
+                    <usage>
+                    C, ResetTimer, exampleTimer
+                    </usage>
+                    <description>
+                        <short_desc>
+                        Timer exampleTimer has been reset--assuming it was previously stopped.
+                        </short_desc>
+                    </description>
+                </example>                        
+            </examples>
+        </keyword>
+        <keyword deprecated="NO" displayText="VerifyTimer" expectFailSupport="NO" expectWarnSupport="NO" name="VerifyTimer">
+            <description>
+                <short_desc>
+                Well verify that a timer was less then the given value.
+                </short_desc>
+            </description>
+            <engines>
+                <engine name="RobotJ" since="20051216" tool="RobotJ" vendor="Rational">
+                  <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                  </libraryInfo>
+                </engine>
+                <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20051216" >
+                    <libraryInfo name="DCDriverTimerCommands" 
+                                    doc="org/safs/DCDriverTimerCommands.html" 
+                                    sourcecode="org.safs.DCDriverTimerCommands.java" 
+                                    class="Timer" />
+                </engine>
+                <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20051216" >
+                    <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                    </libraryInfo>
+                </engine>
+            </engines>
+            <parameters>
+                <parameter displayText="timerName" name="TIMERNAME" optional="NO">
+                    <description>
+                        <short_desc>
+                        timerName (should be unique)
+                        </short_desc>
+                    </description>
+                </parameter>  
+                <parameter displayText="verifyValue" name="VERIFYVALUE" optional="YES">
+                    <description>
+                        <short_desc>
+                        verifyValue will be used to as the check value. If nothing is given then the value given during StartTimer will be use, if nothing was given then the value -1 is used.
+                        </short_desc>
+                    </description>
+                </parameter>
+            </parameters>
+            <examples>
+                <example>
+                    <usage>
+                    C, VerifyTimer, exampleTimer 10
+                    </usage>
+                    <description>
+                        <short_desc>
+                        Verifies that the exampleTimer was less then 10 seconds. 
+                        </short_desc>
+                    </description>
+                </example>                        
+                <example>
+                    <usage>
+                    C, VerifyTimer, exampleTimer
+                    </usage>
+                    <description>
+                        <short_desc>
+                        Verifies that the exampleTimer was less then the number given during StartTimer or -1.
+                        </short_desc>
+                    </description>
+                </example>
+            </examples>
+        </keyword>
+        <keyword deprecated="NO" displayText="VerifyElapsedTimeIsLess" expectFailSupport="NO" expectWarnSupport="NO" name="VerifyElapsedTimeIsLess">
+            <description>
+                <short_desc>
+                Well verify that a timer was less then the given value.
+                </short_desc>
+            </description>
+            <engines>
+                <engine name="RobotJ" since="20051216" tool="RobotJ" vendor="Rational">
+                  <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                  </libraryInfo>
+                </engine>
+                <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20051216" >
+                    <libraryInfo name="DCDriverTimerCommands" 
+                                    doc="org/safs/DCDriverTimerCommands.html" 
+                                    sourcecode="org.safs.DCDriverTimerCommands.java" 
+                                    class="Timer" />
+                </engine>
+                <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20051216" >
+                    <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                    </libraryInfo>
+                </engine>
+            </engines>
+            <parameters>
+                <parameter displayText="timerName" name="TIMERNAME" optional="NO">
+                    <description>
+                        <short_desc>
+                        timerName (should be unique)
+                        </short_desc>
+                    </description>
+                </parameter>  
+                <parameter displayText="verifyValue" name="VERIFYVALUE" optional="No">
+                    <description>
+                        <short_desc>
+                        verifyValue will be used to as the check value.
+                        </short_desc>
+                    </description>
+                </parameter>
+            </parameters>
+            <examples>
+                <example>
+                    <usage>
+                    C, VerifyElapsedTimeIsLess, exampleTimer, 10
+                    </usage>
+                    <description>
+                        <short_desc>
+                        Verifies that the exampleTimer was less then 10 seconds. 
+                        </short_desc>
+                    </description>
+                </example>                                       
+            </examples>
+        </keyword>
+        <keyword deprecated="NO" displayText="VerifyElapsedTimeIsMore" expectFailSupport="NO" expectWarnSupport="NO" name="VerifyElapsedTimeIsMore">
+            <description>
+                <short_desc>
+                Well verify that a timer was greater then the given value.
+                </short_desc>
+            </description>
+            <engines>
+                <engine name="RobotJ" since="20051216" tool="RobotJ" vendor="Rational">
+                  <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                  </libraryInfo>
+                </engine>
+                <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20051216" >
+                    <libraryInfo name="DCDriverTimerCommands" 
+                                    doc="org/safs/DCDriverTimerCommands.html" 
+                                    sourcecode="org.safs.DCDriverTimerCommands.java" 
+                                    class="Timer" />
+                </engine>
+                <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20051216" >
+                    <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                    </libraryInfo>
+                </engine>
+            </engines>
+            <parameters>
+                <parameter displayText="timerName" name="TIMERNAME" optional="NO">
+                    <description>
+                        <short_desc>
+                        timerName (should be unique)
+                        </short_desc>
+                    </description>
+                </parameter>  
+                <parameter displayText="verifyValue" name="VERIFYVALUE" optional="No">
+                    <description>
+                        <short_desc>
+                        verifyValue will be used to as the check value.
+                        </short_desc>
+                    </description>
+                </parameter>
+            </parameters>
+            <examples>
+                <example>
+                    <usage>
+                    C, VerifyElapsedTimeIsMore, exampleTimer, 10
+                    </usage>
+                    <description>
+                        <short_desc>
+                        Verifies that the exampleTimer was greater then 10 seconds. 
+                        </short_desc>
+                    </description>
+                </example>                                       
+            </examples>
+        </keyword>
+        <keyword deprecated="NO" displayText="VerifyElapsedTimeInRange" expectFailSupport="NO" expectWarnSupport="NO" name="VerifyElapsedTimeInRange">
+            <description>
+                <short_desc>
+                Well verify that a timer was in the range of the given values.
+                </short_desc>
+            </description>
+            <engines>
+                <engine name="RobotJ" since="20051216" tool="RobotJ" vendor="Rational">
+                  <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                  </libraryInfo>
+                </engine>
+                <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20051216" >
+                    <libraryInfo name="DCDriverTimerCommands" 
+                                    doc="org/safs/DCDriverTimerCommands.html" 
+                                    sourcecode="org.safs.DCDriverTimerCommands.java" 
+                                    class="Timer" />
+                </engine>
+                <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20051216" >
+                    <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                    </libraryInfo>
+                </engine>
+            </engines>
+            <parameters>
+                <parameter displayText="timerName" name="TIMERNAME" optional="NO">
+                    <description>
+                        <short_desc>
+                        timerName (should be unique)
+                        </short_desc>
+                    </description>
+                </parameter>  
+                <parameter displayText="verifyValue1" name="VERIFYVALUE1" optional="No">
+                    <description>
+                        <short_desc>
+                        verifyValue1 will be used as the lower bounds of the check.
+                        </short_desc>
+                    </description>
+                </parameter>
+                <parameter displayText="verifyValue2" name="VERFIYVALUE2" optional="No">
+                    <description>
+                        <short_desc>
+                        verifyValue2 will be used as the higher bounds of the check.
+                        </short_desc>
+                    </description>
+                </parameter>
+            </parameters>
+            <examples>
+                <example>
+                    <usage>
+                    C, VerifyElapsedTimeInRange, exampleTimer, 10, 30
+                    </usage>
+                    <description>
+                        <short_desc>
+                        Verifies that the exampleTimer was between 10 and 30. 
+                        </short_desc>
+                    </description>
+                </example>                                       
+            </examples>
+        </keyword>
+        <keyword deprecated="NO" displayText="StoreTimerInfo" expectFailSupport="NO" expectWarnSupport="NO" name="StoreTimerInfo">
+            <description>
+                <short_desc>
+                Well store the timer information in the given variable.
+                <br/>Information stored:
+                <dl>
+                  <dd>
+                    .elapsed - Amount of seconds that has passed.
+                  </dd>
+                  <dt>
+                    .startTime - Time that the timer was started.
+                  </dt>
+                  <dd>
+                    .endTime - Time that the timer was stopped.
+                  </dd>
+                  <dt>
+                    .failures - Number of failures that happened on the timer (based on verify commands).
+                  </dt>
+                </dl>
+                </short_desc>
+            </description>
+            <engines>
+                <engine name="RobotJ" since="20051216" tool="RobotJ" vendor="Rational">
+                  <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                  </libraryInfo>
+                </engine>
+                <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20051216" >
+                    <libraryInfo name="DCDriverTimerCommands" 
+                                    doc="org/safs/DCDriverTimerCommands.html" 
+                                    sourcecode="org.safs.DCDriverTimerCommands.java" 
+                                    class="Timer" />
+                </engine>
+                <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20051216" >
+                    <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                    </libraryInfo>
+                </engine>
+            </engines>
+            <parameters>
+                <parameter displayText="timerName" name="TIMERNAME" optional="NO">
+                    <description>
+                        <short_desc>
+                        timerName (should be unique)
+                        </short_desc>
+                    </description>
+                </parameter>  
+                <parameter displayText="variable" name="VARIABLE" optional="No">
+                    <description>
+                        <short_desc>
+                        variable to store time information in.
+                        </short_desc>
+                    </description>
+                </parameter>
+            </parameters>
+            <examples>
+                <example>
+                    <usage>
+                    C, StoreTimerInfo, exampleTimer, TimerVar
+                    </usage>
+                    <description>
+                        <short_desc>
+                        Will store exampleTimer information in TimerVar.
+                        </short_desc>
+                    </description>
+                </example>                                       
+            </examples>
+        </keyword>
+        <keyword deprecated="NO" displayText="StoreTimerInfoFile" expectFailSupport="NO" expectWarnSupport="NO" name="StoreTimerInfoFile">
+            <description>
+                <short_desc>
+                Well store the timer information in the given file, in csv format. Will use absolute path if given otherwise uses SAFS Project Directory.
+                <br/>Information Stored:Name,Start,Stop,Duration,Timeout,Pass?
+                <dl>
+                  <dd>
+                    Name - Name of timer
+                  </dd>
+                  <dt>
+                    Start - Time of start
+                  </dt>
+                  <dd>
+                    Stop - Time of stop
+                  </dd>
+                  <dt>
+                    Duration - total elapsed time.
+                  </dt>
+                  <dt>
+                    Timeout - 
+                  </dt>
+                  <dt>
+                    Pass? - if the timer passed any verfiy commands.
+                  </dt>
+                </dl>
+                Variable TimerStorageVariables can list additional variables to be stored in the file (comma delimited).
+                </short_desc>
+            </description>
+            <engines>
+                <engine name="RobotJ" since="20051216" tool="RobotJ" vendor="Rational">
+                  <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                  </libraryInfo>
+                </engine>
+                <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20051216" >
+                    <libraryInfo name="DCDriverTimerCommands" 
+                                    doc="org/safs/DCDriverTimerCommands.html" 
+                                    sourcecode="org.safs.DCDriverTimerCommands.java" 
+                                    class="Timer" />
+                </engine>
+                <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20051216" >
+                    <libraryInfo class="Timer" doc="org/safs/DCDriverTimerCommand.html" name="DCDriverTimerCommand" sourcecode="org.safs.DCDriverTimerCommands.java">
+                    </libraryInfo>
+                </engine>
+            </engines>
+            <parameters>
+                <parameter displayText="timerName" name="TIMERNAME" optional="NO">
+                    <description>
+                        <short_desc>
+                        timerName (should be unique)
+                        </short_desc>
+                    </description>
+                </parameter>  
+                <parameter displayText="fileLoc" name="FILELOC" optional="No">
+                    <description>
+                        <short_desc>
+                        fileLoc is the location of the file to write (including filename). If an absolute path is given then it is used other wise the default path is SAFS Project Directory. If the file exists it is just appended to.
+                        </short_desc>
+                    </description>
+                </parameter>
+            </parameters>
+            <examples>
+                <example>
+                    <usage>
+                    C, StoreTimerInfoFile, exampleTimer, "c:\temp\temp.csv"
+                    </usage>
+                    <description>
+                        <short_desc>
+                        Will store exampleTimer information in the file located at c:\temp\temp.csv.
+                        </short_desc>
+                    </description>
+                </example>                                       
+            </examples>
+        </keyword>
+    </keywords>    
+</keyword_library>

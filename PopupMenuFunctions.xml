@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="PopupMenuFunctions" 
+                 doc="PopupMenuFunctions.htm" 
+                 sourcecode="PopupMenuFunctions.sbl" 
+                 chainTo="GenericObjectFunctions"
+                 class="POPUPMENU">
+                 
+        <description> <short_desc> 
+              Actions for ACTIVE Popup Menus
+           </short_desc> <detailed_desc> 
+              Actions for ACTIVE Popup Menus.<br />
+              The popup menu must usually already be up and active for each of these Actions.
+              <p>
+              It is important to recognize certain issues with Popup menus, especially as 
+              we need to differentiate between Java popups and Win32 popups.</p>
+              <p>
+              Win32 popup menus are generally found as the topmost active popup window.  
+              Because of this, we generally can just look for the topmost active popup 
+              window and we don't need any type of recognition information to locate it.</p>
+              <p>
+              Java popup menus are generally NOT implemented as normal Win32 popup menus 
+              and we generally DO need to have window and component recognition information 
+              for Java popup menus.</p>              
+              <p>
+              For RC and Win32 popups: Unless otherwise indicated, the Window and Component 
+              references are not used and can be anything.  They just cannot be blank.</p>
+              <p>
+              For Java popups: Unless otherwise indicated, valid recognition information for 
+              the Java window and "child" popup menu must be provided.</p>
+              <p>
+              Also refer to <i>JavaMenuFunctions</i> for support specific to Java menus and 
+              popup menus.</p>                
+           </detailed_desc> </description>
+    </libraryInfo>
+    <runtime platform="Windows" engine="Robot" version="2002" />
+    <keywords>
+    
+    <keyword name="SELECTPOPUPMENUITEM" 
+             displayText="SelectPopupMenuItem" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description> <short_desc> 
+                Select a menuItem via its text in the currently active popup menu.
+              </short_desc> <detailed_desc> 
+                Attempts to select a particular text string menuitem in the currently 
+                active popup menu.  The menuitem should be specified in the form 
+                "Menu-&gt;Menu-&gt;MenuItem   CTRL+V" with the full text, spaces(if any), and 
+                keyboard shortcut text (if any).  
+                <p>
+                Ampersands preceding underlined characters are optional.
+                The routine first verifies that the specified menuitem exists
+                and exits with error if it does not.
+                If it does exist then the selection proceeds using the MenuID retrieved
+                from the found menuitem.</p>
+                <p>
+                For RC and Win32 popups: The Window and Component references are not 
+                used and can be anything.  They just cannot be blank.</p>
+                <p>
+                For Java popups: Valid recognition information for the Java window and 
+                "child" popup menu must be provided.</p>
+                <p>
+                Also refer to <i>JavaMenuFunctions</i> for support specific to Java menus and 
+                popup menus.</p>
+                <p>
+                <b>TC Note:</b>Component can be the object who contains 'popup menu', or it
+                can be the 'context menu' object.</p>                 
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="PopupMenuFunctions" 
+                            doc="PopupMenuFunctions.htm" 
+                            sourcecode="PopupMenuFunctions.sbl" 
+                            class="POPUPMENU" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFPopupMenu" 
+                            doc="org/safs/rational/CFPopupMenu.html" 
+                            sourcecode="org.safs.rational.CFPopupMenu.java" 
+                            class="POPUPMENU" />
+           </engine>
+           <engine name="Test Complete" 
+		       since="20110502" 
+		       tool="TestComplete" 
+		       vendor="AutomatedQA">
+	       		<libraryInfo class="POPUPMENU" 
+					name="PopupMenuFunctions" 
+					sourcecode="PopupMenuFunctions.SVB">
+	       		</libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20120601">
+                       <libraryInfo name="PopupMenuFunctions" 
+                                    class="POPUPMENU" 
+                                    subClass="NET" 
+                                    sourcecode="PopupMenuFunctions.SVB" />                  
+                   </domain>
+                   <domain name="JAVA" since="20131111">
+                       <libraryInfo name="JavaPopupMenu" 
+                                    class="POPUPMENU" 
+                                    subClass="JAVA" 
+                                    sourcecode="JavaPopupMenuFunctions.SVB" />                  
+                   </domain>
+               </domains> 	       		
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="MENUITEMTEXT" displayText="MenuItemText" optional="NO">
+           <description> <short_desc> 
+                Menu-&gt;MenuItem hierarchy to the menuItem to select.
+              </short_desc> <detailed_desc> 
+                Menu-&gt;MenuItem hierarchy string to identify which menuitem to select.<br />
+                NOTE:SQA can only handle submenus up to 5 levels deep.<br/>
+				NOTE:For RJ implementation, this field is optional if the "child" is a "MenuItem"
+              </detailed_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, Anything, AtAll, SelectPopupMenuItem, "File-&gt;Save   Ctrl+S"</usage>
+           <description> <short_desc> 
+                Select the File/Save menuItem from the currently active popup menu.
+              </short_desc> <detailed_desc> 
+                Select the File/Save menuItem from the currently active popup menu.<br />
+                The full text must include any spaces and visible shortcut key combos that 
+                are displayed in the text of the menuItem.
+              </detailed_desc> </description> </example>
+        <example>
+           <usage>T, Anything, AtAll, SelectPopupMenuItem, "&amp;File-&gt;&amp;Save   Ctrl+S"</usage>
+           <description> <short_desc> 
+                Select the File/Save menuItem from the currently active popup menu.
+              </short_desc> <detailed_desc> 
+                Select the File/Save menuItem from the currently active popup menu.<br />
+                The full text must include any spaces and visible shortcut key combos that 
+                are displayed in the text of the menuItem.<br />
+                Ampersands (&amp;) indicating/preceding underlined characters are optional.
+              </detailed_desc> </description> </example>
+        <example>
+           <usage>T, ParentWindow, popupMenu, SelectPopupMenuItem, "File-&gt;Save"</usage>
+           <description> <short_desc> 
+                <b>RJ Usage:</b> If File/Save menuItem exists in the currently active popup menu, then select it.
+              </short_desc> <detailed_desc> 
+              </detailed_desc> </description> </example>
+        <example>
+           <usage>T, ParentWindow, popupFileMenu, SelectPopupMenuItem, "Save"</usage>
+           <description> <short_desc> 
+                <b>RJ Usage:</b> If File/Save menuItem exists in the currently active popup menu, then select it.
+              </short_desc> <detailed_desc> 
+              </detailed_desc> </description> </example>
+        <example>
+           <usage>T, ParentWindow, popupSaveMenu, SelectPopupMenuItem</usage>
+           <description> <short_desc> 
+                <b>RJ Usage:</b> If File/Save menuItem exists in the currently active popup menu, then select it.
+              </short_desc> <detailed_desc> 
+              </detailed_desc> </description> </example>			   			   			   
+     </examples></keyword>
+
+  <keyword name="SELECTUNVERIFIEDPOPUPMENUITEM" 
+             displayText="SelectUnverifiedPopupMenuItem" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description> <short_desc> 
+                Select a menuItem via its text in the currently active popup menu without verification.
+              </short_desc> <detailed_desc> 
+                Attempts to select a particular text string menuitem in the currently 
+                active popup menu. This routine performs no verification prior to or
+                following the selection.  This may cause a Rational error if the Popup
+                Menu or selected menu item is not available. 
+                <p>The menuitem should be specified in the form 
+                "Menu-&gt;Menu-&gt;MenuItem   CTRL+V" with the full text, spaces(if any), and 
+                keyboard shortcut text (if any).</p>
+                <p>
+                Ampersands preceding underlined characters are optional.
+                </p>
+                <p>
+                For RC and Win32 popups: The Window and Component references are not 
+                used and can be anything.  They just cannot be blank.</p>
+                <p>
+                <b>TC Note:</b>Component can be the object who contains 'popup menu', or it
+                can be the 'context menu' object.</p> 
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="PopupMenuFunctions" 
+                            doc="PopupMenuFunctions.htm" 
+                            sourcecode="PopupMenuFunctions.sbl" 
+                            class="POPUPMENU" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080423" >
+	       <libraryInfo name="CFPopupMenu" 
+                            doc="org/safs/rational/CFPopupMenu.html" 
+                            sourcecode="org.safs.rational.CFPopupMenu.java" 
+                            class="POPUPMENU" />
+           </engine>		   
+           <engine name="Test Complete" 
+		       since="20110502" 
+		       tool="TestComplete" 
+		       vendor="AutomatedQA">
+	       		<libraryInfo class="POPUPMENU" 
+				name="PopupMenuFunctions" 
+				sourcecode="PopupMenuFunctions.SVB">
+	       		</libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20120601">
+                       <libraryInfo name="PopupMenuFunctions" 
+                                    class="POPUPMENU" 
+                                    subClass="NET" 
+                                    sourcecode="PopupMenuFunctions.SVB" />                  
+                   </domain>
+               </domains> 	       		
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="MENUITEMTEXT" displayText="MenuItemText" optional="NO">
+           <description> <short_desc> 
+                Menu-&gt;MenuItem hierarchy to the menuItem to select.
+              </short_desc> <detailed_desc> 
+                Menu-&gt;MenuItem hierarchy string to identify which menuitem to select.<br />
+                NOTE:SQA can only handle submenus up to 5 levels deep.
+              </detailed_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, Anything, AtAll, SelectUnverifiedPopupMenuItem, "File-&gt;Save   Ctrl+S"</usage>
+           <description> <short_desc> 
+                Select the File/Save menuItem from the currently active popup menu.
+              </short_desc> <detailed_desc> 
+                Select the File/Save menuItem from the currently active popup menu.<br />
+                The full text must include any spaces and visible shortcut key combos that 
+                are displayed in the text of the menuItem.
+                <p>
+                For RC and Win32 popups: The Window and Component references are not 
+                used and can be anything.  They just cannot be blank.</p>
+              </detailed_desc> </description> </example>
+        <example>
+           <usage>T, Anything, AtAll, SelectUnverifiedPopupMenuItem, "&amp;File-&gt;&amp;Save   Ctrl+S"</usage>
+           <description> <short_desc> 
+                Select the File/Save menuItem from the currently active popup menu.
+              </short_desc> <detailed_desc> 
+                Select the File/Save menuItem from the currently active popup menu.<br />
+                The full text must include any spaces and visible shortcut key combos that 
+                are displayed in the text of the menuItem.<br />
+                Ampersands (&amp;) indicating/preceding underlined characters are optional.
+                <p>
+                For RC and Win32 popups: The Window and Component references are not 
+                used and can be anything.  They just cannot be blank.</p>
+              </detailed_desc> </description> </example>
+        <example>
+           <usage>T, ParentWindow, popupMenu, SelectUnverifiedPopupMenuItem, "File-&gt;Save"</usage>
+           <description> <short_desc> 
+                <b>RJ Usage:</b> Select the File/Save menuItem from the currently active popup menu.
+              </short_desc> <detailed_desc> 
+              </detailed_desc> </description> </example>
+        <example>
+           <usage>T, ParentWindow, popupFileMenu, SelectUnverifiedPopupMenuItem, "Save"</usage>
+           <description> <short_desc> 
+                <b>RJ Usage:</b> Select the File/Save menuItem from the currently active popup menu.
+              </short_desc> <detailed_desc> 
+              </detailed_desc> </description> </example>	  
+     </examples></keyword>
+      
+  <keyword name="SELECTPOPUPMENUID" 
+           displayText="SelectPopupMenuID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                Select a menuItem via its menuID in the currently active popup menu.
+              </short_desc> <detailed_desc> 
+                Attempts to select a particular menuID in the currently 
+                active popup menu.  This is generally used when the menuitem is a bitmap 
+                or other item that does not have text.  This value can be retrieved from 
+                the the menu by index or by manual lookup from a menu structure output 
+                from MenuUtilities.
+                <p>
+                The routine first verifies that the specified menuitem exists
+                and exits with error if it does not.
+                If it does exist then the selection proceeds.</p>
+                <p>
+                For RC and Win32 popups: The Window and Component references are not 
+                used and can be anything.  They just cannot be blank.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="PopupMenuFunctions" 
+                            doc="PopupMenuFunctions.htm" 
+                            sourcecode="PopupMenuFunctions.sbl" 
+                            class="POPUPMENU" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="MENUITEMID" displayText="MenuItemID" optional="NO">
+           <description> <short_desc> 
+                The Windows menuID of the menuItem to select.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, Anything, AtAll, SelectPopupMenuID, 1001</usage>
+           <description> <short_desc> 
+                Select the menuItem with menuID 1001 from the currently active popup menu.
+              </short_desc> <detailed_desc> 
+                Select the menuItem with menuID 1001 from the currently active popup menu.
+                <p>
+                For RC and Win32 popups: The Window and Component references are not 
+                used and can be anything.  They just cannot be blank.</p>
+              </detailed_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="VERIFYPOPUPMENUITEM" 
+           displayText="VerifyPopupMenuItem" 
+           expectFailSupport="YES" 
+           expectWarnSupport="NO" 
+           deprecated="NO">
+           
+       <description> <short_desc> 
+                Verify the state of a menuItem found via its text in the currently active popup menu.
+              </short_desc> <detailed_desc> 
+                The menuitem should be specified in the form 
+                "Menu-&gt;Menu-&gt;MenuItem   CTRL+V" with the full text, spaces(if any), and 
+                keyboard shortcut text (if any).  
+                <p>
+                Ampersands preceding underlined characters are optional.
+                The routine first verifies that the specified menuitem exists
+                and exits with error if it does not.</p>
+                <p>
+                For RC and Win32 popups: The Window and Component references are not 
+                used and can be anything.  They just cannot be blank.</p>
+                <p>
+                For Java popups: Valid recognition information for the Java window and 
+                "child" popup menu must be provided.</p>
+                <p>
+                Also refer to <i>JavaMenuFunctions</i> for support specific to Java menus and 
+                popup menus.</p>                
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" 
+                   expectFailSupport="YES" 
+                   expectWarnSupport="NO" >
+	       <libraryInfo name="PopupMenuFunctions" 
+                            doc="PopupMenuFunctions.htm" 
+                            sourcecode="PopupMenuFunctions.sbl" 
+                            class="POPUPMENU" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFPopupMenu" 
+                            doc="org/safs/rational/CFPopupMenu.html" 
+                            sourcecode="org.safs.rational.CFPopupMenu.java" 
+                            class="POPUPMENU" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="MENUITEMTEXT" displayText="MenuItemText" optional="NO">
+           <description> 
+              <short_desc> 
+                Menu-&gt;MenuItem hierarchy to the menuItem to verify.
+              </short_desc> 
+              <detailed_desc> 
+                Menu-&gt;MenuItem hierarchy string to identify which menuitem to verify.<br />
+                NOTE:SQA can only handle submenus up to 5 levels deep.
+                <p>
+                For RC and Win32 popups: The Window and Component references are not 
+                used and can be anything.  They just cannot be blank.</p>
+                <p>
+                For Java popups: Valid recognition information for the Java window and 
+                "child" popup menu must be provided.</p>
+                <p>
+                Also refer to <i>JavaMenuFunctions</i> for support specific to Java menus and 
+                popup menus.</p></detailed_desc></description>
+        </parameter>
+        <parameter name="STATEINFO" displayText="StateInfo" optional="NO">
+           <description> <short_desc> 
+                Expected status string (or part thereof) to verify.  
+              </short_desc> <detailed_desc> 
+                <p>Note: this parameter is partial supported for RJ.</p>
+                <p>
+                Expected status string (or part thereof) to verify.  
+                Ex:  "Enabled Checked"  OR  "Disabled Grayed"    etc.
+                Each item separated by a space will be evaluated separately so 
+                the order of the status items does not matter.  
+                These status items (listed below) currently ARE case-sensitive.</p>                    
+                <p>
+                "Enabled"     "Grayed"      "BarBreak"                "Bitmap"
+                "Disabled"    "Ungrayed"    "Separator"               "Break"
+                "Checked"     "Hilited"     "Default"                 "Menu With N MenuItems"
+                "Unchecked"   "Unhilited"   "Normal" (not default)
+                </p>
+                <p>
+                "Enabled"     "Grayed"      "Bitmap"
+                "Disabled"    "Ungrayed"    "Separator"
+                "Checked"     "Unchecked"   "Menu With N MenuItems" are supported by RJ.
+                </p>			   
+              </detailed_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, Anything, AtAll, VerifyPopupMenuItem, "File", "Enabled Menu With 7 MenuItems"</usage>
+           <description> <short_desc> 
+                Verify the File popup menuItem is a "Menu With 7 MenuItems" and is "Enabled" .
+              </short_desc> <detailed_desc> 
+                <p>Note: the STATEINFO parameter is partial supported for RJ.</p>
+                Verify the File popup menuItem is a "Menu With 7 MenuItems" and is "Enabled" .<br />
+                The full text must include any spaces and visible shortcut key combos that 
+                are displayed in the text of the menuItem.
+                <p>
+                For RC and Win32 popups: The Window and Component references are not 
+                used and can be anything.  They just cannot be blank.</p>
+                <p>
+                For Java popups: Valid recognition information for the Java window and 
+                "child" popup menu must be provided.</p>
+                <p>
+                Also refer to <i>JavaMenuFunctions</i> for support specific to Java menus and 
+                popup menus.</p>                
+              </detailed_desc> </description> </example>
+        <example>
+           <usage>T, Anything, AtAll, VerifyPopupMenuItem, "&amp;View-&gt;&amp;Toolbars-&gt;P&amp;aint", "Disabled Unchecked"</usage>
+           <description> <short_desc> 
+                Verify the Paint menuItem in View/Toolbars is "Disabled" and "Unchecked".
+              </short_desc> <detailed_desc> 
+                Verify the Paint menuItem in View/Toolbars is "Disabled" and "Unchecked".<br />
+                The full text must include any spaces and visible shortcut key combos that 
+                are displayed in the text of the menuItem.<br />
+                Ampersands (&amp;) indicating/preceding underlined characters are optional.
+                <p>
+                The Window and Component references are not used and can be anything.
+                They just cannot be blank.</p>
+              </detailed_desc> </description> </example>
+        <example>
+           <usage>T, parentWindow, popupMenu, VerifyPopupMenuItem, "Weird-&gt;CheckBox", "Enabled"</usage>
+           <description> <short_desc> 
+                <b>RJ Usage:</b> Verify the CheckBox menuItem in Weird exists and it's status is "Enabled".
+              </short_desc></description> </example>
+        <example>
+           <usage>T, parentWindow, popupWeirdMenu, VerifyPopupMenuItem, "CheckBox", "Enabled Unchecked"</usage>
+           <description> <short_desc> 
+                <b>RJ Usage:</b> Verify the CheckBox menuItem in Weird exists and it's status is "Enabled Unchecked".
+              </short_desc></description> </example>	    
+     </examples></keyword>
+     
+  <keyword name="VERIFYPOPUPMENUPARTIALMATCH" 
+           displayText="VerifyPopupMenuPartialMatch" 
+           expectFailSupport="YES" 
+           expectWarnSupport="NO" 
+           deprecated="NO">
+           
+       <description> <short_desc> 
+                Verify if a menuItem contains a substring
+              </short_desc> <detailed_desc> 
+                Verify if a menuItem contains a substring
+                <p>
+                For Java popups: Valid recognition information for the Java window and 
+                "child" popup menu must be provided.</p>
+                <p>
+                Also refer to <i>JavaMenuFunctions</i> for support specific to Java menus and 
+                popup menus.</p>                
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" 
+                   expectFailSupport="YES" 
+                   expectWarnSupport="NO" >
+	       <libraryInfo name="CFPopupMenu" 
+                            doc="org/safs/rational/CFPopupMenu.html" 
+                            sourcecode="org.safs.rational.CFPopupMenu.java" 
+                            class="POPUPMENU" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="MENUITEMTEXT" displayText="MenuItemText" optional="NO">
+           <description> <short_desc> 
+                Menu-&gt;MenuItem hierarchy substring to the menuItem
+                to search for.
+              </short_desc> <detailed_desc> 
+                Menu-&gt;MenuItem hierarchy substring to identify
+                which menuitem to search for.<br />
+                <p>
+                For Java popups: Valid recognition information for the Java window and 
+                "child" popup menu must be provided.</p>
+                <p>
+                Also refer to <i>JavaMenuFunctions</i> for support specific to Java menus and 
+                popup menus.</p>                
+              </detailed_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, ParentWindow, popupMenu, VerifyPopupMenuPartialMatch, "Fil-&gt;Ope"</usage>
+           <description> <short_desc> 
+                Verify that the popup menu contains partially path "Fil-&gt;Ope".
+			    For Example: If a path "Path-&gt;Open" exists, then the verification will be ok.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="VERIFYPOPUPMENUID" 
+           displayText="VerifyPopupMenuID" 
+           expectFailSupport="YES" 
+           expectWarnSupport="NO" 
+           deprecated="NO">
+           
+       <description> <short_desc> 
+                Verify the state of a menuItem via its menuID in the currently active popup menu.
+              </short_desc> <detailed_desc> 
+                Verify the state of a particular menuID in the currently 
+                active popup menu.  This is generally used when the menuitem is a bitmap 
+                or other item that does not have text.  This menuID can be retrieved from 
+                the the menu by index or by manual lookup from a menu structure output 
+                from MenuUtilities.
+                <p>
+                The routine first verifies that the specified menuitem exists
+                and exits with error if it does not.</p>
+                <p>
+                For RC and Win32 popups: The Window and Component references are not 
+                used and can be anything.  They just cannot be blank.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" 
+                   expectFailSupport="YES" 
+                   expectWarnSupport="NO" >
+	       <libraryInfo name="PopupMenuFunctions" 
+                            doc="PopupMenuFunctions.htm" 
+                            sourcecode="PopupMenuFunctions.sbl" 
+                            class="POPUPMENU" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="MENUITEMID" displayText="MenuItemID" optional="NO">
+           <description> <short_desc> 
+                The Windows menuID of the menuItem to verify.
+              </short_desc> </description> </parameter>
+        <parameter name="STATEINFO" displayText="StateInfo" optional="NO">
+           <description> <short_desc> 
+                Expected status string (or part thereof) to verify.  
+              </short_desc> <detailed_desc> 
+                Expected status string (or part thereof) to verify.  
+                Ex:  "Enabled Checked"  OR  "Disabled Grayed"    etc.
+                Each item separated by a space will be evaluated separately so 
+                the order of the status items does not matter.  
+                These status items (listed below) currently ARE case-sensitive. 
+                <p>
+                "Enabled"     "Grayed"      "BarBreak"                "Bitmap"
+                "Disabled"    "Ungrayed"    "Separator"               "Break"
+                "Checked"     "Hilited"     "Default"                 "Menu With N MenuItems"
+                "Unchecked"   "Unhilited"   "Normal" (not default)
+                </p>
+              </detailed_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, Anything, AtAll, VerifyPopupMenuID, 1001, "Enabled Menu With 7 MenuItems"</usage>
+           <description> <short_desc> 
+                Verify the popup menuItem with menuID 1001 is a "Menu With 7 MenuItems" and is "Enabled" .
+              </short_desc> <detailed_desc> 
+                Verify the popup menuItem with menuID 1001 is a "Menu With 7 MenuItems" and is "Enabled" .<br />
+                The Window and Component references are not used and can be anything.
+                They just cannot be blank.
+              </detailed_desc> </description> </example>
+        <example>
+           <usage>T, Anything, AtAll, VerifyPopupMenuID, 10400, "Disabled Unchecked"</usage>
+           <description> <short_desc> 
+                Verify the popup menuItem with menuID 10400 is "Disabled" and "Unchecked".
+              </short_desc> <detailed_desc> 
+                Verify the popup menuItem with menuID 10400 is "Disabled" and "Unchecked".
+                <p>
+                The Window and Component references are not used and can be anything.
+                They just cannot be blank.</p>
+              </detailed_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="VERIFYPOPUPMENU" 
+           displayText="VerifyPopupMenu" 
+           expectFailSupport="YES" 
+           expectWarnSupport="NO" 
+           deprecated="NO">
+           
+       <description> <short_desc> 
+                Verify the complete status of the current popup menu with a benchmark file.
+              </short_desc> <detailed_desc>
+                Verify the complete status of the current popup menu with a benchmark file.<br />
+                Typically, benchmarks are stored in the Datapool\Bench directory.  
+                In that event, only the filename.ext is needed.  There is currently 
+                a limit of 32K allowed for this type of comparison.  <br />
+                The Window and Component objects are not validated and have no role.
+                The Window and Component strings can be any text, but they cannot be blank.
+                <p>
+                Due to the nature of the verification using a DOS file comparison, the popup 
+                menu will no longer be present after the verification and must be reactivated 
+                if additional popup menu activity is to occur.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" 
+                   expectFailSupport="YES" 
+                   expectWarnSupport="NO" >
+	       <libraryInfo name="PopupMenuFunctions" 
+                            doc="PopupMenuFunctions.htm" 
+                            sourcecode="PopupMenuFunctions.sbl" 
+                            class="POPUPMENU" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080423" >
+	       <libraryInfo name="CFPopupMenu" 
+                            doc="org/safs/rational/CFPopupMenu.html" 
+                            sourcecode="org.safs.rational.CFPopupMenu.java" 
+                            class="POPUPMENU" />
+           </engine>		  
+       </engines>
+
+       <parameters>
+        <parameter name="BENCHMARKFILE" displayText="BenchmarkFile" optional="NO">
+           <description> <short_desc> 
+             The name.ext of the file used as the comparison benchmark.
+              </short_desc> <detailed_desc>
+                The name.ext of the file used as the comparison benchmark.<br />
+                Typically, benchmarks are stored in the Datapool\Bench directory.  
+                In that event, only the filename.ext is needed.  Otherwise, the 
+                full file path is needed.
+              </detailed_desc> </description> </parameter>
+        <parameter name="HEADERTEXT" displayText="HeaderText" optional="YES" default="">
+           <description> <short_desc> 
+                Optional descriptive header line of text to match with the benchmark.
+              </short_desc> <detailed_desc> 
+                Optional header line of text to match with the benchmark.<br />
+                If the benchmark file was created with or contains an initial line 
+                of descriptive text then that line must be provided here for 
+                the comparison to be successful.
+              </detailed_desc> </description> </parameter>
+        <parameter name="ACTUALFILE" displayText="ActualFile" optional="YES" default="">
+           <description> <short_desc> 
+                The optional name.ext of the file used for the captured menu status.
+              </short_desc> <detailed_desc>
+                The optional name.ext of the file used for the captured menu status.<br />
+                Typically, actuals are stored in the Datapool\Test directory with the same 
+                name as the benchmark file.  Thus, you would normally leave this blank.
+              </detailed_desc> </description> </parameter>
+        <parameter name="DIFFFILE" displayText="DiffFile" optional="YES" default="">
+           <description> <short_desc> 
+                The optional name.ext of the file used to contain the differences found.
+              </short_desc> <detailed_desc>
+                The optional name.ext of the file used to contain the differences found.<br />
+                Typically, diffs are stored in the Datapool\Dif directory with the same 
+                name as the benchmark file.  Thus, you would normally leave this blank.
+              </detailed_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, Anything, AtAll, VerifyPopupMenu, BenchFile.ext </usage>
+           <description> <short_desc> 
+                Verify the popup menu against the BenchFile.ext benchark.
+              </short_desc> <detailed_desc> 
+                Verify the popup menu against the BenchFile.ext benchark.<br />
+                The Window and Component references are not used and can be anything.
+                They just cannot be blank.
+              </detailed_desc> </description> </example>
+        <example>
+           <usage>T, Anything, AtAll, VerifyPopupMenu, BenchFile.ext, "Normal App State Menu" </usage>
+           <description> <short_desc> 
+                Verify the popup menu against the BenchFile.ext benchark with a header line of text.
+              </short_desc> <detailed_desc> 
+                Verify the popup menu against the BenchFile.ext benchark with a header line of text.<br />
+                This header line exists in the benchmark and thus must be included in the call.
+                <p>
+                The Window and Component references are not used and can be anything.
+                They just cannot be blank.</p>
+              </detailed_desc> </description> </example>
+        <example>
+           <usage>T, Anything, AtAll, VerifyPopupMenu, BenchFile.ext, "", TestFile.ext, DiffFile.ext </usage>
+           <description> <short_desc> 
+                Verify the popup menu against the BenchFile.ext using alternate output filenames.
+              </short_desc> <detailed_desc> 
+                Verify the popup menu against the BenchFile.ext using alternate output filenames.<br />
+                <p>
+                The Window and Component references are not used and can be anything.
+                They just cannot be blank.</p>
+              </detailed_desc> </description> </example>
+     </examples></keyword>
+</keywords>
+</keyword_library>

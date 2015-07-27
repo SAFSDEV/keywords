@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+    
+    <libraryType type="DRIVER" />
+    
+    <libraryInfo name="DDDriverDebugCommands" 
+                 doc="DDDriverDebugCommands.htm" 
+                 sourcecode="DDDriverDebugCommands.sbl"
+                 class="DEBUG" >
+                 
+        <description>
+          <short_desc>
+              Debug Driver Commands for the Cycle, Suite, and Step drivers
+          </short_desc>
+          <detailed_desc><p>
+          This keyword library provides Driver Commands that 
+          can be used by all three DDE Drivers--CycleDriver, 
+          SuiteDriver, and StepDriver.  That means they can 
+          be used in any keyword driven test tables regardless 
+          of the test tables level--Cycle, Suite, or Step.</p>
+          <p>
+          Each different driver command has different parameters 
+          as described in its documentation.  For reference, the 
+          first fields of ALL Driver Command test records are defined 
+          below:</p>
+          <dl>
+             <dd>Field #1</dd>
+             <dt>The "C" = DRIVER COMMAND record type specifier.</dt>
+
+             <dd>Field #2</dd>
+             <dt>The Driver Command keyword.</dt>
+          </dl>
+          <p>
+          Example:</p>
+
+          <code>c , SetApplicationMap , "AppMap.map"</code>
+
+          <p>
+          Driver Command parameters must be placed in the test record 
+          in the field position specified in the documentation.  
+          Some parameters are optional.  However, the field associated 
+          with that parameter must be honored.  If you wish to skip an 
+          optional parameter you must still provide an empty field for 
+          that parameter.</p>
+          <p>
+          Example:</p>
+
+          <code>c, LaunchApplication, NOTEPAD, NOTEPAD.EXE, , , "AppMap.map"</code>
+
+          <p>
+          The above example shows two optional fields after NOTEPAD.EXE 
+          which are given no value(skipped).</p>
+          <p>
+          Note that the full availablility of all Driver Commands is now 
+          spread across several files.  Together, all of these files provide 
+          all the Driver Commands available to the core framework.</p>
+          <dl>
+             <dd><a href="DDDriverCommands.htm" target="_blank">DDDriverCommands</a></dd>
+             <dt>Miscellaneous and often used Commands.</dt>
+
+             <dd><a href="DDDriverLogCommands.htm" target="_blank">DDDriverLogCommands</a></dd>
+             <dt>Commands focused on logging test execution.</dt>
+
+             <dd><a href="DDDriverFlowCommands.htm" target="_blank">DDDriverFlowCommands</a></dd>
+             <dt>Commands focused on Error Recovery and Flow Control.</dt>
+
+             <dd><a href="DDDriverCounterCommands.htm" target="_blank">DDDriverCounterCommands</a></dd>
+             <dt>Commands focused on status tracking.</dt>
+
+             <dd><a href="DDDriverDeprecatedCommands.htm" target="_blank">DDDriverDeprecatedCommands</a></dd>
+             <dt>Commands that are still provided for backward compatibility, but are no longer supported.</dt>
+
+             <dd><a href="DDDriverDebugCommands.htm" target="_blank">DDDriverDebugCommands</a></dd>
+             <dt>Commands focused on debugging test execution.</dt>
+
+          </dl>
+          </detailed_desc>
+        </description>
+    </libraryInfo>
+    <runtime platform="Windows" engine="Robot" version="2000" />
+    <keywords>
+    
+    <keyword name="BREAKPOINTS" 
+             displayText="Breakpoints" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description> <short_desc> 
+                 Enable and Disable Breakpoint Debugging.
+              </short_desc>
+              <detailed_desc>
+                 Enable and Disable Breakpoint Debugging.  This means that 
+                 debugging will stop at each record following a 
+                 (BP) Breakpoint record.
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverDebugCommands" 
+                            doc="DDDriverDebugCommands.htm" 
+                            sourcecode="DDDriverDebugCommands.sbl" 
+                            class="DEBUG" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031219" >
+	       <libraryInfo name="DDDriverDebugCommands" 
+                            doc="DDDriverDebugCommands.htm" 
+                            sourcecode="org.safs.DCDriverMiscCommands.java" 
+                            class="DEBUG" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20041011" >
+	       <libraryInfo name="TIDDriverDebugCommands" 
+                            doc="org/safs/tools/engines/TIDDriverDebugCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverDebugCommands.java" 
+                            class="DEBUG" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DDDriverDebugCommands" 
+                            doc="DDDriverDebugCommands.htm" 
+                            sourcecode="org.safs.DCDriverMiscCommands.java" 
+                            class="DEBUG" />
+           </engine>
+           <engine name="WinRunner" 
+			       since="20020820" 
+			       tool="WinRunner" 
+			       vendor="Mercury Interactive">
+		       <libraryInfo class="DEBUG" 
+					name="DDDriverCommands" 
+					sourcecode="DDDriverCommands">
+		       </libraryInfo>
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="MODE" displayText="Mode" optional="NO" default="OFF">
+           <description> <short_desc> 
+                 The status for this debug mode.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, Breakpoints, ON</usage>
+           <description> <short_desc> 
+                 Turn ON breakpoint debugging.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="COMMANDDEBUG" 
+           displayText="CommandDebug" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Enable and Disable (C)Command Debugging.
+              </short_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverDebugCommands" 
+                            doc="DDDriverDebugCommands.htm" 
+                            sourcecode="DDDriverDebugCommands.sbl" 
+                            class="DEBUG" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031219" >
+	       <libraryInfo name="DDDriverDebugCommands" 
+                            doc="DDDriverDebugCommands.htm" 
+                            sourcecode="org.safs.DCDriverMiscCommands.java" 
+                            class="DEBUG" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20041011" >
+	       <libraryInfo name="TIDDriverDebugCommands" 
+                            doc="org/safs/tools/engines/TIDDriverDebugCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverDebugCommands.java" 
+                            class="DEBUG" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DDDriverDebugCommands" 
+                            doc="DDDriverDebugCommands.htm" 
+                            sourcecode="org.safs.DCDriverMiscCommands.java" 
+                            class="DEBUG" />
+           </engine>
+           <engine name="WinRunner" 
+			       since="20020820" 
+			       tool="WinRunner" 
+			       vendor="Mercury Interactive">
+		       <libraryInfo class="DEBUG" 
+					name="DDDriverCommands" 
+					sourcecode="DDDriverCommands">
+		       </libraryInfo>
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="MODE" displayText="Mode" optional="NO" default="OFF">
+           <description> <short_desc> 
+                 The status for this debug mode.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, CommandDebug, ON</usage>
+           <description> <short_desc> 
+                 Turn ON (C)command debugging.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="TESTDEBUG" 
+           displayText="TestDebug" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Enable and Disable (T)Test Record Debugging.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverDebugCommands" 
+                            doc="DDDriverDebugCommands.htm" 
+                            sourcecode="DDDriverDebugCommands.sbl" 
+                            class="DEBUG" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031219" >
+	       <libraryInfo name="DDDriverDebugCommands" 
+                            doc="DDDriverDebugCommands.htm" 
+                            sourcecode="org.safs.DCDriverMiscCommands.java" 
+                            class="DEBUG" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20041011" >
+	       <libraryInfo name="TIDDriverDebugCommands" 
+                            doc="org/safs/tools/engines/TIDDriverDebugCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverDebugCommands.java" 
+                            class="DEBUG" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DDDriverDebugCommands" 
+                            doc="DDDriverDebugCommands.htm" 
+                            sourcecode="org.safs.DCDriverMiscCommands.java" 
+                            class="DEBUG" />
+           </engine>
+           <engine name="WinRunner" 
+			       since="20020820" 
+			       tool="WinRunner" 
+			       vendor="Mercury Interactive">
+		       <libraryInfo class="DEBUG" 
+					name="DDDriverCommands" 
+					sourcecode="DDDriverCommands">
+		       </libraryInfo>
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="MODE" displayText="Mode" optional="NO" default="OFF">
+           <description> <short_desc> 
+                 The status for this debug mode.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, TestDebug, ON</usage>
+           <description> <short_desc> 
+                 Turn ON (T)test debugging.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="RECORDSDEBUG" 
+           displayText="RecordsDebug" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Enable and Disable debugging of ALL record types.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverDebugCommands" 
+                            doc="DDDriverDebugCommands.htm" 
+                            sourcecode="DDDriverDebugCommands.sbl" 
+                            class="DEBUG" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031219" >
+	       <libraryInfo name="DDDriverDebugCommands" 
+                            doc="DDDriverDebugCommands.htm" 
+                            sourcecode="org.safs.DCDriverMiscCommands.java" 
+                            class="DEBUG" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20041011" >
+	       <libraryInfo name="TIDDriverDebugCommands" 
+                            doc="org/safs/tools/engines/TIDDriverDebugCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverDebugCommands.java" 
+                            class="DEBUG" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+	       <libraryInfo name="DDDriverDebugCommands" 
+                            doc="DDDriverDebugCommands.htm" 
+                            sourcecode="org.safs.DCDriverMiscCommands.java" 
+                            class="DEBUG" />
+           </engine>
+           <engine name="WinRunner" 
+			       since="20020820" 
+			       tool="WinRunner" 
+			       vendor="Mercury Interactive">
+		       <libraryInfo class="DEBUG" 
+					name="DDDriverCommands" 
+					sourcecode="DDDriverCommands">
+		       </libraryInfo>
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="MODE" displayText="Mode" optional="NO" default="OFF">
+           <description> <short_desc> 
+                 The status for this debug mode.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, RecordsDebug, ON</usage>
+           <description> <short_desc> 
+                 Turn ON debugging for all record types.
+              </short_desc> </description> </example>
+     </examples></keyword>
+    </keywords>
+</keyword_library>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="FlexDateFunctions" 
+                 doc="FlexDateFunctions.htm" 
+                 sourcecode="org.safs.rational.flex.CFFlexDate.java" 
+                 chainTo="GenericObjectFunctions"
+                 class="CFFlexDate">
+
+        <description>
+           <short_desc> 
+              Actions for working with Flex DateChooser or DateField objects
+           </short_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="RobotJ" version="8.0.0.0" />
+    <keywords>
+    
+
+ <keyword name="SETDATE" 
+           displayText="SetDate" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to set date for a date component according to its DateValue. Currently, this component function is for Flex Date components only.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20090424" >
+			    <libraryInfo name="FlexDateFunctions" 
+    					             doc="FlexDateFunctions.htm" 
+              					   sourcecode="org.safs.rational.flex.CFFlexDate.java" 
+                 						class="CFFlexDate" />                            
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="DateValue" displayText="DateValue" optional="NO">
+           <description>
+              <short_desc> 
+                 DateValue to set.
+              </short_desc>
+              <detailed_desc>
+                 DateValue to set. 
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, FlexWINDOW, FlexDate, SetDate, "Jun 6 2009"</usage>
+           <description>
+              <short_desc> 
+                The date of FlexDate is set to "Jun 6 2009".
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, FlexWINDOW, FlexDate, SetDate, "04/24/2009"</usage>
+           <description>
+              <short_desc> 
+                The date of FlexDate is set to "04/24/2009".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+ 
+</keywords>
+</keyword_library>

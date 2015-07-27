@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="DatePickerFunctions" 
+                 doc="DatePickerFunctions.htm" 
+                 sourcecode="org.safs.android.CFDatePickerFunctions.java" 
+                 chainTo="GenericObjectFunctions"
+                 class="CFDatePicker">
+
+        <description>
+           <short_desc> 
+              Actions for working with Date Picker object
+           </short_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="Droid" version="15" />
+    <keywords>
+    
+
+ <keyword name="SETDATE" 
+           displayText="SetDate" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to set date for a date picker component according to its DateValue.
+              </short_desc>
+           </description>
+           
+       <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20121205" >
+				<libraryInfo name="CFDatePickerFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFDatePickerFunctions.html" 
+					 sourcecode="org.safs.android.CFDatePickerFunctions.java" 
+					 class="DatePicker" />
+            	<domains>
+            		<domain name="DEV" since="20121205">
+	        			<libraryInfo name="DatePickerProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/DatePickerProcessor.html" 
+                             sourcecode="org.safs.android.engine.DatePickerProcessor.java" 
+                             class="DatePicker" />
+                    </domain>
+                </domains>
+            </engine> 
+       </engines>
+
+       <parameters>
+        <parameter name="DateValue" displayText="DateValue" optional="NO">
+           <description>
+              <short_desc> 
+                 DateValue to set.
+              </short_desc>
+              <detailed_desc>
+                 DateValue to set. It can be in format of "MM-dd-yyyy", "MM/dd/yyyy" or "MMM dd yyyy".
+                 When you give it as the first two formats, you MUST quote it; otherwise the character
+                 '-' and '/' will be considered as arithmetic sign and the parameter will be calculated
+                 as arithmetic expression.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, DatePicker, SetDate, "Dec 24 2012"</usage>
+           <description>
+              <short_desc> 
+                The date of DatePicker is set to "Dec 24 2012".
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, DatePicker, SetDate, "04/24/2012"</usage>
+           <description>
+              <short_desc> 
+                The date of DatePicker is set to "Dec 24 2012".
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, DatePicker, SetDate, "04-24-2012"</usage>
+           <description>
+              <short_desc> 
+                The date of DatePicker is set to "Dec 24 2012".
+              </short_desc>
+           </description>
+        </example>        
+     </examples></keyword>
+
+ <keyword name="GETDATE" 
+           displayText="GetDate" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to get date from a date picker component and assign it to a variable.
+              </short_desc>
+           </description>
+           
+       <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20121205" >
+				<libraryInfo name="CFDatePickerFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFDatePickerFunctions.html" 
+					 sourcecode="org.safs.android.CFDatePickerFunctions.java" 
+					 class="DatePicker" />
+            	<domains>
+            		<domain name="DEV" since="20121205">
+	        			<libraryInfo name="DatePickerProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/DatePickerProcessor.html" 
+                             sourcecode="org.safs.android.engine.DatePickerProcessor.java" 
+                             class="DatePicker" />
+                    </domain>
+                </domains>
+            </engine> 
+       </engines>
+
+       <parameters>
+        <parameter name="VariableName" displayText="VariableName" optional="NO">
+           <description>
+              <short_desc> 
+                 The name of variable to contain the date string of DatePicker.
+              </short_desc>
+              <detailed_desc>
+                 The name of variable to contain the date string of DatePicker.
+                 The date string will be in format "MM-dd-yyyy".
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, DatePicker, GetDate, currentDate</usage>
+           <description>
+              <short_desc> 
+                The variable currentDate will contain the date string in format "MM-dd-yyyy".
+                If today is "Dec 05, 2012", then currentDate will equal to 12-05-2012.
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+ 
+</keywords>
+</keyword_library>

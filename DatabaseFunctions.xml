@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+
+<keyword_library><libraryType type="COMPONENT" />
+
+    <libraryInfo name="DatabaseFunctions" 
+                 doc="DatabaseFunctions.htm" 
+                 sourcecode="DatabaseFunctions.sbl" 
+                 chainTo="GenericObjectFunctions"
+                 class="DATABASE">
+
+        <description>
+           <short_desc> 
+              Actions for working with Database tables.
+           </short_desc>
+        </description>
+
+    </libraryInfo><runtime platform="Windows" engine="Robot" version="2002" />
+    <keywords>
+    
+    <keyword name="VERIFYDBVALUE" 
+             displayText="VerifyDBValue" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description><short_desc> 
+                 Verifies the case-sensitive value of a field in a database table
+              </short_desc>
+              <detailed_desc>
+                 Verifies the case-sensitive value of a field in a database table.
+                 <p>
+                 To return the value, it executes a SQL query sentence using an ODBC 
+                 data source to connect to the data base. 
+                 </p><p>
+                 A table and field name are required. You also have to specify data source name,
+                 and optionally user id and password (this is because some drivers
+                 don't need a user/password).
+                 </p><p>
+                 To do: if user id and/or password are not specified, don't include
+                 them in the connection string. This would allow the possibility
+                 to specify them in the data source definition.
+                 </p><p>
+                 If the query returns more than one record, the returned value
+                 is the corresponding to the first one, unless the field name
+                 be something like COUNT(*) or SUM(InvoiceTot).
+                 </p><p>
+                 A query condition can be included, usually it is. It can be any 
+                 valid expression allowed by the WHERE clause of the SELECT sentence of the SQL driver
+                 you are using. For example: "CliBal &gt; 100000 and CliCat = 'C'".<br /> 
+                 Including "where" in the expression itself is optional.  It will 
+                 be prefixed to the expression if it is not provided.
+                 </p>
+              </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DatabaseFunctions" 
+                            doc="DatabaseFunctions.htm" 
+                            sourcecode="DatabaseFunctions.sbl" 
+                            class="DATABASE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031104" >
+	       <libraryInfo name="CFDatabase" 
+                            doc="org/safs/rational/CFDatabase.html" 
+                            sourcecode="org.safs.rational.CFDatabase.java" 
+                            class="DATABASE" />
+           </engine>
+       </engines>
+
+       <parameters>
+          <parameter name="DBFIELDNAME" displayText="DBFieldName" optional="NO">
+           <description>
+              <short_desc> 
+                 Name of the FIELD within DBTableName used in the verification
+              </short_desc></description> </parameter>
+
+        <parameter name="DBTABLEName" displayText="DBTableName" optional="NO">
+           <description><short_desc> 
+                 Name of the TABLE to access within the DBSourceName</short_desc>
+           </description></parameter>
+
+        <parameter name="DBQUERYCOND" displayText="DBQueryCond" optional="YES">
+           <description><short_desc> 
+                 Expression allowed by the WHERE clause of the SELECT sentence of the SQL driver
+              </short_desc>
+              <detailed_desc> 
+                 A query condition can be included, usually it is. It can be any 
+                 valid expression allowed by the WHERE clause of the SELECT sentence of the SQL driver
+                 you are using. For example: "CliBal &gt; 100000 and CliCat = 'C'".<br />
+                 "where" will be added to any expression if it is not provided.
+              </detailed_desc></description></parameter>
+
+        <parameter name="DBSOURCENAME" displayText="DBSourceName" optional="NO">
+           <description><short_desc> 
+                 Name of the Datasource containing the DBTable
+              </short_desc></description></parameter>
+
+        <parameter name="USERID" displayText="UserID" optional="YES">
+           <description><short_desc> 
+                 UserID for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+
+        <parameter name="PASSWORD" displayText="Password" optional="YES">
+           <description><short_desc> 
+                 Password for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+
+        <parameter name="PROMPT" displayText="Prompt" optional="YES">
+           <description> <short_desc> 
+                 Optional parameter valid values 1 - 4 [default is 4 no prompt] for ODBC driver login window.
+              </short_desc></description></parameter>
+        <parameter name="EXPECTEDVALUE" displayText="ExpectedValue" optional="NO">
+           <description> <short_desc> 
+                 Benchmark value to compare against retrieved DBFieldName value
+              </short_desc></description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, ADBAlias, ATableAlias, VerifyDBValue, LASTNAME, Clients, "CID = 25", ContactDatabase, "", "", "Smith",""</usage>
+           <description>
+              <short_desc> 
+                 Verify the LASTNAME field in the CLIENTS table in CONTACTDATABASE contains "Smith" where the CID field = 25.
+              </short_desc>
+              <detailed_desc> 
+                  Verify the LASTNAME field in the CLIENTS table in CONTACTDATABASE contains "Smith" for the first record 
+                  whose CID field = 25.  No UserID or Password was required for this access.
+              </detailed_desc></description></example>
+     </examples></keyword>
+
+  <keyword name="VERIFYDATABASEVALUE" 
+           displayText="VerifyDatabaseValue" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc> 
+                 Verifies the case-sensitive value of a field in a database table
+              </short_desc>
+              <detailed_desc>
+                 Verifies the case-sensitive value of a field in a database table.
+                 <p>
+                 To return the value, it executes a SQL query sentence using an ODBC 
+                 data source to connect to the data base. 
+                 </p><p>
+                 A table and field name are required. You also have to specify data source name,
+                 and optionally user id and password (this is because some drivers
+                 don't need a user/password).
+                 </p><p>
+                 To do: if user id and/or password are not specified, don't include
+                 them in the connection string. This would allow the possibility
+                 to specify them in the data source definition.
+                 </p><p>
+                 If the query returns more than one record, the returned value
+                 is the corresponding to the first one, unless the field name
+                 be something like COUNT(*) or SUM(InvoiceTot).
+                 </p><p>
+                 A query condition can be included, usually it is. It can be any 
+                 valid expression allowed by the WHERE clause of the SELECT sentence of the SQL driver
+                 you are using. For example: "CliBal &gt; 100000 and CliCat = 'C'".<br /> 
+                 Including "where" in the expression itself is optional.  It will 
+                 be prefixed to the expression if it is not provided.
+                 </p>
+              </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DatabaseFunctions" 
+                            doc="DatabaseFunctions.htm" 
+                            sourcecode="DatabaseFunctions.sbl" 
+                            class="DATABASE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031104" >
+	       <libraryInfo name="CFDatabase" 
+                            doc="org/safs/rational/CFDatabase.html" 
+                            sourcecode="org.safs.rational.CFDatabase.java" 
+                            class="DATABASE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="DBFIELDNAME" displayText="DBFieldName" optional="NO">
+           <description>
+              <short_desc> 
+                 Name of the FIELD within DBTableName used in the verification
+              </short_desc></description> </parameter>
+
+        <parameter name="DBTABLEName" displayText="DBTableName" optional="NO">
+           <description><short_desc> 
+                 Name of the TABLE to access within the DBSourceName</short_desc>
+           </description></parameter>
+
+        <parameter name="DBQUERYCOND" displayText="DBQueryCond" optional="YES">
+           <description><short_desc> 
+                 Expression allowed by the WHERE clause of the SELECT sentence of the SQL driver
+              </short_desc>
+              <detailed_desc> 
+                 A query condition can be included, usually it is. It can be any 
+                 valid expression allowed by the WHERE clause of the SELECT sentence of the SQL driver
+                 you are using. For example: "CliBal &gt; 100000 and CliCat = 'C'".<br />
+                 "where" will be added to any expression if it is not provided.
+              </detailed_desc></description></parameter>
+
+        <parameter name="DBSOURCENAME" displayText="DBSourceName" optional="NO">
+           <description><short_desc> 
+                 Name of the Datasource containing the DBTable
+              </short_desc></description></parameter>
+
+        <parameter name="USERID" displayText="UserID" optional="YES">
+           <description><short_desc> 
+                 UserID for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+
+        <parameter name="PASSWORD" displayText="Password" optional="YES">
+           <description><short_desc> 
+                 Password for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+
+        <parameter name="EXPECTEDVALUE" displayText="ExpectedValue" optional="NO">
+           <description> <short_desc> 
+                 Benchmark value to compare against retrieved DBFieldName value
+              </short_desc></description></parameter>
+        <parameter name="PROMPT" displayText="Prompt" optional="YES">
+           <description> <short_desc> 
+                 Optional parameter valid values 1 - 4 [default is 4 no prompt] for ODBC driver login window.
+              </short_desc></description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, ADBAlias, ATableAlias, VerifyDBValue, LASTNAME, Clients, "CID = 25", ContactDatabase, "", "", "Smith",""</usage>
+           <description>
+              <short_desc> 
+                 Verify the LASTNAME field in the CLIENTS table in CONTACTDATABASE contains "Smith" where the CID field = 25.
+              </short_desc>
+              <detailed_desc> 
+                  Verify the LASTNAME field in the CLIENTS table in CONTACTDATABASE contains "Smith" for the first record 
+                  whose CID field = 25.  No UserID or Password was required for this access.
+              </detailed_desc></description></example>
+     </examples></keyword>
+     
+  <keyword name="VERIFYDBNULLVALUE" 
+           displayText="VerifyDBNullValue" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc> 
+                 Verifies the value of a field in a database table is NULL
+              </short_desc>
+              <detailed_desc>
+                 Verifies the value of a field in a database table is NULL.
+                 <p>
+                 Sometimes you have to check if a field's value is NULL. This
+                 NULL value is different from any other (even zero for numerics
+                 and null string for characters), so if you try to check it
+                 using VerifyDBValue() function, if will fail.
+                 </p><p>
+                 A table and field name are required. You also have to specify data source name,
+                 and optionally user id and password (this is because some drivers
+                 don't need a user/password).
+                 </p><p>
+                 To do: if user id and/or password are not specified, don't include
+                 them in the connection string. This would allow the possibility
+                 to specify them in the data source definition.
+                 </p><p>
+                 A query condition can be included, usually it is. It can be any 
+                 valid expression allowed by the WHERE clause of the SELECT sentence of the SQL driver
+                 you are using. For example: "CliBal &gt; 100000 and CliCat = 'C'".<br /> 
+                 Including "where" in the expression itself is optional.  It will 
+                 be prefixed to the expression if it is not provided.
+                 </p>
+              </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DatabaseFunctions" 
+                            doc="DatabaseFunctions.htm" 
+                            sourcecode="DatabaseFunctions.sbl" 
+                            class="DATABASE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031104" >
+	       <libraryInfo name="CFDatabase" 
+                            doc="org/safs/rational/CFDatabase.html" 
+                            sourcecode="org.safs.rational.CFDatabase.java" 
+                            class="DATABASE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="DBFIELDNAME" displayText="DBFieldName" optional="NO">
+           <description>
+              <short_desc> 
+                 Name of the FIELD within DBTableName used in the verification
+              </short_desc></description> </parameter>
+
+        <parameter name="DBTABLEName" displayText="DBTableName" optional="NO">
+           <description><short_desc> 
+                 Name of the TABLE to access within the DBSourceName</short_desc>
+           </description></parameter>
+
+        <parameter name="DBQUERYCOND" displayText="DBQueryCond" optional="YES">
+           <description><short_desc> 
+                 Expression allowed by the WHERE clause of the SELECT sentence of the SQL driver
+              </short_desc>
+              <detailed_desc> 
+                 A query condition can be included, usually it is. It can be any 
+                 valid expression allowed by the WHERE clause of the SELECT sentence of the SQL driver
+                 you are using. For example: "CliBal &gt; 100000 and CliCat = 'C'".<br />
+                 "where" will be added to any expression if it is not provided.
+              </detailed_desc></description></parameter>
+
+        <parameter name="DBSOURCENAME" displayText="DBSourceName" optional="NO">
+           <description><short_desc> 
+                 Name of the Datasource containing the DBTable
+              </short_desc></description></parameter>
+
+        <parameter name="USERID" displayText="UserID" optional="YES">
+           <description><short_desc> 
+                 UserID for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+
+        <parameter name="PASSWORD" displayText="Password" optional="YES">
+           <description><short_desc> 
+                 Password for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+        <parameter name="PROMPT" displayText="Prompt" optional="YES">
+           <description> <short_desc> 
+                 Optional parameter valid values 1 - 4 [default is 4 no prompt] for ODBC driver login window.
+              </short_desc></description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, ADBAlias, ATableAlias, VerifyDBNullValue, LASTNAME, Clients, "CID = 25", ContactDatabase, "", "",""</usage>
+           <description>
+              <short_desc> 
+                 Verify the LASTNAME field in the CLIENTS table in CONTACTDATABASE is NULL where the CID field = 25.
+              </short_desc>
+              <detailed_desc> 
+                  Verify the LASTNAME field in the CLIENTS table in CONTACTDATABASE is NULL for the first record 
+                  whose CID field = 25.  No UserID or Password was required for this access.
+              </detailed_desc></description></example>
+     </examples></keyword>
+     
+  <keyword name="VERIFYDATABASENULLVALUE" 
+           displayText="VerifyDatabaseNullValue" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+       
+       <description><short_desc> 
+                 Verifies the value of a field in a database table is NULL
+              </short_desc>
+              <detailed_desc>
+                 Verifies the value of a field in a database table is NULL.
+                 <p>
+                 Sometimes you have to check if a field's value is NULL. This
+                 NULL value is different from any other (even zero for numerics
+                 and null string for characters), so if you try to check it
+                 using VerifyDBValue() function, if will fail.
+                 </p><p>
+                 A table and field name are required. You also have to specify data source name,
+                 and optionally user id and password (this is because some drivers
+                 don't need a user/password).
+                 </p><p>
+                 To do: if user id and/or password are not specified, don't include
+                 them in the connection string. This would allow the possibility
+                 to specify them in the data source definition.
+                 </p><p>
+                 A query condition can be included, usually it is. It can be any 
+                 valid expression allowed by the WHERE clause of the SELECT sentence of the SQL driver
+                 you are using. For example: "CliBal &gt; 100000 and CliCat = 'C'".<br /> 
+                 Including "where" in the expression itself is optional.  It will 
+                 be prefixed to the expression if it is not provided.
+                 </p>
+              </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DatabaseFunctions" 
+                            doc="DatabaseFunctions.htm" 
+                            sourcecode="DatabaseFunctions.sbl" 
+                            class="DATABASE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031104" >
+	       <libraryInfo name="CFDatabase" 
+                            doc="org/safs/rational/CFDatabase.html" 
+                            sourcecode="org.safs.rational.CFDatabase.java" 
+                            class="DATABASE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="DBFIELDNAME" displayText="DBFieldName" optional="NO">
+           <description>
+              <short_desc> 
+                 Name of the FIELD within DBTableName used in the verification
+              </short_desc></description> </parameter>
+
+        <parameter name="DBTABLEName" displayText="DBTableName" optional="NO">
+           <description><short_desc> 
+                 Name of the TABLE to access within the DBSourceName</short_desc>
+           </description></parameter>
+
+        <parameter name="DBQUERYCOND" displayText="DBQueryCond" optional="YES">
+           <description><short_desc> 
+                 Expression allowed by the WHERE clause of the SELECT sentence of the SQL driver
+              </short_desc>
+              <detailed_desc> 
+                 A query condition can be included, usually it is. It can be any 
+                 valid expression allowed by the WHERE clause of the SELECT sentence of the SQL driver
+                 you are using. For example: "CliBal &gt; 100000 and CliCat = 'C'".<br />
+                 "where" will be added to any expression if it is not provided.
+              </detailed_desc></description></parameter>
+
+        <parameter name="DBSOURCENAME" displayText="DBSourceName" optional="NO">
+           <description><short_desc> 
+                 Name of the Datasource containing the DBTable
+              </short_desc></description></parameter>
+
+        <parameter name="USERID" displayText="UserID" optional="YES">
+           <description><short_desc> 
+                 UserID for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+
+        <parameter name="PASSWORD" displayText="Password" optional="YES">
+           <description><short_desc> 
+                 Password for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+        <parameter name="PROMPT" displayText="Prompt" optional="YES">
+           <description> <short_desc> 
+                 Optional parameter valid values 1 - 4 [default is 4 no prompt] for ODBC driver login window.
+              </short_desc></description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, ADBAlias, ATableAlias, VerifyDatabaseNullValue, LASTNAME, Clients, "CID = 25", ContactDatabase, "", "",""</usage>
+           <description>
+              <short_desc> 
+                 Verify the LASTNAME field in the CLIENTS table in CONTACTDATABASE is NULL where the CID field = 25.
+              </short_desc>
+              <detailed_desc> 
+                  Verify the LASTNAME field in the CLIENTS table in CONTACTDATABASE is NULL for the first record 
+                  whose CID field = 25.  No UserID or Password was required for this access.
+              </detailed_desc></description></example>
+     </examples></keyword>
+     
+  <keyword name="DELETEDBTABLERECORDS" 
+           displayText="DeleteDBTableRecords" 
+           deprecated="NO" expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc> 
+                 Deletes records in a database table
+              </short_desc>
+              <detailed_desc>
+                 Deletes records in a database table.
+                 <p>
+                 A table name is required. You also have to specify data source name,
+                 and optionally user id and password (this is because some drivers
+                 don't need a user/password).
+                 </p><p>
+                 To do: if user id and/or password are not specified, don't include
+                 them in the connection string. This would allow the possibility
+                 to specify them in the data source definition.
+                 </p><p>
+                 A query condition can be included, usually it is. It can be any 
+                 valid expression allowed by the WHERE clause of the DELETE FROM sentence of the SQL driver
+                 you are using. For example: "CliBal &gt; 100000 and CliCat = 'C'".<br /> 
+                 Including "where" in the expression itself is optional.  It will 
+                 be prefixed to the expression if it is not provided.
+                 </p>
+              </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DatabaseFunctions" 
+                            doc="DatabaseFunctions.htm" 
+                            sourcecode="DatabaseFunctions.sbl" 
+                            class="DATABASE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031104" >
+	       <libraryInfo name="CFDatabase" 
+                            doc="org/safs/rational/CFDatabase.html" 
+                            sourcecode="org.safs.rational.CFDatabase.java" 
+                            class="DATABASE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="DBTABLEName" displayText="DBTableName" optional="NO">
+           <description><short_desc> 
+                 Name of the TABLE to access within the DBSourceName</short_desc>
+           </description></parameter>
+
+        <parameter name="DBQUERYCOND" displayText="DBQueryCond" optional="YES">
+           <description><short_desc> 
+                 Expression allowed by the WHERE clause of the DELETE FROM sentence of the SQL driver
+              </short_desc>
+              <detailed_desc> 
+                 A query condition can be included, usually it is. It can be any 
+                 valid expression allowed by the WHERE clause of the DELETE FROM sentence of the SQL driver
+                 you are using. For example: "CliBal &gt; 100000 and CliCat = 'C'".<br />
+                 "where" will be added to any expression if it is not provided.
+              </detailed_desc></description></parameter>
+
+        <parameter name="DBSOURCENAME" displayText="DBSourceName" optional="NO">
+           <description><short_desc> 
+                 Name of the Datasource containing the DBTable
+              </short_desc></description></parameter>
+
+        <parameter name="USERID" displayText="UserID" optional="YES">
+           <description><short_desc> 
+                 UserID for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+
+        <parameter name="PASSWORD" displayText="Password" optional="YES">
+           <description><short_desc> 
+                 Password for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+        <parameter name="PROMPT" displayText="Prompt" optional="YES">
+           <description> <short_desc> 
+                 Optional parameter valid values 1 - 4 [default is 4 no prompt] for ODBC driver login window.
+              </short_desc></description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, ADBAlias, ATableAlias, DeleteDBTableRecords, Clients, "CID = 25", ContactDatabase, "", "",""</usage>
+           <description>
+              <short_desc> 
+                 Delete the records in the CLIENTS table in CONTACTDATABASE where the CID field = 25.
+              </short_desc>
+              <detailed_desc> 
+                  Delete the records in the CLIENTS table in CONTACTDATABASE where the CID field = 25.<br />
+                  No UserID or Password was required for this access.
+              </detailed_desc></description></example>
+     </examples></keyword>
+
+  <keyword name="EXECSQLQUERY" 
+           displayText="ExecSQLQuery" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc> 
+                 Executes the query provided in a ^queryStr on the database table.
+              </short_desc>
+              <detailed_desc>
+                 Executes the query in a database table.
+                 <p>
+                 A data source name [DSN] and Query String is required. You also have to specify
+                 a variable to get the status code.  And optionally user id and password (this is
+                 because some drivers don't need a user/password).
+                 </p><p>
+                 Use this command with caution.  It doesn't return any value back other than the
+                 SQL Status code.  So, remember not to use use Select command inside the queryStr.
+                 It cab be use to update Table. or reset some flag.
+                 </p><p>
+                 To do: if user id and/or password are not specified, don't include
+                 them in the connection string. This would allow the possibility
+                 to specify them in the data source definition.
+                 </p> 
+              </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DatabaseFunctions" 
+                            doc="DatabaseFunctions.htm" 
+                            sourcecode="DatabaseFunctions.sbl" 
+                            class="DATABASE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031104" >
+	       <libraryInfo name="CFDatabase" 
+                            doc="org/safs/rational/CFDatabase.html" 
+                            sourcecode="org.safs.rational.CFDatabase.java" 
+                            class="DATABASE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="DBSOURCENAME" displayText="DBSourceName" optional="NO">
+           <description><short_desc> 
+                 Name of the Datasource containing the DBTable
+              </short_desc></description></parameter>
+        <parameter name="QUERYSTRING" displayText="queryStr" optional="NO">
+           <description><short_desc> 
+                 Actual query stored in a ^queryStr.
+              </short_desc></description></parameter>
+        <parameter name="SQLSTATUSCODE" displayText="SQLStatusCode" optional="NO">
+           <description><short_desc> 
+                 SQL status code as a result of executing the query.
+              </short_desc></description></parameter>
+        <parameter name="USERID" displayText="UserID" optional="YES">
+           <description><short_desc> 
+                 UserID for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+
+        <parameter name="PASSWORD" displayText="Password" optional="YES">
+           <description><short_desc> 
+                 Password for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+        <parameter name="PROMPT" displayText="Prompt" optional="YES">
+           <description> <short_desc> 
+                 Optional parameter valid values 1 - 4 [default is 4 no prompt] for ODBC driver login window.
+              </short_desc></description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, ADBAlias, ATableAlias, ExecSQLQuery, empODBC, "UPDATE Employee Set City = 'Pittsburgh' Where EmpID = '0023' ", ^sqlStatus, "", "", ""</usage>
+           <description>
+              <short_desc> 
+                 Executes the query provided in a ^queryStr against the database specified in the DSN.
+              </short_desc>
+              <detailed_desc> 
+                  Executes the query provided in a queryStr i.e. updates the city column in the Employee table for a EmpID equals to 0023.
+              </detailed_desc></description></example>
+     </examples></keyword>
+
+  <keyword name="GETDBTABLECOLUMNCOUNT" 
+           displayText="GetDBTableColumnCount" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc> 
+                 Executes the query in a specified database table and returns the total column count.
+              </short_desc>
+              <detailed_desc>
+                 Executes the query in a specified database table and returns the total column count.
+                 <p>
+                 A data source name [DSN] and Table name are required. You also have to specify a 
+                 variable to get the result of the SQL and status code.  And optionally user id 
+                 and password (this is because some drivers don't need a user/password).
+                 </p><p>
+                 To do: if user id and/or password are not specified, don't include them in the 
+                 connection string. This would allow the possibility to specify them in the data
+                 source definition.
+                 </p>
+              </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DatabaseFunctions" 
+                            doc="DatabaseFunctions.htm" 
+                            sourcecode="DatabaseFunctions.sbl" 
+                            class="DATABASE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031104" >
+	       <libraryInfo name="CFDatabase" 
+                            doc="org/safs/rational/CFDatabase.html" 
+                            sourcecode="org.safs.rational.CFDatabase.java" 
+                            class="DATABASE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="DBSOURCENAME" displayText="DBSourceName" optional="NO">
+           <description><short_desc> 
+                 Name of the Datasource containing the DBTable
+              </short_desc></description></parameter>
+        <parameter name="DBTABLEName" displayText="DBTableName" optional="NO">
+           <description><short_desc> 
+                 Name of the TABLE to access within the DBSourceName
+           </short_desc></description></parameter>
+        <parameter name="COLUMNCOUNT" displayText="ColumnCount" optional="NO">
+           <description><short_desc> 
+                 SQL result get stored in this return variable.
+              </short_desc> </description></parameter>
+        <parameter name="SQLSTATUSCODE" displayText="SQLStatusCode" optional="NO">
+           <description><short_desc> 
+                 SQL status code as a result of executing the query.
+              </short_desc></description></parameter>
+        <parameter name="USERID" displayText="UserID" optional="YES">
+           <description><short_desc> 
+                 UserID for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+        <parameter name="PASSWORD" displayText="Password" optional="YES">
+           <description><short_desc> 
+                 Password for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+        <parameter name="PROMPT" displayText="Prompt" optional="YES">
+           <description> <short_desc> 
+                 Optional parameter valid values 1 - 4 [default is 4 no prompt] for ODBC driver login window.
+              </short_desc></description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, ADBAlias, ATableAlias, GetDBTableColumnCount, empODBC, Employee, ^columnCount, ^sqlStatus, "", "", ""</usage>
+           <description>
+              <short_desc> 
+                 Executes the query for the Table name (Employee) on the database specified in the DSN.
+              </short_desc>
+              <detailed_desc> 
+                  Executes the query for given Table name (Employee) on the database specified in the DSN.  And 
+                  this command returns total column count on the given table and SQL staus code.
+              </detailed_desc></description></example>
+     </examples></keyword>
+
+  <keyword name="GETDBVALUE" 
+           displayText="GetDBValue" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc> 
+                 Executes the query and returns the case-sensitive value as result of the execution.
+              </short_desc>
+              <detailed_desc>
+                 Executes the query specified in the ^queryStr and returns the case-sensitive value
+                 as result of the execution.
+                 <p>
+                 To return the value, it executes a SQL query sentence using an ODBC data source to 
+                 connect to the data base.
+                 </p><p>
+                 A queryStr and the two return variables to store the query result and SQL Status code
+                 are required.  You also have to specify data source name and optionally user id and
+                 password (this is because some drivers don't need a user/password).
+                 </p><p>
+                 To do: if user id and/or password are not specified, don't include them in the connection
+                 string. This would allow the possibility to specify them in the data source definition.
+                 </p><p>
+                 If the query returns more than one record, the returned value is the corresponding to the
+                 first one, unless the field name be something like COUNT(*) or SUM(InvoiceTot).
+                 </p>
+              </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DatabaseFunctions" 
+                            doc="DatabaseFunctions.htm" 
+                            sourcecode="DatabaseFunctions.sbl" 
+                            class="DATABASE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031104" >
+	       <libraryInfo name="CFDatabase" 
+                            doc="org/safs/rational/CFDatabase.html" 
+                            sourcecode="org.safs.rational.CFDatabase.java" 
+                            class="DATABASE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="DBSOURCENAME" displayText="DBSourceName" optional="NO">
+           <description><short_desc> 
+                 Name of the Datasource containing the DBTable
+              </short_desc></description></parameter>
+        <parameter name="QUERYSTRING" displayText="queryStr" optional="NO">
+           <description><short_desc>
+                 Actual query stored in a ^queryStr.
+              </short_desc></description></parameter>
+        <parameter name="QUERYRESULT" displayText="QueryResult" optional="NO">
+           <description><short_desc> 
+                 SQL result get stored in this return variable.
+              </short_desc> </description></parameter>
+        <parameter name="SQLSTATUSCODE" displayText="SQLStatusCode" optional="NO">
+           <description><short_desc> 
+                 SQL status code as a result of executing the query.
+              </short_desc></description></parameter>
+        <parameter name="USERID" displayText="UserID" optional="YES">
+           <description><short_desc> 
+                 UserID for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+        <parameter name="PASSWORD" displayText="Password" optional="YES">
+           <description><short_desc> 
+                 Password for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+        <parameter name="PROMPT" displayText="Prompt" optional="YES">
+           <description> <short_desc> 
+                 Optional parameter valid values 1 - 4 [default is 4 no prompt] for ODBC driver login window.
+              </short_desc></description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, ADBAlias, ATableAlias, GetDBValue, empODBC, "Select LastName From Employee Where EmpID = '0023'", ^queryResult, ^sqlStatus, "", "", ""</usage>
+           <description>
+              <short_desc> 
+                 Executes the query in the ^queryStr on the database specified in the DSN.
+              </short_desc>
+              <detailed_desc> 
+                  Executes the query in the ^queryStr on the database specified in the DSN.  And 
+                  this command returns single value as result of the query execution and SQL staus code.
+              </detailed_desc></description></example>
+     </examples></keyword>
+     
+  <keyword name="GETDBTABLEROWCOUNT" 
+           displayText="GetDBTableRowCount" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc> 
+                 Executes the query in a database table.
+              </short_desc>
+              <detailed_desc>
+                 Executes the query in a database table.
+                 <p>
+                 A data source name [DSN] and Query String is required. You also have to specify
+                 a variable to get the status code.  And optionally user id and password (this is
+                 because some drivers don't need a user/password).
+                 </p><p>
+                 To do: if user id and/or password are not specified, don't include them in the 
+                 connection string. This would allow the possibility to specify them in the data
+                 source definition. </p>
+              </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DatabaseFunctions" 
+                            doc="DatabaseFunctions.htm" 
+                            sourcecode="DatabaseFunctions.sbl" 
+                            class="DATABASE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031104" >
+	       <libraryInfo name="CFDatabase" 
+                            doc="org/safs/rational/CFDatabase.html" 
+                            sourcecode="org.safs.rational.CFDatabase.java" 
+                            class="DATABASE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="DBSOURCENAME" displayText="DBSourceName" optional="NO">
+           <description><short_desc> 
+                 Name of the Datasource containing the DBTable
+              </short_desc></description></parameter>
+        <parameter name="DBTABLEName" displayText="DBTableName" optional="NO">
+           <description><short_desc> 
+                 Name of the TABLE to access within the DBSourceName
+           </short_desc> </description></parameter>
+        <parameter name="ROWCOUNT" displayText="RowCount" optional="NO">
+           <description><short_desc> 
+                 SQL result get stored in this return variable.
+              </short_desc> </description></parameter>
+        <parameter name="SQLSTATUSCODE" displayText="SQLStatusCode" optional="NO">
+           <description><short_desc> 
+                 SQL status code as a result of executing the query.
+              </short_desc></description></parameter>
+        <parameter name="USERID" displayText="UserID" optional="YES">
+           <description><short_desc> 
+                 UserID for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+        <parameter name="PASSWORD" displayText="Password" optional="YES">
+           <description><short_desc> 
+                 Password for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+        <parameter name="PROMPT" displayText="Prompt" optional="YES">
+           <description> <short_desc> 
+                 Optional parameter valid values 1 - 4 [default is 4 no prompt] for ODBC driver login window.
+              </short_desc></description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, ADBAlias, ATableAlias, GetDBTableRowCount, empODBC, Employee, ^rowCount, ^sqlStatus, "", "", ""</usage>
+           <description>
+              <short_desc> 
+                 Executes the query for the Table name (Employee) on the database specified in the DSN.
+              </short_desc>
+              <detailed_desc> 
+                  Executes the query for given Table name (Employee) on the database specified in the DSN.  And 
+                  this command returns total row count on the given table and SQL staus code.
+              </detailed_desc></description></example>
+     </examples></keyword>
+     
+  <keyword name="COPYDBTABLETOFILE" 
+           displayText="CopyDBTableToFile" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc> 
+              This routine will copy the contents of a DBTable  to a file.
+              </short_desc>
+              <detailed_desc>
+                 This routine will export the contents of a DBTable  to a delimeted file.
+                 <p>
+                 A data source name [DSN] and Query String is required. You also have to specify
+                 a variable to get the status code.  And optionally user id and password (this is
+                 because some drivers don't need a user/password).
+                 </p><p>
+                 To do: if user id and/or password are not specified, don't include them in the
+                 connection string. This would allow the possibility to specify them in the 
+                 data source definition.  If no output directory is specified, the result file
+		 get saved under "Datapool\Test\".
+                 </p>
+              </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DatabaseFunctions" 
+                            doc="DatabaseFunctions.htm" 
+                            sourcecode="DatabaseFunctions.sbl" 
+                            class="DATABASE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031104" >
+	       <libraryInfo name="CFDatabase" 
+                            doc="org/safs/rational/CFDatabase.html" 
+                            sourcecode="org.safs.rational.CFDatabase.java" 
+                            class="DATABASE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="DBSOURCENAME" displayText="DBSourceName" optional="NO">
+           <description><short_desc> 
+                 Name of the Datasource containing the DBTable
+              </short_desc></description></parameter>
+        <parameter name="FILEOUT" displayText="FileOut" optional="NO">
+           <description><short_desc> 
+                 Name of the output file. 
+              </short_desc></description></parameter>
+        <parameter name="DBTABLEName" displayText="DBTableName" optional="NO">
+           <description><short_desc> 
+                 Name of the TABLE to access within the DBSourceName
+           </short_desc> </description></parameter>
+        <parameter name="COLUMNCOUNT" displayText="ColumnCount" optional="YES">
+           <description><short_desc> 
+                 If specified the output file will contain only the number of columns specified.
+              </short_desc> <detailed_desc> <p>
+                 OPTIONAL parameter. If specified the output file will contain only the
+                 number of columns specified. This number will become the first dimension
+                 of the retreival array. If NOT specified the function will copy a maximum
+                 of 100 columns. (arbitrary limit for now)
+              </p></detailed_desc> </description></parameter>
+        <parameter name="ROWCOUNT" displayText="RowCount" optional="YES">
+           <description><short_desc> 
+                 If specified the output file will contain only the number of rows specified. 
+              </short_desc> <detailed_desc> <p>
+                 OPTIONAL parameter. If specified the output file will contain only the
+                 number of columns specified. This number will become the first dimension
+                 of the retreival array. If NOT specified the function will copy a maximum
+                 of 100 columns. (arbitrary limit for now)
+              </p></detailed_desc> </description></parameter>
+        <parameter name="SQLQUERY" displayText="SQLQuery" optional="YES">
+           <description><short_desc> 
+                 OPTIONAL parameter. If specified, the file will contain the results of the
+                 executed Query. The query is NOT validated by this function.
+              </short_desc></description></parameter>
+        <parameter name="DELIMITER" displayText="delimiter" optional="YES">
+           <description><short_desc> 
+                 OPTIONAL parameter. If not specified the default ',' seperator will be used.
+              </short_desc></description></parameter>
+        <parameter name="DIRECTORYOUT" displayText="DirectoryOut" optional="YES">
+           <description><short_desc> 
+                 OPTIONAL parameter. If not specified the file will be stored under the 
+                 project "Datapool\Test\" directory.
+              </short_desc></description></parameter>
+        <parameter       name="SQLSTATUS" 
+                  displayText="SQLStatus" 
+                  optional="NO" >
+           <description><short_desc> 
+                 A variable which holds the current SQL run status.
+              </short_desc></description></parameter>
+        <parameter name="USERID" displayText="UserID" optional="YES">
+           <description><short_desc> 
+                 UserID for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+        <parameter name="PASSWORD" displayText="Password" optional="YES">
+           <description><short_desc> 
+                 Password for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+        <parameter name="PROMPT" displayText="Prompt" optional="YES">
+           <description> <short_desc> 
+                 Optional parameter valid values 1 - 4 [default is 4 no prompt] for ODBC driver login window.
+              </short_desc></description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, ADBAlias, ATableAlias, CopyDBTableToFile, Data Source Name (dsn), ^OutputFileName, tableName, [^ColumnCount],[^rowCount], [^SQLQuery], [^Delimiter], [^OutputDirectory], ^sqlStatus, "[UID]", "[PWD]", "[prompt]"</usage>
+           <description>
+              <short_desc> 
+                 This routine will export the contents of a DBTable  to a delimeted file.
+              </short_desc>
+              <detailed_desc> 
+                  This routine will export the contents of a DBTable  to a delimeted file. 
+              </detailed_desc></description></example>
+     </examples></keyword>
+     
+  <keyword         name="COPYDBTABLECOLUMNTOFILE" 
+            displayText="CopyDBTableColumnToFile" >
+           <description><short_desc> 
+              This routine will copy the contents of one or more DBTable column(s) to a file.
+              </short_desc>
+              <detailed_desc>
+                 This routine will export the contents of one or more DBTable column(s) to
+                 a delimeted file. If columnDelimiter is omitted, a horizontal tab is used
+                 to delimit fields.
+                 <p>
+                 A data source name [DSN] and Query String is required. You also have to specify
+                 a variable to get the status code.  And optionally user id and password (this is
+                 because some drivers don't need a user/password).
+                 </p><p>
+                 To do: if user id and/or password are not specified, don't include them in the
+                 connection string. This would allow the possibility to specify them in the 
+                 data source definition.
+                 </p>
+              </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DatabaseFunctions" 
+                            doc="DatabaseFunctions.htm" 
+                            sourcecode="DatabaseFunctions.sbl" 
+                            class="DATABASE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031104" >
+	       <libraryInfo name="CFDatabase" 
+                            doc="org/safs/rational/CFDatabase.html" 
+                            sourcecode="org.safs.rational.CFDatabase.java" 
+                            class="DATABASE" />
+           </engine>
+       </engines>
+
+      <parameters>
+        <parameter       name="DBSOURCENAME" 
+                  displayText="DBSourceName" 
+                  optional="NO" >
+           <description><short_desc> 
+                 Name of the Datasource containing the DBTable
+              </short_desc></description></parameter>
+        <parameter       name="FILEOUT" 
+                  displayText="FileOut" 
+                  optional="NO" >
+           <description><short_desc> 
+                 Name of the output file. 
+              </short_desc></description></parameter>
+        <parameter       name="SQLQUERY" 
+                  displayText="SQLQuery" 
+                  optional="NO" >
+           <description><short_desc> 
+                 The file will contain the results of the executed Query. The query is NOT validated 
+                 by this function.
+              </short_desc></description></parameter>
+        <parameter       name="DIRECTORYOUT" 
+                  displayText="DirectoryOut" 
+                  optional="YES" >
+           <description><short_desc> 
+                 OPTIONAL parameter. If not specified the file will be stored under the 
+                 project "Datapool\Test\" directory.
+              </short_desc></description></parameter>
+        <parameter       name="SQLSTATUS" 
+                  displayText="SQLStatus" 
+                  optional="NO" >
+           <description><short_desc> 
+                 A variable which holds the current SQL run status.
+              </short_desc></description></parameter>
+        <parameter       name="Delimiter" 
+                  displayText="Delimiter" 
+                  optional="YES" >
+           <description><short_desc> 
+                 Optional Delimiter to be used between columns written to file.
+              </short_desc></description></parameter>
+        <parameter       name="USERID" 
+                  displayText="UserID" 
+                  optional="YES" >
+           <description><short_desc> 
+                 UserID for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+        <parameter       name="PASSWORD" 
+                  displayText="Password" 
+                  optional="YES" >
+           <description><short_desc> 
+                 Password for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+        <parameter       name="PROMPT" 
+                  displayText="Prompt" 
+                  optional="YES" >
+           <description> <short_desc> 
+                 Optional parameter valid values 1 - 4 [default is 4 no prompt] for ODBC driver login window.
+              </short_desc></description></parameter>
+     </parameters>
+     <examples>
+        <example>
+           <usage>T, ADBAlias, ATableAlias, CopyDBTableColumnToFile, Data Source Name (dsn), ^OutputFileName, ^SQLQuery, [^OutputDirectory], ^sqlStatus, "[Delimiter]", "[UID]", "[PWD]", "[prompt]"</usage>
+           <description>
+              <short_desc> 
+                 This routine will export the contents of a single DBTable column to a file.
+              </short_desc>
+              <detailed_desc> 
+                  This routine will export the contents of a single DBTable column to a file. 
+              </detailed_desc></description></example>
+     </examples>        
+  </keyword>
+
+  <keyword         name="EXECSQLCOMMIT" 
+            displayText="ExecSQLCommit" >
+           <description><short_desc> 
+              This routine will commit the pending queries on the database.
+              </short_desc>
+              <detailed_desc>
+	         When ExecSQLQuery is used with the autoCommit option turned off, queries will be
+		 not be auto-committed as is the default with JDBC.  In this way, you can use
+		 multiple ExecSQLQuery statements, but then use ExecSQLCommit to commit all of
+		 the queries at once.
+
+		 This can be useful if your program is using a special process that requires
+		 committing all queries at one time.
+                 <p>
+                 A data source name [DSN] and Query String is required. You also have to specify
+                 a variable to get the status code.  And optionally user id and password (this is
+                 because some drivers don't need a user/password).
+                 </p>
+              </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031104" >
+	       <libraryInfo name="CFDatabase" 
+                            doc="org/safs/rational/CFDatabase.html" 
+                            sourcecode="org.safs.DatabaseCommandsHelper.java" 
+                            class="DATABASE" />
+           </engine>
+       </engines>
+
+      <parameters>
+        <parameter       name="DBSOURCENAME" 
+                  displayText="DBSourceName" 
+                  optional="NO" >
+           <description><short_desc> 
+                 Name of the Datasource containing the DBTable
+              </short_desc></description></parameter>
+        <parameter       name="SQLSTATUS" 
+                  displayText="SQLStatus" 
+                  optional="NO" >
+           <description><short_desc> 
+                 A variable which holds the current SQL run status.
+              </short_desc></description></parameter>
+        <parameter       name="USERID" 
+                  displayText="UserID" 
+                  optional="YES" >
+           <description><short_desc> 
+                 UserID for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+        <parameter       name="PASSWORD" 
+                  displayText="Password" 
+                  optional="YES" >
+           <description><short_desc> 
+                 Password for accessing the Datasource (if required).
+              </short_desc></description></parameter>
+     </parameters>
+     <examples>
+        <example>
+           <usage>T, ADBAlias, ATableAlias, ExecSQLCommit, Data Source Name (dsn), ^sqlStatus, "[UID]", "[PWD]"</usage>
+           <description>
+              <short_desc> 
+                 This routine will commit the pending database queries on the specified database.
+              </short_desc>
+              <detailed_desc> 
+              </detailed_desc></description></example>
+     </examples>        
+  </keyword>
+       
+</keywords></keyword_library>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType        type="COMPONENT" />
+    <libraryInfo        name="CustomTestCommands" 
+                         doc="CustomTestCommands.htm" 
+                  sourcecode="CustomTestCommands.sbl" 
+                       class="ALL" >
+        <description> <short_desc> 
+              Custom Action Commands for Step level processing.
+           </short_desc> </description>
+    </libraryInfo>
+    <runtime      platform="Windows" 
+                    engine="Robot" 
+                   version="2002" />
+    <keywords>
+  <keyword               name="SAMPLEKEYWORD" 
+                  displayText="SampleKeyword" >
+
+     <description><short_desc>A Sample Custom Test Command.</short_desc>
+       <detailed_desc>A Sample Custom Test Command.  
+        More detailed information would be provided here.
+       </detailed_desc></description>
+
+     <parameters>
+        <parameter        name="APARAMETER" 
+                   displayText="AParameter" 
+                       optional="NO" 
+                       default="default_value" >
+           <description><short_desc>
+              The description and purpose of the parameter.</short_desc>
+              <detailed_desc>The description and purpose of the parameter.  
+              More detailed information would be provided here.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters>        
+ 
+     <examples>
+        <example>
+           <usage>T, WindowID, ComponentID, SampleKeyword, "some value"</usage>
+           <description><short_desc> 
+                 Runs the custom SampleKeyword test command with "some value".
+              </short_desc></description></example>
+     </examples>        
+ 
+  </keyword>
+    </keywords>
+</keyword_library>

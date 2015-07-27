@@ -1,0 +1,2025 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+  <libraryType type="DRIVER">
+  </libraryType>
+  <libraryInfo class="STRING" doc="DCDriverStringCommands.htm" name="DDDriverStringCommands" sourcecode="DCDriverStringCommands.java">
+    <description>
+      <short_desc>
+        Driver Commands for String Manipulations
+      </short_desc>
+      <detailed_desc>Driver Command record format:<br/>
+        <dl>
+          <dd>
+            Field #1
+          </dd>
+          <dt>
+            The "C" = DRIVER COMMAND record type specifier.
+          </dt>
+          <dd>
+            Field #2
+          </dd>
+          <dt>
+            The Driver Command keyword.
+          </dt>
+        </dl>
+        <p>
+          Example:
+        </p>
+        <code>
+          c , SetApplicationMap , "AppMap.map"
+        </code>
+      </detailed_desc>
+    </description>
+  </libraryInfo>
+  <runtime engine="Robot" platform="Windows" version="2000">
+  </runtime>
+
+  <keywords>
+    <keyword name="LENGTH" 
+             displayText="Length"
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          Returns the length of a string or variable.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="sourceString" name="SOURCESTRING" optional="NO">
+          <description>
+            <short_desc>
+              sourceString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the length
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, Length, "abc", lengthVar
+          </usage>
+          <description>
+            <short_desc>
+              variable lengthVar should contain 3 after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    <keyword name="COMPARE"
+             displayText="Compare" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          Compares two strings and returns an integer specifying the
+          result of the comparison.
+          The java version uses String.equals()  for comparison so the
+          result will be either 'true' or 'false'
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="sourceString" name="SOURCESTRING" optional="NO">
+          <description>
+            <short_desc>
+              sourceString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="dstString" name="DSTSTRING" optional="NO">
+          <description>
+            <short_desc>
+              dstString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, Compare, "abc", "abcd", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 'false'
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword  name="GETSUBSTRINGINSTRING" 
+             displayText="GetSubstringsInString" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO" >
+            <description> <short_desc> 
+                  Extract dynamic substring from a string using regular expressions.
+               </short_desc>
+               <detailed_desc> 
+                  <p>
+                  This command sets a DDVariable for each substring formed between regexstart and regexstop (1 match per string, currently).  Both regexstart and regexstop must be valid, non-empty strings or no matching substring will be found.
+                  </p><p>
+                  The string is parsed, searching the substring between regexstart and regexstop matches.
+                  </p><p>
+                  When a match is found, the string between regexstart and regexstop is saved in a newly created DDVariable with the name given in varname.
+                  </p>
+               </detailed_desc> </description>
+      <engines>
+        <engine name="RobotJ" since="20031121" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="FILE" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommand.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+         <parameter       name="STRING" 
+                   displayText="String" 
+                   optional="NO">
+            <description>  <short_desc> 
+                  String to search for substring.
+               </short_desc> </description> </parameter>
+         <parameter       name="REGEXSTART" 
+                   displayText="RegexStart" 
+                   optional="NO">
+            <description>  <short_desc> 
+                  The starting regular expression.  Should not be empty.
+               </short_desc> </description> </parameter>
+         <parameter       name="REGEXSTOP" 
+                   displayText="RegexStop" 
+                   optional="NO">
+            <description>  <short_desc> 
+                  The stopping regular expression.  Should not be empty.
+               </short_desc> </description> </parameter>
+         <parameter       name="VARNAME" 
+                   displayText="VarName" 
+                   optional="NO">
+            <description>  <short_desc> 
+                  The name of the variable to contain the substring.  
+               </short_desc></description> </parameter>
+      </parameters>     
+      <examples>
+         <example>
+            <usage>C GetSubstringsInString "XaaaB" ^regexstart="X" ^regexstop="B" ^VarName="MyVar"</usage>
+            <description> <short_desc> 
+                  Sets variable MyVar to value "aaa".
+              </short_desc> </description> </example>
+      </examples>        
+    </keyword>
+
+    <keyword name="CONCATENATE"
+             displayText="Concatenate" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          Concatenate String1 with String2 and returns concatenated string.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="string1" name="STRING1" optional="NO">
+          <description>
+            <short_desc>
+              string1 (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="string2" name="STRING2" optional="NO">
+          <description>
+            <short_desc>
+              string2 (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, Concatenate, "abc", "def", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 'abcdef' after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="TOUPPERCASE" 
+             displayText="ToUpperCase" 
+             deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
+      <description>
+        <short_desc>
+          Returns a copy of a string after converting all letters to uppercase.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="sourceString" name="SOURCESTRING" optional="NO">
+          <description>
+            <short_desc>
+              sourceString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, ToUpperCase, "abc", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 'ABC' after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="TOLOWERCASE"
+             displayText="ToLowerCase" 
+             deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          Returns a copy of a string, with all letters converted to lowercase.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="sourceString" name="SOURCESTRING" optional="NO">
+          <description>
+            <short_desc>
+              sourceString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, ToLowerCase, "ABC", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 'abc' after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="LEFTTRIM" 
+             displayText="LeftTrim" 
+             deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          A new string trimmed of leading tabs and spaces.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="sourceString" name="SOURCESTRING" optional="NO">
+          <description>
+            <short_desc>
+              sourceString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, LeftTrim, " abc", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 'abc' after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="RIGHTTRIM"
+        displayText="RightTrim" 
+    	deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          A new string trimmed of trailing tabs and spaces.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="sourceString" name="SOURCESTRING" optional="NO">
+          <description>
+            <short_desc>
+              sourceString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, RightTrim, "abc ", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 'abc' after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="TRIM" 
+             displayText="Trim"
+             deprecated="NO"  
+             expectFailSupport="NO" expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          A new string trimmed of leading and trailing tabs and spaces.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="sourceString" name="SOURCESTRING" optional="NO">
+          <description>
+            <short_desc>
+              sourceString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, Trim, " abc ", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 'abc' after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="LEFT" 
+             displayText="Left" 
+             deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          Returns a string of a specified number of characters copied from the beginning of another string.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="sourceString" name="SOURCESTRING" optional="NO">
+          <description>
+            <short_desc>
+              sourceString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="length" name="LENGTH" optional="NO">
+          <description>
+            <short_desc>
+              number of chars to copy
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, Left, abc, 1, ^resultString
+          </usage>
+          <description>
+            <short_desc>
+              variable 'resultString' should contain 'a' after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="RIGHT" 
+             displayText="Right" 
+             deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
+      <description>
+        <short_desc>
+          Returns a string of a specified number of characters copied from the end of another string.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="sourceString" name="SOURCESTRING" optional="NO">
+          <description>
+            <short_desc>
+              sourceString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="length" name="LENGTH" optional="NO">
+          <description>
+            <short_desc>
+              length
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, Right, "abc", 2, var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 'bc' after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="SUBSTRING" 
+             displayText="SubString" 
+             deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          Returns a portion of a string based on character index.
+        </short_desc><detailed_desc>
+          The substring  to retrieve starts at the specified start
+          character index and ends after the specified number of characters have been copied.  If the number of characters to copy is not provided, then we will return all characters after the start index.
+        </detailed_desc></description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="sourceString" name="SOURCESTRING" optional="NO">
+          <description>
+            <short_desc>
+              sourceString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="start" name="START" optional="NO">
+          <description>
+            <short_desc>
+              starting 0-based offset character position
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="length" name="LENGTH" optional="YES">
+          <description>
+            <short_desc>
+              number of chars to copy.  If not provided or less than 1 then all characters after the start index will be retrieved.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, SubString, "abc", 1, 1, var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 'b' after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="INDEX" 
+             displayText="Index" 
+             deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          Returns the position of the first occurrence of one string
+          within another string. -1 if not found at all
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="start" name="START" optional="NO">
+          <description>
+            <short_desc>
+              0-based starting offset of the sourceString to search
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="sourceString" name="SOURCESTRING" optional="NO">
+          <description>
+            <short_desc>
+              sourceString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="findString" name="FINDSTRING" optional="NO">
+          <description>
+            <short_desc>
+              findString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, Index, 0, "abc", "bc", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 1 after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="REPLACE"
+             displayText="Replace" 
+             deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          Replace 'find' substring with 'replace' substring
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="sourceString" name="SOURCESTRING" optional="NO">
+          <description>
+            <short_desc>
+              sourceString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="findString" name="FINDSTRING" optional="NO">
+          <description>
+            <short_desc>
+              findString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="replaceString" name="replaceSTRING" optional="NO">
+          <description>
+            <short_desc>
+              replaceString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, Replace, "abc", "bc", "234", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 'a234' after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="CLEANSTRING"
+             displayText="CleanString" 
+             deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          CleanString, for each char in string: if ((char .gt. 31) and (char .lt. 127)) keep it,
+          otherwise turn it into a space
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine> 
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140618">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="sourceString" name="SOURCESTRING" optional="NO">
+          <description>
+            <short_desc>
+              sourceString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, cleanString, "a^Abcd", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 'a bcd' after this is run
+              (note that ^A is a Control-A, not the actual chars ^ and A)
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="GETTRIMMEDFIELD"
+             displayText="GetTrimmedField" 
+             deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          GetTrimmedField, get a trimmed field out of a string using specified delimiter(s).
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="string1" name="STRING1" optional="NO">
+          <description>
+            <short_desc>
+              string1
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="index" name="INDEX" optional="NO">
+          <description>
+            <short_desc>
+              0-based index of which field to grab
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="delimiter" name="DELIMITER" optional="NO">
+          <description>
+            <short_desc>
+              delimiter
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, getTrimmedField, "a|bc|d", 1, "|", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 'bc' after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="GETFIELD" 
+             displayText="GetField" 
+             deprecated="NO"
+             expectFailSupport="NO" 
+             expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          GetField, get a field out of a string using specified delimiter(s). Note that any leading or trailing whitespaces are still present.
+        </short_desc>
+      </description>
+      <engines>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051024" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+
+         <engine name="RobotJ" since="20050110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20050110" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20050110" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="InputString" name="STRING1" optional="NO">
+          <description>
+            <short_desc>
+              The input string which contains the field to be returned
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="index" name="INDEX" optional="NO">
+          <description>
+            <short_desc>
+              0-based index of which field to return
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="delimiter" name="DELIMITER" optional="NO">
+          <description>
+            <short_desc>
+              delimiter(s) - one or more single characters used as delimiters
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the variable name to store the returned field in
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, getTrimmedField, "a|bc|d", 1, "|", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 'bc' after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="GETFIXEDWIDTHFIELD"
+             displayText="GetFixedWidthField" 
+             deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          GetFixedWidthField, Given an Input of fixed-width
+          fields, return the nth(FieldID) Field  in the record.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="sourceString" name="SOURCESTRING" optional="NO">
+          <description>
+            <short_desc>
+              sourceString (could come from a ^variable)
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="fieldID" name="FIELDID" optional="NO">
+          <description>
+            <short_desc>
+              0-based field to retrieve.
+              from 0.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="fixedwidth" name="FIXEDWIDTH" optional="NO">
+          <description>
+            <short_desc>
+              the fixedwidth alotted for each field in the record
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, getFixedWidthField, "abcdef", 1, 2, var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 'cd' after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="GETNEXTDELIMITERINDEX"
+             displayText="GetNextDelimiterIndex" 
+             deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          GetNextDelimiterIndex, Finds the index of the first
+          character matching one of the provided delimiter characters.
+          The search begins at startindex within the inputRecord. 
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="String1" name="STRING1" optional="NO">
+          <description>
+            <short_desc>
+              String1 to parse for field delimiters
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="startindex" name="STARTINDEX" optional="NO">
+          <description>
+            <short_desc>
+              0-based startindex to begin parsing the string.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="delimiters" name="DELIMITERS" optional="NO">
+          <description>
+            <short_desc>
+              delimiters -- each character is treated as a separate delimiter.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, GetNextDelimiterIndex, "a/|/", 0, "|/", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 1 after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="GETFIELDCOUNT"
+             displayText="GetFieldCount" 
+             deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          GetFieldCount, Finds the count of all fields within the
+          inputRecord found from startindex to the end of the inputRecord.  
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+           </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20031219" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="String1" name="STRING1" optional="NO">
+          <description>
+            <short_desc>
+              String1 to parse and count fields
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="startindex" name="STARTINDEX" optional="NO">
+          <description>
+            <short_desc>
+              0-based startindex for parsing the string.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="delimiters" name="DELIMITERS" optional="NO">
+          <description>
+            <short_desc>
+              delimiters -- each character is treated as a separate delimiter.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, GetFieldCount, "a|bc|d", 0, "|", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 3 after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="GETMULTIDELIMITEDFIELDCOUNT" 
+             displayText="GetMultiDelimitedFieldCount" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description><short_desc>Finds the count of all fields within the inputRecord found from
+        startindex to the end of the inputRecord.  The field and index are 1-based.</short_desc>
+       <detailed_desc>
+        <a>Finds the count of all fields within the inputRecord found from
+        startindex to the end of the inputRecord.  The field and index are 1-based.</a>
+        <a>Blank fields count The next field starts at the next
+        character index even if that char is also a delimiter.
+        If the last character in the inputRecord is a delimiter, then the
+        field it terminates is the last field in the inputRecord.</a>
+
+      <a>Field #1 index is always the same as startindex--even if the character at 
+      the startindex position is a delimiter.</a>
+
+      <a>The delimiter string can contain multiple characters and this string is treated
+      as a single delimiter.</a>
+
+      <a>For example, if delimiter = "->" then the fields of the inputRecord 
+      are expected to be delimited by the full delimiter string as in:</a>
+
+      <a>"field1->field2->field3"</a>
+       </detailed_desc></description>
+      
+       <engines>
+			<engine name="RobotJ" since="20081029" tool="RobotJ" vendor="Rational">
+			  <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java"/>
+			</engine>
+			<engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20081029" >
+			   <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+			</engine>
+			<engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20081029" >
+			  <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java"/>
+			</engine>
+			<engine vendor="Rational" tool="Robot" name="Robot" since="20051223" >
+			   <libraryInfo name="DDDriverStringCommands" 
+                 doc="DDDriverStringCommands.htm" 
+                 sourcecode="DDDriverStringCommands.sbl"
+                 class="STRING"  />
+			</engine>
+	        <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	           <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="String1" displayText="String1" optional="NO">
+           <description><short_desc>
+              Source String in which to search for first delimited character</short_desc>
+           </description>
+        </parameter>
+             <parameter name="STARTINDEX" displayText="StartIndex" optional="NO">
+           <description><short_desc>
+              Integer (1-based) start position for search in inputRecord</short_desc>
+           </description>
+           </parameter>
+             <parameter name="DELIMITERS" displayText="Delimiters" optional="NO">
+           <description><short_desc>
+              String list of delimiters to find</short_desc>
+           </description>
+        </parameter>
+           <parameter name="RESULTVAR" displayText="ResultVar" optional="NO">
+           <description><short_desc>
+              <p>Name of DDVariable to receive the result</p>
+            </short_desc>
+           </description>
+        </parameter>      
+     </parameters><examples>
+        <example>
+           <usage>C, GetMultiDelimitedFieldCount, string1, index, delimiter,  "result"</usage>
+           <description><short_desc> 
+                 ^result = number of fields counted starting at index as seperated by delimiter
+                 delimeter can be more than 1 character
+           </short_desc></description></example>
+     </examples></keyword>
+     <keyword name="GETMULTIDELIMITEDFIELD" 
+             displayText="GetMultiDelimitedField" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description><short_desc>Given a sourceString of delimited fields, return the nth(FieldID) Field
+      in the record from startIndex.  The startIndex and fieldID are 1 based. </short_desc>
+       <detailed_desc>
+        <a>Returns a specific field from the source string found from
+        startindex to the end of the sourceString.  The field and index are 1-based.</a>
+   
+      <a>The delimiter string can contain multiple characters and this string is treated
+      as a single delimiter.</a>
+
+      <a>For example, if delimiter = "->" then the fields of the sourceString 
+      are expected to be delimited by the full delimiter string as in:</a>
+
+      <a>"field1->field2->field3"</a>
+       </detailed_desc></description>
+      
+       <engines>
+			<engine name="RobotJ" since="20081029" tool="RobotJ" vendor="Rational">
+			  <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java"/>
+			</engine>
+			<engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20081029" >
+			   <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+			</engine>
+			<engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20081029" >
+			  <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java"/>
+			</engine>
+			<engine vendor="Rational" tool="Robot" name="Robot" since="20051223" >
+			   <libraryInfo name="DDDriverStringCommands" 
+                 doc="DDDriverStringCommands.htm" 
+                 sourcecode="DDDriverStringCommands.sbl"
+                 class="STRING"  />
+			</engine>
+		    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+		       <libraryInfo name="DCDriverStringCommands" 
+	                            doc="org/safs/DCDriverStringCommands.html" 
+	                            sourcecode="org.safs.DCDriverStringCommands.java" 
+	                            class="STRING" />
+	        </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="SOURCESTRING" displayText="sourceString" optional="NO">
+           <description><short_desc>
+              Source string in which to search for first delimited character</short_desc>
+           </description>
+        </parameter>
+           <parameter name="FIELDID" displayText="FieldID" optional="NO">
+           <description><short_desc>
+              The one based index of the field to find and return.</short_desc>
+           </description>
+           </parameter>
+             <parameter name="STARTINDEX" displayText="StartIndex" optional="NO">
+           <description><short_desc>
+              Integer (1-based) start position for search in sourceString</short_desc>
+           </description>
+           </parameter>
+             <parameter name="DELIMITERS" displayText="Delimiters" optional="NO">
+           <description><short_desc>
+              String list of delimiters to find</short_desc>
+           </description>
+        </parameter>
+           <parameter name="RESULTVAR" displayText="ResultVar" optional="NO">
+           <description><short_desc>
+              <p>Name of DDVariable that will receive the result.</p>
+            </short_desc>
+           </description>
+        </parameter>      
+     </parameters><examples>
+        <example>
+           <usage>C, GetMultiDelimitedField, "a->b->c->d->e->f>", 2, 5, "->", "field"</usage>
+           <description><short_desc> 
+			   Start from 5th posistion of string "a->b->c->d->e->f>" to search the second tokens delimited by "->".
+			   Then it will save the token to the variable "field". In this example, the token found will be "c".
+           </short_desc></description></example>
+     </examples></keyword>
+     
+    <keyword name="GETREDELIMITEDFIELDCOUNT"
+             displayText="GetREDelimitedFieldCount" 
+             deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          GetREDelimitedFieldCount, this command returns the number of fields contained in the input string using the passed in regular expression as the delimiter(s).
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20050110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20050110" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20050110" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="InputString" name="STRING1" optional="NO">
+          <description>
+            <short_desc>
+              The input string to analyze.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="index" name="INDEX" optional="NO">
+          <description>
+            <short_desc>
+	        0-based index of where to start the analysis from. 
+	        The index should be less than or equal to the length of the input string.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="RegExp" name="RegExp" optional="NO">
+          <description>
+            <short_desc>
+              RegExp - This string contains a regular expression used as the delimiter(s). These should conform to the regular expressions defined in "java.util.regex.Pattern" documentation.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              resultVar contains the number of fields in the input string.
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, GetREDelimitedFieldCount, "All is&#160;&#160;&#160;&#160;well in&#160;&#160;&#160;&#160;&#160;&#160;the&#160;&#160;world", 4, "\s+", var
+          </usage>
+          <description>
+            <short_desc>
+              This is equivalent to asking for the count of non-blank fields in the string. Variable 'var' should contain 6 after this is run. 
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, GetREDelimitedFieldCount, "a|b&amp;cd-efghi", 0, "[\|&amp;\-g]", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 5 after this is run. Fields are: "a", "b", "cd", "ef", "hi".
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword name="GETREDELIMITEDFIELD"
+             displayText="GetREDelimitedField" 
+             deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO" >
+      <description>
+        <short_desc>
+          GetREDelimitedField, this command returns the requested field contained in the input string using the passed in regular expression as the delimiter(s).
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20050110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20050110" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20050110" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="InputString" name="STRING1" optional="NO">
+          <description>
+            <short_desc>
+              The input string to analyze.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="index" name="INDEX" optional="NO">
+          <description>
+            <short_desc>
+		    1-based index of the field to return from the input string.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="RegExp" name="RegExp" optional="NO">
+          <description>
+            <short_desc>
+              RegExp - This string contains a regular expression used as the delimiter(s). These should conform to the regular expressions defined in "java.util.regex.Pattern" documentation.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              resultVar contains the requested field from the input string.
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, GetREDelimitedField, "All is&#160;&#160;&#160;&#160;well in&#160;&#160;&#160;&#160;&#160;&#160;the&#160;&#160;world", 4, "\s+", var
+          </usage>
+          <description>
+            <short_desc>
+              This is equivalent to asking for one of the non-blank fields in the string. Variable 'var' should contain "in" after this is run. 
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, GetREDelimitedField, "RedXXOrangeXXYellowXXGreenXXBlueXXIndigoXXViolet", 2, "XX", var
+          </usage>
+          <description>
+            <short_desc>
+              This uses the string "XX" as the delimiter. Variable 'var' should contain "Orange" after this is run. 
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, GetREDelimitedField, "a|b&amp;cd-efghi", 3, "[\|&amp;\-g]", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain "cd" after this is run. Fields in the string are: "a", "b", "cd", "ef", "hi".
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+    <keyword  name="GETSYSTEMENVIRON" 
+              displayText="GetSystemEnviron" 
+              deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
+      <description>
+        <short_desc>
+          GetSystemEnviron, get a system environment variable value
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="RobotJ" since="20031110" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommands.html" name="DCDriverStringCommands" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20050426" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+        <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="200500502" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20050502" >
+          <libraryInfo class="STRING" doc="org/safs/DCDriverStringCommand.html" name="DCDriverStringCommand" sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+      </engines>
+      <parameters>
+        <parameter displayText="string1" name="STRING1" optional="NO">
+          <description>
+            <short_desc>
+              String1
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the result of the
+              operation into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, GetSystemEnviron, "OS", var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain something like 'Windows_NT' after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+    
+    <keyword  name="GETSYSTEMUSER" 
+              displayText="GetSystemUser" 
+              deprecated="NO" 
+              expectFailSupport="NO" 
+              expectWarnSupport="NO">
+      
+      <description>
+        <short_desc>
+          Get the USERID of the currently logged on user as stored in System Environment variables.
+        </short_desc>
+      </description>
+      
+      <engines>
+        <engine name="RobotJ" since="20050502" tool="RobotJ" vendor="Rational">
+          <libraryInfo class="STRING" 
+                       doc="org/safs/DCDriverStringCommands.html" 
+                       name="DCDriverStringCommands" 
+                       sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20050502" >
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>
+        <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20050502" >
+          <libraryInfo class="STRING" 
+                       doc="org/safs/DCDriverStringCommand.html" 
+                       name="DCDriverStringCommand" 
+                       sourcecode="org.safs.DCDriverStringCommands.java">
+          </libraryInfo>
+        </engine>
+        <engine vendor="Rational" tool="Robot" name="Robot" since="20051220" >
+	       <libraryInfo name="DDDriverStringCommands" 
+                            doc="DDDriverStringCommands.htm" 
+                            sourcecode="DDDriverStringCommands.sbl" 
+                            class="STRING" />
+        </engine>
+	    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20141111">
+	       <libraryInfo name="DCDriverStringCommands" 
+                            doc="org/safs/DCDriverStringCommands.html" 
+                            sourcecode="org.safs.DCDriverStringCommands.java" 
+                            class="STRING" />
+        </engine>     
+      </engines>
+      <parameters>
+        <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
+          <description>
+            <short_desc>
+              the resultVar to place the USERID into
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, GetSystemUser, var
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain the logged in userid after this is run
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+  </keywords>
+</keyword_library>

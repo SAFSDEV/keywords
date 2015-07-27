@@ -1,0 +1,1929 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="JavaTreeFunctions" 
+                 doc="JavaTreeFunctions.htm" 
+                 sourcecode="JavaTreeFunctions.sbl" 
+                 chainTo="GenericObjectFunctions"
+                 class="JAVATREE">
+
+        <description>
+           <short_desc> 
+              Actions for working with Java Swing JTree objects
+           </short_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="Robot" version="2002" />
+    <keywords>
+    
+    <keyword name="EXPANDTEXTNODE" 
+             displayText="ExpandTextNode" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description>
+              <short_desc> 
+                 Action to expand a node according to its text value.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to expand
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to expand.
+                 Parent-Child relationships are separated by "-&gt;"
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, ExpandTextNode, "Parent"</usage>
+           <description>
+              <short_desc> 
+                This action expands the "Parent" node.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, ExpandTextNode, "Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action expands the "Child" node found under "Parent".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+    <keyword name="EXPANDUNVERIFIEDTEXTNODE" 
+             displayText="ExpandUnverifiedTextNode" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description>
+              <short_desc> 
+                 Action to blindly expand a node according to its text value.
+              </short_desc>
+              <detailed_desc>
+                 Generally, no pre- or post- node checks are done. If the tree contains 
+                 hidden root nodes the user must provide these.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20070611" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080508" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>		   
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive full path text of node to expand
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to expand.
+                 Parent-Child relationships are separated by "-&gt;".  If the tree 
+                 contains hidden root nodes the user must provide these.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, ExpandUnverifiedTextNode, "root-&gt;Parent"</usage>
+           <description>
+              <short_desc> 
+                This action blindly expands the "root-&gt;Parent" node.
+              </short_desc>
+              <detailed_desc>
+                 The hidden root node 'root' is provided as required.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, ExpandUnverifiedTextNode, "root-&gt;Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action blindly expands the "Child" node found under "Parent".
+              </short_desc>
+              <detailed_desc>
+                 The hidden root node 'root' is provided as required.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword name="EXPANDPARTIALTEXTNODE" 
+           displayText="ExpandPartialTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to expand a node according to a partial match of text value.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-Insensitive text of node to match.
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-insensitive text of the node.
+                 Parent-Child relationships are separated by "-&gt;".
+                 For each level, a text comparison is performed. If the node 
+                 contains the requested substring anywhere in its text, then 
+                 that node is considered a match.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, ExpandPartialTextNode, "parent"</usage>
+           <description>
+              <short_desc> 
+                This action successfully expands the "My New Parent" node.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, ExpandPartialTextNode, "parent-&gt;child"</usage>
+           <description>
+              <short_desc> 
+                This action successfully expands the "My Stepchild" node found under "My New Parent".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="EXPAND" 
+           displayText="Expand" 
+           deprecated="YES" 
+           deprecatedFor="ExpandTextNode" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Use ExpandTextNode instead.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to expand
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to expand.
+                 Parent-Child relationships are separated by "-&gt;"
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, Expand, "Parent"</usage>
+           <description>
+              <short_desc> 
+                This action expands the "Parent" node.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, Expand, "Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action expands the "Child" node found under "Parent".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="COLLAPSETEXTNODE" 
+           displayText="CollapseTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to collapse a node according to its text value.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to collapse
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to collapse.
+                 Parent-Child relationships are separated by "-&gt;"
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, CollapseTextNode, "Parent"</usage>
+           <description>
+              <short_desc> 
+                This action collapses the "Parent" node.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, CollapseTextNode, "Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action collapses the "Child" node found under "Parent".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="COLLAPSEUNVERIFIEDTEXTNODE" 
+           displayText="CollapseUnverifiedTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to blindly collapse a node according to its text value.
+              </short_desc>
+              <detailed_desc>
+                 Generally, no pre- or post- node checks are done. If the tree contains 
+                 hidden root nodes the user must provide these.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20070611" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080508" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>		   
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive full path text of node to collapse
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to collapse.
+                 Parent-Child relationships are separated by "-&gt;" 
+                 If the tree contains hidden root nodes they must be provided.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, CollapseUnverifiedTextNode, "root-&gt;Parent"</usage>
+           <description>
+              <short_desc> 
+                This action blindly collapses the "Parent" node.
+              </short_desc>
+              <detailed_desc>
+                 The hidden root node 'root' is provided as required.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, CollapseUnverifiedTextNode, "root-&gt;Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action collapses the "Child" node found under "Parent".
+              </short_desc>
+              <detailed_desc>
+                 The hidden root node 'root' is provided as required.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="COLLAPSEPARTIALTEXTNODE" 
+           displayText="CollapsePartialTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to collapse a node according to a partial match of its text value.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-Insensitive text of node to collapse
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-insensitive text of the node to collapse.
+                 Parent-Child relationships are separated by "-&gt;"
+                 For each level, a text comparison is performed. If the node 
+                 contains the requested substring anywhere in its text, then 
+                 that node is considered a match.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, CollapsePartialTextNode, "Parent"</usage>
+           <description>
+              <short_desc> 
+                This action collapses the "Parent" node.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, CollapsePartialTextNode, "parent-&gt;child"</usage>
+           <description>
+              <short_desc> 
+                This action collapses the "Child" node found under "Parent".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="COLLAPSE" 
+           displayText="Collapse" 
+           deprecated="YES" 
+           deprecatedFor="CollapseTextNode" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Use CollapseTextNode instead.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to collapse
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to collapse.
+                 Parent-Child relationships are separated by "-&gt;"
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, Collapse, "Parent"</usage>
+           <description>
+              <short_desc> 
+                This action collapses the "Parent" node.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, Collapse, "Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action collapses the "Child" node found under "Parent".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SELECTTEXTNODE" 
+           displayText="SelectTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to select a node according to its text value.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select.
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to select.
+                 Parent-Child relationships are separated by "-&gt;"
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, SelectTextNode, "Parent"</usage>
+           <description>
+              <short_desc> 
+                This action selects the "Parent" node.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, SelectTextNode, "Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action selects the "Child" node found under "Parent".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SELECTANOTHERPARTIALTEXTNODE" 
+           displayText="SelectAnotherPartialTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to select a node according to a partial match of its text value, in addition to any nodes already selected.
+                 Performs selection as if CTRL key were held down during selection.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20050822" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-Insensitive text of node to select.
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-insensitive text of the node to select.
+                 Parent-Child relationships are separated by "-&gt;"
+                 For each level, a text comparison is performed. If the node 
+                 contains the requested substring anywhere in its text, then 
+                 that node is considered a match.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, SelectAnotherPartialTextNode, "parent"</usage>
+           <description>
+              <short_desc> 
+                This action selects the "My New Parent" node.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, SelectAnotherPartialTextNode, "parent-&gt;child"</usage>
+           <description>
+              <short_desc> 
+                This action selects the "My Stepchild" node found under "My New Parent".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SELECTANOTHERTEXTNODE" 
+           displayText="SelectAnotherTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to select a node according to its text value, in addition to any nodes already selected.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20050822" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select.
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to select.
+                 Parent-Child relationships are separated by "-&gt;"
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, SelectAnotherTextNode, "Parent"</usage>
+           <description>
+              <short_desc> 
+                This action selects the "Parent" node.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, SelectAnotherTextNode, "Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action selects the "Child" node found under "Parent".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SELECTANOTHERUNVERIFIEDTEXTNODE" 
+           displayText="SelectAnotherUnverifiedTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to blindly select a node according to its text value, in addition to any nodes already selected.
+              </short_desc>
+              <detailed_desc>
+                 Generally, no pre- or post- node checks are done. If the tree contains 
+                 hidden root nodes the user must provide these.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20070611" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080508" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>		   
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive full path text of node to select.
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to select.
+                 Parent-Child relationships are separated by "-&gt;"  If the tree contains 
+                 hidden root nodes they must be provided.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, SelectAnotherUnverifiedTextNode, "root-&gt;Parent"</usage>
+           <description>
+              <short_desc> 
+                This action blindly selects the "Parent" node.
+              </short_desc>
+              <detailed_desc>
+                The hidden root node is provided as required.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, SelectAnotherUnverifiedTextNode, "root-&gt;Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action blindly selects the "Child" node found under "Parent".
+              </short_desc>
+              <detailed_desc>
+                The hidden root node is provided as required.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+ 
+  <keyword name="SELECTPARTIALTEXTNODE" 
+           displayText="SelectPartialTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to select a node according to a partial match of its text value.
+                 Performs selection as if CTRL key were held down during selection.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-Insensitive text of node to select.
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-insensitive text of the node to select.
+                 Parent-Child relationships are separated by "-&gt;"
+                 For each level, a text comparison is performed. If the node 
+                 contains the requested substring anywhere in its text, then 
+                 that node is considered a match.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, SelectPartialTextNode, "parent"</usage>
+           <description>
+              <short_desc> 
+                This action selects the "My New Parent" node.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, SelectPartialTextNode, "parent-&gt;child"</usage>
+           <description>
+              <short_desc> 
+                This action selects the "My Stepchild" node found under "My New Parent".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>		
+		    
+  <keyword name="SELECTUNVERIFIEDTEXTNODE" 
+           displayText="SelectUnverifiedTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to blindly select a node according to its text value.
+              </short_desc>
+              <detailed_desc>
+                 Generally, no pre- or post- node checks are done. If the tree contains 
+                 hidden root nodes the user must provide these.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20070611" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080508" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>		   
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive full path text of node to select.
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to select.
+                 Parent-Child relationships are separated by "-&gt;" 
+                 If the tree contains hidden root nodes they must be provided.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, SelectUnverifiedTextNode, "root-&gt;Parent"</usage>
+           <description>
+              <short_desc> 
+                This action blindly selects the "Parent" node.
+              </short_desc>
+              <detailed_desc>
+                 The hidden root node is provided as required.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, SelectUnverifiedTextNode, "root-&gt;Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action blindly selects the "Child" node found under "Parent".
+              </short_desc>
+              <detailed_desc>
+                 The hidden root node is provided as required.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>		
+		
+  <keyword name="MAKESELECTION" 
+           displayText="MakeSelection" 
+           deprecated="YES" 
+           deprecatedFor="SelectTextNode" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Use SelectTextNode instead.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to select.
+                 Parent-Child relationships are separated by "-&gt;"
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, MakeSelection, "Parent"</usage>
+           <description>
+              <short_desc> 
+                This action selects the "Parent" node.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, MakeSelection, "Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action selects the "Child" node found under "Parent".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+<keyword name="CAPTURETREEDATATOFILE" 
+           displayText="CaptureTreeDataToFile" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc>
+             Copy the current contents of a tree[branch] to a file.
+             </short_desc> <detailed_desc>
+             <p>The search of the path to the node is expected to be a case-sensitive 
+             exact match of each node.  Use 'PartialMatchTreeDataToFile' if you 
+             wish to specify case-insensitive substring matches for tree nodes.             
+             </p>
+             By default, the files will be
+             stored in the active "Test" directory.  If you specify a
+             relative path, the path will be relative to the project
+             directory.  The directory for a full or relative path 
+             must already exist.
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20050503" >
+	       <libraryInfo name="TreeViewFunctions" 
+                            doc="TreeViewFunctions.htm" 
+                            sourcecode="TreeViewFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20050826" >
+	   	<libraryInfo name="CFTree" 
+	                     doc="org/safs/rational/CFTree.html" 
+	                     sourcecode="org.safs.rational.CFTree.java" 
+	                     class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="FILE" displayText="File" optional="NO">
+           <description> <short_desc>
+             The name of the file used to store the tree data.
+              </short_desc> <detailed_desc>
+             The name of the file used to store the tree data.
+             By default, the files will be
+             stored in the active "Test" directory.  If you specify a
+             relative path, the path will be relative to the project
+             directory.  The directory for a full or relative path 
+             must already exist.
+              </detailed_desc> </description> </parameter>
+        <parameter name="BRANCH" displayText="Branch" optional="YES">
+		<description> 
+			<short_desc>
+	                	The full name of the tree branch to capture.
+	                </short_desc> 
+	                <detailed_desc>
+	                	The full name of the tree branch to capture.  If omitted, all 
+	                	branches/nodes are captured.
+		        	<br /><br />The search of the path to the node is expected to be a case-sensitive 
+		        	exact match of each node.  Use 'PartialMatchTreeDataToFile' if you 
+		        	wish to specify case-insensitive substring matches for tree nodes.             
+                        </detailed_desc> 
+                 </description> 
+        </parameter>
+        <parameter name="INDENTMARK" displayText="IndentMark" optional="YES">
+		<description> 
+			<short_desc>
+		        	The character(s) to use in the output file to indent the tree nodes from the 
+		        	parent tree branches.
+		        </short_desc> 
+		        <detailed_desc>
+		         	The character(s) to use in the output file to indent the tree nodes from the 
+		        	parent tree branches.  If omitted, a tab character is used.
+              		</detailed_desc> 
+              	</description> 
+        </parameter>
+        <parameter name="FILEENCODING" displayText="FileEncoding" optional="YES" default="">
+           <description> <short_desc>
+             Specify a character encoding to be used when saving data to a file.
+			 If it is not specified, the system default file encoding will be used.
+             The encoding should be a valid string supported by Java; if it is not valid,
+             the system default file encoding will be used instead.
+            </short_desc> </description>
+        </parameter>        
+        <parameter name="FILTERMODE" displayText="FilterMode" optional="YES" default="">
+           <description> <short_desc>
+             (Future) Specify a file filter to use to process the text before comparison.
+              </short_desc> </description> </parameter>
+        <parameter name="FILTEROPTIONS" displayText="FilterOptions" optional="YES" default="">
+           <description> <short_desc>
+             (Future) Specify filter options to use with the file filter.
+              </short_desc> </description> </parameter>
+     </parameters>
+     
+     <examples>
+        <example>
+           <usage>T, Browser, aTreeView, CaptureTreeDataToFile, aFilename.ext</usage>
+           <description> <short_desc>
+               Capture the complete nodeset of aTreeView to a file.
+              </short_desc> <detailed_desc>
+               Data is stored in 
+               [project]\Datapool\Test\aFilename.ext file using tab chars to indent the nodes and branches.
+               Because no Branch was specified, the data for the whole tree is captured.<br />
+               Note the unused reserved fields for FileFilter and FilterOptions were omitted.
+              </detailed_desc> </description> </example>
+        <example>
+           <usage>T, Browser, aJavaTree, CaptureTreeDataToFile, myDirectory\aFilename.ext, "Parent Bank->Branch Banking and Trust", "_"</usage>
+           <description> <short_desc>
+               Capture the data contents from 'Parent Bank->Branch Banking and Trust' to a file.
+              </short_desc> <detailed_desc>
+               Data is stored in 
+               [project]\myDirectory\aFilename.ext file using "_" chars to indent the nodes and branches.
+               Because a Branch was specified, only nodes from that branch are captured.<br />
+               Note the unused reserved fields for FileFilter and FilterOptions were omitted.
+              </detailed_desc> </description> </example>
+        <example>
+           <usage>T, Browser, aTreeView, CaptureTreeDataToFile, aFilename.ext, , , "UTF-8"</usage>
+           <description> <short_desc>
+               Capture the complete nodeset of aTreeView to a file.
+              </short_desc> <detailed_desc>
+               Data is stored in 
+               [project]\Datapool\Test\aFilename.ext file using tab chars to indent the nodes and branches.
+               Because no Branch was specified, the data for the whole tree is captured.<br />
+               Writing file with "UTF-8" encoding.
+              </detailed_desc> </description> </example>
+     </examples></keyword>
+
+<keyword name="PARTIALMATCHTREEDATATOFILE" 
+           displayText="PartialMatchTreeDataToFile" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc>
+             Copy the current contents of a tree[branch] to a file according to a partial match of its text value.
+             </short_desc> <detailed_desc>
+             <p>The search of the path to the node is a case-insensitive 
+             substring match of each node.  Use 'CaptureTreeDataToFile' if you 
+             wish to specify case-sensitive exact matches for tree nodes.             
+             </p>
+             By default, the files will be
+             stored in the active "Test" directory.  If you specify a
+             relative path, the path will be relative to the project
+             directory.  The directory for a full or relative path 
+             must already exist.
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20050503" >
+	       <libraryInfo name="TreeViewFunctions" 
+                            doc="TreeViewFunctions.htm" 
+                            sourcecode="TreeViewFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20050826" >
+	   	   	<libraryInfo name="CFTree" 
+	   	                     doc="org/safs/rational/CFTree.html" 
+	   	                     sourcecode="org.safs.rational.CFTree.java" 
+	   	                     class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="FILE" displayText="File" optional="NO">
+           <description> <short_desc>
+             The name of the file used to store the tree data.
+              </short_desc> <detailed_desc>
+             The name of the file used to store the tree data.
+             By default, the files will be
+             stored in the active "Test" directory.  If you specify a
+             relative path, the path will be relative to the project
+             directory.  The directory for a full or relative path 
+             must already exist.
+              </detailed_desc> </description> </parameter>
+        <parameter name="BRANCH" displayText="Branch" optional="YES">
+		<description> <short_desc>
+	             The full name of the tree branch to capture.
+	              </short_desc> <detailed_desc>
+	             The full name of the tree branch to capture.  If omitted, 
+	             all branches/nodes are captured.
+		     <br /><br />The search of the path to the node is a case-insensitive 
+		     substring match of each node.  Use 'CaptureTreeDataToFile' if you 
+		     wish to specify case-sensitive exact matches for tree nodes.             
+              </detailed_desc> </description> </parameter>
+        <parameter name="INDENTMARK" displayText="IndentMark" optional="YES">
+			<description> 
+				<short_desc>
+			        	The character(s) to use in the output file to indent the tree nodes from the 
+			        	parent tree branches.
+			        </short_desc> 
+			        <detailed_desc>
+			         	The character(s) to use in the output file to indent the tree nodes from the 
+			        	parent tree branches.  If omitted, a tab character is used.
+	              		</detailed_desc> 
+	              	</description> 
+        </parameter>
+              
+        <parameter name="FILTERMODE" displayText="FilterMode" optional="YES" default="">
+           <description> <short_desc>
+             (Future) Specify a file filter to use to process the text before comparison.
+              </short_desc> </description> </parameter>
+        <parameter name="FILTEROPTIONS" displayText="FilterOptions" optional="YES" default="">
+           <description> <short_desc>
+             (Future) Specify filter options to use with the file filter.
+              </short_desc> </description> </parameter>
+     </parameters>
+     
+     <examples>
+        <example>
+           <usage>T, Browser, aTreeView, PartialMatchTreeDataToFile, aFilename.ext</usage>
+           <description> <short_desc>
+               Capture the complete nodeset of aTreeView to a file.
+              </short_desc> <detailed_desc>
+               Data is stored in 
+               [project]\Datapool\Test\aFilename.ext file using tab chars to indent the nodes and branches.
+               Because no Branch was specified, the data for the whole tree 
+               is captured.<br />
+               Note the unused reserved fields for FileFilter and FilterOptions were omitted.
+              </detailed_desc> </description> </example>
+        <example>
+           <usage>T, Browser, aJavaTree, PartialMatchTreeDataToFile, myDirectory\aFilename.ext, "parent->branch", "_"</usage>
+           <description> <short_desc>
+               Capture the data contents from the first child node of 'parent' containing 'branch' to a file.
+              </short_desc> <detailed_desc>
+               Thus, this could be a match for 'Parent Bank->Branch Banking and Trust'<br />
+               Data is stored in 
+               [project]\myDirectory\aFilename.ext file using "_" chars to indent the nodes and branches.  
+               Because a Branch was specified, only nodes from that branch are captured.<br />
+               Note the unused reserved fields for FileFilter and FilterOptions were omitted.
+              </detailed_desc> </description> </example>
+     </examples></keyword>
+
+  <keyword name="CLICKTEXTNODE" 
+           displayText="ClickTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to click a node according to its text value.  Currently, this component function 
+                 is for JavaTrees and works differently than documented in TreeViewFunctions (though that 
+                 functionality may be added in the near future).
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20051018" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20051018" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>		   
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to click.
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to click.
+                 Parent-Child relationships are separated by "-&gt;"
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, ClickTextNode, "Parent"</usage>
+           <description>
+              <short_desc> 
+                This action clicks the "Parent" node.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, ClickTextNode, "Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action clicks the "Child" node found under "Parent".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword name="CLICKUNVERIFIEDTEXTNODE" 
+           displayText="ClickUnverifiedTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to blindly click a node according to its text value.  Currently, this component function 
+                 is for JavaTrees and may work differently than documented in TreeViewFunctions.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20070611" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080508" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>		   
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive full path text of node to click.
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to click.
+                 Parent-Child relationships are separated by "-&gt;"  If the tree contains 
+                 hidden root nodes then they must be provided.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, ClickUnverifiedTextNode, "root-&gt;Parent"</usage>
+           <description>
+              <short_desc> 
+                This action blindly clicks the "Parent" node.
+              </short_desc>
+              <detailed_desc>
+                 The hidden root node is provided as required.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, ClickUnverifiedTextNode, "root-&gt;Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action blindly clicks the "Child" node found under "Parent".
+              </short_desc>
+              <detailed_desc>
+                 The hidden root node is provided as required.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword name="RIGHTCLICKTEXTNODE" 
+           displayText="RightClickTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to right-click a node according to its text value.  Currently, this component function 
+                 is for JavaTrees and works differently than documented in TreeViewFunctions (though that 
+                 functionality may be added in the near future).
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20051018" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20051018" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>		   
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to right-click.
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to right-click.
+                 Parent-Child relationships are separated by "-&gt;"
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, RightClickTextNode, "Parent"</usage>
+           <description>
+              <short_desc> 
+                This action right-clicks the "Parent" node.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, RightClickTextNode, "Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action right-clicks the "Child" node found under "Parent".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="RIGHTCLICKUNVERIFIEDTEXTNODE" 
+           displayText="RightClickUnverifiedTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to blindly right-click a node according to its text value.  Currently, this component function 
+                 is for JavaTrees and may work differently than documented in TreeViewFunctions.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20070611" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080508" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>		   
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive full path text of node to right-click.
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to right-click.
+                 Parent-Child relationships are separated by "-&gt;"  If the tree contains 
+                 hidden root nodes then they must be provided.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, RightClickUnverifiedTextNode, "root-&gt;Parent"</usage>
+           <description>
+              <short_desc> 
+                This action blindly right-clicks the "Parent" node.
+              </short_desc>
+              <detailed_desc>
+                The hidden root node is provided as required.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, RightClickUnverifiedTextNode, "root-&gt;Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action blindly right-clicks the "Child" node found under "Parent".
+              </short_desc>
+              <detailed_desc>
+                The hidden root node is provided as required.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+   <keyword name="DOUBLECLICKTEXTNODE" 
+           displayText="DoubleClickTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to double-click a node according to its text value.  Currently, this component function 
+                 is for JavaTrees and works differently than documented in TreeViewFunctions (though that 
+                 functionality may be added in the near future).
+              </short_desc>
+       </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20051018" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20051018" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>		   
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to double-click.
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to double-click.
+                 Parent-Child relationships are separated by "-&gt;"
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, DoubleClickTextNode, "Parent"</usage>
+           <description>
+              <short_desc> 
+                This action double-clicks the "Parent" node.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, DoubleClickTextNode, "Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action double-clicks the "Child" node found under "Parent".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>     
+     
+   <keyword name="DOUBLECLICKUNVERIFIEDTEXTNODE" 
+           displayText="DoubleClickUnverifiedTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to blindly double-click a node according to its text value.  Currently, this component function 
+                 is for JavaTrees and may work differently than documented in TreeViewFunctions.
+              </short_desc>
+       </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20070611" >
+	       <libraryInfo name="JavaTreeFunctions" 
+                            doc="JavaTreeFunctions.htm" 
+                            sourcecode="JavaTreeFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080508" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>		   
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive full path text of node to double-click.
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to double-click.
+                 Parent-Child relationships are separated by "-&gt;"  If the tree contains 
+                 hidden root nodes then they must be provided.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, DoubleClickUnverifiedTextNode, "root-&gt;Parent"</usage>
+           <description>
+              <short_desc> 
+                This action blindly double-clicks the "Parent" node.
+              </short_desc>
+              <detailed_desc>
+                 The hidden root node is provided as required.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, DoubleClickUnverifiedTextNode, "root-&gt;Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action blindly double-clicks the "Child" node found under "Parent".
+              </short_desc>
+              <detailed_desc>
+                 The hidden root node is provided as required.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>     
+     
+   <keyword name="VERIFYTREECONTAINSNODE" 
+           displayText="VerifyTreeContainsNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> 
+       		<short_desc>
+             		Verify that a tree contains the provided node.
+             	</short_desc> 
+             	<detailed_desc>
+             		<p>The search of the path to the node is expected to be a case-sensitive 
+             		exact match of each node.  Use 'VerifyTreeContainsPartialMatch' if you 
+             		wish to specify case-insensitive substring matches for tree nodes.</p>
+              	</detailed_desc> 
+    	</description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20060116" >
+	       <libraryInfo name="TreeViewFunctions" 
+                            doc="TreeViewFunctions.htm" 
+                            sourcecode="TreeViewFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20060119" >
+	   	<libraryInfo name="CFTree" 
+	   		doc="org/safs/rational/CFTree.html" 
+	   		sourcecode="org.safs.rational.CFTree.java" 
+	   		class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="NODE" displayText="Node" optional="NO">
+           <description> 
+           	<short_desc>
+             		The name of the node to verify.
+              	</short_desc> 
+              	<detailed_desc>
+             		The search of the path to the node is expected to be a case-sensitive 
+	     		exact match of each node.  Use 'VerifyTreeContainsPartialMatch' if you 
+	     		wish to specify case-insensitive substring matches for tree nodes.
+              </detailed_desc> </description> </parameter>
+     	</parameters>
+     
+     <examples>
+        <example>
+           <usage>T, Browser, aTreeView, VerifyTreeContainsNode, "Parent Bank->Branch Banking and Trust"</usage>
+           <description> 
+           	<short_desc>
+               		Verify the node 'Parent Bank->Branch Banking and Trust' is found in aTreeView.
+              	</short_desc>
+    	   </description> 
+   	</example>
+     </examples>
+   </keyword>
+
+   <keyword name="VERIFYTREECONTAINSPARTIALMATCH" 
+           displayText="VerifyTreeContainsPartialMatch" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+   	<description> 
+       		<short_desc>
+             	Verify that a tree contains the provided node according to a partial match of the node's text value.
+             	</short_desc> 
+             	<detailed_desc>
+             		<p>The search of the path to the node is expected to be a case-insensitive 
+             		substring match of each node.  Use 'VerifyTreeContainsNode' if you 
+             		wish to specify case-sensitive substring matches for tree nodes.</p>
+              	</detailed_desc> 
+     	</description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20060116" >
+	       <libraryInfo name="TreeViewFunctions" 
+                            doc="TreeViewFunctions.htm" 
+                            sourcecode="TreeViewFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20060119" >
+	   	<libraryInfo name="CFTree" 
+	   		doc="org/safs/rational/CFTree.html" 
+	   	   	sourcecode="org.safs.rational.CFTree.java" 
+	   	   	class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="NODE" displayText="Node" optional="NO">
+           <description> 
+           	<short_desc>
+             		The name of the node to verify.
+              	</short_desc> 
+              	<detailed_desc>
+             		The search of the path to the node is expected to be a case-insensitive 
+			substring match of each node.  Use 'VerifyTreeContainsNode' if you 
+             		wish to specify case-sensitive substring matches for tree nodes.
+              </detailed_desc> </description> </parameter>
+     	</parameters>
+     
+     <examples>
+        <example>
+           <usage>T, Browser, aTreeView, VerifyTreeContainsNode, "parent->branch"</usage>
+           <description> 
+           	<short_desc>
+               		Verify that a child node of 'parent' containing 'branch' is found in aTreeView.
+              	</short_desc>
+              	<detailed_desc>
+			Thus, this could be a match for 'Parent Bank->Branch Banking and Trust'.
+              </detailed_desc>
+    	   </description> 
+   	</example>
+     </examples>
+   </keyword>
+   
+   <keyword name="SETTREECONTAINSNODE" 
+           displayText="SetTreeContainsNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+	<description> 
+       		<short_desc>
+             		Sets a user-defined variable with the result of whether a tree contains the provided node.
+             	</short_desc> 
+             	<detailed_desc>
+             		<p>The search of the path to the node is expected to be a case-sensitive 
+             		exact match of each node.  Use 'SetTreeContainsPartialMatch' if you 
+             		wish to specify case-insensitive substring matches for tree nodes.</p>
+              	</detailed_desc> 
+	</description>
+           
+	<engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20060116" >
+	       <libraryInfo name="TreeViewFunctions" 
+                            doc="TreeViewFunctions.htm" 
+                            sourcecode="TreeViewFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20060119" >
+	   	   <libraryInfo name="CFTree" 
+	   	   	doc="org/safs/rational/CFTree.html" 
+	   	   	sourcecode="org.safs.rational.CFTree.java" 
+	   	   	class="JAVATREE" />
+           </engine>
+	</engines>
+
+	<parameters>
+        	<parameter name="NODE" displayText="Node" optional="NO">
+           		<description> 
+           			<short_desc>
+             				The name of the node to verify.
+              			</short_desc> 
+              			<detailed_desc>
+             				The search of the path to the node is expected to be a case-sensitive 
+	     				exact match of each node.  Use 'SetTreeContainsPartialMatch' if you 
+	     				wish to specify case-insensitive substring matches for tree nodes.
+              			</detailed_desc> 
+              		</description> 
+              	</parameter>
+     		<parameter name="RESULTVAR" displayText="ResultVar" optional="NO">
+	           	<description> 
+	           		<short_desc>
+	             			The name of the variable which gets assigned the result.
+	              		</short_desc> 
+	              		<detailed_desc>
+	             			The value of 'TRUE' indicates the node was found in the tree, and 'FALSE'
+	             			indicates that the node was not found in the tree.
+	              		</detailed_desc> 
+	              	</description> 
+	     	</parameter>
+     	</parameters>
+     
+	<examples>
+        	<example>
+           		<usage>T, Browser, aTreeView, SetTreeContainsNode, "Parent Bank->Branch Banking and Trust", isFound</usage>
+           		<description> 
+           			<short_desc>
+               			Variable isFound will be set to 'TRUE' if the node 'Parent Bank->Branch Banking and Trust' 
+               			is found in aTreeView.  If not found, isFound will be set to 'FALSE'.
+              			</short_desc>
+    	   		</description> 
+   		</example>
+     	</examples>
+   </keyword>   
+ 
+   <keyword name="SETTREECONTAINSPARTIALMATCH" 
+           displayText="SetTreeContainsPartialMatch" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+	<description> 
+       		<short_desc>
+             		Sets a user-defined variable with the result of whether a tree contains the provided node
+             		according to a partial match of the node's text value.
+             	</short_desc> 
+             	<detailed_desc>
+             		<p>The search of the path to the node is expected to be a case-insensitive 
+			substring match of each node.  Use 'SetTreeContainsNode' if you 
+             		wish to specify case-sensitive substring matches for tree nodes.</p>
+              	</detailed_desc> 
+	</description>
+           
+    	<engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20060116" >
+	       <libraryInfo name="TreeViewFunctions" 
+                            doc="TreeViewFunctions.htm" 
+                            sourcecode="TreeViewFunctions.sbl" 
+                            class="JAVATREE" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20060119" >
+	   	   <libraryInfo name="CFTree" 
+	   	   	doc="org/safs/rational/CFTree.html" 
+	   	   	sourcecode="org.safs.rational.CFTree.java" 
+	   	   	class="JAVATREE" />
+           </engine>
+ 	</engines>
+
+  	<parameters>
+        	<parameter name="NODE" displayText="Node" optional="NO">
+        		<description> 
+           			<short_desc>
+             				The name of the node to verify.
+              			</short_desc> 
+              			<detailed_desc>
+             				The search of the path to the node is expected to be a case-insensitive 
+					substring match of each node.  Use 'SetTreeContainsNode' if you 
+             				wish to specify case-sensitive substring matches for tree nodes.
+              			</detailed_desc> 
+              		</description> 
+        	</parameter>
+     		<parameter name="RESULTVAR" displayText="ResultVar" optional="NO">
+	 		<description> 
+	           		<short_desc>
+	             			The name of the variable which gets assigned the result.
+	              		</short_desc> 
+	              		<detailed_desc>
+	             			The value of 'TRUE' indicates the node was found in the tree, and 'FALSE'
+	             			indicates that the node was not found in the tree.
+	              		</detailed_desc> 
+			</description> 
+		</parameter>
+     	</parameters>
+     
+	<examples>
+        	<example>
+           		<usage>T, Browser, aTreeView, VerifyTreeContainsNode, "parent->branch", isFound</usage>
+           		<description> 
+           			<short_desc>
+           				Variable isFound will be set to 'TRUE' if a child node of 'parent' containing 
+           				'branch' is found in aTreeView.  If not found, isFound will be set to 'FALSE'.
+				</short_desc>
+				<detailed_desc>
+					Thus, this could be a match for 'Parent Bank->Branch Banking and Trust'.
+              			</detailed_desc>
+    	   		</description> 
+   		</example>
+     	</examples>
+   </keyword>    
+ 
+ <keyword name="CTRLCLICKUNVERIFIEDTEXTNODE" 
+           displayText="CtrlClickUnverifiedTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to blindly CTRL-click a node according to its text value.  Currently, this component function is for JavaTrees only.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080326" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to CTRL-click.
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to CTRL-click.
+                 Parent-Child relationships are separated by "-&gt;"
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, CtrlClickUnverifiedTextNode, "Parent"</usage>
+           <description>
+              <short_desc> 
+                This action CTRL-clicks the "Parent" node.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, CtrlClickUnverifiedTextNode, "Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action CTRL-clicks the "Child" node found under "Parent".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+ <keyword name="SHIFTCLICKUNVERIFIEDTEXTNODE" 
+           displayText="ShiftClickUnverifiedTextNode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to blindly SHIFT-click a node according to its text value. Currently, this component function is for JavaTrees only.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080326" >
+	       <libraryInfo name="CFTree" 
+                            doc="org/safs/rational/CFTree.html" 
+                            sourcecode="org.safs.rational.CFTree.java" 
+                            class="JAVATREE" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to SHIFT-click.
+              </short_desc>
+              <detailed_desc>
+                 TextValue is the case-sensitive text of the node to SHIFT-click.
+                 Parent-Child relationships are separated by "-&gt;"
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, AJTree, ShiftClickUnverifiedTextNode, "Parent"</usage>
+           <description>
+              <short_desc> 
+                This action SHIFT-clicks the "Parent" node.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, AJTree, ShiftClickUnverifiedTextNode, "Parent-&gt;Child"</usage>
+           <description>
+              <short_desc> 
+                This action SHIFT-clicks the "Child" node found under "Parent".
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+ 
+</keywords>
+</keyword_library>

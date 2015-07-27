@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="FlexSliderFunctions" 
+                 doc="FlexSliderFunctions.htm" 
+                 sourcecode="org.safs.rational.flex.CFFlexSlider.java" 
+                 chainTo="GenericObjectFunctions"
+                 class="CFFlexSlider">
+
+        <description>
+           <short_desc> 
+              Actions for working with Flex Slider objects
+           </short_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="RobotJ" version="8.0.0.0" />
+    <keywords>
+    
+
+ <keyword name="SETVALUE" 
+           displayText="SetValue" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to set the value of the slider according to its SliderValue. Currently, this component function is for Flex Slider only.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20090424" >
+    			<libraryInfo name="FlexSliderFunctions" 
+               						  doc="FlexSliderFunctions.htm" 
+                 						sourcecode="org.safs.rational.flex.CFFlexSlider.java" 
+                 						class="CFFlexSlider" />                            
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="SliderValue" displayText="SliderValue" optional="NO">
+           <description>
+              <short_desc> 
+                 The value of the slider to set.
+              </short_desc>
+              <detailed_desc>
+                 The value of the slider to set. 
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, FlexWINDOW, FlexSlider, SetValue, 3.2</usage>
+           <description>
+              <short_desc> 
+                This action sets the value of the slider to 3.2; the slider cursor is moved to its corresponding position.
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+ 
+</keywords>
+</keyword_library>

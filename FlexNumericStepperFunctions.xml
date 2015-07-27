@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="FlexNumericStepperFunctions" 
+                 doc="FlexNumericStepperFunctions.htm" 
+                 sourcecode="org.safs.rational.flex.CFFlexNumericStepper.java" 
+                 chainTo="GenericObjectFunctions"
+                 class="CFFlexNumericStepper">
+
+        <description>
+           <short_desc> 
+              Actions for working with Flex NumericStepper objects
+           </short_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="RobotJ" version="8.0.0.0" />
+    <keywords>
+    
+
+ <keyword name="SETVALUE" 
+           displayText="SetValue" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to set the value of the stepper according to its StepperValue. Currently, this component function is for Flex NumericStepper only.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20090424" >
+	       		<libraryInfo name="FlexNumericStepperFunctions" 
+                            doc="FlexNumericStepperFunctions.htm" 
+                            sourcecode="org.safs.rational.flex.CFFlexNumericStepper.java" 
+                            class="CFFlexNumericStepper" />
+                        
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="StepperValue" displayText="StepperValue" optional="NO">
+           <description>
+              <short_desc> 
+                 The value of the stepper to set.
+              </short_desc>
+              <detailed_desc>
+                 The value of the stepper to set.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, FLEXWINDOW, FlexNumericStepper, SetValue, 3</usage>
+           <description>
+              <short_desc> 
+                This action sets the value of the stepper to 3.
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+ 
+</keywords>
+</keyword_library>

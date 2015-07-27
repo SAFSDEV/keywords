@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+
+<keyword_library>
+    
+    <libraryType type="COMPONENT" />
+
+     <libraryInfo name="HTMLFunctions" 
+                  doc="HTMLFunctions.htm" 
+                  sourcecode="HTMLFunctions.sbl" 
+                  chainTo="GenericObjectFunctions"
+                  class="HTML">
+
+        <description>
+           <short_desc> 
+              Actions for working with HTML objects
+           </short_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="Robot" version="2002" />
+
+    <keywords>
+    
+    </keywords>
+</keyword_library>

@@ -1,0 +1,2520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+
+<keyword_library><libraryType type="DRIVER" />
+
+    <libraryInfo name="DDDriverFlowCommands" 
+                 doc="DDDriverFlowCommands.htm" 
+                 sourcecode="DDDriverFlowCommands.sbl"
+                 class="FLOW" >
+                 
+        <description>
+          <short_desc>
+              Driver Commands for the Cycle, Suite, and Step drivers
+          </short_desc>
+          <detailed_desc><p>
+          This keyword library provides Driver Commands that 
+          can be used by all three DDE Drivers--CycleDriver, 
+          SuiteDriver, and StepDriver.  That means they can 
+          be used in any keyword driven test tables regardless 
+          of the test tables level--Cycle, Suite, or Step.</p>
+          <p>
+          Each different driver command has different parameters 
+          as described in its documentation.  For reference, the 
+          first fields of ALL Driver Command test records are defined 
+          below:</p>
+          <dl>
+             <dd>Field #1</dd>
+             <dt>The "C" = DRIVER COMMAND record type specifier.</dt>
+
+             <dd>Field #2</dd>
+             <dt>The Driver Command keyword.</dt>
+          </dl>
+          <p>
+          Example:</p>
+
+          <code>c , SetApplicationMap , "AppMap.map"</code>
+
+          <p>
+          Driver Command parameters must be placed in the test record 
+          in the field position specified in the documentation.  
+          Some parameters are optional.  However, the field associated 
+          with that parameter must be honored.  If you wish to skip an 
+          optional parameter you must still provide an empty field for 
+          that parameter.</p>
+          <p>
+          Example:</p>
+
+          <code>c, LaunchApplication, NOTEPAD, NOTEPAD.EXE, , , "AppMap.map"</code>
+
+          <p>
+          The above example shows two optional fields after NOTEPAD.EXE 
+          which are given no value(skipped).</p>
+          <p>
+          Note that the full availablility of all Driver Commands is now 
+          spread across several files.  Together, all of these files provide 
+          all the Driver Commands available to the core framework.</p>
+          <dl>
+             <dd><a href="DDDriverCommands.htm" target="_blank">DDDriverCommands</a></dd>
+             <dt>Miscellaneous and often used Commands.</dt>
+
+             <dd><a href="DDDriverLogCommands.htm" target="_blank">DDDriverLogCommands</a></dd>
+             <dt>Commands focused on logging test execution.</dt>
+
+             <dd><a href="DDDriverFlowCommands.htm" target="_blank">DDDriverFlowCommands</a></dd>
+             <dt>Commands focused on Error Recovery and Flow Control.</dt>
+
+             <dd><a href="DDDriverCounterCommands.htm" target="_blank">DDDriverCounterCommands</a></dd>
+             <dt>Commands focused on status tracking.</dt>
+
+             <dd><a href="DDDriverDeprecatedCommands.htm" target="_blank">DDDriverDeprecatedCommands</a></dd>
+             <dt>Commands that are still provided for backward compatibility, but are no longer supported.</dt>
+
+             <dd><a href="DDDriverDebugCommands.htm" target="_blank">DDDriverDebugCommands</a></dd>
+             <dt>Commands focused on debugging test execution.</dt>
+
+          </dl>
+          </detailed_desc>
+        </description>
+    </libraryInfo>
+    <runtime platform="Windows" engine="Robot" version="2000" />
+    <keywords>
+  
+    <keyword name="CALLSCRIPT" 
+             displayText="CallScript" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description> <short_desc> 
+                 Invoke a custom script with passed parameters/variables, if desired.
+              </short_desc>  <detailed_desc> 
+                 Since the script is executed as a Driver Command and NOT a test; 
+                 test_record, test_passes, and test_failures information within the status counters 
+                 are not updated.
+                 <p>For Rational Robot, if the called script wishes to record 
+                 tests attempted, pass, and failure counts then it must 
+                 do so itself by updating the <a href="ApplicationUtilities.htm#globals">ScriptStatusInfo</a> fields 
+                 accordingly.
+                 </p><p>The name of the script must not include the file extension.
+                 </p><p>Any number of parameters can be passed to the script.
+                 These parameters are passed as DDVariables and\or SAFSVARS variables.
+                 The variables and their values are available to the script and all of SAFS.
+                 These parameters are usually specific to each called script.  The script can also 
+                 set variable values for use by SAFS test tables.
+                 </p><p>With Robot, the script can get/set variable values from the <a href="UsingDDVariables.htm#in_scripts">DDVariableStore</a>.
+                 </p><p>With Rational Functional Tester, the custom script should follow this <a href="../doc/org/safs/rational/Script.html" target="_blank">Script Javadoc</a>.
+                 </p><p>For Apple IOS, consult the <a href="http://safsdev.sourceforge.net/sqabasic2000/SAFSIOSDevelopersGuide.htm#callscript" target="_blank">SAFS IOS Developer's Guide</a>.
+                 </p>
+              </detailed_desc> 
+	      <note>
+		<engines>
+		    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140513">
+			<domains>
+			    <domain name="HTML"></domain>
+			</domains>
+		    </engine>
+		</engines>
+		<value>Selenium 2.0 support executes a SeBuilder JSON Script while supporting PAUSE, STEP, and STEP RETRY of indidividual 
+		Script Steps through the <a href="http://safsdev.sourceforge.net/sqabasic2000/UsingSAFSMonitor.htm" target="_blank">SAFS Monitor</a>.
+		<p>The SAFS Monitor must be enabled and running to take advantage of these modes of execution.</p>
+		<p>This implementation does NOT yet support the provision of passing parameters to the SeBuilder script from the 
+		CallScript InputRecord.</p></value>
+	      </note>
+              </description>
+           
+       <engines>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140513" >
+	           <libraryInfo name="DCDriverCommand" 
+                            doc="org/safs/selenium/webdriver/DCDriverCommand.html" 
+                            sourcecode="org.safs.selenium.webdriver.DCDriverCommand.java" 
+                            class="FLOW"/>
+           </engine>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="Apple" tool="IOS" name="Apple XCode Instruments" since="20121026" >
+	       <libraryInfo name="IDriverCommand" 
+                            doc="org/safs/ios/IDriverCommand.html" 
+                            sourcecode="org.safs.ios.IDriverCommand.java" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="DCDriverCommand" 
+                            doc="org/safs/rational/DCDriverCommand.html" 
+                            sourcecode="org.safs.rational.DCDriverCommand.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+			       since="20020903" 
+			       tool="WinRunner" 
+			       vendor="Mercury Interactive">
+		       <libraryInfo class="FLOW" 
+					name="DDDriverFlowCommands" 
+					sourcecode="DDDriverFlowCommands">
+		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="SCRIPTNAME" displayText="ScriptName" optional="NO">
+           <description> <short_desc> 
+                 The name of the Script to execute.
+              </short_desc> 
+	      <note>
+		<engines>
+		    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140513">
+			<domains>
+			    <domain name="HTML"></domain>
+			</domains>
+		    </engine>
+		</engines>
+		<value>This can be either a project-relative path or the full absolute path  to the JSON script.  
+		The file path inclucing file extension IS needed to successfully locate the script.</value>
+	      </note>
+           </description> </parameter>
+        <parameter name="PARAMETERNAME" displayText="ParameterName" optional="YES" default="AValue">
+           <description> <short_desc> 
+                 One or more parameter values to send to the script--each in their own field.
+              </short_desc> 
+	      <note>
+		<engines>
+		    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140513">
+			<domains>
+			    <domain name="HTML"></domain>
+			</domains>
+		    </engine>
+		</engines>
+		<value>Not supported at this time in Selenium SeBuilder JSON Scripts.</value>
+	      </note>
+              </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, CallScript, "MyScript" </usage>
+           <description> <short_desc> 
+                 Invoke MyScript which does not require or expect parameters.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, CallScript, "AnotherScript", ^FName="John", ^LName="Smith"</usage>
+           <description> <short_desc> 
+                 Invoke AnotherScript which requires or expects two parameters.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="CALLCYCLE" 
+           displayText="CallCycle" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Invoke a Cycle table (from StepDriver or SuiteDriver)
+              </short_desc>  <detailed_desc> 
+                 Since the Cycle is executed as a driver command 
+                 and NOT as a test record, the call to the 
+                 Cycle itself is not counted as a test pass or a test fail.
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="FLOW" 
+	   					name="DDDriverFlowCommands" 
+	   					sourcecode="DDDriverFlowCommands">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="CYCLENAME" displayText="CycleName" optional="NO">
+           <description> <short_desc> 
+                 The name of the Cycle table to execute.
+              </short_desc> </description> </parameter>
+        <parameter name="CYCLESEPARATOR" displayText="CycleSeparator" optional="YES" default="">
+           <description> <short_desc> 
+                 The field separator used by the table--if required.
+              </short_desc>  <detailed_desc> 
+                 Only necessary if the table uses a different field separator than 
+                 that already set for CycleDriver.  Use an empty string or an empty 
+                 field to keep the field separator already in use.<br />
+                 Typically, all the tables use the same separator so this can usually 
+                 be left empty.
+              </detailed_desc> </description> </parameter>
+        <parameter name="PARAMETERNAME" displayText="ParameterName" optional="YES" default="AValue">
+           <description> <short_desc> 
+                 One or more parameter values to send to the Cycle--each in their own field.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, CallCycle, "MyCycle" </usage>
+           <description> <short_desc> 
+                 Invoke MyCycle which does not require or expect parameters.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, CallCycle, "MyCycle", ";" </usage>
+           <description> <short_desc> 
+                 Invoke MyCycle which uses a semi-colon as a field delimiter.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, CallCycle, "AnotherCycle", "", ^FName="John", ^LName="Smith"</usage>
+           <description> <short_desc> 
+                 Invoke AnotherCycle using the existing field separator and passing two parameters.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="CALLSUITE" 
+           displayText="CallSuite" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Invoke a Suite table (from StepDriver or SuiteDriver)
+              </short_desc>  <detailed_desc> 
+                 You cannot use CallSuite in a CycleDriver test table.
+                 Since the Suite is executed as a driver command by SuiteDriver or 
+                 StepDriver and NOT as a CycleDriver test record, the call to the 
+                 Suite itself is not counted as a test pass or a test fail.
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="FLOW" 
+	   					name="DDDriverFlowCommands" 
+	   					sourcecode="DDDriverFlowCommands">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="SUITENAME" displayText="SuiteName" optional="NO">
+           <description> <short_desc> 
+                 The name of the Suite to execute.
+              </short_desc> </description> </parameter>
+        <parameter name="SUITESEPARATOR" displayText="SuiteSeparator" optional="YES" default="">
+           <description> <short_desc> 
+                 The field separator used by the Suite--if required.
+              </short_desc>  <detailed_desc> 
+                 The field separator used by the Suite--if required.<br />
+                 Only necessary if the Suite uses a different field separator than 
+                 that already set for SuiteDriver.  Use an empty string or an empty 
+                 field to keep the field separator already in use.<br />
+                 Typically, all the tables use the same separator so this can usually 
+                 be left empty.
+              </detailed_desc> </description> </parameter>
+        <parameter name="PARAMETERNAME" displayText="ParameterName" optional="YES" default="AValue">
+           <description> <short_desc> 
+                 One or more parameter values to send to the suite--each in their own field.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, CallSuite, "MySuite" </usage>
+           <description> <short_desc> 
+                 Invoke MySuite which does not require or expect parameters.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, CallSuite, "MySuite", ";" </usage>
+           <description> <short_desc> 
+                 Invoke MySuite which uses a semi-colon as a field delimiter.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, CallSuite, "AnotherSuite", "", ^FName="John", ^LName="Smith"</usage>
+           <description> <short_desc> 
+                 Invoke AnotherSuite using the existing field separator and passing two parameters.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="CALLSTEP" 
+           displayText="CallStep" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Invoke a Step table from within another Step table (from StepDriver).
+              </short_desc>  <detailed_desc> 
+                 The command is only used at the Step level.  You do not use this 
+                 command within Suites or Cycles.
+                 <p>Since the Step table is executed as a driver command by StepDriver 
+                 and NOT as a CycleDriver or SuiteDriver test record, the call to the 
+                 Step table itself is not counted as a test pass or a test fail.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="FLOW" 
+	   					name="DDDriverFlowCommands" 
+	   					sourcecode="DDDriverFlowCommands">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="STEPNAME" displayText="StepName" optional="NO">
+           <description> <short_desc> 
+                 The name of the StepTable to execute.
+              </short_desc> </description> </parameter>
+        <parameter name="STEPSEPARATOR" displayText="StepSeparator" optional="YES" default="">
+           <description> <short_desc> 
+                 The field separator used by the Step table--if required.
+              </short_desc>  <detailed_desc> 
+                 Only necessary if the table uses a different field separator than 
+                 that already set for StepDriver.  Use an empty string or an empty 
+                 field to keep the field separator already in use.<br />
+                 Typically, all the tables use the same separator so this can usually 
+                 be left empty.
+              </detailed_desc> </description> </parameter>
+        <parameter name="PARAMETERNAME" displayText="ParameterName" optional="YES" default="AValue">
+           <description> <short_desc> 
+                 One or more parameter values to send to the table--each in their own field.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, CallStep, "AnotherStepTable" </usage>
+           <description> <short_desc> 
+                 Invoke AnotherStepTable which does not require or expect parameters.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, CallStep, "MyStep", ";" </usage>
+           <description> <short_desc> 
+                 Invoke MyStep which uses a semi-colon as a field delimiter.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, CallStep, "AnotherStep", "", ^FName="John", ^LName="Smith"</usage>
+           <description> <short_desc> 
+                 Invoke AnotherStep using the existing field separator and passing two parameters.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="EXITTABLE" 
+           displayText="ExitTable" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Exit the currently running Step, Suite, or Cycle table.
+              </short_desc> <detailed_desc> 
+                 Exit the currently running Step, Suite, or Cycle table.<br />
+                 The table containing the command is exited.  No other table 
+                 is automatically exited because of this command.  If an ExitTable 
+                 processing block has been set by SetExitTableBlock then that block 
+                 will be executed.  Otherwise, the table will immediately exit.
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="FLOW" 
+	   					name="DDDriverFlowCommands" 
+	   					sourcecode="DDDriverFlowCommands">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters> </parameters><examples>
+        <example>
+           <usage>C, ExitTable</usage>
+           <description> <short_desc> 
+                 Exit the current table.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="EXITSUITE" 
+           displayText="ExitSuite" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Exit the currently running Step and/or Suite table.
+              </short_desc> <detailed_desc> 
+                 Exit the currently running Step and/or Suite table.<br />
+                 Generally only called from Step Driver to exit the current Step 
+                 table AND the Suite that invoked it.  The command should have no 
+                 effect inside a Cycle table.
+                 <p>
+                 The Step or Suite table containing the command is exited.  If an ExitTable 
+                 processing block has been set by SetExitTableBlock then that block 
+                 will be executed.  Otherwise, the table will immediately exit.  </p>
+                 <p>
+                 If the table containing the command was a Step table, then the Suite that 
+                 called the Step table will also be exited.  If an ExitTable 
+                 processing block has been set by SetExitTableBlock for the Suite,
+                 then that block will be executed.  Otherwise, the Suite will immediately exit.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="FLOW" 
+	   					name="DDDriverFlowCommands" 
+	   					sourcecode="DDDriverFlowCommands">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters> </parameters><examples>
+        <example>
+           <usage>C, ExitSuite</usage>
+           <description> <short_desc> 
+                 Exit the current Step and/or Suite table.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="EXITCYCLE" 
+           displayText="ExitCycle" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Exit the currently running Step, Suite, and/or Cycle table.
+              </short_desc> <detailed_desc> 
+                 Exit the currently running Step, Suite, and/or Cycle table.<br />
+                 Generally called from Step or Suite Driver to exit or abort the entire 
+                 Cycle test currently running.
+                 <p>
+                 The Step or Suite table containing the command is exited.  If an ExitTable 
+                 processing block has been set by SetExitTableBlock then that block 
+                 will be executed.  Otherwise, the table will immediately exit.  </p>
+                 <p>
+                 Any Suite and/or Cycle table that invoked the table will also be exited.  
+                 If an ExitTable processing block has been set by SetExitTableBlock for the table 
+                 then that block will be executed.  Otherwise, the table will immediately exit.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="FLOW" 
+	   					name="DDDriverFlowCommands" 
+	   					sourcecode="DDDriverFlowCommands">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters> </parameters><examples>
+        <example>
+           <usage>C, ExitCycle</usage>
+           <description> <short_desc> 
+                 Exit the current table and the entire Cycle test.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="GOTOBLOCKID" 
+           displayText="GotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Goto a named block in the current table.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="FLOW" 
+	   					name="DDDriverFlowCommands" 
+	   					sourcecode="DDDriverFlowCommands">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+           <description> <short_desc> 
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, GotoBlockID, "ErrorHandler"</usage>
+           <description> <short_desc> 
+                 Goto the block named "ErrorHandler"
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="ONEQUALGOTOBLOCKID" 
+           displayText="OnEqualGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Goto the named block in the current table if two values are equal.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040924" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="FLOW" 
+	   					name="DDDriverFlowCommands" 
+	   					sourcecode="DDDriverFlowCommands">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+           <description> <short_desc> 
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE1" displayText="Value1" optional="NO">
+           <description> <short_desc> 
+                 The first value for the comparison.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE2" displayText="Value2" optional="NO">
+           <description> <short_desc> 
+                 The second value for the comparison.
+              </short_desc> </description> </parameter>
+        <parameter name="CASESENSITIVE" displayText="CaseSensitive" optional="YES">
+           <description> <short_desc> 
+                 Set to 'CaseInsensitive' so comparisons are NOT case-sensitive.
+                 Comparisons are case-sensitive by default.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnEqualGotoBlockID, "NoError", Value1, Value2 </usage>
+           <description> <short_desc> 
+                 Goto the block named "NoError" if "Value1" equal "Value2" (they don't).
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnEqualGotoBlockID, "NoError", Value1, VALUE1, CaseInsensitive </usage>
+           <description> <detailed_desc> 
+                 Goto the block named "NoError" if "Value1" equal "VALUE1" (they do if
+                 the comparison is case-insensitive).
+              </detailed_desc> </description> </example>
+        <example>
+           <usage>C, OnEqualGotoBlockID, "NoError", ^Value1, Value2 </usage>
+           <description> <short_desc> 
+                 Goto "NoError" if DDVariable ^Value1 equal "Value2" (it might).
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnEqualGotoBlockID, "NoError", ^Value1, ^Value2 </usage>
+           <description> <short_desc> 
+                 Goto "NoError" if DDVariable ^Value1 = DDVariable ^Value2 (it might).
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="ONLESSTHANGOTOBLOCKID" 
+           displayText="OnLessThanGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Goto the named block if value1 is less than value2.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040924" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="FLOW" 
+	   					name="DDDriverFlowCommands" 
+	   					sourcecode="DDDriverFlowCommands">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+           <description> <short_desc> 
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE1" displayText="Value1" optional="NO">
+           <description> <short_desc> 
+                 The value to be compared.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE2" displayText="Value2" optional="NO">
+           <description> <short_desc> 
+                 The value to be compared against.
+              </short_desc> </description> </parameter>
+        <parameter name="CASESENSITIVE" displayText="CaseSensitive" optional="YES">
+           <description> <short_desc> 
+                 Set to 'CaseInsensitive' so string comparisons are NOT case-sensitive.
+                 String Comparisons are case-sensitive by default.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnLessThanGotoBlockID, "NoError", Val1, Val2 </usage>
+           <description> <short_desc> 
+                 Goto the block named "NoError" since string compare of Val1 is less than Val2.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnLessThanGotoBlockID, "NoError", 100, 200 </usage>
+           <description> <short_desc> 
+                 Goto block named "NoError" since numerical compare 100 is less than 200.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnLessThanGotoBlockID, "NoError", ^Val1, ^Val2 </usage>
+           <description> <short_desc> 
+                 Goto "NoError" if DDVariable ^Val1 less than DDVariable ^Val2.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="ONNOTLESSTHANGOTOBLOCKID" 
+           displayText="OnNotLessThanGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Goto the named block if value1 is NOT less than value2.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040924" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+           <description> <short_desc> 
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE1" displayText="Value1" optional="NO">
+           <description> <short_desc> 
+                 The value that should be NOT less than VALUE2.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE2" displayText="Value2" optional="NO">
+           <description> <short_desc> 
+                 The value that should be equal or less than VALUE1.
+              </short_desc> </description> </parameter>
+        <parameter name="CASESENSITIVE" displayText="CaseSensitive" optional="YES">
+           <description> <short_desc> 
+                 Set to 'CaseInsensitive' so string comparisons are NOT case-sensitive.
+                 String Comparisons are case-sensitive by default.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnNotLessThanGotoBlockID, "NoError", Val2, Val1 </usage>
+           <description> <short_desc> 
+                 Goto the block named "NoError" since string compare of Val2 is NOT less than Val1.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnNotLessThanGotoBlockID, "NoError", Val1, Val1 </usage>
+           <description> <short_desc> 
+                 Goto the block named "NoError" since string compare of Val1 equals Val1.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnNotLessThanGotoBlockID, "NoError", Val1, Val2 </usage>
+           <description> <short_desc> 
+                 Does not branch to "NoError" since string compare of Val1 is less than Val2.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnNotLessThanGotoBlockID, "NoError", 200, 100 </usage>
+           <description> <short_desc> 
+                 Goto block named "NoError" since numerical compare 200 is not less than 100.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="ONGREATERTHANGOTOBLOCKID" 
+           displayText="OnGreaterThanGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Goto the named block in the current table if value1 is greater than value2.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040924" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   			       since="20020903" 
+	   	   			       tool="WinRunner" 
+	   	   			       vendor="Mercury Interactive">
+	   	   		       <libraryInfo class="FLOW" 
+	   	   					name="DDDriverFlowCommands" 
+	   	   					sourcecode="DDDriverFlowCommands">
+	   	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+           <description> <short_desc> 
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE1" displayText="Value1" optional="NO">
+           <description> <short_desc> 
+                 The value to be compared.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE2" displayText="Value2" optional="NO">
+           <description> <short_desc> 
+                 The value to be compared against.
+              </short_desc> </description> </parameter>
+        <parameter name="CASESENSITIVE" displayText="CaseSensitive" optional="YES">
+           <description> <short_desc> 
+                 Set to 'CaseInsensitive' so comparisons are NOT case-sensitive.
+                 Comparisons are case-sensitive by default.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnGreaterThanGotoBlockID, "NoError", Val2, Val1 </usage>
+           <description> <short_desc> 
+                 Goto the block named "NoError" since Val2 is greater than Val1 via string compare.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnGreaterThanGotoBlockID, "NoError", 500, 100 </usage>
+           <description> <short_desc> 
+                 Goto "NoError" since 500 is greather than 100 via numerical comparison.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnGreaterThanGotoBlockID, "NoError", ^Val1, ^Val2 </usage>
+           <description> <short_desc> 
+                 Goto "NoError" if DDVariable ^Val1 is greater than DDVariable ^Val2.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="ONNOTGREATERTHANGOTOBLOCKID" 
+           displayText="OnNotGreaterThanGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Goto the named block in the current table if value1 is NOT greater than value2.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040924" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+           <description> <short_desc> 
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE1" displayText="Value1" optional="NO">
+           <description> <short_desc> 
+                 The value expected to be NOT greater than VALUE2.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE2" displayText="Value2" optional="NO">
+           <description> <short_desc> 
+                 The value expected to be equal or greater than VALUE1.
+              </short_desc> </description> </parameter>
+        <parameter name="CASESENSITIVE" displayText="CaseSensitive" optional="YES">
+           <description> <short_desc> 
+                 Set to 'CaseInsensitive' so comparisons are NOT case-sensitive.
+                 Comparisons are case-sensitive by default.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnNotGreaterThanGotoBlockID, "NoError", Val1, Val2 </usage>
+           <description> <short_desc> 
+                 Goto the block named "NoError" since Val1 is NOT greater than Val2 via string compare.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnNotGreaterThanGotoBlockID, "NoError", Val1, Val1 </usage>
+           <description> <short_desc> 
+                 Goto the block named "NoError" since Val1 equals Val1 via string compare.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnNotGreaterThanGotoBlockID, "NoError", Val2, Val1 </usage>
+           <description> <short_desc> 
+                 Does not branch to "NoError" since Val2 is greater than Val1 via string compare.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnNotGreaterThanGotoBlockID, "NoError", 100, 500 </usage>
+           <description> <short_desc> 
+                 Goto "NoError" since 100 is NOT greather than 500 via numerical comparison.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnNotGreaterThanGotoBlockID, "NoError", ^Val1, ^Val2 </usage>
+           <description> <short_desc> 
+                 Goto "NoError" if DDVariable ^Val1 is NOT greater than DDVariable ^Val2.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="ONINRANGEGOTOBLOCKID" 
+           displayText="OnInRangeGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc>
+                 Goto named block if value1 is between value2 and value3.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20080506" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           
+           <engine name="WinRunner" 
+	   	   			       since="20020903" 
+	   	   			       tool="WinRunner" 
+	   	   			       vendor="Mercury Interactive">
+	   	   		       <libraryInfo class="FLOW" 
+	   	   					name="DDDriverFlowCommands" 
+	   	   					sourcecode="DDDriverFlowCommands">
+	   	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+           <description> <short_desc>
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE1" displayText="Value1" optional="NO">
+           <description> <short_desc>
+                 The value to be compared.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE2" displayText="Value2" optional="NO">
+           <description> <short_desc>
+                 The low end of range to be compared against.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE3" displayText="Value3" optional="NO">
+           <description> <short_desc>
+                 The high end of range to be compared against.
+              </short_desc> </description> </parameter>
+        <parameter name="CASESENSITIVE" displayText="CaseSensitive" optional="YES">
+           <description> <short_desc> 
+                 Set to 'CaseInsensitive' so string comparisons are NOT case-sensitive.
+                 String Comparisons are case-sensitive by default.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnInRangeGotoBlockID, "NoError", Val22, Val21, Val31 </usage>
+           <description> <short_desc>
+             Goto  "NoError" if "^Val1" is within Val2 and Val3.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnInRangeGotoBlockID, "NoError", 200, 100, 500 </usage>
+           <description> <short_desc>
+            Goto "NoError" since 200 is numerically between 100 and 500.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnInRangeGotoBlockID, "NoError", ^Val1, ^Val2, ^Val3 </usage>
+           <description> <short_desc> 
+            Goto "NoError" if DDVariable ^Val1 is within DDVarialbe ^Val2 and DDVariable ^Val3.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+    <keyword deprecated="NO" displayText="OnFileEOFGotoBlockID" expectFailSupport="NO" expectWarnSupport="NO" name="ONFILEEOFGOTOBLOCKID">
+      <description>
+        <short_desc>
+          Goto the named block in the current table if the file is at EOF.
+        </short_desc>
+      </description>
+      <engines>
+        <engine name="Robot" since="20030827" tool="Robot" vendor="Rational">
+          <libraryInfo class="FILE" doc="DDDriverFileCommands.htm" name="DDDriverFileCommands" sourcecode="DDDriverFileCommands.sbl">
+          </libraryInfo>
+        </engine>
+		<engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080527" >
+			   	   <libraryInfo name="DDDriverFileCommands" 
+	                     doc="org/safs/DCDriverFileCommands.html" 
+	                     sourcecode="org.safs.DCDriverFileCommands.java" 
+	                     class="FILE" />
+        </engine>  
+      </engines>
+      <parameters>
+        <parameter displayText="BlockID" name="BLOCKID" optional="NO">
+          <description>
+            <short_desc>
+              The name of the block to Goto.
+            </short_desc>
+          </description>
+        </parameter>
+        <parameter displayText="FileNumber" name="FILENUMBER" optional="NO">
+          <description>
+            <short_desc>
+              The file number of the file to be verified for EOF.
+            </short_desc>
+          </description>
+        </parameter>
+      </parameters>
+      <examples>
+        <example>
+          <usage>
+            C, OnFileEOFGoToBlockId, "FileEOF", "FileNumber"
+          </usage>
+          <description>
+            <short_desc>
+              Goto the block named "FileEOF" if file identified by FileNumber is at EOF.
+            </short_desc>
+          </description>
+        </example>
+      </examples>
+    </keyword>
+
+  <keyword name="ONNOTINRANGEGOTOBLOCKID" 
+           displayText="OnNotInRangeGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc>
+                 Goto the named block in the current table if value1 is not between value2 and value3.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20080506" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>           
+           <engine name="WinRunner" 
+	   	   			       since="20020903" 
+	   	   			       tool="WinRunner" 
+	   	   			       vendor="Mercury Interactive">
+	   	   		       <libraryInfo class="FLOW" 
+	   	   					name="DDDriverFlowCommands" 
+	   	   					sourcecode="DDDriverFlowCommands">
+	   	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+           <description> <short_desc>
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE1" displayText="Value1" optional="NO">
+           <description> <short_desc>
+                 The value to be compared.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE2" displayText="Value2" optional="NO">
+           <description> <short_desc>
+                 The low end of range to be compared against.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE3" displayText="Value3" optional="NO">
+           <description> <short_desc>
+                 The high end of range to be compared against.
+              </short_desc> </description> </parameter>
+        <parameter name="CASESENSITIVE" displayText="CaseSensitive" optional="YES">
+           <description> <short_desc> 
+                 Set to 'CaseInsensitive' so string comparisons are NOT case-sensitive.
+                 String Comparisons are case-sensitive by default.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnNotInRangeGotoBlockID, "NoError", Val11, Val21, Val31 </usage>
+           <description> <short_desc>
+                 Goto the block "NoError" Val11 is not between Val21 and Val31 using string compare".
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnNotInRangeGotoBlockID, "NoError", 100, 200, 500 </usage>
+           <description> <short_desc>
+                 Goto "NoError" since 100 is not numerically between 200 and 500".
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnNotInRangeGotoBlockID, "NoError", ^Val1, ^Val2, ^Val3 </usage>
+           <description> <short_desc> 
+                 Goto "NoError" if DDVarialbe ^Val1 is within DDVariable ^Val2 and DDVariable ^Val3.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="ONCONTAINSGOTOBLOCKID" 
+           displayText="OnContainsGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Goto the named block in the current table if value2 is contained within value1.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040924" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   			       since="20020903" 
+	   	   			       tool="WinRunner" 
+	   	   			       vendor="Mercury Interactive">
+	   	   		       <libraryInfo class="FLOW" 
+	   	   					name="DDDriverFlowCommands" 
+	   	   					sourcecode="DDDriverFlowCommands">
+	   	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+           <description> <short_desc> 
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE1" displayText="Value1" optional="NO">
+           <description> <short_desc> 
+                 The value to be searched for the Value2 substring
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE2" displayText="Value2" optional="NO">
+           <description> <short_desc> 
+                 A string to search Value1 for an occurance of
+              </short_desc> </description> </parameter>
+        <parameter name="CASESENSITIVE" displayText="CaseSensitive" optional="YES">
+           <description> <short_desc> 
+                 Set to 'CaseInsensitive' so comparisons are NOT case-sensitive.
+                 Comparisons are case-sensitive by default.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnContainsGotoBlockID, "NoError", Value1, Value2 </usage>
+           <description> <short_desc> 
+                 Goto the block named "NoError" if "Value1" contains "Value2" (it doesn't).
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnContainsGotoBlockID, "NoError", Value1, VALUE1, CaseInsensitive </usage>
+           <description> <short_desc> 
+                 Goto the block named "NoError" if "Value1" contains "VALUE1" (it does since comparison is case-insensitive).
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnContainsGotoBlockID, "NoError", ^Value1, Value2 </usage>
+           <description> <short_desc> 
+                 Goto "NoError" if DDVariable ^Value1 contains "Value2" (it might).
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnContainsGotoBlockID, "NoError", ^Value1, ^Value2 </usage>
+           <description> <short_desc> 
+                 Goto "NoError" if DDVariable ^Value1 contains DDVariable ^Value2 (it might).
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="ONNOTCONTAINSGOTOBLOCKID" 
+           displayText="OnNotContainsGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Goto the named block in the current table if value2 is NOT a substring of value1.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040924" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+           <description> <short_desc> 
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE1" displayText="Value1" optional="NO">
+           <description> <short_desc> 
+                 The value to be searched for the Value2 substring
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE2" displayText="Value2" optional="NO">
+           <description> <short_desc> 
+                 The substring to seek in VALUE1
+              </short_desc> </description> </parameter>
+        <parameter name="CASESENSITIVE" displayText="CaseSensitive" optional="YES">
+           <description> <short_desc> 
+                 Set to 'CaseInsensitive' so comparisons are NOT case-sensitive.
+                 Comparisons are case-sensitive by default.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnNotContainsGotoBlockID, "NoError", Value1, Value2 </usage>
+           <description> <short_desc> 
+                 Goto the block named "NoError" since "Value1" does not contain "Value2".
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnNotContainsGotoBlockID, "NoError", Value1, VALUE1, CaseInsensitive </usage>
+           <description> <short_desc> 
+                 Does not branch to "NoError" because "Value1" DOES contain "VALUE1" since comparison is case-insensitive.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnNotContainsGotoBlockID, "NoError", ^Value1, Value2 </usage>
+           <description> <short_desc> 
+                 Goto "NoError" if DDVariable ^Value1 does not contain "Value2" (it might).
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnNotContainsGotoBlockID, "NoError", ^Value1, ^Value2 </usage>
+           <description> <short_desc> 
+                 Goto "NoError" if DDVariable ^Value1 does not contain DDVariable ^Value2 (it might).
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="ONNOTEQUALGOTOBLOCKID" 
+           displayText="OnNotEqualGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Goto the named block in the current table if two values are not equal.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040924" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="FLOW" 
+	   					name="DDDriverFlowCommands" 
+	   					sourcecode="DDDriverFlowCommands">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+           <description> <short_desc> 
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE1" displayText="Value1" optional="NO">
+           <description> <short_desc> 
+                 The first value for the comparison.
+              </short_desc> </description> </parameter>
+        <parameter name="VALUE2" displayText="Value2" optional="NO">
+           <description> <short_desc> 
+                 The second value for the comparison.
+              </short_desc> </description> </parameter>
+        <parameter name="CASESENSITIVE" displayText="CaseSensitive" optional="YES">
+           <description> <short_desc> 
+                 Set to 'CaseInsensitive' so string comparisons are NOT case-sensitive.
+                 String Comparisons are case-sensitive by default.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnNotEqualGotoBlockID, "NoError", Value1, Value2 </usage>
+           <description> <short_desc> 
+                 Goto the block named "NoError" since Value2 not equal Value2.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnNotEqualGotoBlockID, "NoError", Value1, VALUE1, CaseInsensitive </usage>
+           <description> <short_desc> 
+                 Goto the block named "NoError" if "Value1" not equal "VALUE1" (they are equal 
+                 since the comparison is case-insensitive--branch does not occur).
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnNotEqualGotoBlockID, "NoError", 100, 200 </usage>
+           <description> <short_desc> 
+                 Goto "NoError" since 100 not equal 200.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnNotEqualGotoBlockID, "NoError", ^Value1, ^Value2 </usage>
+           <description> <short_desc> 
+                 Goto "NoError" if DDVariable ^Value1 not equal DDVariable ^Value2 (it might be).
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="ONFILEEXISTGOTOBLOCKID" 
+           displayText="OnFileExistGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Goto the named block in the current table if the file exists.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   			       since="20020903" 
+	   	   			       tool="WinRunner" 
+	   	   			       vendor="Mercury Interactive">
+	   	   		       <libraryInfo class="FLOW" 
+	   	   					name="DDDriverFlowCommands" 
+	   	   					sourcecode="DDDriverFlowCommands">
+	   	   		       </libraryInfo>
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20050106" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter  name="BLOCKID" 
+                    displayText="BlockID" 
+                    optional="NO" >
+           <description> <short_desc> 
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter  name="FILENAME" 
+                    displayText="FileName" 
+                    optional="NO" >
+           <description> <short_desc> 
+                 The file name of the file relative to Datapool/Test to be verified for existance.  Case sensitivity is handled by the underlying operating system (i.e. a case sensitive platform makes this keyword case sensitive).
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnFileExistGoToBlockId, FileExist, "FileName" </usage>
+           <description> <short_desc> 
+                 Goto the block named "FileExist" if file FileName exists.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnFileExistGoToBlockId, FileExist, FileName, CaseInsensitive </usage>
+           <description> <short_desc> 
+                 Goto the block named "FileExist" if file FileName exists 
+                 (file name check is case-insensitive).
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="ONFILENOTEXISTGOTOBLOCKID" 
+           displayText="OnFileNotExistGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Goto the named block in the current table if the file does not exist.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   			       since="20020903" 
+	   	   			       tool="WinRunner" 
+	   	   			       vendor="Mercury Interactive">
+	   	   		       <libraryInfo class="FLOW" 
+	   	   					name="DDDriverFlowCommands" 
+	   	   					sourcecode="DDDriverFlowCommands">
+	   	   		       </libraryInfo>
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20050106" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" 
+                   displayText="BlockID" 
+                   optional="NO" >
+           <description> <short_desc> 
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter name="FILENAME" 
+                   displayText="FileName" 
+                   optional="NO" >
+           <description> <short_desc> 
+                 The file name of the file relative to Datapool/Test to be verified for existance.  Case sensitivity is handled by the underlying operating system (i.e. a case sensitive platform makes this keyword case sensitive).
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnFileNotExistGoToBlockId, FileNotExist, FileName </usage>
+           <description> <short_desc> 
+                 Goto the block named FileNotExist if file FileName does not exist.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnFileNotExistGoToBlockId, FileNotExist, FileName, CaseInsensitive </usage>
+           <description> <short_desc> 
+                 Goto the block named FileNotExist if file FileName does not exist
+                 (file name check is case-insensitive).
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="OnDirectoryExistGotoBlockID" 
+           displayText="OnDirectoryExistGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Goto the named block in the current table if the directory exists.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   			       since="20020903" 
+	   	   			       tool="WinRunner" 
+	   	   			       vendor="Mercury Interactive">
+	   	   		       <libraryInfo class="FLOW" 
+	   	   					name="DDDriverFlowCommands" 
+	   	   					sourcecode="DDDriverFlowCommands">
+	   	   		       </libraryInfo>
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20050106" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" 
+                   displayText="BlockID" 
+                   optional="NO" >
+           <description> <short_desc> 
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter  name="DIRECTORYNAME" 
+                    displayText="DirectoryName" 
+                    optional="NO" >
+           <description> <short_desc> 
+                 The directory name of the directory relative to Datapool/Test to be verified for existance.  Case sensitivity is handled by the underlying operating system (i.e. a case sensitive platform makes this keyword case sensitive).
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnDirectoryExistGoToBlockId, DirectoryExist, "DirectoryName" </usage>
+           <description> <short_desc> 
+                 Goto the block named "DirectoryExist" if Directory "DirectoryName" exists.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnDirectoryExistGoToBlockId, DirectoryExist, DirectoryName, CaseInsensitive </usage>
+           <description> <short_desc> 
+                 Goto the block named "DirectoryExist" if directory DirectoryName exists 
+                 (Directory name check is case-insensitive).
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="ONDIRECTORYNOTEXISTGOTOBLOCKID" 
+           displayText="OnDirectoryNotExistGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Goto the named block in the current table if the Directory does not exist.
+              </short_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   			       since="20020903" 
+	   	   			       tool="WinRunner" 
+	   	   			       vendor="Mercury Interactive">
+	   	   		       <libraryInfo class="FLOW" 
+	   	   					name="DDDriverFlowCommands" 
+	   	   					sourcecode="DDDriverFlowCommands">
+	   	   		       </libraryInfo>
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20050106" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" 
+                   displayText="BlockID" 
+                   optional="NO" >
+           <description> <short_desc> 
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter name="DIRECTORYNAME" 
+                   displayText="DirectoryName" 
+                   optional="NO" >
+           <description> <short_desc> 
+                 The directory name relatvie to Datapool/Text of the directory to be verified for non existance.  Case sensitivity is handled by the underlying operating system (i.e. a case sensitive platform makes this keyword case sensitive).
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnDirectoryNotExistGoToBlockId, DirectoryNotExist, DirectoryName </usage>
+           <description> <short_desc> 
+                 Goto the block named DirectoryNotExist if Directory DirectoryName does not exist.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnDirectoryNotExistGoToBlockId, DirectoryNotExist, DirectoryName, CaseInsensitive </usage>
+           <description> <short_desc> 
+                 Goto the block named DirectoryNotExist if directory DirectoryName does not exist
+                 (file name check is case-insensitive).
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="ONGUIEXISTSGOTOBLOCKID" 
+           displayText="OnGUIExistsGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc>
+                 Goto the named block in the current table if a GUI component exists.
+              </short_desc> </description>
+           
+       <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20120531" >
+				<libraryInfo name="DDriverCommand" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DDriverCommand.html" 
+					 sourcecode="org.safs.android.DDriverCommand.java" 
+					 class="MISC" />
+            	<domains>
+            		<domain name="DEV" since="20120531">
+	        			<libraryInfo name="DriverProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/DriverProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.DriverProcessor.java" 
+                             class="MISC" />
+                    </domain>
+                </domains>
+            </engine>
+            <engine vendor="Apple" tool="IOS" name="Apple XCode Instruments" since="20111024" >
+	        <libraryInfo name="DDDriverFlowCommands" 
+                            doc="org/safs/ios/IDriverCommand.html" 
+                            sourcecode="org.safs.ios.IIDriverCommand.java" 
+                            class="FLOW" />
+            </engine>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+		       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20051115" >
+			   	   <libraryInfo name="DCDriverCommand" 
+	                     doc="org/safs/rational/DCDriverCommand.html" 
+	                     sourcecode="org.safs.rational.DCDriverCommand.java" 
+	                     class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20080929" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   			       since="20020903" 
+	   	   			       tool="WinRunner" 
+	   	   			       vendor="Mercury Interactive">
+	   	   		       <libraryInfo class="FLOW" 
+	   	   					name="DDDriverFlowCommands" 
+	   	   					sourcecode="DDDriverFlowCommands">
+	   	   		       </libraryInfo>
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	       <libraryInfo name="DDDriverCommands" 
+                            doc="org/safs/selenium/DCDriverCommand.html" 
+                            sourcecode="org.safs.selenium.DCDriverCommand.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="Test Complete" 
+		   	   	   			       since="20081028" 
+		   	   	   			       tool="TestComplete" 
+		   	   	   			       vendor="Automated QA">
+		   	   	   		       <libraryInfo class="FLOW" 
+		   	   	   					name="DDDriverFlowCommands" 
+		   	   	   					sourcecode="DDDriverFlowCommands.SVB">
+		   	   	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+           <description> <short_desc>
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter name="WINDOWID" displayText="WindowID" optional="NO">
+           <description> <short_desc>
+                 A Window reference from the app map.
+              </short_desc> </description> </parameter>
+        <parameter name="COMPONENTID" displayText="ComponentID" optional="NO">
+           <description> <short_desc>
+                 A reference from the app map for the Component within the Window.
+              </short_desc> <detailed_desc>
+                 A reference from the app map for the Component within the Window.
+                 If the Window is the item of interest then both the WindowID and
+                 ComponentID will be the same.
+              </detailed_desc> </description> </parameter>
+        <parameter name="TIMEOUT" displayText="TimeOut" optional="YES" default="15">
+           <description> <short_desc>
+                 Timeout value in seconds before exiting automatically (no branch).
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnGUIExistsGotoBlockID, "WindowExists", AWindow, AWindow </usage>
+           <description> <short_desc>
+                 Goto the block named "WindowExists" if AWindow becomes valid in 15 seconds.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnGUIExistsGotoBlockID, "ButtonExists", AWindow, AButton, 10 </usage>
+           <description> <short_desc>
+                 Goto the block named "ButtonExists" if AButton on AWindow becomes valid
+                 in 10 seconds.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="ONGUINOTEXISTGOTOBLOCKID" 
+           displayText="OnGUINotExistGotoBlockID" 
+           deprecated="NO" expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc>
+                 Goto the named block in the current table if a GUI component does not exist.
+              </short_desc> </description>
+           
+       <engines>
+            <engine vendor="Google" tool="Android" name="Android" since="20120531" >
+				<libraryInfo name="DDriverCommand" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DDriverCommand.html" 
+					 sourcecode="org.safs.android.DDriverCommand.java" 
+					 class="MISC" />
+            	<domains>
+            		<domain name="DEV" since="20120531">
+	        			<libraryInfo name="DriverProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/DriverProcessor.html" 
+                             sourcecode="org.safs.android.engine.processor.DriverProcessor.java" 
+                             class="MISC" />
+                    </domain>
+                </domains>
+            </engine>
+            <engine vendor="Apple" tool="IOS" name="Apple XCode Instruments" since="20111024" >
+	        <libraryInfo name="DDDriverFlowCommands" 
+                            doc="org/safs/ios/IDriverCommand.html" 
+                            sourcecode="org.safs.ios.IIDriverCommand.java" 
+                            class="FLOW" />
+            </engine>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20051115" >
+	   	<libraryInfo name="DCDriverCommand" 
+	   	             doc="org/safs/rational/DCDriverCommand.html" 
+	   	             sourcecode="org.safs.rational.DCDriverCommand.java" 
+	   	             class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20080929" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" since="20020903" tool="WinRunner" vendor="Mercury Interactive">
+	   	<libraryInfo class="FLOW" 
+	   			name="DDDriverFlowCommands" 
+	   	   		sourcecode="DDDriverFlowCommands" />
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	       <libraryInfo name="DDDriverCommands" 
+                            doc="org/safs/selenium/DCDriverCommand.html" 
+                            sourcecode="org.safs.selenium.DCDriverCommand.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="Test Complete" 
+		   		   	   	   			       since="20081028" 
+		   		   	   	   			       tool="TestComplete" 
+		   		   	   	   			       vendor="Automated QA">
+		   		   	   	   		       <libraryInfo class="FLOW" 
+		   		   	   	   					name="DDDriverFlowCommands" 
+		   		   	   	   					sourcecode="DDDriverFlowCommands.SVB">
+		   		   	   	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+           <description> <short_desc>
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter name="WINDOWID" displayText="WindowID" optional="NO">
+           <description> <short_desc>
+                 A Window reference from the app map.
+              </short_desc> </description> </parameter>
+        <parameter name="COMPONENTID" displayText="ComponentID" optional="NO">
+           <description> <short_desc>
+                 A reference from the app map for the Component within the Window.
+              </short_desc> <detailed_desc>
+                 A reference from the app map for the Component within the Window.
+                 If the Window is the item of interest then both the WindowID and
+                 ComponentID will be the same.
+              </detailed_desc> </description> </parameter>
+        <parameter name="TIMEOUT" displayText="TimeOut" optional="YES" default="15">
+           <description> <short_desc>
+                 Timeout value in seconds before exiting automatically (no branch).
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnGUINotExistGotoBlockID, "WindowNotExist", AWindow, AWindow </usage>
+           <description> <short_desc>
+                 Goto the block named "WindowNotExist" if AWindow becomes invalid in 15 seconds.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnGUINotExistGotoBlockID, "ButtonNotExist", AWindow, AButton, 10 </usage>
+           <description> <short_desc>
+                 Goto the block named "ButtonNotExist" if AButton on AWindow becomes invalid
+                 in 10 seconds.
+              </short_desc> </description> </example>
+     </examples></keyword>
+   
+
+  <keyword name="ONREGISTRYKEYEXISTGOTOBLOCKID" 
+           displayText="OnRegistryKeyExistGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="YES">
+           
+       <description> <short_desc>
+                 Goto the named block in the current table if the Registry Key exists.
+              </short_desc>
+              <detailed_desc>On Windows XP (and higher?) this is accomplished via 
+              the REG.EXE provided by the operating system.  If this program is NOT available 
+              then the Registry commands will not work until another means is implemented--possibly 
+              Windows Scripting Host scripts, etc..
+              </detailed_desc>
+       </description>
+           
+       <engines>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20091222" 
+                   expectFailSupport="NO" expectWarnSupport="YES">
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20100204" 
+                   expectFailSupport="NO" expectWarnSupport="YES">
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DCDriverFlowCommands.htm" 
+                            sourcecode="org.safs.DCDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+           <description> <short_desc>
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter name="KEY" displayText="Key" optional="NO">
+           <description> <short_desc>
+                 The Registry Key to seek.
+              </short_desc> </description> </parameter>
+        <parameter name="KEYVALUE" displayText="KeyValue" optional="YES">
+           <description> <short_desc>
+                 The optional Registry subkey value to seek.
+              </short_desc> <detailed_desc>
+                 The value name under the parent key.  If not provided then we just 
+                 check to see if the provided parent key exists.
+              </detailed_desc> </description> </parameter>
+        <parameter name="TIMEOUT" displayText="TimeOut" optional="YES" default="15">
+           <description> <short_desc>
+                 Timeout value in seconds before exiting automatically (no branch).
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnRegistryKeyExistGotoBlockID, IBM_BLOCK, "HKLM\Software\Rational Software\Rational Test\8", "Install Directory", 0</usage>
+           <description> <short_desc>
+                 Go to block IBM_BLOCK if the Install Directory subkey exists right now.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnRegistryKeyExistGotoBlockID, RJ_INSTALLED, "HKLM\Software\Rational Software\Rational Test\8", "Rational FT Install Directory"</usage>
+           <description> <short_desc>
+                 Go to block RJ_INSTALLED if the key value comes into existence within the default 15 seconds.
+              </short_desc> </description> </example>
+     </examples></keyword>
+       
+  <keyword name="ONREGISTRYKEYNOTEXISTGOTOBLOCKID" 
+           displayText="OnRegistryKeyNotExistGotoBlockID" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="YES">
+           
+       <description> <short_desc>
+                 Goto the named block in the current table if the Registry Key does not exist.
+              </short_desc> 
+              <detailed_desc>On Windows XP (and higher?) this is accomplished via 
+              the REG.EXE provided by the operating system.  If this program is NOT available 
+              then the Registry commands will not work until another means is implemented--possibly 
+              Windows Scripting Host scripts, etc..
+              </detailed_desc>
+       </description>           
+       <engines>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20091222" 
+                   expectFailSupport="NO" expectWarnSupport="YES">
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20100204" 
+                   expectFailSupport="NO" expectWarnSupport="YES">
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DCDriverFlowCommands.htm" 
+                            sourcecode="org.safs.DCDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+           <description> <short_desc>
+                 The name of the block to Goto.
+              </short_desc> </description> </parameter>
+        <parameter name="KEY" displayText="Key" optional="NO">
+           <description> <short_desc>
+                 The Registry Key to seek.
+              </short_desc> </description> </parameter>
+        <parameter name="KEYVALUE" displayText="KeyValue" optional="YES">
+           <description> <short_desc>
+                 The optional Registry subkey value to seek.
+              </short_desc> <detailed_desc>
+                 The value name under the parent key.  If not provided then we just 
+                 check to see if the provided parent key exists.
+              </detailed_desc> </description> </parameter>
+        <parameter name="TIMEOUT" displayText="TimeOut" optional="YES" default="15">
+           <description> <short_desc>
+                 Timeout value in seconds before exiting automatically (no branch).
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, OnRegistryKeyNotExistGotoBlockID, NO_RATIONAL, "HKLM\Software\Rational Software\Rational Test\8", "Install Directory", 0</usage>
+           <description> <short_desc>
+                 Go to block NO_RATIONAL if the Install Directory value does not exist.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, OnRegistryKeyNotExistGotoBlockID, NO_RFT, "HKLM\Software\Rational Software\Rational Test\8", "Rational FT Install Directory"</usage>
+           <description> <short_desc>
+                 Go to block NO_RFT if the Rational FT Install Directory value does not come into existence within the default 15 seconds.
+              </short_desc> </description> </example>
+     </examples></keyword>
+
+    <keyword name="ONMENUITEMCONTAINSSTATEGOTOBLOCKID" 
+             displayText="OnMenuItemContainsStateGotoBlockID" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="YES">
+             
+         <description> <short_desc> 
+                   Goto the named block in the current table if state is part of the state information of the menuitem.
+                </short_desc> </description>
+             
+         <engines>
+             <engine vendor="Rational" tool="Robot" name="Robot" since="20050720" 
+                     expectFailSupport="NO" expectWarnSupport="YES">
+  	       			<libraryInfo name="DDDriverFlowCommands" 
+                              doc="DDDriverFlowCommands.htm" 
+                              sourcecode="DDDriverFlowCommands.sbl" 
+                              class="FLOW" />
+             </engine>
+             <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080506" >
+			   	   <libraryInfo name="DCDriverCommand" 
+	                     doc="org/safs/rational/DCDriverCommand.html" 
+	                     sourcecode="org.safs.rational.DCDriverCommand.java" 
+	                     class="FLOW" />
+             </engine>
+             
+         </engines>
+  
+         <parameters>
+          <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+             <description> <short_desc> 
+                   The name of the block to transfer control to if state is 
+                   part of the state information of the menuitem.
+                </short_desc> </description> </parameter>
+          <parameter name="WINDOWNAME" displayText="WindowName" optional="NO">
+             <description> <short_desc> 
+                   The window name.
+                </short_desc> </description> </parameter>
+          <parameter name="COMPONENTNAME" displayText="ComponentName" optional="NO">
+             <description> <short_desc> 
+                   The component name.
+                </short_desc> </description> </parameter>
+          <parameter name="MENUITEM" displayText="MenuItem" optional="NO">
+             <description> <short_desc> 
+                   Menu->MenuItem hierarchy string to identify which menu item                              to test. This menu hierarchy is case-sensitive.
+                   to test. This menu hierarchy is case-sensitive.
+                </short_desc> </description> </parameter>
+          <parameter name="STATE" displayText="State" optional="NO">
+             <description> <short_desc> 
+                   Expected status string (or part thereof) to verify. 
+		   Ex: "Enabled Checked" OR "Disabled Grayed" etc. Each item 
+		   separated by a space will be evaluated separately so the order 
+		   of the status items does not matter. These status items are 
+		   case-sensitive.
+                </short_desc> </description> </parameter>
+         </parameters><examples>
+          <example>
+             <usage>C, OnMenuItemContainsStateGotoBlockID, "NoError", MainWindow, MainWindow, "View->Error", "Disabled" </usage>
+             <description> <short_desc> 
+                   Go to the block named "NoError" if the state information for the View->Error menu item contains Disabled.
+                </short_desc> </description> </example>
+     </examples></keyword>
+  
+  
+    <keyword name="ONPARTIALMENUITEMCONTAINSSTATEGOTOBLOCKID" 
+             displayText="OnPartialMenuItemContainsStateGotoBlockID" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="YES">
+             
+         <description> <short_desc> 
+                   Goto the named block in the current table if state is part of the state information of the menuitem.
+                   This command allows for a partial match of the menu item.
+                </short_desc> </description>
+             
+         <engines>
+             <engine vendor="Rational" tool="Robot" name="Robot" since="20050720" 
+                     expectFailSupport="NO" expectWarnSupport="YES">
+  	       <libraryInfo name="DDDriverFlowCommands" 
+                              doc="DDDriverFlowCommands.htm" 
+                              sourcecode="DDDriverFlowCommands.sbl" 
+                              class="FLOW" />
+             </engine>
+         </engines>
+  
+         <parameters>
+          <parameter name="BLOCKID" displayText="BlockID" optional="NO">
+             <description> <short_desc> 
+                   The name of the block to transfer control to if state is 
+                   part of the state information of the menuitem.
+                </short_desc> </description> </parameter>
+          <parameter name="WINDOWNAME" displayText="WindowName" optional="NO">
+             <description> <short_desc> 
+                   The window name.
+                </short_desc> </description> </parameter>
+          <parameter name="COMPONENTNAME" displayText="ComponentName" optional="NO">
+             <description> <short_desc> 
+                   The component name.
+                </short_desc> </description> </parameter>
+          <parameter name="MENUITEM" displayText="MenuItem" optional="NO">
+             <description> <short_desc> 
+                   Menu->MenuItem hierarchy string to identify which menu item                              to test. This menu hierarchy is case-sensitive.
+                   to test. This menu hierarchy is case-sensitive.
+                </short_desc> </description> </parameter>
+          <parameter name="STATE" displayText="State" optional="NO">
+             <description> <short_desc> 
+                   Expected status string (or part thereof) to verify. 
+		   Ex: "Enabled Checked" OR "Disabled Grayed" etc. Each item 
+		   separated by a space will be evaluated separately so the order 
+		   of the status items does not matter. These status items are 
+		   case-sensitive.
+                </short_desc> </description> </parameter>
+         </parameters><examples>
+          <example>
+             <usage>C, OnMenuItemContainsStateGotoBlockID, "NoError", MainWindow, MainWindow, "View->Error", "Disabled" </usage>
+             <description> <short_desc> 
+                   Go to the block named "NoError" if the state information for the View->Error menu item contains Disabled.
+                </short_desc> </description> </example>
+     </examples></keyword>
+  
+  
+  <keyword name="USELOCALFLOWCONTROL" 
+           displayText="UseLocalFlowControl" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 When TRUE then flow control block IDs have current table scope only.
+              </short_desc> <detailed_desc> 
+                 By default, flow control block IDs provided with the SetXXXBlock commands 
+                 have test level scope.  That is, a block ID set stays in effect for all test 
+                 tables at that test level until the block ID is changed or cleared.
+                 <p>
+                 By setting UseLocalFlowControl=TRUE then any flow control block ID set 
+                 has only local scope.  It is only valid for the currently executing table.
+                 </p><p>
+                 Note, if no parameter is provided the parameter will default to TRUE.
+                 </p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="STATE" displayText="State" optional="YES" default="TRUE">
+           <description> <short_desc> 
+                 The TRUE or FALSE value to use.
+              </short_desc> 
+              <detailed_desc>
+                 If no value is provided then "TRUE" will be assumed.
+              </detailed_desc></description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, UseLocalFlowControl</usage>
+           <description> <short_desc> 
+                 Use/Set local flow control blockIDs only.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, UseLocalFlowControl, TRUE</usage>
+           <description> <short_desc> 
+                 Use/Set local flow control blockIDs only.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, UseLocalFlowControl, FALSE</usage>
+           <description> <short_desc> 
+                 Use/Set standard test level scope blockIDs.
+              </short_desc> </description> </example>
+     </examples></keyword>
+
+  <keyword name="SETNOSCRIPTFAILUREBLOCK" 
+           displayText="SetNoScriptFailureBlock" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Set or clear the name of a block to execute when NoScriptFailure occurs.
+              </short_desc> <detailed_desc> 
+                 Set or clear the name of a block to execute when NoScriptFailure occurs.<br />
+                 Status is evaluated after the completion of every record in a table. 
+                 So event the simple logging of message can return NoScriptFailure.
+                 <p>
+                 This block setting is automatically cleared when a jump is executed as 
+                 a result of this condition.  This command is generally used immediately 
+                 before the record you expect to pass or fail.  You can reset this to 
+                 nothing by leaving the BlockID parameter blank or providing an empty
+                 BlockID.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="FLOW" 
+	   					name="DDDriverFlowCommands" 
+	   					sourcecode="DDDriverFlowCommands">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="YES" default="">
+           <description> <short_desc> 
+                 The name of the block to Goto on status NoScriptFailure.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, SetNoScriptFailureBlock, "NoError"</usage>
+           <description> <short_desc> 
+                 Set "NoError" as the block to execute on the next NoScriptFailure.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, SetNoScriptFailureBlock, ""</usage>
+           <description> <short_desc> 
+                 Continue normal execution on subsequent NoScriptFailure.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="SETGENERALSCRIPTFAILUREBLOCK" 
+           displayText="SetGeneralScriptFailureBlock" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Set or clear the name of a block to execute when GeneralScriptFailure occurs.
+              </short_desc> <detailed_desc> 
+                 Set or clear the name of a block to execute when GeneralScriptFailure occurs.<br />
+                 Status is evaluated after the completion of every record in a table. 
+                 <p>
+                 You can reset this to nothing by leaving the BlockID parameter blank 
+                 or providing an empty BlockID.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="FLOW" 
+	   					name="DDDriverFlowCommands" 
+	   					sourcecode="DDDriverFlowCommands">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="YES" default="">
+           <description> <short_desc> 
+                 The name of the block to Goto on status GeneralScriptFailure.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, SetGeneralScriptFailureBlock, "ErrorHandler"</usage>
+           <description> <short_desc> 
+                 Set "ErrorHandler" as the block to execute on the next GeneralScriptFailure.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, SetGeneralScriptFailureBlock, ""</usage>
+           <description> <short_desc> 
+                 Continue normal execution on subsequent GeneralScriptFailure.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="SETSCRIPTWARNINGBLOCK" 
+           displayText="SetScriptWarningBlock" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Set or clear the name of a block to execute when ScriptWarning occurs.
+              </short_desc> <detailed_desc> 
+                 Set or clear the name of a block to execute when ScriptWarning occurs.<br />
+                 Status is evaluated after the completion of every record in a table. 
+                 <p>
+                 You can reset this to nothing by leaving the BlockID parameter blank 
+                 or providing an empty BlockID.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="FLOW" 
+	   					name="DDDriverFlowCommands" 
+	   					sourcecode="DDDriverFlowCommands">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="YES" default="">
+           <description> <short_desc> 
+                 The name of the block to Goto on status ScriptWarning.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, SetScriptWarningBlock, "WarningHandler"</usage>
+           <description> <short_desc> 
+                 Set "WarningHandler" as the block to execute on the next ScriptWarning.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, SetScriptWarningBlock, ""</usage>
+           <description> <short_desc> 
+                 Continue normal execution on subsequent ScriptWarning.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="SETINVALIDFILEIOBLOCK" 
+           displayText="SetInvalidFileIOBlock" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Set or clear the name of a block to execute when InvalidFileIO occurs.
+              </short_desc> <detailed_desc> 
+                 Set or clear the name of a block to execute when InvalidFileIO occurs.<br />
+                 Status is evaluated after the completion of every record in a table. 
+                 <p>
+                 You can reset this to nothing by leaving the BlockID parameter blank 
+                 or providing an empty BlockID.</p>
+                 <p>
+                 Note, an InvalidFileIO generated from the test table itself will not 
+                 be processed by this block.  In general, that would not be possible 
+                 because the FileIO error likely means the table cannot be processed.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="FLOW" 
+	   					name="DDDriverFlowCommands" 
+	   					sourcecode="DDDriverFlowCommands">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="YES" default="">
+           <description> <short_desc> 
+                 The name of the block to Goto on status InvalidFileIO.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, SetInvalidFileIOBlock, "IOHandler"</usage>
+           <description> <short_desc> 
+                 Set "IOHandler" as the block to execute on the next InvalidFileIO.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, SetInvalidFileIOBlock, ""</usage>
+           <description> <short_desc> 
+                 Continue normal execution on subsequent InvalidFileIO.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="SETEXITTABLEBLOCK" 
+           displayText="SetExitTableBlock" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Set or clear the name of a block to execute when the ExitTable command is encountered.
+              </short_desc> <detailed_desc> 
+                 Set or clear the name of a block to execute when the ExitTable command is encountered.<br />
+                 You can reset this to nothing by leaving the BlockID parameter blank 
+                 or providing an empty BlockID.  This reset should be done as part of the ExitTable 
+                 processing.
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="FLOW" 
+	   					name="DDDriverFlowCommands" 
+	   					sourcecode="DDDriverFlowCommands">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="YES" default="">
+           <description> <short_desc> 
+                 The name of the block to Goto when ExitTable is encountered.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, SetExitTableBlock, "ProcessExit"</usage>
+           <description> <short_desc> 
+                 Set "ProcessExit" as the block to execute when ExitTable is encountered.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, SetExitTableBlock, ""</usage>
+           <description> <short_desc> 
+                 Clear any special ExitTable processing for this test level.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="SETSCRIPTNOTEXECUTEDBLOCK" 
+           displayText="SetScriptNotExecutedBlock" 
+           deprecated="NO" expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Set or clear the name of a block to execute when ScriptNotExecuted occurs.
+              </short_desc> <detailed_desc> 
+                 Set or clear the name of a block to execute when ScriptNotExecuted occurs.<br />
+                 Status is evaluated after the completion of every record in a table.  In general, 
+                 ScriptNotExecuted only occurs when the drivers are not able to be invoked or 
+                 StepDriver cannot properly locate GUI items or the functions to process them.
+                 <p>
+                 You can reset this to nothing by leaving the BlockID parameter blank 
+                 or providing an empty BlockID.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverFlowCommands" 
+                            doc="DDDriverFlowCommands.htm" 
+                            sourcecode="DDDriverFlowCommands.sbl" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040922" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="FLOW" 
+	   					name="DDDriverFlowCommands" 
+	   					sourcecode="DDDriverFlowCommands">
+	   		       </libraryInfo>
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="BLOCKID" displayText="BlockID" optional="YES" default="">
+           <description> <short_desc> 
+                 The name of the block to Goto on status ScriptNotExecuted.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, SetScriptNotExecutedBlock, "AbortHandler"</usage>
+           <description> <short_desc> 
+                 Set "AbortHandler" as the block to execute on the next ScriptNotExecuted.
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, SetScriptNotExecutedBlock, ""</usage>
+           <description> <short_desc> 
+                 Continue normal execution on subsequent ScriptNotExecuted.
+              </short_desc> </description> </example>
+     </examples></keyword>
+    </keywords>
+</keyword_library>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<libraries>
+
+  <drivercommands>
+    <file href="DDDriverCommands.xml" type="core" />
+    <file href="DDDriverCounterCommands.xml" type="counter" />
+    <file href="DDDriverDatabaseCommands.xml" type="database" />
+    <file href="DDDriverDebugCommands.xml" type="debug" />
+    <file href="DDDriverFileCommands.xml" type="file" />
+    <file href="DDDriverFlowCommands.xml" type="flow" />
+    <file href="DDDriverLogCommands.xml" type="log" />
+    <file href="DDDriverStringCommands.xml" type="string" />
+    <file href="DDDriverTimerCommands.xml" type="string" />
+    <file href="DDDriverDeprecatedCommands.xml" type="deprecated" />
+  </drivercommands>
+
+  <componentfunctions>
+    <file href="CheckBoxFunctions.xml" type="standard" />
+    <file href="ComboBoxFunctions.xml" type="standard" />
+    <file href="ComboEditBoxFunctions.xml" type="standard" />
+    <file href="ComboListBoxFunctions.xml" type="standard" />
+    <file href="DatabaseFunctions.xml" type="standard" />
+    <file href="DatePickerFunctions.xml" type="standard" />
+    <file href="EditBoxFunctions.xml" type="standard" />
+    <file href="FlexColorFunctions.xml" type="standard" />
+    <file href="FlexDateFunctions.xml" type="standard" /> 
+    <file href="FlexNumericStepperFunctions.xml" type="standard" />
+    <file href="FlexSliderFunctions.xml" type="standard" />       
+    <file href="GenericMasterFunctions.xml" type="standard" />
+    <file href="GenericObjectFunctions.xml" type="standard" />
+    <file href="GraphicControlFunctions.xml" type="standard" />
+    <!-- <file href="GroupBoxFunctions.xml" type="standard" /> -->
+    <file href="HTMLFunctions.xml" type="standard" />
+    <file href="HTMLDocumentFunctions.xml" type="standard" />
+    <file href="HTMLImageFunctions.xml" type="standard" />
+    <file href="HTMLLinkFunctions.xml" type="standard" />
+    <file href="HTMLTableFunctions.xml" type="standard" />
+    <file href="JavaMenuFunctions.xml" type="standard" />
+    <file href="JavaTableFunctions.xml" type="standard" />
+    <file href="JavaTreeFunctions.xml" type="standard" />
+    <file href="DotNetTableFunctions.xml" type="standard" />
+    <file href="DotNetMenuFunctions.xml" type="standard" />
+    <file href="DotNetTreeFunctions.xml" type="standard" />    
+    <file href="LabelFunctions.xml" type="standard" />
+    <file href="ListBoxFunctions.xml" type="standard" />
+    <file href="ListViewFunctions.xml" type="standard" />
+    <file href="PopupMenuFunctions.xml" type="standard" />
+    <file href="ProgressBarFunctions.xml" type="standard" />
+    <file href="PushButtonFunctions.xml" type="standard" />
+    <file href="RadioButtonFunctions.xml" type="standard" />
+    <file href="ScrollBarFunctions.xml" type="standard" />
+    <file href="SSTreeFunctions.xml" type="special" />
+    <file href="FPSpreadFunctions.xml" type="special" />
+    <file href="TabControlFunctions.xml" type="standard" />
+    <file href="TableViewFunctions.xml" type="standard" />
+    <file href="TimePickerFunctions.xml" type="standard" />
+    <file href="ToolBarFunctions.xml" type="standard" />
+    <file href="TreeViewFunctions.xml" type="standard" />
+    <file href="VSFlexGridFunctions.xml" type="special" />
+    <file href="WindowFunctions.xml" type="standard" />
+  </componentfunctions>
+
+  <enginecommands>
+    <file href="EngineComponentCommands.xml" type="component" />
+  </enginecommands>
+</libraries>

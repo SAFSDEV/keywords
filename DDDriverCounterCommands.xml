@@ -1,0 +1,1460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+    
+    <libraryType type="DRIVER" />
+
+    <libraryInfo name="DDDriverCounterCommands" 
+                 doc="DDDriverCounterCommands.htm" 
+                 sourcecode="DDDriverCounterCommands.sbl"
+                 class="COUNTER" >
+                 
+        <description>
+          <short_desc>
+              Driver Commands for the Cycle, Suite, and Step drivers
+          </short_desc>
+          <detailed_desc><p>
+          This keyword library provides Driver Commands that 
+          can be used by all three DDE Drivers--CycleDriver, 
+          SuiteDriver, and StepDriver.  That means they can 
+          be used in any keyword driven test tables regardless 
+          of the test tables level--Cycle, Suite, or Step.</p>
+          <p>
+          Each different driver command has different parameters 
+          as described in its documentation.  For reference, the 
+          first fields of ALL Driver Command test records are defined 
+          below:</p>
+          <dl>
+             <dd>Field #1</dd>
+             <dt>The "C" = DRIVER COMMAND record type specifier.</dt>
+
+             <dd>Field #2</dd>
+             <dt>The Driver Command keyword.</dt>
+          </dl>
+          <p>
+          Example:</p>
+
+          <code>c , SetApplicationMap , "AppMap.map"</code>
+
+          <p>
+          Driver Command parameters must be placed in the test record 
+          in the field position specified in the documentation.  
+          Some parameters are optional.  However, the field associated 
+          with that parameter must be honored.  If you wish to skip an 
+          optional parameter you must still provide an empty field for 
+          that parameter.</p>
+          <p>
+          Example:</p>
+
+          <code>c, LaunchApplication, NOTEPAD, NOTEPAD.EXE, , , "AppMap.map"</code>
+
+          <p>
+          The above example shows two optional fields after NOTEPAD.EXE 
+          which are given no value(skipped).</p>
+          <p>
+          Note that the full availablility of all Driver Commands is now 
+          spread across several files.  Together, all of these files provide 
+          all the Driver Commands available to the core framework.</p>
+          <dl>
+             <dd><a href="DDDriverCommands.htm" target="_blank">DDDriverCommands</a></dd>
+             <dt>Miscellaneous and often used Commands.</dt>
+
+             <dd><a href="DDDriverLogCommands.htm" target="_blank">DDDriverLogCommands</a></dd>
+             <dt>Commands focused on logging test execution.</dt>
+
+             <dd><a href="DDDriverFlowCommands.htm" target="_blank">DDDriverFlowCommands</a></dd>
+             <dt>Commands focused on Error Recovery and Flow Control.</dt>
+
+             <dd><a href="DDDriverCounterCommands.htm" target="_blank">DDDriverCounterCommands</a></dd>
+             <dt>Commands focused on status tracking.</dt>
+
+             <dd><a href="DDDriverDeprecatedCommands.htm" target="_blank">DDDriverDeprecatedCommands</a></dd>
+             <dt>Commands that are still provided for backward compatibility, but are no longer supported.</dt>
+
+             <dd><a href="DDDriverDebugCommands.htm" target="_blank">DDDriverDebugCommands</a></dd>
+             <dt>Commands focused on debugging test execution.</dt>
+
+          </dl>
+          </detailed_desc>
+        </description>
+    </libraryInfo>
+    <runtime platform="Windows" engine="Robot" version="2000" />
+    <keywords>
+    
+    <keyword name="STARTCOUNTER" 
+             displayText="StartCounter" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description> <short_desc> 
+                 Create a new private counter or start an existing stopped private counter.
+              </short_desc>
+              <detailed_desc>
+                 <p>If counterID is not already an active private counter, then 
+                 this routine will create a new private counter with the provided 
+                 counterID as its name.  The counter will be enabled for counting 
+                 of all status information at all test levels.</p>
+                 <p>If counterID identifies an existing counter, then this routine 
+                 will enable the counter to resume counting--assuming it was stopped.</p>
+                 <p>See <a href="ApplicationUtilities.htm" target="_blank">ApplicationUtilities</a> for more information on private counters.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040927" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	     	   		       since="20040524" 
+	     	   		       tool="WinRunner" 
+	     	   		       vendor="Mercury Interactive">
+	     	   	       <libraryInfo class="COUNTER" 
+	     	   				name="DDDriverCounterCommands" 
+	     	   				sourcecode="DDDriverCounterCommands">
+	     	   	       </libraryInfo>
+            </engine>
+	       <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140618">
+	           <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>            
+       </engines>
+
+       <parameters>
+        <parameter name="COUNTERID" displayText="counterID" optional="NO" default="Counter1">
+           <description> <short_desc> 
+                 The unique name used to identify this private counter.  
+              </short_desc>
+              <detailed_desc>
+                 These unique names are case-insensitive.  
+              </detailed_desc> </description></parameter>
+        <parameter name="DESCRIPTION" displayText="Description" optional="YES">
+           <description><short_desc>
+              Any additional information such as the purpose of the counter.</short_desc>
+           </description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, StartCounter, "TestCase 124", "Verify we can login."</usage>
+           <description> <short_desc> 
+                 Create and/or (re)start a counter called "TestCase 124".
+              </short_desc>
+              <detailed_desc>
+                 If the counter does not exist, create it and begin counting 
+                 all status information.  If the counter already exists, 
+                 enable the counter to resume counting.  This latter assumes 
+                 the counter was previously stopped.
+              </detailed_desc> </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="STOPCOUNTER" 
+           displayText="StopCounter" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Create a new private counter or suspend counts in an existing private counter.
+              </short_desc>
+              <detailed_desc>
+                 <p>If counterID is not already an active private counter, then 
+                 this routine will create a new private counter with the provided 
+                 counterID as its name.  The counter will be enabled for counting 
+                 of all status information at all test levels but will be suspended 
+                 from actually counting.</p>
+                 <p>If counterID identifies an existing counter, then this routine 
+                 will suspend counting within this counter.</p>
+                 <p>See <a href="ApplicationUtilities.htm" target="_blank">ApplicationUtilities</a> for more information on private counters.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040927" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+	       <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140618">
+	           <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="COUNTERID" displayText="counterID" optional="NO" default="Counter1">
+           <description> <short_desc> 
+                 The unique name used to identify this private counter.  
+              </short_desc>
+              <detailed_desc>
+                 These unique names are case-insensitive.  
+              </detailed_desc> </description></parameter>
+        <parameter name="DESCRIPTION" displayText="Description" optional="YES">
+           <description><short_desc>
+              Any additional information for stopping this counter.</short_desc>
+           </description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, StopCounter, "TestCase 124", "Done testing Login"</usage>
+           <description> <short_desc> 
+                 Create and/or suspend counts on a counter called "TestCase 124".
+              </short_desc>
+              <detailed_desc>
+                 If the counter does not exist, create it and enable counting 
+                 all status information but suspend all counting.  
+                 If the counter already exists, suspend counting within it.
+              </detailed_desc> </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="RESETCOUNTER" 
+           displayText="ResetCounter" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Create a new private counter or reset counts in an existing private counter.
+              </short_desc>
+              <detailed_desc>
+                 <p>If counterID is not already an active private counter, then 
+                 this routine will create a new private counter with the provided 
+                 counterID as its name.  The counter will be enabled for counting 
+                 of all status information at all test levels.</p>
+                 <p>If counterID identifies an existing counter, then this routine 
+                 will reset all its counts to zero(0).</p>
+                 <p>See <a href="ApplicationUtilities.htm" target="_blank">ApplicationUtilities</a> for more information on private counters.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040927" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="COUNTERID" displayText="counterID" optional="NO" default="Counter1">
+           <description> <short_desc> 
+                 The unique name used to identify this private counter.  
+              </short_desc>
+              <detailed_desc>
+                 These unique names are case-insensitive.  
+              </detailed_desc> </description></parameter>
+        <parameter name="DESCRIPTION" displayText="Description" optional="YES">
+           <description><short_desc>
+              Any additional information for resetting this counter.</short_desc>
+           </description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, ResetCounter, "TestCase 124", "Zero all counts to retest"</usage>
+           <description> <short_desc> 
+                 Create and/or reset counts on a counter called "TestCase 124".
+              </short_desc>
+              <detailed_desc>
+                 If the counter does not exist, create it and enable counting 
+                 all status information.  
+                 If the counter already exists, reset counts to zero(0).
+              </detailed_desc> </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="DELETECOUNTER" 
+           displayText="DeleteCounter" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Delete any existing private counter with the provided counterID.
+              </short_desc>
+              <detailed_desc>
+                 If counterID identifies an existing counter, then delete it.
+                 <p>See <a href="ApplicationUtilities.htm" target="_blank">ApplicationUtilities</a> for more information on private counters.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040927" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="COUNTERID" displayText="counterID" optional="NO" default="Counter1">
+           <description> <short_desc> 
+                 The unique name used to identify this private counter.  
+              </short_desc>
+              <detailed_desc>
+                 These unique names are case-insensitive.  
+              </detailed_desc> </description></parameter>
+        <parameter name="DESCRIPTION" displayText="Description" optional="YES">
+           <description><short_desc>
+              Any additional information for deleting this counter.</short_desc>
+           </description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, DeleteCounter, "TestCase 124", "All done"</usage>
+           <description> <short_desc> 
+                 Delete the private counter called "TestCase 124".
+              </short_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="STORECOUNTERINFO" 
+           displayText="StoreCounterInfo" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Store the current values of the named counter into unique DDVariables.
+              </short_desc>
+              <detailed_desc>
+                 This enables the framework, scripts, and other applications to retrieve 
+                 the values of these counters at runtime.
+                 <p>Consult <a href="ApplicationUtilities.htm#auvariablestorestatusinfo" target="_blank">ApplicationUtilities</a> 
+                 and <a href="UsingDDVariables.htm" target="_blank">Using DDVariables</a> 
+                 for more information on referencing these DDVariables in your tests.</p>
+                 You must adhere to DDVariable naming conventions when providing this 
+                 DDVariable basename.  Note that no spaces are allowed in DDVariable names.
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040927" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+	       <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140618">
+	           <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="COUNTERID" displayText="counterID" optional="NO" default="Counter1">
+           <description> <short_desc> 
+                 The unique name used to identify the private counter.  
+              </short_desc>
+              <detailed_desc>
+                 These unique names are case-insensitive.  
+              </detailed_desc> </description></parameter>
+        <parameter name="VARPREFIX" displayText="varPrefix" optional="NO" default="Counter1">
+           <description> <short_desc> 
+                 The unique DDVariable prefix to use for storing counter values.  
+              </short_desc>
+              <detailed_desc>
+                 The DDVariable prefix will be used to create several DDVariables 
+                 that will hold the counter information.
+                 <ul>The variables stored:<br/>
+                 <li>VARPREFIX.successes</li>
+                 <li>VARPREFIX.warnings</li>
+                 <li>VARPREFIX.general_failures</li>
+                 <li>VARPREFIX.test_passes</li>
+                 <li>VARPREFIX.test_warnings</li>
+                 <li>VARPREFIX.test_failures</li>
+                 <li>VARPREFIX.test_records</li>
+                 <li>VARPREFIX.total_records</li>
+                 <li>VARPREFIX.IO_failures</li>
+                 <li>VARPREFIX.skipped_records</li>
+                 <li>VARPREFIX.filename</li>
+                 <li>VARPREFIX.id</li>
+                 <li>VARPREFIX.mode</li>
+                 <li>VARPREFIX.suspended</li>
+                 </ul>
+                 <p>Consult <a href="ApplicationUtilities.htm#auvariablestorestatusinfo" target="_blank">ApplicationUtilities</a> 
+                 and <a href="UsingDDVariables.htm" target="_blank">Using DDVariables</a> 
+                 for more information on referencing these DDVariables in your tests.</p>
+                 You must adhere to DDVariable naming conventions when providing this 
+                 DDVariable basename.  Note that no spaces are allowed in DDVariable names.
+              </detailed_desc> </description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, StoreCounterInfo, ^counter="TestCase 124", ^varPrefix="TestCase124"</usage>
+           <description> <short_desc> 
+                 Store counter "TestCase 124" counts into several DDVariables prefixed with "TestCase124".
+              </short_desc>
+              <detailed_desc>
+                 <p>Consult <a href="ApplicationUtilities.htm#auvariablestorestatusinfo" target="_blank">ApplicationUtilities</a> 
+                 and <a href="UsingDDVariables.htm" target="_blank">Using DDVariables</a> 
+                 for more information on referencing these DDVariables in your tests.</p>
+                 You must adhere to DDVariable naming conventions when providing this 
+                 DDVariable basename.  Note that no spaces are allowed in DDVariable names.
+              </detailed_desc> </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="LOGCOUNTERINFO" 
+           displayText="LogCounterInfo" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Log the specified counter's info in the active log(s) of the current Log Facility.
+              </short_desc>
+              <detailed_desc>
+                 Extracts a snapshot of the specified private counter and outputs a 
+                 small, embedded Status Report in the active logs of the current Log Facility.
+                 The Status Report will be identified by the name of the private counter.
+                 (Future) We will allow you to optionally specify a different Log Facility by name.
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040927" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+	       <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140618">
+	           <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="COUNTERID" displayText="counterID" optional="NO" default="Counter1">
+           <description> <short_desc> 
+                 The unique name used to identify this private counter.  
+              </short_desc>
+              <detailed_desc>
+                 These unique names are case-insensitive.  
+              </detailed_desc> </description></parameter>
+        <parameter name="LOGNAME" displayText="logName" optional="YES" default="MainLog">
+           <description> <short_desc> 
+                 (Future) The name of a Log Facility other than the "current" one.
+              </short_desc>
+              <detailed_desc>
+                 When suppport for named Log Facilities is provided you will be able 
+                 to specify which of these you wish to receive the Status Report.
+              </detailed_desc> </description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, LogCounterInfo, "TestCase 124"</usage>
+           <description> <short_desc> 
+                 Create a Status Report section in active logs of the current Log Facility.
+              </short_desc>
+              <detailed_desc>
+                 This Status Report will be identified by the name of the private counter.
+              </detailed_desc> </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SETCOUNTERMODE" 
+           displayText="SetCounterMode" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Create a new private counter or modify the mode of an existing private counter.
+              </short_desc>
+              <detailed_desc>
+                 <p>If counterID is not already an active private counter, then 
+                 this routine will create a new private counter with the provided 
+                 counterID and counting mode.</p>
+                 <p>If counterID identifies an existing counter, then this routine 
+                 will modify the counting mode of the existing counter.</p>
+                 <p>See <a href="ApplicationUtilities.htm#ausetstatuscountermode" target="_blank">AUSetStatusCounterMode</a> for more information on private counters.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040927" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="COUNTERID" displayText="counterID" optional="NO" default="Counter1">
+           <description> <short_desc> 
+                 The unique name used to identify this private counter.  
+              </short_desc>
+              <detailed_desc>
+                 These unique names are case-insensitive.  
+              </detailed_desc> </description></parameter>
+        <parameter name="MODE" displayText="mode" optional="NO" default="AllStatusInfo">
+           <description> <short_desc> 
+                 The counting mode to use for the specified counter.
+              </short_desc>
+              <detailed_desc>
+                 Currently supported modes are:
+                 <ul>
+                 <li>"AllStatusInfo" or "1"</li>
+                 <li>"StepTestsOnly" or "2"</li>
+                 </ul>
+                 Consult <a href="ApplicationUtilities.htm#ausetstatuscountermode" target="_blank">AUSetStatusCounterMode</a> 
+                 for more information on private counters.
+              </detailed_desc> </description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, SetCounterMode, "TestCase 124", "StepTestsOnly"</usage>
+           <description> <short_desc> 
+                 Create a new counter with the mode or modify the mode of an 
+                 existing counter.
+              </short_desc>
+              <detailed_desc>
+                 The "TestCase 124" counter will be created and/or modified to 
+                 use the "StepTestsOnly" counting mode.
+              </detailed_desc> </description>
+        </example>
+        <example>
+           <usage>C, SetCounterMode, "TestCase 124", "2"</usage>
+           <description> <short_desc> 
+                 Create a new counter with the mode or modify the mode of an 
+                 existing counter.
+              </short_desc>
+              <detailed_desc>
+                 The "TestCase 124" counter will be created and/or modified to 
+                 use the "StepTestsOnly" counting mode.
+              </detailed_desc> </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SUSPENDSTATUSCOUNTS" 
+           displayText="SuspendStatusCounts" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Suspend counting on ALL status counters--both public/global and private.
+              </short_desc>
+              <detailed_desc>
+                 Suspends all status counting that is triggered via ApplicationUtilities.
+                 <p>See <a href="ApplicationUtilities.htm" target="_blank">ApplicationUtilities</a> for more information on counters.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040927" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+	       <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140618">
+	           <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="DESCRIPTION" displayText="Description" optional="YES">
+           <description><short_desc>
+              Any additional information for suspending status counts.</short_desc>
+           </description></parameter>
+        <parameter name="LOGNAME" displayText="logName" optional="YES" default="MainLog">
+           <description> <short_desc> 
+                 (Future) The name of a Log Facility other than the "current" one.
+              </short_desc>
+              <detailed_desc>
+                 When suppport for named Log Facilities is provided you will be able 
+                 to specify which of these you wish to receive the notice.
+              </detailed_desc> </description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, SuspendStatusCounts, "Resetting the application"</usage>
+           <description> <short_desc> 
+                 Suspend all status counting--public and private.
+              </short_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="RESUMESTATUSCOUNTS" 
+           displayText="ResumeStatusCounts" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Resume counting on ALL status counters--both public/global and private.
+              </short_desc>
+              <detailed_desc>
+                 Resume all status counting that is triggered via ApplicationUtilities.
+                 Only counters that are enabled--not independently "stopped"--will resume
+                 counting.  Stopped counters are still stopped.
+                 <p>See <a href="ApplicationUtilities.htm" target="_blank">ApplicationUtilities</a> for more information on counters.</p>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040927" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+	       <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140618">
+	           <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="DESCRIPTION" displayText="Description" optional="YES">
+           <description><short_desc>
+              Any additional information for resuming status counts.</short_desc>
+           </description></parameter>
+        <parameter name="LOGNAME" displayText="logName" optional="YES" default="MainLog">
+           <description> <short_desc> 
+                 (Future) The name of a Log Facility other than the "current" one.
+              </short_desc>
+              <detailed_desc>
+                 When suppport for named Log Facilities is provided you will be able 
+                 to specify which of these you wish to receive the notice.
+              </detailed_desc> </description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, ResumeStatusCounts, "Done resetting the application"</usage>
+           <description> <short_desc> 
+                 Suspend all status counting--public and private.
+              </short_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="STARTTESTCASE" 
+           displayText="StartTestcase" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc>
+          Begin tracking status on a user-defined TestCase.</short_desc>
+        <detailed_desc>
+          Log/process the beginning of testing associated with a user-defined Testcase.
+          A <a href="ApplicationUtilities.htm#austartstatuscounter" target="_blank">private counter</a> 
+          will keep track of status for the testcase.
+        </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20100208" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+	       <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140618">
+	           <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TESTCASEID" displayText="TestCaseID" optional="NO">
+           <description><short_desc>
+              The user-defined ID of the Testcase.</short_desc>
+           </description>
+        </parameter>
+        <parameter name="DESCRIPTION" displayText="Description" optional="YES">
+           <description><short_desc>
+              A description of the Testcase</short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C  StartTestcase  Option1</usage>
+           <description><short_desc> 
+                 Logs the start of a testcase with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also started.
+        </detailed_desc></description>
+        </example>
+        <example>
+           <usage>C  StartTestcase  Option1  "It Must Compile"</usage>
+           <description><short_desc> 
+                 Logs the start of a testcase with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also started.
+        </detailed_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="STOPTESTCASE" 
+           displayText="StopTestcase" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc>
+          Stop tracking status on a user-defined TestCase.</short_desc>
+        <detailed_desc>
+          Log/process the end of testing associated with a user-defined Testcase.
+          A <a href="ApplicationUtilities.htm#austopstatuscounter" target="_blank">private counter</a> 
+          will keep track of status for the testcase.
+        </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20100208" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+	       <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140618">
+	           <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TESTCASEID" displayText="TestCaseID" optional="NO">
+           <description><short_desc>
+              The user-defined ID of the Testcase.</short_desc>
+           </description>
+        </parameter>
+        <parameter name="DESCRIPTION" displayText="Description" optional="YES">
+           <description><short_desc>
+              A description of the Testcase</short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C  StopTestcase  Option1</usage>
+           <description><short_desc> 
+                 Logs the end of a testcase with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also stopped.
+        </detailed_desc></description>
+        </example>
+        <example>
+           <usage>C  StopTestcase  Option1  "It Must Compile"</usage>
+           <description><short_desc> 
+                 Logs the end of a testcase with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also stopped.
+        </detailed_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="STARTREQUIREMENT" 
+           displayText="StartRequirement" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc>
+          Begin tracking status on a user-defined item.</short_desc>
+        <detailed_desc>
+          Log/process the beginning of testing associated with this user-defined item.
+          A <a href="ApplicationUtilities.htm#austartstatuscounter" target="_blank">private counter</a> 
+          will keep track of status for the item.
+        </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20100208" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="REQUIREMENTID" displayText="RequirementID" optional="NO">
+           <description><short_desc>
+              The user-defined ID of the item.</short_desc>
+           </description>
+        </parameter>
+        <parameter name="DESCRIPTION" displayText="Description" optional="YES">
+           <description><short_desc>
+              A description of the item.</short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C  StartRequirement  Option1</usage>
+           <description><short_desc> 
+                 Logs the start of testing on an item with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also started.
+        </detailed_desc></description>
+        </example>
+        <example>
+           <usage>C  StartRequirement  Option1  "It Must Compile"</usage>
+           <description><short_desc> 
+                 Logs the start of testing on an item with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also started.
+        </detailed_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="STOPREQUIREMENT" 
+           displayText="StopRequirement" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc>
+          Stop tracking status on a user-defined item.</short_desc>
+        <detailed_desc>
+          Log/process the end of testing associated with a user-defined item.
+          A <a href="ApplicationUtilities.htm#austopstatuscounter" target="_blank">private counter</a> 
+          will keep track of status for the item.
+        </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20100208" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="REQUIREMENTID" displayText="RequirementID" optional="NO">
+           <description><short_desc>
+              The user-defined ID of the item.</short_desc>
+           </description>
+        </parameter>
+        <parameter name="DESCRIPTION" displayText="Description" optional="YES">
+           <description><short_desc>
+              A description of the item.</short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C  StopRequirement  Option1</usage>
+           <description><short_desc> 
+                 Logs the end of testing on an item with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also stopped.
+        </detailed_desc></description>
+        </example>
+        <example>
+           <usage>C  StopRequirement  Option1  "It Must Compile"</usage>
+           <description><short_desc> 
+                 Logs the end of testing on an item with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also stopped.
+        </detailed_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="STARTPROCEDURE" 
+           displayText="StartProcedure" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc>
+          Begin tracking status on a user-defined item.</short_desc>
+        <detailed_desc>
+          Log/process the beginning of testing associated with this user-defined item.
+          A <a href="ApplicationUtilities.htm#austartstatuscounter" target="_blank">private counter</a> 
+          will keep track of status for the item.
+        </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20100208" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="PROCEDUREID" displayText="ProcedureID" optional="NO">
+           <description><short_desc>
+              The user-defined ID of the item.</short_desc>
+           </description>
+        </parameter>
+        <parameter name="DESCRIPTION" displayText="Description" optional="YES">
+           <description><short_desc>
+              A description of the item.</short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C  StartProcedure  Option1</usage>
+           <description><short_desc> 
+                 Logs the start of testing on an item with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also started.
+        </detailed_desc></description>
+        </example>
+        <example>
+           <usage>C  StartProcedure  Option1  "Entering New Users"</usage>
+           <description><short_desc> 
+                 Logs the start of testing on an item with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also started.
+        </detailed_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="STOPPROCEDURE" 
+           displayText="StopProcedure" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc>
+          Stop tracking status on a user-defined item.</short_desc>
+        <detailed_desc>
+          Log/process the end of testing associated with a user-defined item.
+          A <a href="ApplicationUtilities.htm#austopstatuscounter" target="_blank">private counter</a> 
+          will keep track of status for the item.
+        </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20100208" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="PROCEDUREID" displayText="ProcedureID" optional="NO">
+           <description><short_desc>
+              The user-defined ID of the item.</short_desc>
+           </description>
+        </parameter>
+        <parameter name="DESCRIPTION" displayText="Description" optional="YES">
+           <description><short_desc>
+              A description of the item.</short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C  StopProcedure  Option1</usage>
+           <description><short_desc> 
+                 Logs the end of testing on an item with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also stopped.
+        </detailed_desc></description>
+        </example>
+        <example>
+           <usage>C  StopProcedure  Option1  "Entering New Users"</usage>
+           <description><short_desc> 
+                 Logs the end of testing on an item with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also stopped.
+        </detailed_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="STARTSUITE" 
+           displayText="StartSuite" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc>
+          Begin tracking status on a user-defined item.</short_desc>
+        <detailed_desc>
+          Log/process the beginning of testing associated with this user-defined item.
+          A <a href="ApplicationUtilities.htm#austartstatuscounter" target="_blank">private counter</a> 
+          will keep track of status for the item.
+        </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20100208" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+	       <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140618">
+	           <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="SUITEID" displayText="SuiteID" optional="NO">
+           <description><short_desc>
+              The user-defined ID of the item.</short_desc>
+           </description>
+        </parameter>
+        <parameter name="DESCRIPTION" displayText="Description" optional="YES">
+           <description><short_desc>
+              A description of the item.</short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C  StartSuite  Option1</usage>
+           <description><short_desc> 
+                 Logs the start of testing on an item with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also started.
+        </detailed_desc></description>
+        </example>
+        <example>
+           <usage>C  StartSuite  Option1  "Data Testing"</usage>
+           <description><short_desc> 
+                 Logs the start of testing on an item with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also started.
+        </detailed_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="STOPSUITE" 
+           displayText="StopSuite" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc>
+          Stop tracking status on a user-defined item.</short_desc>
+        <detailed_desc>
+          Log/process the end of testing associated with a user-defined item.
+          A <a href="ApplicationUtilities.htm#austopstatuscounter" target="_blank">private counter</a> 
+          will keep track of status for the item.
+        </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20100208" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="SUITEID" displayText="SuiteID" optional="NO">
+           <description><short_desc>
+              The user-defined ID of the item.</short_desc>
+           </description>
+        </parameter>
+        <parameter name="DESCRIPTION" displayText="Description" optional="YES">
+           <description><short_desc>
+              A description of the item.</short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C  StopSuite  Option1</usage>
+           <description><short_desc> 
+                 Logs the end of testing on an item with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also stopped.
+        </detailed_desc></description>
+        </example>
+        <example>
+           <usage>C  StopSuite  Option1  "Data Tests"</usage>
+           <description><short_desc> 
+                 Logs the end of testing on an item with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also stopped.
+        </detailed_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="STARTCYCLE" 
+           displayText="StartCycle" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc>
+          Begin tracking status on a user-defined item.</short_desc>
+        <detailed_desc>
+          Log/process the beginning of testing associated with this user-defined item.
+          A <a href="ApplicationUtilities.htm#austartstatuscounter" target="_blank">private counter</a> 
+          will keep track of status for the item.
+        </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20100208" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="CYCLEID" displayText="CycleID" optional="NO">
+           <description><short_desc>
+              The user-defined ID of the item.</short_desc>
+           </description>
+        </parameter>
+        <parameter name="DESCRIPTION" displayText="Description" optional="YES">
+           <description><short_desc>
+              A description of the item.</short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C  StartCycle  Option1</usage>
+           <description><short_desc> 
+                 Logs the start of testing on an item with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also started.
+        </detailed_desc></description>
+        </example>
+        <example>
+           <usage>C  StartCycle  Option1  "Integration Testing"</usage>
+           <description><short_desc> 
+                 Logs the start of testing on an item with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also started.
+        </detailed_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="STOPCYCLE" 
+           displayText="StopCycle" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc>
+          Stop tracking status on a user-defined item.</short_desc>
+        <detailed_desc>
+          Log/process the end of testing associated with a user-defined item.
+          A <a href="ApplicationUtilities.htm#austopstatuscounter" target="_blank">private counter</a> 
+          will keep track of status for the item.
+        </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverCounterCommands" 
+                            doc="DDDriverCounterCommands.htm" 
+                            sourcecode="DDDriverCounterCommands.sbl" 
+                            class="COUNTER" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20100208" >
+	       <libraryInfo name="TIDDriverCounterCommands" 
+                            doc="org/safs/tools/engines/TIDDriverCounterCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverCounterCommands.java" 
+                            class="COUNTER" />
+           </engine>
+           <engine name="WinRunner" 
+	   	     	   		       since="20040524" 
+	   	     	   		       tool="WinRunner" 
+	   	     	   		       vendor="Mercury Interactive">
+	   	     	   	       <libraryInfo class="COUNTER" 
+	   	     	   				name="DDDriverCounterCommands" 
+	   	     	   				sourcecode="DDDriverCounterCommands">
+	   	     	   	       </libraryInfo>
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="CYCLEID" displayText="CycleID" optional="NO">
+           <description><short_desc>
+              The user-defined ID of the item.</short_desc>
+           </description>
+        </parameter>
+        <parameter name="DESCRIPTION" displayText="Description" optional="YES">
+           <description><short_desc>
+              A description of the item.</short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C  StopCycle  Option1</usage>
+           <description><short_desc> 
+                 Logs the end of testing on an item with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also stopped.
+        </detailed_desc></description>
+        </example>
+        <example>
+           <usage>C  StopCycle  Option1  "Integration Testing"</usage>
+           <description><short_desc> 
+                 Logs the end of testing on an item with an ID of Option1.
+              </short_desc><detailed_desc>
+                 The private status counter is also stopped.
+        </detailed_desc></description>
+        </example>
+     </examples></keyword>
+    </keywords>
+</keyword_library>

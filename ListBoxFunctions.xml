@@ -1,0 +1,2139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="ListBoxFunctions" 
+                 doc="ListBoxFunctions.htm" 
+                 sourcecode="ListBoxFunctions.sbl" 
+                 chainTo="GenericObjectFunctions"
+                 class="LISTBOX">
+
+        <description>
+           <short_desc> 
+              Actions for working with ListBox objects
+           </short_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="Robot" version="2002" />
+    <keywords>
+    
+  <keyword name="CAPTUREITEMSTOFILE" 
+           displayText="CaptureItemsToFile" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc>
+                Capture Items To a File specified (if not abs, then to test dir)
+              </short_desc>
+              <detailed_desc> 
+                Capture Items To a File specified (if not abs, then to test dir)
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="FILENAME" displayText="FileName" optional="NO">
+           <description>
+              <short_desc> 
+                 File name (if not absolute, then to test dir)
+              </short_desc>
+              <detailed_desc> 
+                 File name (if not absolute, then to test dir)
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="FILEENCODING" displayText="FileEncoding" optional="YES" default="">
+           <description> <short_desc>
+             Specify a character encoding to be used when saving data to a file.
+			 If it is not specified, the system default file encoding will be used.
+             The encoding should be a valid string supported by Java; if it is not valid,
+             the system default file encoding will be used instead.
+            </short_desc> </description>
+        </parameter>  
+     </parameters><examples>
+
+        <example>
+           <usage> T, WINDOW, ListBox, CaptureItemsToFile ,  afile.txt   </usage>
+           <description>
+              <short_desc> 
+                 Captures all the items in the list to ...\datapool\test\afile.txt
+              </short_desc>
+              <detailed_desc> 
+                 Captures all the items in the list to ...\datapool\test\afile.txt
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage> T, WINDOW, ListBox, CaptureItemsToFile ,  afile.txt, "UTF-8"   </usage>
+           <description>
+              <short_desc> 
+                 Captures all the items in the list to ...\datapool\test\afile.txt
+              </short_desc>
+              <detailed_desc> 
+                 Captures all the items in the list to ...\datapool\test\afile.txt<BR/>
+                 Writing file with "UTF-8" encoding.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+    <keyword name="VERIFYSELECTEDITEM" 
+             displayText="VerifySelectedItem" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description>
+              <short_desc> 
+                Verifies a particular case-sensitive text item is selected
+              </short_desc>
+              <detailed_desc> 
+                Verifies a particular case-sensitive text item is selected
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListBoxFunctions" 
+                            doc="ListBoxFunctions.htm" 
+                            sourcecode="ListBoxFunctions.sbl" 
+                            class="LISTBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031124" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020820" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="LISTBOX" 
+	   					name="ListBoxFunctions" 
+	   					sourcecode="ListBoxFunctions">
+	   		       </libraryInfo>
+           </engine>
+	   <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	    	<libraryInfo name="CFListBox" 
+			doc="org/safs/selenium/CFListBox.html" 
+			sourcecode="org.safs.selenium.CFListBox.java" 
+			class="LISTBOX" />
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node that will be verified as selected
+              </short_desc>
+              <detailed_desc> 
+                 TextValue should contain the case-sensitive text of the item expected to already be selected
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, ListBox, VerifySelectedItem ,  "AParticularUserID"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that "AParticularUserID" is selected in the ListBox.
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="VERIFYITEMUNSELECTED" 
+           displayText="VerifyItemUnselected" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Verifies a particular case-sensitive text item is NOT selected.
+              </short_desc>
+              <detailed_desc> 
+                Verifies a particular case-sensitive text item is NOT selected.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListBoxFunctions" 
+                            doc="ListBoxFunctions.htm" 
+                            sourcecode="ListBoxFunctions.sbl" 
+                            class="LISTBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20041109" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+           <engine name="WinRunner" 
+			       since="20020820" 
+			       tool="WinRunner" 
+			       vendor="Mercury Interactive">
+		       <libraryInfo class="LISTBOX" 
+					name="ListBoxFunctions" 
+					sourcecode="ListBoxFunctions">
+		       </libraryInfo>
+           </engine>
+	   <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	    	<libraryInfo name="CFListBox" 
+			doc="org/safs/selenium/CFListBox.html" 
+			sourcecode="org.safs.selenium.CFListBox.java" 
+			class="LISTBOX" />
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node that will be verified as unselected
+              </short_desc>
+              <detailed_desc> 
+                 TextValue should contain the case-sensitive text of the item that is expected to NOT be selected.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+
+        <example>
+           <usage>T, WINDOW, ListBox, VerifyItemUnselected,  "AParticularUserID"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that "AParticularUserID" is NOT selected in the ListBox.
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SELECTINDEX" 
+           displayText="SelectIndex" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Select an item based on it's index in the list, starting from 1
+              </short_desc>
+              <detailed_desc> 
+                Select an item based on it's index in the list, starting from 1
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+	   <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	    	<libraryInfo name="CFListBox" 
+			doc="org/safs/selenium/CFListBox.html" 
+			sourcecode="org.safs.selenium.CFListBox.java" 
+			class="LISTBOX" />
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="INDEX" displayText="Index" optional="NO">
+           <description>
+              <short_desc> 
+                 Index of the text item to select, starting from 1
+              </short_desc>
+              <detailed_desc> 
+                 Index of the text item to select, starting from 1
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+
+        <example>
+           <usage> T, WINDOW, ListBox, SelectIndex ,  1   </usage>
+           <description>
+              <short_desc> 
+                 Selects the first item in the list.
+              </short_desc>
+              <detailed_desc> 
+                 Selects the first item in the list.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SELECTTEXTITEM" 
+           displayText="SelectTextItem" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to Click and Verify a selection according to its text value.
+              </short_desc>
+              <detailed_desc> 
+                Routine to Click and Verify a selection according to
+                its text value.
+                <p>Note: RobotJ also uses the identical keyword 'Select'</p>
+                <p>Note: For RobotJ, there is no additional verify step in
+                the framework code, in other words, for
+                RobotJ, the SelectTextItem and
+                SelectUnverifiedTextItem keywords are identical
+                because RobotJ does all of the verification internally
+                and there is no control over that in it's api.</p>
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListBoxFunctions" 
+                            doc="ListBoxFunctions.htm" 
+                            sourcecode="ListBoxFunctions.sbl" 
+                            class="LISTBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+           <engine name="WinRunner" 
+	   				       since="20020820" 
+	   				       tool="WinRunner" 
+	   				       vendor="Mercury Interactive">
+	   			       <libraryInfo class="LISTBOX" 
+	   						name="ListBoxFunctions" 
+	   						sourcecode="ListBoxFunctions">
+	   			       </libraryInfo>
+           </engine>
+	   <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	    	<libraryInfo name="CFListBox" 
+			doc="org/safs/selenium/CFListBox.html" 
+			sourcecode="org.safs.selenium.CFListBox.java" 
+			class="LISTBOX" />
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select and verify.
+              </short_desc>
+              <detailed_desc> 
+                 TextValue should contain the case-sensitive text item to select and verify.
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+
+        <example>
+           <usage> T, WINDOW, ListBox, SelectTextItem ,  "AParticularUserID"   </usage>
+           <description>
+              <short_desc> 
+                 Selects "AParticularUserID" from the ListBox object.
+              </short_desc>
+              <detailed_desc> 
+                 Selects "AParticularUserID" from the ListBox object and verifies
+                 the selection actually occurred.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword name="CLICKTEXTITEM" 
+           displayText="ClickTextItem" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to Click a selection according to its text value.
+		<p>Note: This keyword triggers the click event </p>
+              </short_desc>
+              <detailed_desc> 
+                Routine to Click a selection according to its text value.
+		<p>NOTE: Only ClickTextItem keyword triggers the click event.  SelectTextItem
+                         keyword fails to trigger click event on some instances.</p>
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select.
+              </short_desc>
+              <detailed_desc> 
+                 TextValue should contain the case-sensitive text item to select.
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+
+        <example>
+           <usage> T, WINDOW, ListBox, ClickTextItem ,  "AParticularUserID"   </usage>
+           <description>
+              <short_desc> 
+                 Clicks "AParticularUserID" from the ListBox object.
+              </short_desc>
+              <detailed_desc> 
+                 Clicks "AParticularUserID" from the ListBox object.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword name="RIGHTCLICKTEXTITEM" 
+           displayText="RightClickTextItem" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to Right-Click a selection according to its text value.
+		<p>Note: This keyword triggers the right-click event.</p>
+              </short_desc>
+              <detailed_desc> 
+                Routine to Right-Click a selection according to its text value.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20050818" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to right-click on.
+              </short_desc>
+              <detailed_desc> 
+                 TextValue should contain the case-sensitive text item to right-click.
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+
+        <example>
+           <usage> T, WINDOW, ListBox, RightClickTextItem ,  "AParticularUserID"   </usage>
+           <description>
+              <short_desc> 
+                 Right-Clicks "AParticularUserID" from the ListBox object.
+              </short_desc>
+              <detailed_desc> 
+                 Right-Clicks "AParticularUserID" from the ListBox object.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword         name="SELECTANOTHERTEXTITEM" 
+            displayText="SelectAnotherTextItem" 
+            deprecated="NO" 
+            expectFailSupport="NO" 
+            expectWarnSupport="NO">            
+           <description>
+              <short_desc> 
+                Routine to Control+Click and Verify a selection according to its text value.
+              </short_desc>
+              <detailed_desc> 
+                This adds selected items to items already selected.<br/>
+                NOTE: This may not work in all environments (Java, Web, etc...)
+                <p>
+                For example, in Java, we can usually verify that an item exists 
+                in the list; but we do not seem to be able to verify if a newly 
+                added selection to multiple selections is actually selected.
+                </p>
+                <p>
+                So, for Java, we will verify existence in the list, but we cannot 
+                verify the selection was successful--we will skip that last check.
+                </p>
+              </detailed_desc> 
+           </description>
+     <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20031209" >
+	       <libraryInfo name="ListBoxFunctions" 
+                            doc="ListBoxFunctions.htm" 
+                            sourcecode="ListBoxFunctions.sbl" 
+                            class="LISTBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20041109" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+	   <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	    	<libraryInfo name="CFListBox" 
+			doc="org/safs/selenium/CFListBox.html" 
+			sourcecode="org.safs.selenium.CFListBox.java" 
+			class="LISTBOX" />
+            </engine>
+     </engines>
+     <parameters>
+        <parameter       name="TEXTVALUE" 
+                  displayText="TextValue" 
+                  optional="NO" >
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select and verify.
+              </short_desc>
+           </description>
+        </parameter>
+     </parameters>        
+     <examples>
+        <example>
+           <usage> T, WINDOW, ListBox, SelectAnotherTextItem ,  "AParticularUserID"   </usage>
+           <description>
+              <short_desc> 
+                 Selects "AParticularUserID" from the ListBox object.
+              </short_desc>
+              <detailed_desc> 
+                 Selects "AParticularUserID" from the ListBox object.  
+                 This adds to any existing items already selected.<br/>
+                 When possible, we will also attempt to verify the added selection 
+                 was successful.
+              </detailed_desc>
+           </description>
+        </example>
+
+     </examples>        
+  </keyword>
+
+  <keyword  name="EXTENDSELECTIONTOTEXTITEM" 
+            displayText="ExtendSelectionToTextItem" 
+            deprecated="NO"
+            expectFailSupport="NO"
+            expectWarnSupport="NO">
+           <description>
+              <short_desc> 
+                Routine to Shift+Click and Verify a selection according to its text value.
+              </short_desc>
+              <detailed_desc> 
+                This extends the current selection to include the specified
+		selection and all other items inbetween.<br/>
+                NOTE: This may not work in all environments (Java, Web, etc...)
+                <p>
+                For example, in Java, we can usually verify that an item exists 
+                in the list; but we do not seem to be able to verify if a newly 
+                added selection to multiple selections is actually selected.
+                </p>
+                <p>
+                So, for Java, we will verify existence in the list, but we cannot 
+                verify the selection was successful--we will skip that last check.
+                </p>
+              </detailed_desc> 
+           </description>
+     <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20041109" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+     </engines>
+     <parameters>
+        <parameter name="TEXTVALUE" 
+                   displayText="TextValue" 
+                   optional="NO" >
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select and verify.
+              </short_desc>
+           </description>
+        </parameter>
+     </parameters>        
+     <examples>
+        <example>
+           <usage> T, WINDOW, ListBox, ExtendSelectionToTextItem,  "AParticularUserID"</usage>
+           <description>
+              <short_desc> 
+                 Selects "AParticularUserID" from the ListBox object.
+              </short_desc>
+              <detailed_desc> 
+                 Selects "AParticularUserID" from the ListBox object.
+                 This adds "AParticularUserID" and any items inbetween to
+		 any existing items already selected.<br/>
+                 When possible, we will also attempt to verify the added selection
+                 was successful.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples>
+  </keyword>
+     
+  <keyword name="SELECTUNVERIFIEDTEXTITEM" 
+           displayText="SelectUnverifiedTextItem" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to Click a selection according to its text value.
+              </short_desc>
+              <detailed_desc> 
+                Routine to Click a selection according to its text value. 
+                 <p>No check is performed after the selection to verify success.  
+                 This is typically done for cases when the listbox is only temporary 
+                 in nature and disappears immediately upon a
+                selection.</p>
+                <p>Note: RobotJ also uses the identical keyword 'SelectUnverified'</p>
+                <p>Note: This is the default for RobotJ, in other words, for
+                RobotJ, the SelectTextItem and
+                SelectUnverifiedTextItem keywords are identical
+                because RobotJ does all of the verification internally
+                and there is no control over that in it's api.</p>
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListBoxFunctions" 
+                            doc="ListBoxFunctions.htm" 
+                            sourcecode="ListBoxFunctions.sbl" 
+                            class="LISTBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+	   <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	    	<libraryInfo name="CFListBox" 
+			doc="org/safs/selenium/CFListBox.html" 
+			sourcecode="org.safs.selenium.CFListBox.java" 
+			class="LISTBOX" />
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select.
+              </short_desc>
+              <detailed_desc> 
+                 TextValue should contain the case-sensitive text item to select.
+                 <p>No check is performed after the selection to verify success.  
+                 This is typically done for cases when the listbox is only temporary 
+                 in nature and disappears immediately upon a selection.</p>
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+        <example>
+           <usage> T, WINDOW, ListBox, SelectUnverifiedTextItem ,  "AParticularUserID"   </usage>
+           <description>
+              <short_desc> 
+                 Selects "AParticularUserID" from the ListBox object.
+              </short_desc>
+              <detailed_desc> 
+                 Selects "AParticularUserID" from the ListBox object.
+                 <p>No check is performed after the selection to verify success.  
+                 This is typically done for cases when the listbox is only temporary 
+                 in nature and disappears immediately upon a selection.</p>
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword         name="SELECTANOTHERUNVERIFIEDTEXTITEM" 
+            displayText="SelectAnotherUnverifiedTextItem" 
+            deprecated="NO" 
+            expectFailSupport="NO" 
+            expectWarnSupport="NO">            
+            
+           <description>
+              <short_desc> 
+                Routine to Control+Click an item according to its text value.
+                 No post-select verification of the selection is performed.
+              </short_desc>
+              <detailed_desc> 
+                Routine to Control+Click an item according to its text value.
+                No post-select verification of the selection is performed.  This selection 
+                is added to any items already selected.  <br/>
+                NOTE: This may not work in all environments (Java, Web, etc...)
+              </detailed_desc>
+           </description>
+     <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20031209" >
+	       <libraryInfo name="ListBoxFunctions" 
+                            doc="ListBoxFunctions.htm" 
+                            sourcecode="ListBoxFunctions.sbl" 
+                            class="LISTBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20041109" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+	   <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	    	<libraryInfo name="CFListBox" 
+			doc="org/safs/selenium/CFListBox.html" 
+			sourcecode="org.safs.selenium.CFListBox.java" 
+			class="LISTBOX" />
+            </engine>
+     </engines>
+     <parameters>
+        <parameter       name="TEXTVALUE" 
+                  displayText="TextValue" 
+                  optional="NO" >
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select.
+              </short_desc>
+           </description>
+        </parameter>
+
+     </parameters>        
+
+     <examples>
+
+        <example>
+           <usage> T, WINDOW, ListBox, SelectAnotherUnverifiedTextItem ,  "AParticularUserID"   </usage>
+           <description>
+              <short_desc> 
+                 Selects "AParticularUserID" from the ListBox object.
+              </short_desc>
+              <detailed_desc> 
+                 Selects "AParticularUserID" from the ListBox.  
+                 The item is selected and added to the rest of the items already selected.
+              </detailed_desc>
+           </description>
+        </example>
+
+     </examples>        
+  </keyword>
+
+  <keyword         name="SELECTUNVERIFIEDANOTHERTEXTITEM" 
+            displayText="SelectUnverifiedAnotherTextItem" 
+            deprecated="YES" 
+            deprecatedFor="SelectAnotherUnverifiedTextItem" 
+            expectFailSupport="NO" 
+            expectWarnSupport="NO">            
+            
+           <description>
+              <short_desc> 
+                Use the identical "SelectAnotherUnverifiedTextItem" instead.
+              </short_desc>
+              <detailed_desc> 
+                Routine to Control+Click an item according to its text value.
+                No post-select verification of the selection is performed.  This selection 
+                is added to any items already selected.  <br/>
+                NOTE: This may not work in all environments (Java, Web, etc...)
+              </detailed_desc>
+           </description>
+     <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20031209" >
+	       <libraryInfo name="ListBoxFunctions" 
+                            doc="ListBoxFunctions.htm" 
+                            sourcecode="ListBoxFunctions.sbl" 
+                            class="LISTBOX" />
+           </engine>
+     </engines>
+     <parameters>
+        <parameter       name="TEXTVALUE" 
+                  displayText="TextValue" 
+                  optional="NO" >
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to select.
+              </short_desc>
+           </description>
+        </parameter>
+     </parameters>        
+     <examples>
+        <example>
+           <usage> T, WINDOW, ListBox, SelectUnverifiedAnotherTextItem ,  "AParticularUserID"   </usage>
+           <description>
+              <short_desc> 
+                 Selects "AParticularUserID" from the ListBox object.
+              </short_desc>
+              <detailed_desc> 
+                 Selects "AParticularUserID" from the ListBox.  
+                 The item is selected and added to the rest of the items already selected.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples>        
+  </keyword>
+     
+  <keyword name="ACTIVATETEXTITEM" 
+           displayText="ActivateTextItem" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to DblClick and Verify an item according to its text value.
+              </short_desc>
+              <detailed_desc> 
+                Routine to DblClick and Verify an item according to its text value.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListBoxFunctions" 
+                            doc="ListBoxFunctions.htm" 
+                            sourcecode="ListBoxFunctions.sbl" 
+                            class="LISTBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+           <engine name="WinRunner" 
+	   				       since="20020820" 
+	   				       tool="WinRunner" 
+	   				       vendor="Mercury Interactive">
+	   			       <libraryInfo class="LISTBOX" 
+	   						name="ListBoxFunctions" 
+	   						sourcecode="ListBoxFunctions">
+	   			       </libraryInfo>
+           </engine>
+	   <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	    	<libraryInfo name="CFListBox" 
+			doc="org/safs/selenium/CFListBox.html" 
+			sourcecode="org.safs.selenium.CFListBox.java" 
+			class="LISTBOX" />
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to DblClick and verify.
+              </short_desc>
+              <detailed_desc> 
+                 TextValue should contain the case-sensitive text item to DblClick and verify.
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, ListBox, ActivateTextItem ,  "AParticularUserID"</usage>
+           <description>
+              <short_desc> 
+                 DblClicks "AParticularUserID" in the ListBox object.
+              </short_desc>
+              <detailed_desc> 
+                 Dblclicks "AParticularUserID" in the ListBox object.
+                 The current value of the selection is then verified.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="ACTIVATEUNVERIFIEDTEXTITEM" 
+           displayText="ActivateUnverifiedTextItem" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to DblClick an item according to its text value.
+              </short_desc>
+              <detailed_desc> 
+                Routine to DblClick an item according to its text value.
+                 <p>No check is performed after the selection to verify success.  
+                 This is typically done for cases when the listbox is only temporary 
+                 in nature and disappears immediately upon a selection.</p>
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListBoxFunctions" 
+                            doc="ListBoxFunctions.htm" 
+                            sourcecode="ListBoxFunctions.sbl" 
+                            class="LISTBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+	   <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	    	<libraryInfo name="CFListBox" 
+			doc="org/safs/selenium/CFListBox.html" 
+			sourcecode="org.safs.selenium.CFListBox.java" 
+			class="LISTBOX" />
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive text of node to DblClick.
+              </short_desc>
+              <detailed_desc> 
+                 TextValue should contain the case-sensitive text item to DblClick.
+                 <p>No check is performed after the selection to verify success.  
+                 This is typically done for cases when the listbox is only temporary 
+                 in nature and disappears immediately upon a selection.</p>
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+
+        <example>
+           <usage>T, WINDOW, ListBox, ActivateUnverifiedTextItem ,  "AParticularUserID"</usage>
+           <description>
+              <short_desc> 
+                 DblClicks "AParticularUserID" in the ListBox object.
+              </short_desc>
+              <detailed_desc> 
+                 Dblclicks "AParticularUserID" in the ListBox object.
+                 <p>No check is performed after the selection to verify success.  
+                 This is typically done for cases when the listbox is only temporary 
+                 in nature and disappears immediately upon a selection.</p>
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="SELECTPARTIALMATCH" 
+           displayText="SelectPartialMatch" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to Click and Verify an item according to a partial text match.
+              </short_desc>
+              <detailed_desc> 
+                Routine to Click and Verify an item according to a partial text match.
+                <p>Note: for RobotJ, same as SelectUnverifiedPartialMatch</p>
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListBoxFunctions" 
+                            doc="ListBoxFunctions.htm" 
+                            sourcecode="ListBoxFunctions.sbl" 
+                            class="LISTBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+           <engine name="WinRunner" 
+	   				       since="20020820" 
+	   				       tool="WinRunner" 
+	   				       vendor="Mercury Interactive">
+	   			       <libraryInfo class="LISTBOX" 
+	   						name="ListBoxFunctions" 
+	   						sourcecode="ListBoxFunctions">
+	   			       </libraryInfo>
+           </engine>
+	   <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	    	<libraryInfo name="CFListBox" 
+			doc="org/safs/selenium/CFListBox.html" 
+			sourcecode="org.safs.selenium.CFListBox.java" 
+			class="LISTBOX" />
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive substring of node to select and verify.
+              </short_desc>
+              <detailed_desc> 
+                 TextValue should contain the case-sensitive substring to select and verify.
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+        <example>
+           <usage> T, WINDOW, ListBox, SelectPartialMatch ,  "ATextSubstring"   </usage>
+           <description>
+              <short_desc> 
+                 Clicks the first item containing the substring text in the ListBox.
+              </short_desc>
+              <detailed_desc> 
+                 Clicks the first item containing the substring text in the ListBox.
+                 After the selection we verify the item is selected.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword name="SELECTUNVERIFIEDPARTIALMATCH" 
+           displayText="SelectUnverifiedPartialMatch" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to Click an item according to a partial text match.
+              </short_desc>
+              <detailed_desc> 
+                Routine to Click an item according to a partial text match.
+                 <p>No check is performed after the selection to verify success.  
+                 This is typically done for cases when the listbox is only temporary 
+                 in nature and disappears immediately upon a selection.</p>
+                <p>Note: for RobotJ, same as SelectPartialMatch</p>
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListBoxFunctions" 
+                            doc="ListBoxFunctions.htm" 
+                            sourcecode="ListBoxFunctions.sbl" 
+                            class="LISTBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+	   <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	    	<libraryInfo name="CFListBox" 
+			doc="org/safs/selenium/CFListBox.html" 
+			sourcecode="org.safs.selenium.CFListBox.java" 
+			class="LISTBOX" />
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive substring of node to select.
+              </short_desc>
+              <detailed_desc> 
+                 TextValue should contain the case-sensitive substring to select.
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+
+        <example>
+           <usage> T, WINDOW, ListBox, SelectUnverifiedPartialMatch ,  "ATextSubstring"   </usage>
+           <description>
+              <short_desc> 
+                 Clicks the first item containing the substring text in the ListBox.
+              </short_desc>
+              <detailed_desc> 
+                 Clicks the first item containing the substring text in the ListBox.
+                 <p>No check is performed after the selection to verify success.  
+                 This is typically done for cases when the listbox is only temporary 
+                 in nature and disappears immediately upon a selection.</p>
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="ACTIVATEPARTIALMATCH" 
+           displayText="ActivatePartialMatch" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Routine to DblClick and Verify an item according to a partial text match.
+              </short_desc>
+              <detailed_desc> 
+                Routine to DblClick and Verify an item according to a partial text match.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListBoxFunctions" 
+                            doc="ListBoxFunctions.htm" 
+                            sourcecode="ListBoxFunctions.sbl" 
+                            class="LISTBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+           <engine name="WinRunner" 
+	   				       since="20020820" 
+	   				       tool="WinRunner" 
+	   				       vendor="Mercury Interactive">
+	   			       <libraryInfo class="LISTBOX" 
+	   						name="ListBoxFunctions" 
+	   						sourcecode="ListBoxFunctions">
+	   			       </libraryInfo>
+           </engine>
+	   <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	    	<libraryInfo name="CFListBox" 
+			doc="org/safs/selenium/CFListBox.html" 
+			sourcecode="org.safs.selenium.CFListBox.java" 
+			class="LISTBOX" />
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive substring of node to DblClick and verify.
+              </short_desc>
+              <detailed_desc> 
+                 TextValue should contain the case-sensitive substring to DblClick and verify.
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, ListBox, ActivatePartialMatch ,  "ATextSubstring"</usage>
+           <description>
+              <short_desc> 
+                 DblClicks the first item containing the substring in the ListBox.
+                 The selection is then verified as having occurred.
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="ACTIVATEUNVERIFIEDPARTIALMATCH" 
+           displayText="ActivateUnverifiedPartialMatch" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                DblClicks an item according to a partial text match.
+              </short_desc>
+              <detailed_desc> 
+                <p>DblClicks an item according to a partial text match.</p>
+                <p>The item is activated but no check is performed after
+                the selection to verify the selection was successful.</p>
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListBoxFunctions" 
+                            doc="ListBoxFunctions.htm" 
+                            sourcecode="ListBoxFunctions.sbl" 
+                            class="LISTBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+	   <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	    	<libraryInfo name="CFListBox" 
+			doc="org/safs/selenium/CFListBox.html" 
+			sourcecode="org.safs.selenium.CFListBox.java" 
+			class="LISTBOX" />
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive substring of node to DblClick.
+              </short_desc>
+              <detailed_desc> 
+                 TextValue should contain the case-sensitive substring to DblClick.
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, ListBox, ActivateUnverifiedPartialMatch ,  "ATextSubstring"</usage>
+           <description>
+              <short_desc> 
+                 DblClicks the first item containing the substring in the ListBox.
+              </short_desc>
+              <detailed_desc> 
+                 <p>DblClicks the first item containing the substring in the ListBox.</p>
+                 <p>No check is performed after the selection to verify success.  
+                 This is typically done for cases when the listbox is only temporary 
+                 in nature and disappears immediately upon a selection.</p>
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+ 	<keyword name="SETLISTCONTAINS" 
+           displayText="SetListContains" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+		<description> 
+			<short_desc>
+            	Set a variable with the result of checking that a listview contains the provided item.
+			</short_desc> 
+            <detailed_desc>
+            	The search of the item is expected to be a case-sensitive exact match of the item.  The
+            	   provided variable is set with 'TRUE' if the item is found or 'FALSE' if the item is not found.
+            </detailed_desc> 
+    	</description>
+           
+		<engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080910" >
+	       <libraryInfo name="CFComponent" 
+                            doc="org/safs/rational/CFComponent.html" 
+                            sourcecode="org.safs.rational.CFComponent.java" 
+                            class="LISTBOX" />
+           </engine>
+		</engines>
+
+		<parameters>
+			<parameter name="ITEMTEXT" displayText="ItemText" optional="NO">
+				<description> 
+					<short_desc>
+						The case-sensitive name of the sought item.
+					</short_desc> 
+					<detailed_desc>
+						ItemText should contain the case-sensitive text item to find in the list view.
+						A message is sent to the log confirming whether or not the item is found in the list view.
+					</detailed_desc>
+				</description>
+			</parameter>
+			<parameter name="RESULTVAR" displayText="ResultVar" optional="NO">
+				<description> 
+					<short_desc>
+						The name of the variable receiving the result.
+					</short_desc> 
+					<detailed_desc>
+						This variable is set with 'TRUE' if the item is found or 'FALSE' if the item is not found.
+					</detailed_desc>
+				</description>
+			</parameter>
+		</parameters>
+     
+		<examples>
+			<example>
+				<usage>
+					T, WINDOW, ListView, SetListContains ,  "AParticularServerName", isFound
+				</usage>
+				<description> 
+					<short_desc>
+						<p>Variable isFound is set to 'TRUE' if the item "AParticularServerName" is found 
+						   in the ListView object.  If the item is not found, the variable isFound is set
+						   to 'FALSE'.</p>
+					</short_desc>
+				</description> 
+			</example>
+		</examples>
+	</keyword>
+ 
+     
+  <keyword name="VERIFYSELECTEDPARTIALMATCH" 
+           displayText="VerifySelectedPartialMatch" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Verifies a particular case-sensitive item is selected 
+                based on a substring match.
+              </short_desc>
+              <detailed_desc> 
+                Verifies a particular case-sensitive item is selected
+                based on a substring match.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="ListBoxFunctions" 
+                            doc="ListBoxFunctions.htm" 
+                            sourcecode="ListBoxFunctions.sbl" 
+                            class="LISTBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031124" >
+	       <libraryInfo name="CFComponent" 
+                            doc="org/safs/rational/CFComponent.html" 
+                            sourcecode="org.safs.rational.CFComponent.java" 
+                            class="LISTBOX" />
+           </engine>
+           <engine name="WinRunner" 
+	   				       since="20020820" 
+	   				       tool="WinRunner" 
+	   				       vendor="Mercury Interactive">
+	   			       <libraryInfo class="LISTBOX" 
+	   						name="ListBoxFunctions" 
+	   						sourcecode="ListBoxFunctions">
+	   			       </libraryInfo>
+           </engine>
+	   <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	    	<libraryInfo name="CFListBox" 
+			doc="org/safs/selenium/CFListBox.html" 
+			sourcecode="org.safs.selenium.CFListBox.java" 
+			class="LISTBOX" />
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive substring of node that will be verified selected
+              </short_desc>
+              <detailed_desc> 
+                 TextValue should contain the case-sensitive substring of the item expected to already be selected
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+        <example>
+           <usage>T, WINDOW, ListBox, VerifySelectedPartialMatch ,  "ATextSubstring"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that the first item containing the substring is selected in the ListBox.
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword name="VERIFYITEM" 
+           displayText="VerifyItem" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Verifies a particular case-sensitive item based on index is equal
+                to a particular value.
+              </short_desc>
+              <detailed_desc> 
+                Verifies a particular case-sensitive item based on index is equal
+                to a particular value.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFComponent" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="INDEX" displayText="Index" optional="NO">
+           <description>
+              <short_desc> 
+                 Index of the item in the list starting from 1
+              </short_desc>
+              <detailed_desc> 
+                 Index of the item in the list starting from 1
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive string to compare to the text of the node at the index.
+              </short_desc>
+              <detailed_desc> 
+                 Case-sensitive string to compare to the text of the node at the index.
+              </detailed_desc>
+           </description>
+        </parameter>
+       </parameters>
+       <examples>
+        <example>
+           <usage>T, WINDOW, ListBox, VerifyItem, 1, "ATextString"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that the first item is equal to "ATextString"
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, ListBox, VerifyItem, 10, "ATextString10"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that the item at index 10 is equal to "ATextString10"
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword name="VERIFYPARTIALMATCH" 
+           displayText="VerifyPartialMatch" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Verifies a particular case-insensitive item based on
+                index is has as substring a particular value.
+              </short_desc>
+              <detailed_desc> 
+                Verifies a particular case-insensitive item based on
+                index is has as substring a particular value.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFComponent" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="INDEX" displayText="Index" optional="NO">
+           <description>
+              <short_desc> 
+                 Index of the item in the list starting from 1
+              </short_desc>
+              <detailed_desc> 
+                 Index of the item in the list starting from 1
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-insensitive substring to compare to the text of the node at the index.
+              </short_desc>
+              <detailed_desc> 
+                 Case-insensitive substring to compare to the text of the node at the index.
+              </detailed_desc>
+           </description>
+        </parameter>
+       </parameters>
+       <examples>
+        <example>
+           <usage>T, WINDOW, ListBox, VerifyPartialMatch, 1, "AText"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that the first item contains substring "atext"
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, ListBox, VerifyItem, 10, "10"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that the item at index 10 contains substring "10"
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword name="VERIFYMENUITEM" 
+           displayText="VerifyMenuItem" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Verifies a particular case-sensitive menu-item exists
+                in the list (somewhere)
+              </short_desc>
+              <detailed_desc> 
+                Verifies a particular case-sensitive menu-item exists
+                in the list (somewhere)
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFComponent" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-sensitive string to compare to the text of any node in the list.
+              </short_desc>
+              <detailed_desc> 
+                 Case-sensitive string to compare to the text of any node in the list.
+              </detailed_desc>
+           </description>
+        </parameter>
+       </parameters>
+       <examples>
+        <example>
+           <usage>T, WINDOW, ListBox, VerifyMenuItem, "ATextString"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that the list contains somewhere an item equal to "ATextString"
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, ListBox, VerifyMenuItem, "ATextString10"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that the list contains somewhere an item equal to "ATextString10"
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+  <keyword name="VERIFYMENUPARTIALMATCH" 
+           displayText="VerifyMenuPartialMatch" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Verifies a particular case-insensitive menu-item
+                substring exists in the list (somewhere)
+              </short_desc>
+              <detailed_desc> 
+                Verifies a particular case-insensitive menu-item
+                substring exists in the list (somewhere)
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFComponent" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 Case-insensitive substring to compare to the text of any node in the list.
+              </short_desc>
+              <detailed_desc> 
+                 Case-insensitive substring to compare to the text of any node in the list.
+              </detailed_desc>
+           </description>
+        </parameter>
+       </parameters>
+       <examples>
+        <example>
+           <usage>T, WINDOW, ListBox, VerifyMenuPartialMatch, "ATextString"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that the list contains somewhere an item substring "ATextString"
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, ListBox, VerifyMenuPartialMatch, "10"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that the list contains somewhere an item substring "10"
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+	<keyword name="VERIFYLISTCONTAINS" 
+           displayText="VerifyListContains" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Verifies a particular list-item exists in the list (somewhere)
+              </short_desc>
+              <detailed_desc> 
+                Verifies a particular list-item exists in the list (somewhere).  The comparison 
+                can be case-sensitive.  By default, it is not.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20040405" >
+	   	       <libraryInfo name="ListBoxFunctions" 
+	                               doc="ListBoxFunctions.htm" 
+	                               sourcecode="ListBoxFunctions.sbl" 
+	                               class="LISTBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080326" >
+	       		<libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+           <engine name="WinRunner" 
+	   				       since="20020820" 
+	   				       tool="WinRunner" 
+	   				       vendor="Mercury Interactive">
+	   			       <libraryInfo class="LISTBOX" 
+	   						name="ListBoxFunctions" 
+	   						sourcecode="ListBoxFunctions">
+	   			       </libraryInfo>
+           </engine>
+	   <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	    	<libraryInfo name="CFListBox" 
+			doc="org/safs/selenium/CFListBox.html" 
+			sourcecode="org.safs.selenium.CFListBox.java" 
+			class="LISTBOX" />
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 String to look for in the list.
+              </short_desc>
+              <detailed_desc> 
+                 String to look for in the list.  
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="CASESENSITIVE" displayText="CaseSensitive" optional="YES">
+	           <description>
+	              <short_desc> 
+	                 Optional "True" for case-sensitive search
+	              </short_desc>
+	              <detailed_desc> 
+	                 Optional "True" for case-sensitive search.<br/>
+	                 Robot (others?) also supports "CASE-SENSITIVE" in place of "TRUE" for this parameter.
+	              </detailed_desc>
+	           </description>
+        </parameter>
+       </parameters>
+       <examples>
+        <example>
+           <usage>T, WINDOW, ListBox, VerifyListContains, "ATextString", "True"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that the listbox contains somewhere an item equal to "ATextString"
+                 using a case-sensitive comparison.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, ListBox, VerifyListContains, "ATextString", "Case-Sensitive"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that the listbox contains somewhere an item equal to "ATextString" using a 
+                 case-sensitive comparison.  The use of "CASE-SENSITIVE" literal text instead of 
+                 "TRUE" initially is implemented on Robot.  Other engines will support this as 
+                 developers can get in there and add it.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, ListBox, VerifyListContains, "ATextString10", "False"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that the listbox contains somewhere an item equal to "ATextString10"
+                 case-insensitive search.  The "False" is not really necessary since the search 
+                 is not case-sensitive by default.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+	           <usage>T, WINDOW, ListBox, VerifyListContains, "ATextString10"</usage>
+	           <description>
+	              <short_desc> 
+	                 Verifies that the listbox contains somewhere an item equal to "ATextString10" 
+	                 using a comparison that is not case-sensitive.
+	              </short_desc>
+	           </description>
+        </example>
+     </examples></keyword>
+     <keyword name="VERIFYLISTDOESNOTCONTAIN" 
+                displayText="VerifyListDoesNotContain" 
+                deprecated="NO" 
+                expectFailSupport="NO" 
+                expectWarnSupport="NO">
+                
+            <description>
+                   <short_desc> 
+                     Verifies a particular list-item does NOT exists in the list (somewhere)
+                   </short_desc>
+                   <detailed_desc> 
+                     Verifies a particular list-item does NOT exists in the list (somewhere).  
+                     The comparison can be case-sensitive.  It is NOT case-sensitive by default.
+                   </detailed_desc>
+                </description>
+                
+            <engines>
+            <engine vendor="Rational" tool="Robot" name="Robot" since="20040405" >
+			       <libraryInfo name="ListBoxFunctions" 
+		                            doc="ListBoxFunctions.htm" 
+		                            sourcecode="ListBoxFunctions.sbl" 
+		                            class="LISTBOX" />
+           	</engine>
+           	<engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080326" >
+	       		<libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+                <engine name="WinRunner" 
+						       since="20020820" 
+						       tool="WinRunner" 
+						       vendor="Mercury Interactive">
+					       <libraryInfo class="LISTBOX" 
+								name="ListBoxFunctions" 
+								sourcecode="ListBoxFunctions">
+					       </libraryInfo>
+           	</engine>
+	   	<engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+			<libraryInfo name="CFListBox" 
+				doc="org/safs/selenium/CFListBox.html" 
+				sourcecode="org.safs.selenium.CFListBox.java" 
+				class="LISTBOX" />
+           	</engine>
+            </engines>
+     
+            <parameters>
+             <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+                <description>
+                   <short_desc> 
+                      String to look for in the list.
+                   </short_desc>
+                   <detailed_desc> 
+                      String to look for in the list.
+                   </detailed_desc>
+                </description>
+             </parameter>
+             <parameter name="CASESENSITIVE" displayText="CaseSensitive" optional="YES">
+     	           <description>
+     	              <short_desc> 
+     	                 Optional "True" for case-sensitive search
+     	              </short_desc>
+     	              <detailed_desc> 
+     	                 Optional "True" for case-sensitive search.  Robot also supports the literal 
+     	                 string "CASE-SENSITIVE" instead of "TRUE".
+     	              </detailed_desc>
+     	           </description>
+             </parameter>
+            </parameters>
+            <examples>
+             <example>
+                <usage>T, WINDOW, ListBox, VerifyListDoesNotContain, "ATextString", "True"</usage>
+                <description>
+                   <short_desc> 
+                      Verifies that the listbox does NOT contains somewhere an item equal to "ATextString"
+                      case-sensitive search.
+                   </short_desc>
+                </description>
+             </example>
+             <example>
+                <usage>T, WINDOW, ListBox, VerifyListDoesNotContain, "ATextString", "Case-Sensitive"</usage>
+                <description>
+                   <short_desc> 
+                      Verifies that the listbox does NOT contains somewhere an item equal to "ATextString"
+                      case-sensitive search.  The "Case-Sensitive" literal text instead of "True" 
+                      may only be supported by Robot initially.
+                   </short_desc>
+                </description>
+             </example>
+             <example>
+                <usage>T, WINDOW, ListBox, VerifyListDoesNotContain, "ATextString10", "False"</usage>
+                <description>
+                   <short_desc> 
+                      Verifies that the listbox does NOT contains somewhere an item equal to "ATextString10"
+                      case-insensitive search.  "False" is not really necessary as comparisons here 
+                      are NOT case-sensitive by default.
+                   </short_desc>
+                </description>
+             </example>
+             <example>
+     	           <usage>T, WINDOW, ListBox, VerifyListDoesNotContain, "ATextString10"</usage>
+     	           <description>
+     	              <short_desc> 
+     	                 Verifies that the listbox does NOT contains somewhere an item equal to "ATextString10"
+     	                 case-insensitive search.
+     	              </short_desc>
+     	           </description>
+             </example>
+     </examples></keyword>
+
+	<keyword name="VERIFYLISTCONTAINSPARTIALMATCH" 
+           displayText="VerifyListContainsPartialMatch" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Verifies a particular list-item substring exists in the list (somewhere)
+              </short_desc>
+              <detailed_desc> 
+                Verifies a particular list-item substring exists in the list (somewhere).  The comparison 
+                can be case-sensitive.  By default, it is not.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20041028" >
+	   	       <libraryInfo name="ListBoxFunctions" 
+	                               doc="ListBoxFunctions.htm" 
+	                               sourcecode="ListBoxFunctions.sbl" 
+	                               class="LISTBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080326" >
+	       		<libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+	   <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	    	<libraryInfo name="CFListBox" 
+			doc="org/safs/selenium/CFListBox.html" 
+			sourcecode="org.safs.selenium.CFListBox.java" 
+			class="LISTBOX" />
+            </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+           <description>
+              <short_desc> 
+                 SubString to look for in the list.
+              </short_desc>
+              <detailed_desc> 
+                 SubString to look for in the list.  
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="CASESENSITIVE" displayText="CaseSensitive" optional="YES">
+	           <description>
+	              <short_desc> 
+	                 Optional "True" for case-sensitive search
+	              </short_desc>
+	              <detailed_desc> 
+	                 Optional "True" for case-sensitive search.<br/>
+	                 Robot (others?) also supports "CASE-SENSITIVE" in place of "TRUE" for this parameter.
+	              </detailed_desc>
+	           </description>
+        </parameter>
+       </parameters>
+       <examples>
+        <example>
+           <usage>T, WINDOW, ListBox, VerifyListContainsPartialMatch, "Text", "True"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that the listbox contains somewhere an item containing the substring "Text"
+                 using a case-sensitive comparison.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, ListBox, VerifyListContainsPartialMatch, "Text", "Case-Sensitive"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that the listbox contains somewhere an item containing the substring "Text" 
+                 using a case-sensitive comparison.  The use of "CASE-SENSITIVE" literal text instead of 
+                 "TRUE" initially is implemented in Robot.  Other engines will support this as 
+                 developers can add it.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, ListBox, VerifyListContainsPartialMatch, "Text", "False"</usage>
+           <description>
+              <short_desc> 
+                 Verifies that the listbox contains somewhere an item containing the substring "Text" 
+                 case-insensitive search.  The "False" is not really necessary since the search 
+                 is not case-sensitive by default.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+	           <usage>T, WINDOW, ListBox, VerifyListContainsPartialMatch, "Text"</usage>
+	           <description>
+	              <short_desc> 
+	                 Verifies that the listbox contains somewhere an item containing the substring 
+	                 "Text" using a comparison that is not case-sensitive.
+	              </short_desc>
+	           </description>
+        </example>
+     </examples></keyword>
+     <keyword name="VERIFYLISTDOESNOTCONTAINPARTIALMATCH" 
+                displayText="VerifyListDoesNotContainPartialMatch" 
+                deprecated="NO" 
+                expectFailSupport="NO" 
+                expectWarnSupport="NO">
+                
+            <description>
+                   <short_desc> 
+                     Verifies a particular list-item substring does NOT exists in the list (somewhere)
+                   </short_desc>
+                   <detailed_desc> 
+                     Verifies a particular list-item substring does NOT exists in the list (somewhere).  
+                     The comparison can be case-sensitive.  It is NOT case-sensitive by default.
+                   </detailed_desc>
+                </description>
+                
+            <engines>
+            <engine vendor="Rational" tool="Robot" name="Robot" since="20041028" >
+			       <libraryInfo name="ListBoxFunctions" 
+		                            doc="ListBoxFunctions.htm" 
+		                            sourcecode="ListBoxFunctions.sbl" 
+		                            class="LISTBOX" />
+           	</engine>
+           	<engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20080326" >
+	       		<libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+           	<engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+			<libraryInfo name="CFListBox" 
+				doc="org/safs/selenium/CFListBox.html" 
+				sourcecode="org.safs.selenium.CFListBox.java" 
+				class="LISTBOX" />
+           	</engine>
+            </engines>
+     
+            <parameters>
+             <parameter name="TEXTVALUE" displayText="TextValue" optional="NO">
+                <description>
+                   <short_desc> 
+                      SubString to look for in the list.
+                   </short_desc>
+                   <detailed_desc> 
+                      SubString to look for in the list.
+                   </detailed_desc>
+                </description>
+             </parameter>
+             <parameter name="CASESENSITIVE" displayText="CaseSensitive" optional="YES">
+     	           <description>
+     	              <short_desc> 
+     	                 Optional "True" for case-sensitive search
+     	              </short_desc>
+     	              <detailed_desc> 
+     	                 Optional "True" for case-sensitive search.  Robot also supports the literal 
+     	                 string "CASE-SENSITIVE" instead of "TRUE".
+     	              </detailed_desc>
+     	           </description>
+             </parameter>
+            </parameters>
+            <examples>
+             <example>
+                <usage>T, WINDOW, ListBox, VerifyListDoesNotContainPartialMatch, "Text", "True"</usage>
+                <description>
+                   <short_desc> 
+                      Verifies that the listbox does NOT contain an item containg the substring "Text" 
+                      using a case-sensitive search.
+                   </short_desc>
+                </description>
+             </example>
+             <example>
+                <usage>T, WINDOW, ListBox, VerifyListDoesNotContainPartialMatch, "String", "Case-Sensitive"</usage>
+                <description>
+                   <short_desc> 
+                      Verifies that the listbox does NOT contain an item containing the substring "String" 
+                      using a case-sensitive search.  The "Case-Sensitive" literal text instead of "True" 
+                      may only be supported by Robot initially.
+                   </short_desc>
+                </description>
+             </example>
+             <example>
+                <usage>T, WINDOW, ListBox, VerifyListDoesNotContainPartialMatch, "String", "False"</usage>
+                <description>
+                   <short_desc> 
+                      Verifies that the listbox does NOT contain an item containing the substring "String" 
+                      using a case-insensitive search.  "False" is not really necessary as comparisons here 
+                      are NOT case-sensitive by default.
+                   </short_desc>
+                </description>
+             </example>
+             <example>
+     	           <usage>T, WINDOW, ListBox, VerifyListDoesNotContainPartialMatch, "Text"</usage>
+     	           <description>
+     	              <short_desc> 
+     	                 Verifies that the listbox does NOT containan item containing the substring 
+     	                 "Text" using a case-insensitive search.
+     	              </short_desc>
+     	           </description>
+             </example>
+     </examples></keyword>
+     
+     <keyword name="CLICKCOLUMNINDEX" 
+           displayText="ClickColumnIndex" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Click a column header based on it's index of list, starting from 1
+              </short_desc>
+              <detailed_desc> 
+                Click a column header based on it's index of list, starting from 1
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20101018" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="INDEX" displayText="Index" optional="NO">
+           <description>
+              <short_desc> 
+                 Index of the column header to click, starting from 1
+              </short_desc>
+              <detailed_desc> 
+                 Index of the column header to click, starting from 1
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+
+        <example>
+           <usage> T, WINDOW, ListBox, ClickColumnIndex ,  1   </usage>
+           <description>
+              <short_desc> 
+                 Click the header of the first column in the list.
+              </short_desc>
+              <detailed_desc> 
+                 Click the header of the first column in the list.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+     <keyword name="CLICKCOLUMNLABEL" 
+           displayText="ClickColumnLabel" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Click a column header based on it's label
+              </short_desc>
+              <detailed_desc> 
+                Click a column header based on it's label
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20101018" >
+	       <libraryInfo name="CFList" 
+                            doc="org/safs/rational/CFList.html" 
+                            sourcecode="org.safs.rational.CFList.java" 
+                            class="LISTBOX" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="LABEL" displayText="Label" optional="NO">
+           <description>
+              <short_desc> 
+                 Label of the column header to click
+              </short_desc>
+              <detailed_desc> 
+                 Label of the column header to click
+              </detailed_desc>
+           </description>
+        </parameter>
+
+     </parameters><examples>
+
+        <example>
+           <usage> T, WINDOW, ListBox, ClickColumnLabel ,  "Product"   </usage>
+           <description>
+              <short_desc> 
+                 Click the column header whose label is "Product".
+              </short_desc>
+              <detailed_desc> 
+                 Click the column header whose label is "Product".
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+</keywords>
+</keyword_library>

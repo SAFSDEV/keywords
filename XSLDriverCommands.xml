@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<drivercommands>
+    <file href="DDDriverCommands.xml" type="core" />
+    <file href="DDDriverCounterCommands.xml" type="counter" />
+    <file href="DDDriverDatabaseCommands.xml" type="database" />
+    <file href="DDDriverDebugCommands.xml" type="debug" />
+    <file href="DDDriverFileCommands.xml" type="file" />
+    <file href="DDDriverFlowCommands.xml" type="flow" />
+    <file href="DDDriverLogCommands.xml" type="log" />
+    <file href="DDDriverStringCommands.xml" type="string" />
+    <file href="DDDriverTimerCommands.xml" type="string" />
+    <file href="DDDriverDeprecatedCommands.xml" type="deprecated" />
+</drivercommands>

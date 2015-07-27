@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="FlexColorFunctions" 
+                 doc="FlexColorFunctions.htm" 
+                 sourcecode="org.safs.rational.flex.CFFlexColor.java" 
+                 chainTo="GenericObjectFunctions"
+                 class="CFFlexColor">
+
+        <description>
+           <short_desc> 
+              Actions for working with Flex ColorPicker objects
+           </short_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="RobotJ" version="8.0.0.0" />
+    <keywords>
+    
+
+ <keyword name="SETCOLOR" 
+           displayText="SetColor" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Action to set a color according to its color value. Currently, this component function is for Flex ColorPicker only.
+              </short_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20090424" >
+	       <libraryInfo name="CFFlexColor" 
+                            doc="CFFlexColor.htm" 
+                            sourcecode="org.safs.rational.flex.CFFlexColor.java" 
+                            class="CFFlexColor" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="ColorValue" displayText="ColorValue" optional="NO">
+           <description>
+              <short_desc> 
+                 ColorValue to set.
+              </short_desc>
+              <detailed_desc>
+                 ColorValue is a hexdecimal string started with '#'. 
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, FlexWINDOW, FlexColorPicker, SetColor, "#FF0000"</usage>
+           <description>
+              <short_desc> 
+                This action sets the color of FlexColorPicker to RED.
+              </short_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, FlexWINDOW, FlexColorPicker, SetColor, "#0000FF"</usage>
+           <description>
+              <short_desc> 
+                This action sets the color of FlexColorPicker to BLUE.
+              </short_desc>
+           </description>
+        </example>
+     </examples></keyword>
+ 
+</keywords>
+</keyword_library>

@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="DRIVER" />
+    
+    <libraryInfo name="DDDriverLogCommands" 
+                 doc="DDDriverLogCommands.htm" 
+                 sourcecode="DDDriverLogCommands.sbl"
+                 class="LOG" >
+                 
+        <description>
+          <short_desc>
+              Driver Commands for Logging
+          </short_desc>
+          <detailed_desc><p>
+          This keyword library provides Driver Commands that 
+          can be used by all three DDE Drivers--CycleDriver, 
+          SuiteDriver, and StepDriver.  That means they can 
+          be used in any keyword driven test tables regardless 
+          of the test tables level--Cycle, Suite, or Step.</p>
+          <p>
+          Each different driver command has different parameters 
+          as described in its documentation.  For reference, the 
+          first fields of ALL Driver Command test records are defined 
+          below:</p>
+          <dl>
+             <dd>Field #1</dd>
+             <dt>The "C" = DRIVER COMMAND record type specifier.</dt>
+
+             <dd>Field #2</dd>
+             <dt>The Driver Command keyword.</dt>
+          </dl>
+          <p>
+          Example:</p>
+
+          <code>c , SetApplicationMap , "AppMap.map"</code>
+
+          <p>
+          Driver Command parameters must be placed in the test record 
+          in the field position specified in the documentation.  
+          Some parameters are optional.  However, the field associated 
+          with that parameter must be honored.  If you wish to skip an 
+          optional parameter you must still provide an empty field for 
+          that parameter.</p>
+          <p>
+          Example:</p>
+
+          <code>c, LaunchApplication, NOTEPAD, NOTEPAD.EXE, , , "AppMap.map"</code>
+
+          <p>
+          The above example shows two optional fields after NOTEPAD.EXE 
+          which are given no value(skipped).</p>
+          <p>
+          Note that the full availablility of all Driver Commands is now 
+          spread across several files.  Together, all of these files provide 
+          all the Driver Commands available to the core framework.</p>
+          <dl>
+             <dd><a href="DDDriverCommands.htm" target="_blank">DDDriverCommands</a></dd>
+             <dt>Miscellaneous and often used Commands.</dt>
+
+             <dd><a href="DDDriverLogCommands.htm" target="_blank">DDDriverLogCommands</a></dd>
+             <dt>Commands focused on logging test execution.</dt>
+
+             <dd><a href="DDDriverFlowCommands.htm" target="_blank">DDDriverFlowCommands</a></dd>
+             <dt>Commands focused on Error Recovery and Flow Control.</dt>
+
+             <dd><a href="DDDriverCounterCommands.htm" target="_blank">DDDriverCounterCommands</a></dd>
+             <dt>Commands focused on status tracking.</dt>
+
+             <dd><a href="DDDriverDeprecatedCommands.htm" target="_blank">DDDriverDeprecatedCommands</a></dd>
+             <dt>Commands that are still provided for backward compatibility, but are no longer supported.</dt>
+
+             <dd><a href="DDDriverDebugCommands.htm" target="_blank">DDDriverDebugCommands</a></dd>
+             <dt>Commands focused on debugging test execution.</dt>
+
+          </dl>
+          </detailed_desc>
+        </description>
+    </libraryInfo>
+    <runtime platform="Windows" engine="Robot" version="2000" />
+    <keywords>
+    
+    <keyword name="SUSPENDLOGGING" 
+             displayText="SuspendLogging" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description> <short_desc> 
+                 Suspend all logging.
+              </short_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverLogCommands" 
+                            doc="DDDriverLogCommands.htm" 
+                            sourcecode="DDDriverLogCommands.sbl" 
+                            class="LOG" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20080416" >
+	       <libraryInfo name="TIDDriverLogCommands" 
+                            doc="org/safs/tools/engines/TIDDriverLogCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverLogCommands.java" 
+                            class="LOG" />
+           </engine>
+	       <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140618">
+	       		<libraryInfo name="TIDDriverLogCommands" 
+                            doc="org/safs/tools/engines/TIDDriverLogCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverLogCommands.java" 
+                            class="LOG" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="LOGNAME" displayText="logName" optional="YES" default="">
+           <description> <short_desc> 
+                 The name of a Log Facility if other than the "current" one.
+              </short_desc>
+              <detailed_desc>
+                 Normally, this parameter would NOT be specified, and thus ALL logging would be suspended. 
+                 However, there may be the case that a test is using multiple different logs and the tester 
+                 is trying to suspend a specific one.
+              </detailed_desc> </description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, SuspendLogging</usage>
+           <description> <short_desc> 
+                 Suspend all logging.
+              </short_desc></description>
+        </example>
+        <example>
+           <usage>C, SuspendLogging, MainLog</usage>
+           <description> <short_desc> 
+                 Suspend only the log opened as "MainLog".
+              </short_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="RESUMELOGGING" 
+           displayText="ResumeLogging" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description> <short_desc> 
+                 Resume suspended logging.
+              </short_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverLogCommands" 
+                            doc="DDDriverLogCommands.htm" 
+                            sourcecode="DDDriverLogCommands.sbl" 
+                            class="LOG" />
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20080416" >
+	       <libraryInfo name="TIDDriverLogCommands" 
+                            doc="org/safs/tools/engines/TIDDriverLogCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverLogCommands.java" 
+                            class="LOG" />
+           </engine>
+	       <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140618">
+	       		<libraryInfo name="TIDDriverLogCommands" 
+                            doc="org/safs/tools/engines/TIDDriverLogCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverLogCommands.java" 
+                            class="LOG" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="LOGNAME" displayText="logName" optional="YES" default="">
+           <description> <short_desc> 
+                 The name of a Log Facility, other than the "current" one, to resume.
+              </short_desc>
+              <detailed_desc>
+                 Normally, this parameter would NOT be specified, and thus ALL logging would be resumed. 
+                 However, there may be the case that a test is using multiple different logs and the tester 
+                 is trying to resume a specific one.
+              </detailed_desc> </description></parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, ResumeLogging</usage>
+           <description> <short_desc> 
+                 Resumes all suspended logging.
+              </short_desc></description>
+        </example>
+        <example>
+           <usage>C, ResumeLogging, MainLog</usage>
+           <description> <short_desc> 
+                 Resume only the log opened as "MainLog".
+              </short_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="LOGMESSAGE" 
+           displayText="LogMessage" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc>
+        Log a generic message</short_desc>
+        <detailed_desc>
+          Log a generic message.  You can optionally add an additional 
+          details description that follows the message.
+        </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverLogCommands" 
+                            doc="DDDriverLogCommands.htm" 
+                            sourcecode="DDDriverLogCommands.sbl" 
+                            class="LOG" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="LOG" 
+	   					name="DDDriverCommands" 
+	   					sourcecode="DDDriverCommands">
+	   		       </libraryInfo>
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040831" >
+	       <libraryInfo name="TIDDriverLogCommands" 
+                            doc="org/safs/tools/engines/TIDDriverLogCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverLogCommands.java" 
+                            class="LOG" />
+           </engine>
+	       <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140618">
+	       		<libraryInfo name="TIDDriverLogCommands" 
+                            doc="org/safs/tools/engines/TIDDriverLogCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverLogCommands.java" 
+                            class="LOG" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="MESSAGE" displayText="Message" optional="NO">
+           <description><short_desc>
+              The message to log.</short_desc>
+           </description>
+        </parameter>
+        <parameter name="DETAILS" displayText="Details" optional="YES">
+           <description><short_desc>
+              Additional detail to add to the message.</short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C  LogMessage  "Starting Test 1"</usage>
+           <description><short_desc> 
+                 A message logged with no additional detail
+              </short_desc></description>
+        </example>
+        <example>
+           <usage>C  LogMessage  "Starting Test 1"  "Start Login Tests"</usage>
+           <description><short_desc> 
+                 A message logged with detail added
+              </short_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="LOGTESTFAILURE" 
+           displayText="LogTestFailure" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc>
+        Log a FAILURE message. Also increments appropriate counters.</short_desc>
+        <detailed_desc>
+          Log a FAILURE message.  Also increments appropriate counters.<br />
+          You can optionally add an additional details description that follows the message.
+        </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverLogCommands" 
+                            doc="DDDriverLogCommands.htm" 
+                            sourcecode="DDDriverLogCommands.sbl" 
+                            class="LOG" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="LOG" 
+	   					name="DDDriverCommands" 
+	   					sourcecode="DDDriverCommands">
+	   		       </libraryInfo>
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040831" >
+	       		<libraryInfo name="TIDDriverLogCommands" 
+                            doc="org/safs/tools/engines/TIDDriverLogCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverLogCommands.java" 
+                            class="LOG" />
+           </engine>
+	       <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140618">
+	       		<libraryInfo name="TIDDriverLogCommands" 
+                            doc="org/safs/tools/engines/TIDDriverLogCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverLogCommands.java" 
+                            class="LOG" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="MESSAGE" displayText="Message" optional="NO">
+           <description><short_desc>
+              The message to log.</short_desc>
+           </description>
+        </parameter>
+        <parameter name="DETAILS" displayText="Details" optional="YES">
+           <description><short_desc>
+              Additional detail to add to the message.</short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C  LogTestFailure  "Failed Test 1"</usage>
+           <description><short_desc> 
+                 A FAILED message logged with no additional detail
+              </short_desc></description>
+        </example>
+        <example>
+           <usage>C  LogTestFailure  "Failed Test 1"  "Failed Login Tests"</usage>
+           <description><short_desc> 
+                 A FAILED message logged with detail added
+              </short_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="LOGFAILUREOK" 
+           displayText="LogFailureOK" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc>
+        Log an EXPECTED failure message.</short_desc>
+        <detailed_desc>
+          Log that a failure was expected and, as such, is OK.<br />
+          You can optionally add an additional details description that follows the message.
+        </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverLogCommands" 
+                            doc="DDDriverLogCommands.htm" 
+                            sourcecode="DDDriverLogCommands.sbl" 
+                            class="LOG" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   			       since="20020903" 
+	   	   			       tool="WinRunner" 
+	   	   			       vendor="Mercury Interactive">
+	   	   		       <libraryInfo class="LOG" 
+	   	   					name="DDDriverCommands" 
+	   	   					sourcecode="DDDriverCommands">
+	   	   		       </libraryInfo>
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040831" >
+	       <libraryInfo name="TIDDriverLogCommands" 
+                            doc="org/safs/tools/engines/TIDDriverLogCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverLogCommands.java" 
+                            class="LOG" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="MESSAGE" displayText="Message" optional="NO">
+           <description><short_desc>
+              The message to log.</short_desc>
+           </description>
+        </parameter>
+        <parameter name="DETAILS" displayText="Details" optional="YES">
+           <description><short_desc>
+              Additional detail to add to the message.</short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C  LogFailureOK  "Values should not match."</usage>
+           <description><short_desc> 
+                 A FAILED OK message logged with no additional detail.
+              </short_desc></description>
+        </example>
+        <example>
+           <usage>C  LogFailureOK  "Throw exception."  "Data is out of bounds."</usage>
+           <description><short_desc> 
+                 A FAILED OK message logged with addional details.
+              </short_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="LOGTESTWARNING" 
+           displayText="LogTestWarning" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc>
+        Log a WARNING message. Also increments appropriate counters.</short_desc>
+        <detailed_desc>
+          Log a WARNING message.  Also increments appropriate counters.<br />
+          You can optionally add an additional details description that follows the message.
+        </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverLogCommands" 
+                            doc="DDDriverLogCommands.htm" 
+                            sourcecode="DDDriverLogCommands.sbl" 
+                            class="LOG" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="LOG" 
+	   					name="DDDriverCommands" 
+	   					sourcecode="DDDriverCommands">
+	   		       </libraryInfo>
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040831" >
+	       <libraryInfo name="TIDDriverLogCommands" 
+                            doc="org/safs/tools/engines/TIDDriverLogCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverLogCommands.java" 
+                            class="LOG" />
+           </engine>
+	       <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140618">
+	       		<libraryInfo name="TIDDriverLogCommands" 
+                            doc="org/safs/tools/engines/TIDDriverLogCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverLogCommands.java" 
+                            class="LOG" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="MESSAGE" displayText="Message" optional="NO">
+           <description><short_desc>
+              The message to log.</short_desc>
+           </description>
+        </parameter>
+        <parameter name="DETAILS" displayText="Details" optional="YES">
+           <description><short_desc>
+              Additional detail to add to the message.</short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C  LogTestWarning  "Test 1 may have problems"</usage>
+           <description><short_desc> 
+                 A WARNING message logged with no additional detail
+              </short_desc></description>
+        </example>
+        <example>
+           <usage>C  LogTestWarning  "Test 1 may have problems"  "Test 1 did not complete"</usage>
+           <description><short_desc> 
+                 A WARNING message logged with detail added
+              </short_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="LOGWARNINGOK" 
+           displayText="LogWarningOK" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc>
+        Log an EXPECTED WARNING message.</short_desc>
+        <detailed_desc>
+          Log that a WARNING was expected and, as such, is OK.<br />
+          You can optionally add an additional details description that follows the message.
+        </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverLogCommands" 
+                            doc="DDDriverLogCommands.htm" 
+                            sourcecode="DDDriverLogCommands.sbl" 
+                            class="LOG" />
+           </engine>
+           <engine name="WinRunner" 
+	   	   			       since="20020903" 
+	   	   			       tool="WinRunner" 
+	   	   			       vendor="Mercury Interactive">
+	   	   		       <libraryInfo class="LOG" 
+	   	   					name="DDDriverCommands" 
+	   	   					sourcecode="DDDriverCommands">
+	   	   		       </libraryInfo>
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040831" >
+	       <libraryInfo name="TIDDriverLogCommands" 
+                            doc="org/safs/tools/engines/TIDDriverLogCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverLogCommands.java" 
+                            class="LOG" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="MESSAGE" displayText="Message" optional="NO">
+           <description><short_desc>
+              The message to log.</short_desc>
+           </description>
+        </parameter>
+        <parameter name="DETAILS" displayText="Details" optional="YES">
+           <description><short_desc>
+              Additional detail to add to the message.</short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C  LogWarningOK  "No value specified."</usage>
+           <description><short_desc> 
+                 An expected WARNING message logged with no additional detail.
+              </short_desc></description>
+        </example>
+        <example>
+           <usage>C  LogWarningOK  "No value specified"  "Using default value."</usage>
+           <description><short_desc> 
+                 An expected WARNING message logged with additional detail.
+              </short_desc></description>
+        </example>
+     </examples></keyword>
+     
+  <keyword name="LOGTESTSUCCESS" 
+           displayText="LogTestSuccess" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description><short_desc>
+        Log a SUCCESS/OK message. Also increments appropriate counters.</short_desc>
+        <detailed_desc>
+          Log a SUCCESS/OK message.  Also increments appropriate counters.<br />
+          You can optionally add an additional details description that follows the message.
+        </detailed_desc></description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="DDDriverLogCommands" 
+                            doc="DDDriverLogCommands.htm" 
+                            sourcecode="DDDriverLogCommands.sbl" 
+                            class="LOG" />
+           </engine>
+           <engine name="WinRunner" 
+	   			       since="20020903" 
+	   			       tool="WinRunner" 
+	   			       vendor="Mercury Interactive">
+	   		       <libraryInfo class="LOG" 
+	   					name="DDDriverCommands" 
+	   					sourcecode="DDDriverCommands">
+	   		       </libraryInfo>
+           </engine>
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20040831" >
+	       <libraryInfo name="TIDDriverLogCommands" 
+                            doc="org/safs/tools/engines/TIDDriverLogCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverLogCommands.java" 
+                            class="LOG" />
+           </engine>
+	       <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140618">
+	       		<libraryInfo name="TIDDriverLogCommands" 
+                            doc="org/safs/tools/engines/TIDDriverLogCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverLogCommands.java" 
+                            class="LOG" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="MESSAGE" displayText="Message" optional="NO">
+           <description><short_desc>
+              The message to log.</short_desc>
+           </description>
+        </parameter>
+        <parameter name="DETAILS" displayText="Details" optional="YES">
+           <description><short_desc>
+              Additional detail to add to the message.</short_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C  LogTestSuccess  "Test 1 Passed"</usage>
+           <description><short_desc> 
+                 A test success message logged with no additional detail
+              </short_desc></description>
+        </example>
+        <example>
+           <usage>C  LogTestSuccess  "Test 1 Passed"  "Test 1 is good"</usage>
+           <description><short_desc> 
+                 A test success message logged with detail added
+              </short_desc></description>
+        </example>
+     </examples></keyword>
+    </keywords>
+</keyword_library>

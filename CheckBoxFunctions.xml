@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    <libraryInfo name="CheckBoxFunctions" 
+                 doc="CheckBoxFunctions.htm" 
+                 sourcecode="CheckBoxFunctions.sbl" 
+                 chainTo="GenericObjectFunctions"
+                 class="CHECKBOX">
+
+        <description>
+           <short_desc> 
+              Actions for Checkbox objects
+           </short_desc>
+        </description>
+    </libraryInfo>
+    
+    <runtime platform="Windows" engine="Robot" version="2001" />
+    
+    <keywords>
+    <keyword name="CLICK" 
+             displayText="Click" 
+             deprecated="YES" 
+             deprecatedFor="Generic Object Click" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description>
+              <short_desc> 
+                 Use Generic Object Click
+              </short_desc>
+              <detailed_desc> 
+                 Tries to perform a standard Click on the Checkbox which generally
+                 toggles the current selection status.
+              </detailed_desc>
+           </description>
+           <engines>
+           <engine name="WinRunner" 
+	                       since="20021025" 
+	                       tool="WinRunner" 
+	                       vendor="Mercury Interactive">
+	               <libraryInfo class="CHECKBOX" 
+	                                name="CheckBoxFunctions" 
+	                                sourcecode="CheckboxFunctions">
+	               </libraryInfo>
+           </engine>
+           </engines>
+           <parameters />
+           <examples>
+
+        <example>
+           <usage>T, WINDOW, Checkbox, CLICK</usage>
+           <description> <short_desc> 
+                 Toggles the state of the checkbox
+              </short_desc> </description> </example>
+
+     </examples></keyword>
+     
+  <keyword name="CHECK" 
+           displayText="Check" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Tries to perform a Check on the Checkbox.
+              </short_desc>
+              <detailed_desc> 
+                Tries to perform a Check on the Checkbox.  If the Checkbox does not 
+                have a checkmark, it will set the checkmark.  If the Checkbox already 
+                has a checkmark, then it should leave it alone.
+                Currently, this handles most generic checkboxes and HTMLCheckboxes.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="CheckBoxFunctions" 
+                            doc="CheckBoxFunctions.htm" 
+                            sourcecode="CheckBoxFunctions.sbl" 
+                            class="CHECKBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFCheckBox" 
+                            doc="org/safs/rational/CFCheckBox.html" 
+                            sourcecode="org.safs.rational.CFCheckBox.java" 
+                            class="CHECKBOX" />
+           </engine>
+           <engine name="WinRunner" 
+	   	                       since="20021025" 
+	   	                       tool="WinRunner" 
+	   	                       vendor="Mercury Interactive">
+	   	               <libraryInfo class="CHECKBOX" 
+	   	                                name="CheckBoxFunctions" 
+	   	                                sourcecode="CheckboxFunctions">
+	   	               </libraryInfo>
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	       <libraryInfo name="CFCheckBox" 
+                            doc="org/safs/selenium/CFCheckBox.html" 
+                            sourcecode="org.safs.selenium.CFCheckBox.java" 
+                            class="CHECKBOX" />
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140213" >
+	           <libraryInfo name="CFCheckBox" 
+                            doc="org/safs/selenium/webdriver/CFCheckBox.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFCheckBox.java" 
+                            class="CHECKBOX"/>
+           </engine>                             
+           <engine name="Test Complete" 
+		       since="20081027" 
+		       tool="TestComplete" 
+		       vendor="AutomatedQA">
+		       <libraryInfo class="CHECKBOX" 
+					name="CheckBoxFunctions" 
+					sourcecode="CheckBoxFunctions.SVB">
+		       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20120517">
+                       <libraryInfo name="CheckBoxFunctions" 
+                                    class="CheckBox" 
+                                    subClass="NET" 
+                                    sourcecode="CheckBoxFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20120517">
+                       <libraryInfo name="CheckBoxFunctions" 
+                                    class="CheckBox" 
+                                    subClass="FLEX"
+                                    sourcecode="CheckBoxFunctions.SVB" />                  
+                   </domain>
+               </domains> 
+           </engine>
+            <engine vendor="Google" tool="Android" name="Android" since="20120830" >
+				<libraryInfo name="CFCheckBoxFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFCheckBoxFunctions.html" 
+					 sourcecode="org.safs.android.CFCheckBoxFunctions.java" 
+					 class="GENERIC" />
+            	<domains>
+            		<domain name="DEV" since="20120830">
+	        			<libraryInfo name="CheckBoxProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/CheckBoxProcessor.html" 
+                             sourcecode="org.safs.android.engine.CheckBoxProcessor.java" 
+                             class="GENERIC" />
+                    </domain>
+                </domains>
+            </engine>                     
+
+       </engines>
+
+       <parameters />
+       <examples>
+
+        <example>
+           <usage>T, WINDOW, Checkbox, CHECK</usage>
+           <description>  <short_desc> 
+                 Used to place the Checkbox in the CHECKed state regardless of current state. 
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+  <keyword name="UNCHECK" 
+           displayText="UnCheck" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Tries to perform a UnCheck on the Checkbox.
+              </short_desc>
+              <detailed_desc> 
+                Tries to UnCheck the Checkbox.  If the Checkbox does not 
+                have a checkmark, it will leave it alone.  If the Checkbox already 
+                has a checkmark, then it should uncheck (deselect) it.
+                Currently, this handles most generic Checkboxes and HTMLCheckboxes.
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20030827" >
+	       <libraryInfo name="CheckBoxFunctions" 
+                            doc="CheckBoxFunctions.htm" 
+                            sourcecode="CheckBoxFunctions.sbl" 
+                            class="CHECKBOX" />
+           </engine>
+           <engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827" >
+	       <libraryInfo name="CFCheckBox" 
+                            doc="org/safs/rational/CFCheckBox.html" 
+                            sourcecode="org.safs.rational.CFCheckBox.java" 
+                            class="CHECKBOX" />
+           </engine>
+           <engine name="WinRunner" 
+	   	                       since="20021025" 
+	   	                       tool="WinRunner" 
+	   	                       vendor="Mercury Interactive">
+	   	               <libraryInfo class="CHECKBOX" 
+	   	                                name="CheckBoxFunctions" 
+	   	                                sourcecode="CheckboxFunctions">
+	   	               </libraryInfo>
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20070130" >
+	   	       <libraryInfo name="CFCheckBox" 
+	                               doc="org/safs/selenium/CFCheckBox.html" 
+	                               sourcecode="org.safs.selenium.CFCheckBox.java" 
+	                               class="CHECKBOX" />
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20140213" >
+	           <libraryInfo name="CFCheckBox" 
+                            doc="org/safs/selenium/webdriver/CFCheckBox.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFCheckBox.java" 
+                            class="CHECKBOX"/>
+           </engine>
+           <engine name="Test Complete" 
+	   		       since="20081027" 
+	   		       tool="TestComplete" 
+	   		       vendor="AutomatedQA">
+	   	       <libraryInfo class="CHECKBOX" 
+	   				name="CheckBoxFunctions" 
+	   				sourcecode="CheckBoxFunctions.SVB">
+	   	       </libraryInfo>
+		       <domains>
+                   <domain name="NET" since="20120517">
+                       <libraryInfo name="CheckBoxFunctions" 
+                                    class="CheckBox" 
+                                    subClass="NET" 
+                                    sourcecode="CheckBoxFunctions.SVB" />                  
+                   </domain>
+                   <domain name="FLEX" since="20120517">
+                       <libraryInfo name="CheckBoxFunctions" 
+                                    class="CheckBox" 
+                                    subClass="FLEX"
+                                    sourcecode="CheckBoxFunctions.SVB" />                  
+                   </domain>
+               </domains> 	   	       
+           </engine>
+            <engine vendor="Google" tool="Android" name="Android" since="20120830" >
+				<libraryInfo name="CFCheckBoxFunctions" 
+					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFCheckBoxFunctions.html" 
+					 sourcecode="org.safs.android.CFCheckBoxFunctions.java" 
+					 class="GENERIC" />
+            	<domains>
+            		<domain name="DEV" since="20120830">
+	        			<libraryInfo name="CheckBoxProcessor" 
+                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/CheckBoxProcessor.html" 
+                             sourcecode="org.safs.android.engine.CheckBoxProcessor.java" 
+                             class="GENERIC" />
+                    </domain>
+                </domains>
+            </engine>            
+       </engines>
+
+           <parameters /><examples>
+
+        <example>
+           <usage>T, WINDOW, Checkbox, UNCHECK</usage>
+           <description>
+              <short_desc> 
+                 Used to place the Checkbox in the UNCHECKed state regardless of current state. 
+              </short_desc>
+           </description>
+        </example>
+
+     </examples></keyword>
+     
+</keywords></keyword_library>
+

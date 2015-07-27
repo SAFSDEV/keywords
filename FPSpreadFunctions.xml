@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+    <libraryType type="COMPONENT" />
+    
+    <libraryInfo name="FPSpreadFunctions" 
+                 doc="FPSpreadFunctions.htm" 
+                 sourcecode="FPSpreadFunctions.sbl" 
+                 chainTo="GenericObjectFunctions"
+                 class="FPSPREAD">
+
+        <description>
+           <short_desc> 
+              Functions and Actions for FarPoint Spread objects.
+           </short_desc>
+           <detailed_desc>
+              This is not supported by Rational Robot out-of-the-box.  You need
+	      a proxy from one of IBM's 3rd party partners for this to work.
+
+	      This proxy requires at least version 2003.06.15 of Robot.
+           </detailed_desc>
+        </description>
+
+    </libraryInfo>
+    <runtime platform="Windows" engine="Robot" version="2002" />
+    <keywords>
+      <keyword name="CLICKCELL" 
+           displayText="ClickCell" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Attempts to perform a single click on a table cell.
+              </short_desc>
+              <detailed_desc> <p>
+                 The cell to click is provided in separate row and col 
+                 parameters.  Missing parameters indicate index=1. The 
+                 indexes are 1-based.  That is, the first row is row 1.
+                 The first col is col 1.</p> <p>
+		 The row headers, whether visible or not, are considered
+		 column 0.  The column headers, whether visible or not,
+		 are considered row 0.</p>
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20051212" >
+	       <libraryInfo name="FPSpreadFunctions" 
+                            doc="FPSpreadFunctions.htm" 
+                            sourcecode="FPSpreadFunctions.sbl" 
+                            class="FPSPREAD" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="ROW" displayText="row" optional="YES" default="">
+           <description>
+              <short_desc> 
+             The 1-based logical row to click.
+              </short_desc>
+              <detailed_desc> 
+             If no row is provided then row=1 is assumed.  Row=0 is used
+	     for column headers.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="COL" displayText="col" optional="YES" default="">
+           <description>
+              <short_desc> 
+             The 1-based logical col to click.
+              </short_desc>
+              <detailed_desc> 
+             If no col is provided then col=1 is assumed.  Col=0 is used
+	     for row headers.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, AWindow, AGrid, ClickCell</usage>
+           <description>
+              <short_desc> 
+                 Attempts to click the first data cell in the first
+                 data row.
+              </short_desc><detailed_desc>
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, AWindow, AGrid, ClickCell, ^row=2, ^col=1</usage>
+           <description>
+              <short_desc> 
+                 Attempts to click the first data cell in the second 
+                 data row.
+              </short_desc><detailed_desc>
+                 Note, the DDVariables shown are not necessary but are 
+                 shown for clarity.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, AWindow, AGrid, ClickCell, ^row=0, ^col=1</usage>
+           <description>
+              <short_desc> 
+                 Attempts to click the first column header/label.
+              </short_desc><detailed_desc>
+                 Note, the DDVariables shown are not necessary but are 
+                 shown for clarity.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+      <keyword name="DOUBLECLICKCELL" 
+           displayText="DoubleClickCell" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Attempts to perform a double click on a table cell.
+              </short_desc>
+              <detailed_desc><p>
+                 The cell to double click is provided in separate row and col 
+                 parameters.  Missing parameters indicate index=1. The 
+                 indexes are 1-based.  That is, the first row is row 1.
+                 The first col is col 1.</p><p>
+		 The row headers, whether visible or not, are considered
+		 column 0.  The column headers, whether visible or not,
+		 are considered row 0.</p>
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20051212" >
+	       <libraryInfo name="FPSpreadFunctions" 
+                            doc="FPSpreadFunctions.htm" 
+                            sourcecode="FPSpreadFunctions.sbl" 
+                            class="FPSPREAD" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="ROW" displayText="row" optional="YES" default="">
+           <description>
+              <short_desc> 
+             The 1-based logical row to double click.
+              </short_desc>
+              <detailed_desc> 
+             If no row is provided then row=1 is assumed.  Row=0 is used
+	     for column headers.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="COL" displayText="col" optional="YES" default="">
+           <description>
+              <short_desc> 
+             The 1-based logical col to double click.
+              </short_desc>
+              <detailed_desc> 
+             If no col is provided then col=1 is assumed.  Col=0 is used
+	     for row headers.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, AWindow, AGrid, DoubleClickCell</usage>
+           <description>
+              <short_desc> 
+                 Attempts to double click the first data cell in the first
+                 data row.
+              </short_desc><detailed_desc>
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, AWindow, AGrid, DoubleClickCell, ^row=2, ^col=1</usage>
+           <description>
+              <short_desc> 
+                 Attempts to double click the first data cell in the second 
+                 data row.
+              </short_desc><detailed_desc>
+                 Note, the DDVariables shown are not necessary but are 
+                 shown for clarity.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, AWindow, AGrid, DoubleClickCell, ^row=0, ^col=1</usage>
+           <description>
+              <short_desc> 
+                 Attempts to double click the first column header/label.
+              </short_desc><detailed_desc>
+                 Note, the DDVariables shown are not necessary but are 
+                 shown for clarity.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+      <keyword name="RIGHTCLICKCELL" 
+           displayText="RightClickCell" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Attempts to perform a single right click on a table cell.
+              </short_desc>
+              <detailed_desc> <p>
+                 The cell to click is provided in separate row and col 
+                 parameters.  Missing parameters indicate index=1. The 
+                 indexes are 1-based.  That is, the first row is row 1.
+                 The first col is col 1.</p> <p>
+		 The row headers, whether visible or not, are considered
+		 column 0.  The column headers, whether visible or not,
+		 are considered row 0.</p>
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20051212" >
+	       <libraryInfo name="FPSpreadFunctions" 
+                            doc="FPSpreadFunctions.htm" 
+                            sourcecode="FPSpreadFunctions.sbl" 
+                            class="FPSPREAD" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="ROW" displayText="row" optional="YES" default="">
+           <description>
+              <short_desc> 
+             The 1-based logical row to right click.
+              </short_desc>
+              <detailed_desc> 
+             If no row is provided then row=1 is assumed.  Row=0 is used
+	     for column headers.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="COL" displayText="col" optional="YES" default="">
+           <description>
+              <short_desc> 
+             The 1-based logical col to right click.
+              </short_desc>
+              <detailed_desc> 
+             If no col is provided then col=1 is assumed.  Col=0 is used
+	     for row headers.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, AWindow, AGrid, RightClickCell</usage>
+           <description>
+              <short_desc> 
+                 Attempts to right click the first data cell in the first
+                 data row.
+              </short_desc><detailed_desc>
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, AWindow, AGrid, RightClickCell, ^row=2, ^col=1</usage>
+           <description>
+              <short_desc> 
+                 Attempts to right click the first data cell in the second 
+                 data row.
+              </short_desc><detailed_desc>
+                 Note, the DDVariables shown are not necessary but are 
+                 shown for clarity.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, AWindow, AGrid, RightClickCell, ^row=0, ^col=1</usage>
+           <description>
+              <short_desc> 
+                 Attempts to right click the first column header/label.
+              </short_desc><detailed_desc>
+                 Note, the DDVariables shown are not necessary but are 
+                 shown for clarity.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+      <keyword name="SHIFTCLICKCELL" 
+           displayText="ShiftClickCell" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Attempts to perform a single SHIFT+Click on a table cell.
+              </short_desc>
+              <detailed_desc> <p>
+                 The cell to click is provided in separate row and col 
+                 parameters.  Missing parameters indicate index=1. The 
+                 indexes are 1-based.  That is, the first row is row 1.
+                 The first col is col 1.</p> <p>
+		 The row headers, whether visible or not, are considered
+		 column 0.  The column headers, whether visible or not,
+		 are considered row 0.</p>
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20051212" >
+	       <libraryInfo name="FPSpreadFunctions" 
+                            doc="FPSpreadFunctions.htm" 
+                            sourcecode="FPSpreadFunctions.sbl" 
+                            class="FPSPREAD" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="ROW" displayText="row" optional="YES" default="">
+           <description>
+              <short_desc> 
+             The 1-based logical row to SHIFT+Click.
+              </short_desc>
+              <detailed_desc> 
+             If no row is provided then row=1 is assumed.  Row=0 is used
+	     for column headers.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="COL" displayText="col" optional="YES" default="">
+           <description>
+              <short_desc> 
+             The 1-based logical col to SHIFT+Click.
+              </short_desc>
+              <detailed_desc> 
+             If no col is provided then col=1 is assumed.  Col=0 is used
+	     for row headers.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, AWindow, AGrid, ShiftClickCell</usage>
+           <description>
+              <short_desc> 
+                 Attempts to SHIFT+Click the first data cell in the first
+                 data row.
+              </short_desc><detailed_desc>
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, AWindow, AGrid, ShiftClickCell, ^row=2, ^col=1</usage>
+           <description>
+              <short_desc> 
+                 Attempts to SHIFT+Click the first data cell in the second 
+                 data row.
+              </short_desc><detailed_desc>
+                 Note, the DDVariables shown are not necessary but are 
+                 shown for clarity.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, AWindow, AGrid, ShiftClickCell, ^row=0, ^col=1</usage>
+           <description>
+              <short_desc> 
+                 Attempts to SHIFT+Click the first column header/label.
+              </short_desc><detailed_desc>
+                 Note, the DDVariables shown are not necessary but are 
+                 shown for clarity.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+      <keyword name="CTRLCLICKCELL" 
+           displayText="CtrlClickCell" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                 Attempts to perform a single Ctrl+Click on a table cell.
+              </short_desc>
+              <detailed_desc> <p>
+                 The cell to click is provided in separate row and col 
+                 parameters.  Missing parameters indicate index=1. The 
+                 indexes are 1-based.  That is, the first row is row 1.
+                 The first col is col 1.</p> <p>
+		 The row headers, whether visible or not, are considered
+		 column 0.  The column headers, whether visible or not,
+		 are considered row 0.</p>
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20051212" >
+	       <libraryInfo name="FPSpreadFunctions" 
+                            doc="FPSpreadFunctions.htm" 
+                            sourcecode="FPSpreadFunctions.sbl" 
+                            class="FPSPREAD" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="ROW" displayText="row" optional="YES" default="">
+           <description>
+              <short_desc> 
+             The 1-based logical row to Ctrl+Click.
+              </short_desc>
+              <detailed_desc> 
+             If no row is provided then row=1 is assumed.  Row=0 is used
+	     for column headers.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="COL" displayText="col" optional="YES" default="">
+           <description>
+              <short_desc> 
+             The 1-based logical col to Ctrl+Click.
+              </short_desc>
+              <detailed_desc> 
+             If no col is provided then col=1 is assumed.  Col=0 is used
+	     for row headers.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, AWindow, AGrid, CtrlClickCell</usage>
+           <description>
+              <short_desc> 
+                 Attempts to Ctrl+Click the first data cell in the first
+                 data row.
+              </short_desc><detailed_desc>
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, AWindow, AGrid, CtrlClickCell, ^row=2, ^col=1</usage>
+           <description>
+              <short_desc> 
+                 Attempts to Ctrl+Click the first data cell in the second 
+                 data row.
+              </short_desc><detailed_desc>
+                 Note, the DDVariables shown are not necessary but are 
+                 shown for clarity.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, AWindow, AGrid, CtrlClickCell, ^row=0, ^col=1</usage>
+           <description>
+              <short_desc> 
+                 Attempts to Ctrl+Click the first column header/label.
+              </short_desc><detailed_desc>
+                 Note, the DDVariables shown are not necessary but are 
+                 shown for clarity.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+    <keyword name="VERIFYCELLTEXT"
+             displayText="VerifyCellText" 
+             expectWarnSupport="YES" 
+             deprecated="NO" 
+             expectFailSupport="NO">
+             
+         <description> <short_desc> 
+             Verify a specific cell's text.
+              </short_desc> <detailed_desc>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20051212"
+                   expectFailSupport="NO" 
+                   expectWarnSupport="YES" >
+	       <libraryInfo name="FPSpreadFunctions" 
+                            doc="FPSpreadFunctions.htm" 
+                            sourcecode="FPSpreadFunctions.sbl" 
+                            class="FPSPREAD" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="EXPECTEDCELLTEXT" displayText="ExpectedCellText" optional="NO">
+           <description> <short_desc> 
+             The expected text value of the specified cell.
+              </short_desc> <detailed_desc>
+              </detailed_desc> </description> </parameter>
+        <parameter name="ROW" displayText="row" optional="YES" default="">
+           <description>
+              <short_desc> 
+             The 1-based logical row to verify.
+              </short_desc>
+              <detailed_desc> 
+             If no row is provided then row=1 is assumed.  Row=0 is used
+	     for column headers.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="COL" displayText="col" optional="YES" default="">
+           <description>
+              <short_desc> 
+             The 1-based logical col to verify.
+              </short_desc>
+              <detailed_desc> 
+             If no col is provided then col=1 is assumed.  Col=0 is used
+	     for row headers.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, AWindow, AGrid, VerifyCellText, "foo"</usage>
+           <description>
+              <short_desc> 
+                 Attempts to verify that the first data cell in the first
+                 data row is equal to "foo".
+              </short_desc><detailed_desc>
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, AWindow, AGrid, VerifyCellText, "foo", ^row=2, ^col=1</usage>
+           <description>
+              <short_desc> 
+                 Attempts to verify that the first data cell in the second 
+                 data row is equal to "foo".
+              </short_desc><detailed_desc>
+                 Note, the DDVariables shown are not necessary but are 
+                 shown for clarity.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, AWindow, AGrid, VerifyCellText, "foo", ^row=0, ^col=1</usage>
+           <description>
+              <short_desc> 
+                 Attempts to verify that the first column header/label is
+		 equal to "foo".
+              </short_desc><detailed_desc>
+                 Note, the DDVariables shown are not necessary but are 
+                 shown for clarity.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+     
+    <keyword name="CAPTURERANGETOFILE"
+             displayText="CaptureRangeToFile" 
+             expectWarnSupport="YES" 
+             deprecated="NO" 
+             expectFailSupport="NO">
+             
+         <description> <short_desc> 
+             Capture the grid data to the specified file.  For now,
+	     it can only be used to capture all of the grid data.
+              </short_desc> <detailed_desc>
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20051212"
+                   expectFailSupport="NO" 
+                   expectWarnSupport="YES" >
+	       <libraryInfo name="FPSpreadFunctions" 
+                            doc="FPSpreadFunctions.htm" 
+                            sourcecode="FPSpreadFunctions.sbl" 
+                            class="FPSPREAD" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="CAPTUREDFILE" displayText="CapturedFile" optional="NO">
+           <description> <short_desc> 
+             The name of the file used to save the captured data.
+              </short_desc> <detailed_desc>
+             Typically, the captured file is stored in the Datapool\Test directory.  
+             Captured files will be TAB delimited files.
+	     This action only captures the data, it does not verify it against
+	     a benchmark file.
+              </detailed_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, Window, FPSpreadGrid, CaptureRangeToFile, "captResult.txt"</usage>
+           <description> <short_desc> 
+               The captured grid data will be saved into "captResult.txt" in the
+	       Datapool\Test directory.
+              </short_desc> <detailed_desc> 
+               Since no optional block parameters are supported as of yet, the entire 
+               grid is captured and compared.
+              </detailed_desc> </description> </example>
+     </examples></keyword>
+
+     <keyword name="FINDROWNUMBER"
+             displayText="FindRowNumber" 
+             expectWarnSupport="YES" 
+             deprecated="NO" 
+             expectFailSupport="NO">
+             
+         <description> <short_desc> 
+             Search specified columns for the specified text.  Assign the
+	     matching row number to the given variable.
+              </short_desc> <detailed_desc>
+	     Multiple (column, search text) pairs can be used as parameters
+	     to find the matching row.
+
+             The search column and the search text parameters should have
+	     the same number of parameters and are expected to work in
+	     parallel (the first search text is looked for in the first
+	     column listed).
+
+	     The column name and search text parameters, if more than one,
+	     use the delimiter specified to show the separation in the string.
+              </detailed_desc> </description>
+           
+       <engines>
+           <engine vendor="Rational" tool="Robot" name="Robot" since="20051212"
+                   expectFailSupport="NO" 
+                   expectWarnSupport="YES" >
+	       <libraryInfo name="FPSpreadFunctions" 
+                            doc="FPSpreadFunctions.htm" 
+                            sourcecode="FPSpreadFunctions.sbl" 
+                            class="FPSPREAD" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="ROWVARNAME" displayText="rowVarName" optional="NO">
+           <description> <short_desc> 
+             The name of the variable to store the row number into.
+              </short_desc> <detailed_desc>
+              </detailed_desc> </description> </parameter>
+        <parameter name="STARTINGROW" displayText="startingRow" optional="NO">
+           <description> <short_desc> 
+             The row to use to begin the search.  Defaults to row 1.
+              </short_desc> <detailed_desc>
+              </detailed_desc> </description> </parameter>
+        <parameter name="SEARCHCOLUMNS" displayText="searchColumns" optional="NO" default="">
+           <description>
+              <short_desc> 
+             The string of column names where you want to search.
+              </short_desc>
+              <detailed_desc> 
+             You can have just a single column name, or multiple column
+	     names separated by the specified delimiter.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="SEARCHTEXT" displayText="searchText" optional="YES" default="">
+           <description>
+              <short_desc> 
+             The string of search strings used to search in each specified
+	     column names.
+              </short_desc>
+              <detailed_desc> 
+             The number of search strings you have should be equal to the
+	     number of search columns that you have.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="DELIMITER" displayText="DELIMITER" optional="NO" default="">
+           <description>
+              <short_desc> 
+             Delimiter used by the search columns and search text to separate
+	     the different columns/text.
+              </short_desc>
+              <detailed_desc> 
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters><examples>
+        <example>
+           <usage>T, AWindow, AGrid, FindRowNumber, "foo", "", "Name", "Bar", "|"</usage>
+           <description>
+              <short_desc> 
+                 Searches for the word "Bar" starting on row 1, in column
+		 "Name" of the given grid.  The returned row number is
+		 stored in the variable foo.
+              </short_desc><detailed_desc>
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, AWindow, AGrid, FindRowNumber, "foo", "10", "Name|City", "Bar|Pittsburgh", "|"</usage>
+           <description>
+              <short_desc> 
+                 Searches for the word "Bar" starting on row 10, in column
+		 "Name" of the given grid.  If found, it continues on the
+		 same row to search for "Pittsburgh" in the column "City".
+		 If that is found, the row number is stored in teh variable
+		 foo.  If either column does not match the search text,
+		 nothing is stored in foo and the next row is considered.
+              </short_desc><detailed_desc>
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
+</keywords>
+</keyword_library>
