@@ -1903,7 +1903,49 @@
         </example>
 
      </examples></keyword>
-     
+   <keyword name="SETFOCUS" 
+           displayText="SetFocus" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+              <short_desc> 
+                Set focus on the window.
+              </short_desc>
+              <detailed_desc> 
+                <p>Set focus and bring the window forward.</p>
+                <p>
+                	Bring the window forward. If there are same name/caption/title windows then the first 
+                	window will come forward. The window is find by title. 
+                </p>                          
+              </detailed_desc>
+           </description>
+           
+       <engines>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium" since="20110704" >
+	    	<libraryInfo name="CFComponent" 
+			doc="org/safs/selenium/CFComponent.html" 
+			sourcecode="org.safs.selenium.CFComponent.java" 
+			class="WINDOW" />
+           </engine>          
+       </engines>
+
+       <parameters /><examples>
+        <example>
+           <usage>T, WINDOW, WINDOW, SETFOCUS</usage>
+           <description>
+              <short_desc> 
+               Set focus on the specified Window.
+              </short_desc>
+              <detailed_desc> 
+                Set focus on the specified Window.
+              </detailed_desc>
+           </description>
+        </example>
+
+   	</examples>
+  </keyword>   
   <keyword name="SETPOSITION" 
            displayText="SetPosition" 
            deprecated="NO" 
