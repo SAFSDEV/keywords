@@ -4036,7 +4036,7 @@
                 <short_desc> 
                   A left mouse drag is performed from one object to another object based on the offsets values.
                 </short_desc>
-                <detailed_desc> 
+                <detailed_desc>
                   <p>Drag will be performed from component (from-component) to another to-component. Offsets value are the drag object select location. The location (drag and release) calucate by X and Y percentage cordination. DragTo also supports sub item of component and  sub item of to-component.</p>
                   
                   <p> The coordination specify by offsets value. First two values are for from-component and another are for to-component.</p>
@@ -4047,22 +4047,33 @@
 	T, WINDOW,COMPONENT, DRAGTO, ToWINDOW,ToCOMPONENT,"50%,50%,50%,50%"
 	Where first 50%,50% are COMPONENT or their subitem's X and Y location
 	and second 50%,50% are ToCOMPONENT or their subitem's X and Y location.
-		   </pre>	                 
-                            
+		   </pre>          
                 </detailed_desc>
+                <note>
+                   <engines>
+			           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20150902"/>
+         		  </engines>
+         		  <value>
+         		    The optional parameter 'FromSubItem' and 'ToSubItem' are not supported yet.<br/>
+         		    The parameter 'Offsets' can be also given in pixel, like '20, 20, 70, 90'; or even in mix format, like "50%, 50%, 70, 90".<br/>
+         		  </value>
+                </note>
              </description>
              
          <engines>
-             <engine name="Test Complete" 
-  				   since="20111212" 
-  				   tool="TestComplete" 
-  				   vendor="Automated QA">
-  			   <libraryInfo class="GENERIC" 
-  					name="GenericObjectFunctions" 
-  					sourcecode="GenericObjectFunctions.SVB">
-  			   </libraryInfo>
-             </engine>             
-         </engines>  
+           <engine name="Test Complete" since="20111212" tool="TestComplete" vendor="Automated QA">
+  			 <libraryInfo class="GENERIC" 
+  					        name="GenericObjectFunctions" 
+  					        sourcecode="GenericObjectFunctions.SVB">
+  			 </libraryInfo>
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20150902" >
+	         <libraryInfo name="GenericObjectFunctions" 
+                          doc="org/safs/selenium/webdriver/CFComponent.html" 
+                          sourcecode="org.safs.selenium.webdriver.CFComponent.java" 
+                          class="GENERIC"/>
+           </engine>               
+         </engines>
          <parameters>
           <parameter name="TOWINDOW" displayText="ToWindow" optional="NO">
              <description>
