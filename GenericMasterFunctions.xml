@@ -1840,6 +1840,12 @@
                     </domain>
                 </domains>
             </engine>           
+	        <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20150908">
+				<libraryInfo name="CFComponent" 
+				doc="org/safs/selenium/webdriver/CFComponent.html" 
+				sourcecode="org.safs.selenium.webdriver.CFComponent.java" 
+				class="CFComponent" />
+            </engine>
        </engines>
 
        <parameters>
@@ -1921,6 +1927,12 @@
                     </domain>
                 </domains>
             </engine>           
+	        <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20150908">
+				<libraryInfo name="CFComponent" 
+				doc="org/safs/selenium/webdriver/CFComponent.html" 
+				sourcecode="org.safs.selenium.webdriver.CFComponent.java" 
+				class="CFComponent" />
+            </engine>
        </engines>
 
        <parameters>
