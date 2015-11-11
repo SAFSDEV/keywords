@@ -946,6 +946,9 @@
                 We can also click on any part of an object, or any point relative to an object 
                 based on a provided x,y coordinate or other component-specific parameters.  
                 </p><p>
+                For SE+, the coordinate can be percentage format, like "20%,30%". This percentage format 
+                indicates the point (20% width of component, 30% height of component) relative to the object.
+                </p><p>
                 The object to be clicked is first given context and then a click is 
                 generated at the coordinates.  Thus, a subitem or object can be 
                 referenced by name even though it is only recognized via coordinates.
@@ -960,6 +963,11 @@
                 (3) t MainWindow FolderTree  Click Node1<br/>
                 (4) t MainWindow MainWindow  Click "50,200"<br/>
                 (5) t MainWindow MainWindow  Click "Coords=50,200"</p>
+                </p><p>
+                For SE+, the Data Table records can be:
+                </p><p>
+                (6) t MainWindow MainWindow  Click "50%,20%"<br/>
+                (7) t MainWindow MainWindow  Click "50,20%"<br/>
                 <p>
                 #2 above will contain an AnObject="3,10" entry in the MainWindow section 
                 of the Application Map to click at x=3, y=10 in the MainWindow.
@@ -972,6 +980,11 @@
                 </p><p>
                 #4 and #5 above show using literal text instead of an App Map entry to specify 
                 where to click relative to the item.
+                </p><p>
+                #6 and #7 above show using percentage format in <b>SE+</b>. #6 will click at position, 
+                where the X value equals 50% width of component, its Y value equals 20% height of component, 
+                relative to the object. #7 will click at position, where the X value equals 50, 
+                its Y value equals 20% height of component, relative to the object.
                 </p><p>
                 Rational Robot no longer requires the AppMapSubKey be provided and will 
                 attempt to use the string as literal text if no AppMapSubKey is found in 
@@ -2319,7 +2332,9 @@
                 (3) t MainWindow FolderTree DoubleClick Node1</p>
                 <p>
                 #2 above will contain an AnObject="3,10" entry in the MainWindow section 
-                of the Application Map to double click at x=3, y=10 in the MainWindow.</p>
+                of the Application Map to double click at x=3, y=10 in the MainWindow. <b>For SE+</b>, the coordinate 
+                can be percentage format, like "20%,30%". This percentage format indicates 
+                the point (20% width of component, 30% height of component) relative to the object.</p>
                 <p>
                 #3 above will contain a FolderTree entry in the MainWindow section with 
                 normal recognition information for it .  FolderTree will also have it's
@@ -2858,7 +2873,9 @@
                 (3) t MainWindow  ToolItem  RightClick PrintTool</p>
                 <p>
                 #2 above will contain an AnObject="3,10" entry in the MainWindow section 
-                of the Application Map to right click at x=3, y=10 in the MainWindow.</p>
+                of the Application Map to right click at x=3, y=10 in the MainWindow. <b>For SE+</b>, the 
+                coordinate can be percentage format, like "20%,30%". This percentage format indicates 
+                the point (20% width of component, 30% height of component) relative to the object.</p>
                 <p>
                 #3 above will contain a ToolItem entry in the MainWindow section with 
                 normal recognition information for it .  ToolItem will also have it's
@@ -3357,7 +3374,9 @@
                 (3) t MainWindow  ToolItem  CtrlClick PrintTool</p>
                 <p>
                 #2 above will contain an AnObject="3,10" entry in the MainWindow section
-                of the Application Map to CTRL-click at x=3, y=10 in the MainWindow.</p>
+                of the Application Map to CTRL-click at x=3, y=10 in the MainWindow. <b>For SE+</b>, the 
+                coordinate can be percentage format, like "20%,30%". This percentage format indicates 
+                the point (20% width of component, 30% height of component) relative to the object.</p>
                 <p>
                 #3 above will contain a ToolItem entry in the MainWindow section with
                 normal recognition information for it .  ToolItem will also have it's
@@ -3547,7 +3566,9 @@
                 (3) t MainWindow  ToolItem  CtrlRightClick PrintTool</p>
                 <p>
                 #2 above will contain an AnObject="3,10" entry in the MainWindow section
-                of the Application Map to CTRL-click at x=3, y=10 in the MainWindow.</p>
+                of the Application Map to CTRL-click at x=3, y=10 in the MainWindow. <b>For SE+</b>, the 
+                coordinate can be percentage format, like "20%,30%". This percentage format indicates 
+                the point (20% width of component, 30% height of component) relative to the object.</p>
                 <p>
                 #3 above will contain a ToolItem entry in the MainWindow section with
                 normal recognition information for it .  ToolItem will also have it's
@@ -3692,7 +3713,9 @@
                 (3) t MainWindow  ToolItem  ShiftClick PrintTool</p>
                 <p>
                 #2 above will contain an AnObject="3,10" entry in the MainWindow section
-                of the Application Map to SHIFT click at x=3, y=10 in the MainWindow.</p>
+                of the Application Map to SHIFT click at x=3, y=10 in the MainWindow. <b>For SE+</b>, the 
+                coordinate can be percentage format, like "20%,30%". This percentage format indicates 
+                the point (20% width of component, 30% height of component) relative to the object.</p>
                 <p>
                 #3 above will contain a ToolItem entry in the MainWindow section with
                 normal recognition information for it .  ToolItem will also have it's
