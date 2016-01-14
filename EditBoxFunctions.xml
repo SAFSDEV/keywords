@@ -193,7 +193,12 @@
 			sourcecode="org.safs.selenium.CFEditBox.java" 
 			class="EDITBOX" />
             </engine>
-            
+            <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20150716">
+             <libraryInfo name="CFEditBox" 
+                            doc="org/safs/selenium/webdriver/CFEditBox.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFEditBox.java" 
+                            class="EDITBOX" />
+           </engine>
             <engine vendor="Google" tool="Android" name="Android" since="20130123" >
 				<libraryInfo name="CFEditTextFunctions" 
 					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFEditTextFunctions.html" 
@@ -310,6 +315,12 @@
 			sourcecode="org.safs.selenium.CFEditBox.java" 
 			class="EDITBOX" />
             </engine>
+      <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20150716">
+             <libraryInfo name="CFEditBox" 
+                            doc="org/safs/selenium/webdriver/CFEditBox.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFEditBox.java" 
+                            class="EDITBOX" />
+      </engine>
        </engines>
 
        <parameters>
@@ -412,6 +423,12 @@
 			sourcecode="org.safs.selenium.CFEditBox.java" 
 			class="EDITBOX" />
             </engine>
+      <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20150716">
+             <libraryInfo name="CFEditBox" 
+                            doc="org/safs/selenium/webdriver/CFEditBox.html" 
+                            sourcecode="org.safs.selenium.webdriver.CFEditBox.java" 
+                            class="EDITBOX" />
+      </engine>
        </engines>
 
        <parameters>

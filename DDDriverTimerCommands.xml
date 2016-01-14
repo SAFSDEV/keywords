@@ -180,7 +180,7 @@
                     </usage>
                     <description>
                         <short_desc>
-                        Timer exampleTimer has been reset--assuming it was previously stopped.
+                        Timer exampleTimer is reset--assuming it was previously stopped.
                         </short_desc>
                     </description>
                 </example>                        
