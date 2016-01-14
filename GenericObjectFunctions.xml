@@ -962,13 +962,13 @@
                 (2) t MainWindow MainWindow  Click AnObject<br/>
                 (3) t MainWindow FolderTree  Click Node1<br/>
                 (4) t MainWindow MainWindow  Click "50,200"<br/>
-                (5) t MainWindow MainWindow  Click "Coords=50,200"</p>
+                (5) t MainWindow MainWindow  Click "Coords=50,200"
                 </p><p>
                 For SE+, the Data Table records can be:
                 </p><p>
                 (6) t MainWindow MainWindow  Click "50%,20%"<br/>
                 (7) t MainWindow MainWindow  Click "50,20%"<br/>
-                <p>
+                </p><p>
                 #2 above will contain an AnObject="3,10" entry in the MainWindow section 
                 of the Application Map to click at x=3, y=10 in the MainWindow.
                 </p><p>
