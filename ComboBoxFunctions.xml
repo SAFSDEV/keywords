@@ -567,6 +567,15 @@
 	    				sourcecode="ComboBoxFunctions.SVB">
 	    	       </libraryInfo>
            </engine>
+           <engine name="Selenium2.0" 
+                   since="20160115" 
+                   tool="Selenium" 
+                   vendor="OpenQA" >
+             <libraryInfo class="COMBOBOX" 
+                          name="ComboBoxFunctions" 
+                          doc="org/safs/selenium/webdriver/CFComboBox.html" 
+                          sourcecode="org.safs.selenium.webdriver.CFComboBox.java" />
+           </engine>
        </engines>
 
        <parameters>
