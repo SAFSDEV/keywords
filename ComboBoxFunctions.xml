@@ -289,6 +289,19 @@
               </short_desc>
            </description>
         </parameter>
+        <parameter name="FORCEREFRESH" displayText="ForceRefresh" optional="Yes">
+            <description>
+                <short_desc> 
+                 Force refreshing to update stale element after selection.
+              </short_desc>
+              <note>
+                <engines>
+                    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160316" />
+                </engines>
+                <value>First implemented in March 2016 for Selenium2.0 and might not be supported in all engines yet.</value>
+              </note>
+            </description>
+        </parameter>
      </parameters><examples>
 
         <example>
@@ -296,6 +309,15 @@
            <description>
               <short_desc> 
                  This action attempts to Click AND Select "MySelection" (case-sensitive) from the ComboBox.
+              </short_desc>
+           </description>
+        </example>
+
+        <example>
+           <usage>T, WINDOW, ComboBox, SELECT, "MySelection", "true"</usage>
+           <description>
+              <short_desc> 
+                 This action attempts to Click AND Select "MySelection" (case-sensitive) from the ComboBox, and force refreshing after selection.
               </short_desc>
            </description>
         </example>
@@ -392,6 +414,19 @@
               </short_desc>
            </description>
         </parameter>
+        <parameter name="FORCEREFRESH" displayText="ForceRefresh" optional="Yes">
+            <description>
+                <short_desc> 
+                 Force refreshing to update stale element after selection.
+              </short_desc>
+              <note>
+                <engines>
+                    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160316" />
+                </engines>
+                <value>First implemented in March 2016 for Selenium2.0 and might not be supported in all engines yet.</value>
+              </note>
+            </description>
+        </parameter>
      </parameters><examples>
 
         <example>
@@ -399,6 +434,15 @@
            <description>
               <short_desc> 
                  This action attempts to Click AND Select "MySelection" (case-sensitive) from the ComboBox.
+              </short_desc>
+           </description>
+        </example>
+
+        <example>
+           <usage>T, WINDOW, ComboBox, SELECTUNVERIFIED, "MySelection", "true"</usage>
+           <description>
+              <short_desc> 
+                 This action attempts to Click AND Select "MySelection" (case-sensitive) from the ComboBox, and force refreshing after selection.
               </short_desc>
            </description>
         </example>
@@ -498,6 +542,19 @@
               </detailed_desc>
            </description>
         </parameter>
+            <parameter name="FORCEREFRESH" displayText="ForceRefresh" optional="Yes">
+            <description>
+                <short_desc> 
+                 Force refreshing to update stale element after selection.
+              </short_desc>
+              <note>
+                <engines>
+                    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160316" />
+                </engines>
+                <value>First implemented in March 2016 for Selenium2.0 and might not be supported in all engines yet.</value>
+              </note>
+            </description>
+        </parameter>
      </parameters><examples>
 
         <example>
@@ -505,6 +562,15 @@
            <description>
               <short_desc> 
                  This action attempts to Click AND Select item #1 from the ComboBox list.
+              </short_desc>
+           </description>
+        </example>
+
+         <example>
+           <usage>T, WINDOW, ComboBox, SELECTINDEX, "1", "true"</usage>
+           <description>
+              <short_desc> 
+                 This action attempts to Click AND Select item #1 from the ComboBox list, and force refreshing after selection.
               </short_desc>
            </description>
         </example>
@@ -778,6 +844,19 @@
               </short_desc>
            </description>
         </parameter>
+        <parameter name="FORCEREFRESH" displayText="ForceRefresh" optional="Yes">
+            <description>
+                <short_desc> 
+                 Force refreshing to update stale element after selection.
+              </short_desc>
+              <note>
+                <engines>
+                    <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160316" />
+                </engines>
+                <value>First implemented in March 2016 for Selenium2.0 and might not be supported in all engines yet.</value>
+              </note>
+            </description>
+        </parameter>
      </parameters><examples>
 
         <example>
@@ -786,6 +865,16 @@
               <short_desc> 
                  This action attempts to Click AND Select the first item containing the 
                  substring provided.
+              </short_desc>
+           </description>
+        </example>
+
+        <example>
+           <usage>T, WINDOW, ComboBox, SelectPartialMatch, "ATextSubstring", "true"</usage>
+           <description>
+              <short_desc> 
+                 This action attempts to Click AND Select the first item containing the 
+                 substring provided, and force refreshing after selection.
               </short_desc>
            </description>
         </example>
