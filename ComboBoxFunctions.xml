@@ -1,1126 +1,1075 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
 <keyword_library>
-  <libraryType type="COMPONENT" />
-  <libraryInfo name="ComboBoxFunctions" doc="ComboBoxFunctions.htm"
-    sourcecode="ComboBoxFunctions.sbl" chainTo="GenericObjectFunctions"
-    class="COMBOBOX">
-
-    <description>
-      <short_desc>
-        Actions for working with ComboBox objects
-      </short_desc>
-    </description>
-
-  </libraryInfo>
-  <runtime platform="Windows" engine="Robot" version="2002" />
-
-  <keywords>
-    <keyword name="CLICK" displayText="Click" deprecated="YES"
-      deprecatedFor="Generic CLICK" expectFailSupport="NO"
-      expectWarnSupport="NO">
-
-      <description>
-        <short_desc>
-          Attempts to perform a standard Click on the ComboBox
-        </short_desc>
-        <detailed_desc>
-          <p>Attempts to perform a standard Click on the ComboBox. If
-            the
-            combobox
-            list is not exposed then this will expose the list of items. If the
-            list is already exposed, then this will close the list.
-          </p>
-          <p>
-            It must be noted that when you expose the list in a ComboBox, it is
-            no
-            longer a ComboBox. It typically converts to a ComboListBox. This may
-            not be an issue on controls that Robot can recognize with a NAME=
-            method.
-          </p>
-          <p>
-            However, if the control is recognized by ObjectIndex or some other means
-            then the original ComboBox may no longer be found on the
-            screen.
-            With this scenario, you need to reference the ComboBox and the
-            ComboListBox
-            in the application map (and associated data files) as two separate
-            items.
-          </p>
-          <p>
-            To avoid these potential problems, use the COMBOBOX 'SELECT' command
-            to actually open the list and select the item all with a
-            single
-            command.
-          </p>
-        </detailed_desc>
-      </description>
-
-      <engines>
-        <engine name="WinRunner" since="20040618" tool="WinRunner"
-          vendor="Mercury Interactive">
-          <libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
-            sourcecode="ComboBoxFunctions">
-          </libraryInfo>
-        </engine>
-        <engine name="Test Complete" since="20081027" tool="TestComplete"
-          vendor="AutomatedQA">
-          <libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
-            sourcecode="ComboBoxFunctions.SVB">
-          </libraryInfo>
-        </engine>
-      </engines>
-
-      <parameters />
-      <examples>
-
-        <example>
-          <usage>T, WINDOW, ComboBox, CLICK</usage>
-          <description>
-            <short_desc>
-              Used to show or hide the drop down list from the ComboBox object.
-            </short_desc>
-            <detailed_desc>
-              Used to show or hide the drop down list from the ComboBox object.
-              Use the Select command INSTEAD of Click if you actually want to
-              Select an item in the list.
-            </detailed_desc>
-          </description>
-        </example>
-
-      </examples>
-    </keyword>
-
-    <keyword name="CAPTUREITEMSTOFILE" displayText="CaptureItemsToFile"
-      deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
-
-      <description>
-        <short_desc>
-          Capture Items To a File specified (if not abs, then to test dir)
-        </short_desc>
-        <detailed_desc>
-          Capture Items To a File specified (if not abs, then to test dir)
-        </detailed_desc>
-      </description>
-
-      <engines>
-        <engine vendor="Rational" tool="RobotJ" name="RobotJ"
-          since="20030827">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/rational/CFComboBox.html" sourcecode="org.safs.rational.CFComboBox.java"
-            class="COMBOBOX" />
-        </engine>
-        <engine vendor="Google" tool="Android" name="Android"
-          since="20120911">
-          <libraryInfo name="CFComboBoxFunctions"
-            doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFComboBoxFunctions.html"
-            sourcecode="org.safs.android.CFComboBoxFunctions.java"
-            class="COMBOBOX" />
-          <domains>
-            <domain name="DEV" since="20120911">
-              <libraryInfo name="ComboBoxProcessor"
-                doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/ComboBoxProcessor.html"
-                sourcecode="org.safs.android.engine.ComboBoxProcessor.java"
-                class="COMBOBOX" />
-            </domain>
-          </domains>
-        </engine>
-        <engine vendor="Automated QA" tool="TestComplete" name="Test Complete"
-          since="20130425">
-          <libraryInfo name="ComboBoxFunctions" sourcecode="ComboBoxFunctions.SVB"
-            class="COMBOBOX" />
-          <domains>
-            <domain name="NET" since="20130425">
-              <libraryInfo name="ComboBoxFunctions" class="COMBOBOX"
-                subClass="NET" sourcecode="ComboBoxFunctions.SVB" />
-            </domain>
-            <domain name="FLEX" since="20130425">
-              <libraryInfo name="ComboBoxFunctions" class="COMBOBOX"
-                subClass="FLEX" sourcecode="ComboBoxFunctions.SVB" />
-            </domain>
-          </domains>
-        </engine>
-        <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
-          since="20140116">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/selenium/webdriver/CFComboBox.html"
-            sourcecode="org.safs.selenium.webdriver.CFComboBox.java"
-            class="MISC" />
-        </engine>
-      </engines>
-
-      <parameters>
-        <parameter name="FILENAME" displayText="FileName"
-          optional="NO">
-          <description>
-            <short_desc>
-              File name (if not absolute, then to test dir)
-            </short_desc>
-            <detailed_desc>
-              File name (if not absolute, then to test dir)
-            </detailed_desc>
-          </description>
-        </parameter>
-        <parameter name="FILEENCODING" displayText="FileEncoding"
-          optional="YES" default="">
-          <description>
-            <short_desc>
-              Specify a character encoding to be used when saving data to a file.
-              If it is not specified, the system default file encoding will be
-              used.
-              The encoding should be a valid string supported by Java; if it is
-              not valid,
-              the system default file encoding will be used instead.
-            </short_desc>
-          </description>
-        </parameter>
-      </parameters>
-      <examples>
-
-        <example>
-          <usage> T, WINDOW, ComboBox, CaptureItemsToFile , afile.txt
-          </usage>
-          <description>
-            <short_desc>
-              Captures all the items in the combo to ...\datapool\test\afile.txt
-            </short_desc>
-            <detailed_desc>
-              Captures all the items in the combo to ...\datapool\test\afile.txt
-            </detailed_desc>
-          </description>
-        </example>
-        <example>
-          <usage> T, WINDOW, ComboBox, CaptureItemsToFile , afile.txt,
-            "UTF-8"
-          </usage>
-          <description>
-            <short_desc>
-              Captures all the items in the combo to ...\datapool\test\afile.txt
-            </short_desc>
-            <detailed_desc>
-              Captures all the items in the combo to
-              ...\datapool\test\afile.txt
-              <BR />
-              Write the file with encoding "UTF-8".
-            </detailed_desc>
-          </description>
-        </example>
-      </examples>
-    </keyword>
-
-    <keyword name="SELECT" displayText="Select" deprecated="NO"
-      expectFailSupport="NO" expectWarnSupport="NO">
-
-      <description>
-        <short_desc>
-          Select an item by its text value from a combobox.
-        </short_desc>
-        <detailed_desc>
-          <p>Select an item by its text value from a combobox.
-            This method combines the initial Click required to expose the list
-            of items and then the subsequent selection of a text item from the
-            list.
-          </p>
-          <p>
-            The routine will first attempt to see if the item exists in the list
-            and should provide a warning if it cannot find the item or
-            cannot
-            read the list of items. The routine will then attempt the
-            selection.
-          </p>
-          <p>
-            After the selection is attempted, the routine tries to verify that the
-            list has the specified item as the selected item. A warning
-            will
-            be
-            issued if the routine cannot read the list. A failure will be issued
-            if the routine CAN read the list and determines that the specified
-            item is NOT the currently selected item.
-          </p>
-          <p>Note: RobotJ also uses identical keyword SelectTextItem</p>
-        </detailed_desc>
-      </description>
-
-      <engines>
-        <engine vendor="Rational" tool="Robot" name="Robot"
-          since="20030827">
-          <libraryInfo name="ComboBoxFunctions" doc="ComboBoxFunctions.htm"
-            sourcecode="ComboBoxFunctions.sbl" class="COMBOBOX" />
-        </engine>
-        <engine vendor="Rational" tool="RobotJ" name="RobotJ"
-          since="20030827">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/rational/CFComboBox.html" sourcecode="org.safs.rational.CFComboBox.java"
-            class="COMBOBOX" />
-        </engine>
-        <engine name="WinRunner" since="20040618" tool="WinRunner"
-          vendor="Mercury Interactive">
-          <libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
-            sourcecode="ComboBoxFunctions">
-          </libraryInfo>
-        </engine>
-        <engine vendor="OpenQA" tool="Selenium" name="Selenium"
-          since="20070130">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/selenium/CFComboBox.html" sourcecode="org.safs.selenium.CFComboBox.java"
-            class="COMBOBOX" />
-        </engine>
-        <engine name="Test Complete" since="20081027" tool="TestComplete"
-          vendor="AutomatedQA">
-          <libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
-            sourcecode="ComboBoxFunctions.SVB">
-          </libraryInfo>
-        </engine>
-        <engine vendor="Google" tool="Android" name="Android"
-          since="20120911">
-          <libraryInfo name="CFComboBoxFunctions"
-            doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFComboBoxFunctions.html"
-            sourcecode="org.safs.android.CFComboBoxFunctions.java"
-            class="COMBOBOX" />
-          <domains>
-            <domain name="DEV" since="20120911">
-              <libraryInfo name="ComboBoxProcessor"
-                doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/ComboBoxProcessor.html"
-                sourcecode="org.safs.android.engine.ComboBoxProcessor.java"
-                class="COMBOBOX" />
-            </domain>
-          </domains>
-        </engine>
-        <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
-          since="20140116">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/selenium/webdriver/CFComboBox.html"
-            sourcecode="org.safs.selenium.webdriver.CFComboBox.java"
-            class="MISC" />
-        </engine>
-      </engines>
-
-      <parameters>
-        <parameter name="TEXTVALUE" displayText="TextValue"
-          optional="NO">
-          <description>
-            <short_desc>
-              The case-sensitive item in the drop down list to select.
-            </short_desc>
-          </description>
-        </parameter>
-        <parameter name="FORCEREFRESH" displayText="ForceRefresh"
-          optional="Yes">
-          <description>
-            <short_desc>
-              Force refreshing to update stale element after selection.
-            </short_desc>
-            <note>
-              <engines>
-                <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
-                  since="20160316" />
-              </engines>
-              <value>First implemented in March 2016 for Selenium2.0 and
-                might
-                not be supported in all engines yet.
-              </value>
-            </note>
-          </description>
-        </parameter>
-      </parameters>
-      <examples>
-
-        <example>
-          <usage>T, WINDOW, ComboBox, SELECT, "MySelection"</usage>
-          <description>
-            <short_desc>
-              This action attempts to Click AND Select "MySelection"
-              (case-sensitive) from the ComboBox.
-            </short_desc>
-          </description>
-        </example>
-
-        <example>
-          <usage>T, WINDOW, ComboBox, SELECT, "MySelection", "true"
-          </usage>
-          <description>
-            <short_desc>
-              This action attempts to Click AND Select "MySelection"
-              (case-sensitive) from the ComboBox, and force refreshing
-              after
-              selection.
-            </short_desc>
-          </description>
-        </example>
-
-      </examples>
-    </keyword>
-
-    <keyword name="SELECTUNVERIFIED" displayText="SelectUnverified"
-      deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
-
-      <description>
-        <short_desc>
-          Select an item by its text value from a combobox without verifying the
-          selection.
-        </short_desc>
-        <detailed_desc>
-          <p>Select an item by its text value from a combobox without
-            verifying the selection.
-            This method combines the initial Click required to expose the list
-            of items and then the subsequent selection of a text item from the
-            list.
-          </p>
-          <p>
-            The routine will simply take the specified text and attemp the
-            selection.
-            it will not verify the existence of the item before the attemp, nor
-            will it verify the item is actually selected after the
-            attemp.
-          </p>
-          <p>Note: RobotJ also uses identical keyword
-            SelectUnverifiedTextItem
-          </p>
-        </detailed_desc>
-      </description>
-
-      <engines>
-        <engine vendor="Rational" tool="Robot" name="Robot"
-          since="20030827">
-          <libraryInfo name="ComboBoxFunctions" doc="ComboBoxFunctions.htm"
-            sourcecode="ComboBoxFunctions.sbl" class="COMBOBOX" />
-        </engine>
-        <engine vendor="Rational" tool="RobotJ" name="RobotJ"
-          since="20030827">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/rational/CFComboBox.html" sourcecode="org.safs.rational.CFComboBox.java"
-            class="COMBOBOX" />
-        </engine>
-        <engine name="WinRunner" since="20040618" tool="WinRunner"
-          vendor="Mercury Interactive">
-          <libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
-            sourcecode="ComboBoxFunctions">
-          </libraryInfo>
-        </engine>
-        <engine vendor="OpenQA" tool="Selenium" name="Selenium"
-          since="20070130">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/selenium/CFComboBox.html" sourcecode="org.safs.selenium.CFComboBox.java"
-            class="COMBOBOX" />
-        </engine>
-        <engine name="Test Complete" since="20081027" tool="TestComplete"
-          vendor="AutomatedQA">
-          <libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
-            sourcecode="ComboBoxFunctions.SVB">
-          </libraryInfo>
-        </engine>
-        <engine vendor="Google" tool="Android" name="Android"
-          since="20120911">
-          <libraryInfo name="CFComboBoxFunctions"
-            doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFComboBoxFunctions.html"
-            sourcecode="org.safs.android.CFComboBoxFunctions.java"
-            class="COMBOBOX" />
-          <domains>
-            <domain name="DEV" since="20120911">
-              <libraryInfo name="ComboBoxProcessor"
-                doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/ComboBoxProcessor.html"
-                sourcecode="org.safs.android.engine.ComboBoxProcessor.java"
-                class="COMBOBOX" />
-            </domain>
-          </domains>
-        </engine>
-        <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
-          since="20140116">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/selenium/webdriver/CFComboBox.html"
-            sourcecode="org.safs.selenium.webdriver.CFComboBox.java"
-            class="MISC" />
-        </engine>
-      </engines>
-
-      <parameters>
-        <parameter name="TEXTVALUE" displayText="TextValue"
-          optional="NO">
-          <description>
-            <short_desc>
-              The case-sensitive item in the drop down list to select.
-            </short_desc>
-          </description>
-        </parameter>
-        <parameter name="FORCEREFRESH" displayText="ForceRefresh"
-          optional="Yes">
-          <description>
-            <short_desc>
-              Force refreshing to update stale element after selection.
-            </short_desc>
-            <note>
-              <engines>
-                <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
-                  since="20160316" />
-              </engines>
-              <value>First implemented in March 2016 for Selenium2.0 and
-                might
-                not be supported in all engines yet.
-              </value>
-            </note>
-          </description>
-        </parameter>
-      </parameters>
-      <examples>
-
-        <example>
-          <usage>T, WINDOW, ComboBox, SELECTUNVERIFIED, "MySelection"
-          </usage>
-          <description>
-            <short_desc>
-              This action attempts to Click AND Select "MySelection"
-              (case-sensitive) from the ComboBox.
-            </short_desc>
-          </description>
-        </example>
-
-        <example>
-          <usage>T, WINDOW, ComboBox, SELECTUNVERIFIED, "MySelection",
-            "true"
-          </usage>
-          <description>
-            <short_desc>
-              This action attempts to Click AND Select "MySelection"
-              (case-sensitive) from the ComboBox, and force refreshing
-              after
-              selection.
-            </short_desc>
-          </description>
-        </example>
-
-      </examples>
-    </keyword>
-
-    <keyword name="SELECTINDEX" displayText="SelectIndex"
-      deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
-
-      <description>
-        <short_desc>
-          Select an item by its index from a combobox.
-        </short_desc>
-        <detailed_desc>
-          Select an item by its index from a combobox.
-          This method combines the initial Click required to expose the list
-          of items and then the subsequent selection of the item from the list.
-          <br />
-          The routine will first attempt to see if the index exists in
-          the
-          list
-          and should provide a warning if it cannot find the item or cannot
-          read the list of items. The routine will then attempt the selection.
-          <br />
-        </detailed_desc>
-      </description>
-
-      <engines>
-        <engine vendor="Rational" tool="Robot" name="Robot"
-          since="20030827">
-          <libraryInfo name="ComboBoxFunctions" doc="ComboBoxFunctions.htm"
-            sourcecode="ComboBoxFunctions.sbl" class="COMBOBOX" />
-        </engine>
-        <engine vendor="Rational" tool="RobotJ" name="RobotJ"
-          since="20030827">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/rational/CFComboBox.html" sourcecode="org.safs.rational.CFComboBox.java"
-            class="COMBOBOX" />
-        </engine>
-        <engine name="WinRunner" since="20040618" tool="WinRunner"
-          vendor="Mercury Interactive">
-          <libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
-            sourcecode="ComboBoxFunctions">
-          </libraryInfo>
-        </engine>
-        <engine vendor="OpenQA" tool="Selenium" name="Selenium"
-          since="20070130">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/selenium/CFComboBox.html" sourcecode="org.safs.selenium.CFComboBox.java"
-            class="COMBOBOX" />
-        </engine>
-        <engine name="Test Complete" since="20081027" tool="TestComplete"
-          vendor="AutomatedQA">
-          <libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
-            sourcecode="ComboBoxFunctions.SVB">
-          </libraryInfo>
-        </engine>
-        <engine vendor="Google" tool="Android" name="Android"
-          since="20120911">
-          <libraryInfo name="CFComboBoxFunctions"
-            doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFComboBoxFunctions.html"
-            sourcecode="org.safs.android.CFComboBoxFunctions.java"
-            class="COMBOBOX" />
-          <domains>
-            <domain name="DEV" since="20120911">
-              <libraryInfo name="ComboBoxProcessor"
-                doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/ComboBoxProcessor.html"
-                sourcecode="org.safs.android.engine.ComboBoxProcessor.java"
-                class="COMBOBOX" />
-            </domain>
-          </domains>
-        </engine>
-        <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
-          since="20140116">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/selenium/webdriver/CFComboBox.html"
-            sourcecode="org.safs.selenium.webdriver.CFComboBox.java"
-            class="MISC" />
-        </engine>
-      </engines>
-
-      <parameters>
-        <parameter name="INDEXVALUE" displayText="IndexValue"
-          optional="NO">
-          <description>
-            <short_desc>
-              The item index in the drop down list to select.
-            </short_desc>
-            <detailed_desc>
-              Some combo lists are 0-based (start with 0). Some are
-              1-based
-              (start with 1).
-              The user will have to determine the index base for their particular
-              combo list.
-              <br />
-              It would appear that HTML Combo lists are 1-based.
-            </detailed_desc>
-          </description>
-        </parameter>
-        <parameter name="FORCEREFRESH" displayText="ForceRefresh"
-          optional="Yes">
-          <description>
-            <short_desc>
-              Force refreshing to update stale element after selection.
-            </short_desc>
-            <note>
-              <engines>
-                <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
-                  since="20160316" />
-              </engines>
-              <value>First implemented in March 2016 for Selenium2.0 and
-                might
-                not be supported in all engines yet.
-              </value>
-            </note>
-          </description>
-        </parameter>
-      </parameters>
-      <examples>
-
-        <example>
-          <usage>T, WINDOW, ComboBox, SELECTINDEX, "1"</usage>
-          <description>
-            <short_desc>
-              This action attempts to Click AND Select item #1 from the ComboBox
-              list.
-            </short_desc>
-          </description>
-        </example>
-
-        <example>
-          <usage>T, WINDOW, ComboBox, SELECTINDEX, "1", "true"</usage>
-          <description>
-            <short_desc>
-              This action attempts to Click AND Select item #1 from the ComboBox
-              list, and force refreshing after selection.
-            </short_desc>
-          </description>
-        </example>
-
-      </examples>
-    </keyword>
-
-    <keyword name="SETTEXTVALUE" displayText="SetTextValue"
-      deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
-
-      <description>
-        <short_desc>
-          Set the text of the combobox
-        </short_desc>
-        <detailed_desc>
-          <p>This action sets the text of the combobox. This version
-            allows
-            the use
-            of special character combinations and substrings to identify
-            specific
-            keyboard keys. These are the same special characters and interpretation
-            used for Robot's InputKeys command and the Windows Scripting
-            Host.
-          </p>
-          <p>
-            ~^+%{( are primarily the characters that induce special processing.</p>
-          <p>
-            The routine verifies we can read the text property, sets the text
-            value
-            and will verify that the property has been set to that value *IF*
-            none
-            of the special characters exist in the provided text value. If those
-            special characters exist, then no post-set verification will
-            occur.
-          </p>
-        </detailed_desc>
-      </description>
-
-      <engines>
-        <engine vendor="Rational" tool="Robot" name="Robot"
-          since="20030827">
-          <libraryInfo name="ComboBoxFunctions" doc="ComboBoxFunctions.htm"
-            sourcecode="ComboBoxFunctions.sbl" class="COMBOBOX" />
-        </engine>
-        <engine vendor="Rational" tool="RobotJ" name="RobotJ"
-          since="200505224">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/rational/CFComboBox.html" sourcecode="org.safs.rational.CFComboBox.java"
-            class="COMBOBOX" />
-        </engine>
-        <engine name="WinRunner" since="20040618" tool="WinRunner"
-          vendor="Mercury Interactive">
-          <libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
-            sourcecode="ComboBoxFunctions">
-          </libraryInfo>
-        </engine>
-        <engine name="Test Complete" since="20081027" tool="TestComplete"
-          vendor="AutomatedQA">
-          <libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
-            sourcecode="ComboBoxFunctions.SVB">
-          </libraryInfo>
-        </engine>
-        <engine name="Selenium2.0" since="20160115" tool="Selenium"
-          vendor="OpenQA">
-          <libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
-            doc="org/safs/selenium/webdriver/CFComboBox.html"
-            sourcecode="org.safs.selenium.webdriver.CFComboBox.java" />
-        </engine>
-      </engines>
-
-      <parameters>
-
-        <parameter name="TEXTVALUE" displayText="TextValue"
-          optional="YES" default="">
-          <description>
-            <short_desc>
-              The text that will be typed into the ComboBox.
-            </short_desc>
-            <detailed_desc>
-              TextValue will be the text that will be typed into the Combobox.
-              Quoted text may be used to ensure proper expected value retrieval.
-              There is also no check for a missing field because that
-              would be
-              the same as specifying no text ("")--which is valid.
-            </detailed_desc>
-          </description>
-        </parameter>
-
-      </parameters>
-      <examples>
-
-        <example>
-          <usage>T, WINDOW, ComboBox, SETTEXTVALUE, "MyPassword"</usage>
-          <description>
-            <short_desc>
-              "MyPassword" is typed into the Combobox
-            </short_desc>
-          </description>
-        </example>
-
-      </examples>
-    </keyword>
-
-    <keyword name="SETUNVERIFIEDTEXTVALUE" displayText="SetUnverifiedTextValue"
-      deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
-
-      <description>
-        <short_desc>
-          Set the text of the combobox without verification
-        </short_desc>
-        <detailed_desc>
-          <p>This action sets the text of the combobox. This version
-            allows
-            the use
-            of special character combinations and substrings to identify
-            specific
-            keyboard keys. These are the same special characters and interpretation
-            used for Robot's InputKeys command and the Windows Scripting
-            Host.
-          </p>
-          <p>
-            ~^+%{( are primarily the characters that induce special processing.</p>
-          <p>
-            The routine verifies we can read the text property, sets the text
-            value
-            but does not verify that the property has been set to that value
-            whether or not
-            any of the special characters exist in the provided text value.
-          </p>
-        </detailed_desc>
-      </description>
-
-      <engines>
-        <engine vendor="Rational" tool="Robot" name="Robot"
-          since="20041230">
-          <libraryInfo name="ComboBoxFunctions" doc="ComboBoxFunctions.htm"
-            sourcecode="ComboBoxFunctions.sbl" class="COMBOBOX" />
-        </engine>
-        <engine vendor="Rational" tool="RobotJ" name="RobotJ"
-          since="20050622">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/rational/CFComboBox.html" sourcecode="org.safs.rational.CFComboBox.java"
-            class="COMBOBOX" />
-        </engine>
-        <engine name="Test Complete" since="20081027" tool="TestComplete"
-          vendor="AutomatedQA">
-          <libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
-            sourcecode="ComboBoxFunctions.SVB">
-          </libraryInfo>
-        </engine>
-      </engines>
-
-      <parameters>
-
-        <parameter name="TEXTVALUE" displayText="TextValue"
-          optional="YES" default="">
-          <description>
-            <short_desc>
-              The text that will be typed into the ComboBox.
-            </short_desc>
-            <detailed_desc>
-              TextValue will be the text that will be typed into the Combobox.
-              Quoted text may be used to ensure proper expected value retrieval.
-              There is also no check for a missing field because that
-              would be
-              the same as specifying no text ("")--which is valid.
-            </detailed_desc>
-          </description>
-        </parameter>
-
-      </parameters>
-      <examples>
-
-        <example>
-          <usage>T, WINDOW, ComboBox, SETUNVERIFIEDTEXTVALUE,
-            "MyPassword"
-          </usage>
-          <description>
-            <short_desc>
-              "MyPassword" is typed into the Combobox
-            </short_desc>
-          </description>
-        </example>
-
-      </examples>
-    </keyword>
-
-    <keyword name="SELECTPARTIALMATCH" displayText="SelectPartialMatch"
-      deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
-
-      <description>
-        <short_desc>
-          Select an item via a partial text match in a combobox.
-        </short_desc>
-        <detailed_desc>
-          <p>Select an item via a partial text match in a combobox.
-            This method combines the initial Click required to expose the list
-            of items and then the subsequent selection of a text item from the
-            list.
-          </p>
-          <p>
-            The routine will first attempt to see if the item exists in the list
-            and should provide a warning if it cannot find the item or
-            cannot
-            read the list of items. The routine will then attempt the
-            selection.
-          </p>
-          <p>
-            After the selection is attempted, the routine tries to verify that the
-            list has the specified item as the selected item. A warning
-            will
-            be
-            issued if the routine cannot read the list. A failure will be issued
-            if the routine CAN read the list and determines that the specified
-            item is NOT the currently selected item.
-          </p>
-        </detailed_desc>
-      </description>
-
-      <engines>
-        <engine vendor="Rational" tool="Robot" name="Robot"
-          since="20030827">
-          <libraryInfo name="ComboBoxFunctions" doc="ComboBoxFunctions.htm"
-            sourcecode="ComboBoxFunctions.sbl" class="COMBOBOX" />
-        </engine>
-        <engine vendor="Rational" tool="RobotJ" name="RobotJ"
-          since="20030827">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/rational/CFComboBox.html" sourcecode="org.safs.rational.CFComboBox.java"
-            class="COMBOBOX" />
-        </engine>
-        <engine name="WinRunner" since="20040618" tool="WinRunner"
-          vendor="Mercury Interactive">
-          <libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
-            sourcecode="ComboBoxFunctions">
-          </libraryInfo>
-        </engine>
-        <engine vendor="OpenQA" tool="Selenium" name="Selenium"
-          since="20070130">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/selenium/CFComboBox.html" sourcecode="org.safs.selenium.CFComboBox.java"
-            class="COMBOBOX" />
-        </engine>
-        <engine name="Test Complete" since="20081027" tool="TestComplete"
-          vendor="AutomatedQA">
-          <libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
-            sourcecode="ComboBoxFunctions.SVB">
-          </libraryInfo>
-        </engine>
-        <engine vendor="Google" tool="Android" name="Android"
-          since="20120911">
-          <libraryInfo name="CFComboBoxFunctions"
-            doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFComboBoxFunctions.html"
-            sourcecode="org.safs.android.CFComboBoxFunctions.java"
-            class="COMBOBOX" />
-          <domains>
-            <domain name="DEV" since="20120911">
-              <libraryInfo name="ComboBoxProcessor"
-                doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/ComboBoxProcessor.html"
-                sourcecode="org.safs.android.engine.ComboBoxProcessor.java"
-                class="COMBOBOX" />
-            </domain>
-          </domains>
-        </engine>
-        <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
-          since="20140116">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/selenium/webdriver/CFComboBox.html"
-            sourcecode="org.safs.selenium.webdriver.CFComboBox.java"
-            class="MISC" />
-        </engine>
-      </engines>
-
-      <parameters>
-        <parameter name="TEXTVALUE" displayText="TextValue"
-          optional="NO">
-          <description>
-            <short_desc>
-              The case-sensitive substring of an item in the drop down list to
-              select.
-            </short_desc>
-          </description>
-        </parameter>
-        <parameter name="FORCEREFRESH" displayText="ForceRefresh"
-          optional="Yes">
-          <description>
-            <short_desc>
-              Force refreshing to update stale element after selection.
-            </short_desc>
-            <note>
-              <engines>
-                <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
-                  since="20160316" />
-              </engines>
-              <value>First implemented in March 2016 for Selenium2.0 and
-                might
-                not be supported in all engines yet.
-              </value>
-            </note>
-          </description>
-        </parameter>
-      </parameters>
-      <examples>
-
-        <example>
-          <usage>T, WINDOW, ComboBox, SelectPartialMatch,
-            "ATextSubstring"
-          </usage>
-          <description>
-            <short_desc>
-              This action attempts to Click AND Select the first item containing
-              the
-              substring provided.
-            </short_desc>
-          </description>
-        </example>
-
-        <example>
-          <usage>T, WINDOW, ComboBox, SelectPartialMatch,
-            "ATextSubstring",
-            "true"
-          </usage>
-          <description>
-            <short_desc>
-              This action attempts to Click AND Select the first item containing
-              the
-              substring provided, and force refreshing after selection.
-            </short_desc>
-          </description>
-        </example>
-
-      </examples>
-    </keyword>
-
-    <keyword name="VERIFYSELECTED" displayText="VerifySelected"
-      deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
-
-      <description>
-        <short_desc>
-          Verify Selected item is equal to specified parameter
-        </short_desc>
-        <detailed_desc>
-          Verify Selected item is equal to specified parameter
-        </detailed_desc>
-      </description>
-
-      <engines>
-        <engine vendor="Rational" tool="RobotJ" name="RobotJ"
-          since="20031124">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/rational/CFComboBox.html" sourcecode="org.safs.rational.CFComboBox.java"
-            class="COMBOBOX" />
-        </engine>
-        <engine name="Test Complete" since="20110905" tool="TestComplete"
-          vendor="AutomatedQA">
-          <libraryInfo class="ComboBox" name="ComboBoxFunctions"
-            sourcecode="ComboBoxFunctions.SVB">
-          </libraryInfo>
-        </engine>
-        <engine vendor="Google" tool="Android" name="Android"
-          since="20120911">
-          <libraryInfo name="CFComboBoxFunctions"
-            doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFComboBoxFunctions.html"
-            sourcecode="org.safs.android.CFComboBoxFunctions.java"
-            class="COMBOBOX" />
-          <domains>
-            <domain name="DEV" since="20120911">
-              <libraryInfo name="ComboBoxProcessor"
-                doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/ComboBoxProcessor.html"
-                sourcecode="org.safs.android.engine.ComboBoxProcessor.java"
-                class="COMBOBOX" />
-            </domain>
-          </domains>
-        </engine>
-        <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
-          since="20140116">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/selenium/webdriver/CFComboBox.html"
-            sourcecode="org.safs.selenium.webdriver.CFComboBox.java"
-            class="MISC" />
-        </engine>
-      </engines>
-
-      <parameters>
-        <parameter name="TEXTVALUE" displayText="TextValue"
-          optional="NO">
-          <description>
-            <short_desc>
-              The case-sensitive substring to compare.
-            </short_desc>
-          </description>
-        </parameter>
-      </parameters>
-      <examples>
-
-        <example>
-          <usage>T, WINDOW, ComboBox, VerifySelected, "ATextSubstring"
-          </usage>
-          <description>
-            <short_desc>
-              This action verifies that the selected item is ATextSubstring.
-            </short_desc>
-          </description>
-        </example>
-
-      </examples>
-    </keyword>
-
-    <keyword name="SHOWLIST" displayText="ShowList" deprecated="NO"
-      expectFailSupport="NO" expectWarnSupport="NO">
-
-      <description>
-        <short_desc>
-          Show the combo box list (expose it).
-        </short_desc>
-        <detailed_desc>
-          <p>show the list so that the next step can be a click
-            on an item. This would only be necessary in cases
-            where the state of the combo box is not known ahead
-            of time.
-          </p>
-        </detailed_desc>
-      </description>
-
-      <engines>
-        <engine vendor="Rational" tool="RobotJ" name="RobotJ"
-          since="20030827">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/rational/CFComboBox.html" sourcecode="org.safs.rational.CFComboBox.java"
-            class="COMBOBOX" />
-        </engine>
-        <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
-          since="20140116">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/selenium/webdriver/CFComboBox.html"
-            sourcecode="org.safs.selenium.webdriver.CFComboBox.java"
-            class="MISC" />
-        </engine>
-      </engines>
-
-      <parameters>
-      </parameters>
-      <examples>
-
-        <example>
-          <usage>T, WINDOW, ComboBox, ShowList</usage>
-          <description>
-            <short_desc>
-              Show the combo box list
-            </short_desc>
-          </description>
-        </example>
-      </examples>
-    </keyword>
-
-    <keyword name="HIDELIST" displayText="HideList" deprecated="NO"
-      expectFailSupport="NO" expectWarnSupport="NO">
-
-      <description>
-        <short_desc>
-          Hide the combo box list (equivalent to an ESC or two ESCs).
-        </short_desc>
-        <detailed_desc>
-          <p>hide the list. This would only be necessary in cases
-            where the state of the combo box is not known ahead
-            of time.
-          </p>
-        </detailed_desc>
-      </description>
-
-      <engines>
-        <engine vendor="Rational" tool="RobotJ" name="RobotJ"
-          since="20030827">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/rational/CFComboBox.html" sourcecode="org.safs.rational.CFComboBox.java"
-            class="COMBOBOX" />
-        </engine>
-        <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
-          since="20140116">
-          <libraryInfo name="CFComboBox"
-            doc="org/safs/selenium/webdriver/CFComboBox.html"
-            sourcecode="org.safs.selenium.webdriver.CFComboBox.java"
-            class="MISC" />
-        </engine>
-      </engines>
-
-      <parameters>
-      </parameters>
-      <examples>
-
-        <example>
-          <usage>T, WINDOW, ComboBox, HideList</usage>
-          <description>
-            <short_desc>
-              Hide the combo box list
-            </short_desc>
-          </description>
-        </example>
-      </examples>
-    </keyword>
-
-  </keywords>
+	<libraryType type="COMPONENT" />
+	<libraryInfo name="ComboBoxFunctions" doc="ComboBoxFunctions.htm"
+		sourcecode="ComboBoxFunctions.sbl" chainTo="GenericObjectFunctions"
+		class="COMBOBOX">
+
+		<description>
+			<short_desc>
+				Actions for working with ComboBox objects
+			</short_desc>
+		</description>
+
+	</libraryInfo>
+	<runtime platform="Windows" engine="Robot" version="2002" />
+
+	<keywords>
+		<keyword name="CLICK" displayText="Click" deprecated="YES"
+			deprecatedFor="Generic CLICK" expectFailSupport="NO"
+			expectWarnSupport="NO">
+
+			<description>
+				<short_desc>
+					Attempts to perform a standard Click on the ComboBox
+				</short_desc>
+				<detailed_desc>
+					<p>Attempts to perform a standard Click on the ComboBox. If
+						the
+						combobox
+						list is not exposed then this will expose the list of items. If the
+						list is already exposed, then this will close the list.
+					</p>
+					<p>
+						It must be noted that when you expose the list in a ComboBox, it is
+						no
+						longer a ComboBox. It typically converts to a ComboListBox. This may
+						not be an issue on controls that Robot can recognize with a NAME=
+						method.
+					</p>
+					<p>
+						However, if the control is recognized by ObjectIndex or some other means
+						then the original ComboBox may no longer be found on the
+						screen.
+						With this scenario, you need to reference the ComboBox and the
+						ComboListBox
+						in the application map (and associated data files) as two separate
+						items.
+					</p>
+					<p>
+						To avoid these potential problems, use the COMBOBOX 'SELECT' command
+						to actually open the list and select the item all with a
+						single
+						command.
+					</p>
+				</detailed_desc>
+			</description>
+
+			<engines>
+				<engine name="WinRunner" since="20040618" tool="WinRunner"
+					vendor="Mercury Interactive">
+					<libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
+						sourcecode="ComboBoxFunctions">
+					</libraryInfo>
+				</engine>
+				<engine name="Test Complete" since="20081027" tool="TestComplete"
+					vendor="AutomatedQA">
+					<libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
+						sourcecode="ComboBoxFunctions.SVB">
+					</libraryInfo>
+				</engine>
+			</engines>
+
+			<parameters />
+			<examples>
+
+				<example>
+					<usage>T, WINDOW, ComboBox, CLICK</usage>
+					<description>
+						<short_desc>
+							Used to show or hide the drop down list from the ComboBox object.
+						</short_desc>
+						<detailed_desc>
+							Used to show or hide the drop down list from the ComboBox object.
+							Use the Select command INSTEAD of Click if you actually want to
+							Select an item in the list.
+						</detailed_desc>
+					</description>
+				</example>
+
+			</examples>
+		</keyword>
+
+		<keyword name="CAPTUREITEMSTOFILE" displayText="CaptureItemsToFile"
+			deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
+
+			<description>
+				<short_desc>
+					Capture Items To a File specified (if not abs, then to test dir)
+				</short_desc>
+				<detailed_desc>
+					Capture Items To a File specified (if not abs, then to test dir)
+				</detailed_desc>
+			</description>
+
+			<engines>
+				<engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827">
+					<libraryInfo name="CFComboBox" doc="org/safs/rational/CFComboBox.html"
+						sourcecode="org.safs.rational.CFComboBox.java" class="COMBOBOX" />
+				</engine>
+				<engine vendor="Google" tool="Android" name="Android" since="20120911">
+					<libraryInfo name="CFComboBoxFunctions"
+						doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFComboBoxFunctions.html"
+						sourcecode="org.safs.android.CFComboBoxFunctions.java" class="COMBOBOX" />
+					<domains>
+						<domain name="DEV" since="20120911">
+							<libraryInfo name="ComboBoxProcessor"
+								doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/ComboBoxProcessor.html"
+								sourcecode="org.safs.android.engine.ComboBoxProcessor.java"
+								class="COMBOBOX" />
+						</domain>
+					</domains>
+				</engine>
+				<engine vendor="Automated QA" tool="TestComplete" name="Test Complete"
+					since="20130425">
+					<libraryInfo name="ComboBoxFunctions" sourcecode="ComboBoxFunctions.SVB"
+						class="COMBOBOX" />
+					<domains>
+						<domain name="NET" since="20130425">
+							<libraryInfo name="ComboBoxFunctions" class="COMBOBOX"
+								subClass="NET" sourcecode="ComboBoxFunctions.SVB" />
+						</domain>
+						<domain name="FLEX" since="20130425">
+							<libraryInfo name="ComboBoxFunctions" class="COMBOBOX"
+								subClass="FLEX" sourcecode="ComboBoxFunctions.SVB" />
+						</domain>
+					</domains>
+				</engine>
+				<engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
+					since="20140116">
+					<libraryInfo name="CFComboBox"
+						doc="org/safs/selenium/webdriver/CFComboBox.html" sourcecode="org.safs.selenium.webdriver.CFComboBox.java"
+						class="MISC" />
+				</engine>
+			</engines>
+
+			<parameters>
+				<parameter name="FILENAME" displayText="FileName"
+					optional="NO">
+					<description>
+						<short_desc>
+							File name (if not absolute, then to test dir)
+						</short_desc>
+						<detailed_desc>
+							File name (if not absolute, then to test dir)
+						</detailed_desc>
+					</description>
+				</parameter>
+				<parameter name="FILEENCODING" displayText="FileEncoding"
+					optional="YES" default="">
+					<description>
+						<short_desc>
+							Specify a character encoding to be used when saving data to a file.
+							If it is not specified, the system default file encoding will be
+							used.
+							The encoding should be a valid string supported by Java; if it is
+							not valid,
+							the system default file encoding will be used instead.
+						</short_desc>
+					</description>
+				</parameter>
+			</parameters>
+			<examples>
+
+				<example>
+					<usage> T, WINDOW, ComboBox, CaptureItemsToFile , afile.txt
+					</usage>
+					<description>
+						<short_desc>
+							Captures all the items in the combo to ...\datapool\test\afile.txt
+						</short_desc>
+						<detailed_desc>
+							Captures all the items in the combo to ...\datapool\test\afile.txt
+						</detailed_desc>
+					</description>
+				</example>
+				<example>
+					<usage> T, WINDOW, ComboBox, CaptureItemsToFile , afile.txt,
+						"UTF-8"
+					</usage>
+					<description>
+						<short_desc>
+							Captures all the items in the combo to ...\datapool\test\afile.txt
+						</short_desc>
+						<detailed_desc>
+							Captures all the items in the combo to
+							...\datapool\test\afile.txt
+							<BR />
+							Write the file with encoding "UTF-8".
+						</detailed_desc>
+					</description>
+				</example>
+			</examples>
+		</keyword>
+
+		<keyword name="SELECT" displayText="Select" deprecated="NO"
+			expectFailSupport="NO" expectWarnSupport="NO">
+
+			<description>
+				<short_desc>
+					Select an item by its text value from a combobox.
+				</short_desc>
+				<detailed_desc>
+					<p>Select an item by its text value from a combobox.
+						This method combines the initial Click required to expose the list
+						of items and then the subsequent selection of a text item from the
+						list.
+					</p>
+					<p>
+						The routine will first attempt to see if the item exists in the list
+						and should provide a warning if it cannot find the item or
+						cannot
+						read the list of items. The routine will then attempt the
+						selection.
+					</p>
+					<p>
+						After the selection is attempted, the routine tries to verify that the
+						list has the specified item as the selected item. A warning
+						will
+						be
+						issued if the routine cannot read the list. A failure will be issued
+						if the routine CAN read the list and determines that the specified
+						item is NOT the currently selected item.
+					</p>
+					<p>Note: RobotJ also uses identical keyword SelectTextItem</p>
+				</detailed_desc>
+			</description>
+
+			<engines>
+				<engine vendor="Rational" tool="Robot" name="Robot" since="20030827">
+					<libraryInfo name="ComboBoxFunctions" doc="ComboBoxFunctions.htm"
+						sourcecode="ComboBoxFunctions.sbl" class="COMBOBOX" />
+				</engine>
+				<engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827">
+					<libraryInfo name="CFComboBox" doc="org/safs/rational/CFComboBox.html"
+						sourcecode="org.safs.rational.CFComboBox.java" class="COMBOBOX" />
+				</engine>
+				<engine name="WinRunner" since="20040618" tool="WinRunner"
+					vendor="Mercury Interactive">
+					<libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
+						sourcecode="ComboBoxFunctions">
+					</libraryInfo>
+				</engine>
+				<engine vendor="OpenQA" tool="Selenium" name="Selenium"
+					since="20070130">
+					<libraryInfo name="CFComboBox" doc="org/safs/selenium/CFComboBox.html"
+						sourcecode="org.safs.selenium.CFComboBox.java" class="COMBOBOX" />
+				</engine>
+				<engine name="Test Complete" since="20081027" tool="TestComplete"
+					vendor="AutomatedQA">
+					<libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
+						sourcecode="ComboBoxFunctions.SVB">
+					</libraryInfo>
+				</engine>
+				<engine vendor="Google" tool="Android" name="Android" since="20120911">
+					<libraryInfo name="CFComboBoxFunctions"
+						doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFComboBoxFunctions.html"
+						sourcecode="org.safs.android.CFComboBoxFunctions.java" class="COMBOBOX" />
+					<domains>
+						<domain name="DEV" since="20120911">
+							<libraryInfo name="ComboBoxProcessor"
+								doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/ComboBoxProcessor.html"
+								sourcecode="org.safs.android.engine.ComboBoxProcessor.java"
+								class="COMBOBOX" />
+						</domain>
+					</domains>
+				</engine>
+				<engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
+					since="20140116">
+					<libraryInfo name="CFComboBox"
+						doc="org/safs/selenium/webdriver/CFComboBox.html" sourcecode="org.safs.selenium.webdriver.CFComboBox.java"
+						class="MISC" />
+				</engine>
+			</engines>
+
+			<parameters>
+				<parameter name="TEXTVALUE" displayText="TextValue"
+					optional="NO">
+					<description>
+						<short_desc>
+							The case-sensitive item in the drop down list to select.
+						</short_desc>
+					</description>
+				</parameter>
+				<parameter name="FORCEREFRESH" displayText="ForceRefresh"
+					optional="Yes">
+					<description>
+						<short_desc>
+							Force refreshing to update stale element after selection.
+						</short_desc>
+						<note>
+							<engines>
+								<engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
+									since="20160316" />
+							</engines>
+							<value>First implemented in March 2016 for Selenium2.0 and
+								might
+								not be supported in all engines yet.
+							</value>
+						</note>
+					</description>
+				</parameter>
+			</parameters>
+			<examples>
+
+				<example>
+					<usage>T, WINDOW, ComboBox, SELECT, "MySelection"</usage>
+					<description>
+						<short_desc>
+							This action attempts to Click AND Select "MySelection"
+							(case-sensitive) from the ComboBox.
+						</short_desc>
+					</description>
+				</example>
+
+				<example>
+					<usage>T, WINDOW, ComboBox, SELECT, "MySelection", "true"
+					</usage>
+					<description>
+						<short_desc>
+							This action attempts to Click AND Select "MySelection"
+							(case-sensitive) from the ComboBox, and force refreshing
+							after
+							selection.
+						</short_desc>
+					</description>
+				</example>
+
+			</examples>
+		</keyword>
+
+		<keyword name="SELECTUNVERIFIED" displayText="SelectUnverified"
+			deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
+
+			<description>
+				<short_desc>
+					Select an item by its text value from a combobox without verifying the
+					selection.
+				</short_desc>
+				<detailed_desc>
+					<p>Select an item by its text value from a combobox without
+						verifying the selection.
+						This method combines the initial Click required to expose the list
+						of items and then the subsequent selection of a text item from the
+						list.
+					</p>
+					<p>
+						The routine will simply take the specified text and attemp the
+						selection.
+						it will not verify the existence of the item before the attemp, nor
+						will it verify the item is actually selected after the
+						attemp.
+					</p>
+					<p>Note: RobotJ also uses identical keyword
+						SelectUnverifiedTextItem
+					</p>
+				</detailed_desc>
+			</description>
+
+			<engines>
+				<engine vendor="Rational" tool="Robot" name="Robot" since="20030827">
+					<libraryInfo name="ComboBoxFunctions" doc="ComboBoxFunctions.htm"
+						sourcecode="ComboBoxFunctions.sbl" class="COMBOBOX" />
+				</engine>
+				<engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827">
+					<libraryInfo name="CFComboBox" doc="org/safs/rational/CFComboBox.html"
+						sourcecode="org.safs.rational.CFComboBox.java" class="COMBOBOX" />
+				</engine>
+				<engine name="WinRunner" since="20040618" tool="WinRunner"
+					vendor="Mercury Interactive">
+					<libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
+						sourcecode="ComboBoxFunctions">
+					</libraryInfo>
+				</engine>
+				<engine vendor="OpenQA" tool="Selenium" name="Selenium"
+					since="20070130">
+					<libraryInfo name="CFComboBox" doc="org/safs/selenium/CFComboBox.html"
+						sourcecode="org.safs.selenium.CFComboBox.java" class="COMBOBOX" />
+				</engine>
+				<engine name="Test Complete" since="20081027" tool="TestComplete"
+					vendor="AutomatedQA">
+					<libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
+						sourcecode="ComboBoxFunctions.SVB">
+					</libraryInfo>
+				</engine>
+				<engine vendor="Google" tool="Android" name="Android" since="20120911">
+					<libraryInfo name="CFComboBoxFunctions"
+						doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFComboBoxFunctions.html"
+						sourcecode="org.safs.android.CFComboBoxFunctions.java" class="COMBOBOX" />
+					<domains>
+						<domain name="DEV" since="20120911">
+							<libraryInfo name="ComboBoxProcessor"
+								doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/ComboBoxProcessor.html"
+								sourcecode="org.safs.android.engine.ComboBoxProcessor.java"
+								class="COMBOBOX" />
+						</domain>
+					</domains>
+				</engine>
+				<engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
+					since="20140116">
+					<libraryInfo name="CFComboBox"
+						doc="org/safs/selenium/webdriver/CFComboBox.html" sourcecode="org.safs.selenium.webdriver.CFComboBox.java"
+						class="MISC" />
+				</engine>
+			</engines>
+
+			<parameters>
+				<parameter name="TEXTVALUE" displayText="TextValue"
+					optional="NO">
+					<description>
+						<short_desc>
+							The case-sensitive item in the drop down list to select.
+						</short_desc>
+					</description>
+				</parameter>
+				<parameter name="FORCEREFRESH" displayText="ForceRefresh"
+					optional="Yes">
+					<description>
+						<short_desc>
+							Force refreshing to update stale element after selection.
+						</short_desc>
+						<note>
+							<engines>
+								<engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
+									since="20160316" />
+							</engines>
+							<value>First implemented in March 2016 for Selenium2.0 and
+								might
+								not be supported in all engines yet.
+							</value>
+						</note>
+					</description>
+				</parameter>
+			</parameters>
+			<examples>
+
+				<example>
+					<usage>T, WINDOW, ComboBox, SELECTUNVERIFIED, "MySelection"
+					</usage>
+					<description>
+						<short_desc>
+							This action attempts to Click AND Select "MySelection"
+							(case-sensitive) from the ComboBox.
+						</short_desc>
+					</description>
+				</example>
+
+				<example>
+					<usage>T, WINDOW, ComboBox, SELECTUNVERIFIED, "MySelection",
+						"true"
+					</usage>
+					<description>
+						<short_desc>
+							This action attempts to Click AND Select "MySelection"
+							(case-sensitive) from the ComboBox, and force refreshing
+							after
+							selection.
+						</short_desc>
+					</description>
+				</example>
+
+			</examples>
+		</keyword>
+
+		<keyword name="SELECTINDEX" displayText="SelectIndex"
+			deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
+
+			<description>
+				<short_desc>
+					Select an item by its index from a combobox.
+				</short_desc>
+				<detailed_desc>
+					Select an item by its index from a combobox.
+					This method combines the initial Click required to expose the list
+					of items and then the subsequent selection of the item from the list.
+					<br />
+					The routine will first attempt to see if the index exists in
+					the
+					list
+					and should provide a warning if it cannot find the item or cannot
+					read the list of items. The routine will then attempt the selection.
+					<br />
+				</detailed_desc>
+			</description>
+
+			<engines>
+				<engine vendor="Rational" tool="Robot" name="Robot" since="20030827">
+					<libraryInfo name="ComboBoxFunctions" doc="ComboBoxFunctions.htm"
+						sourcecode="ComboBoxFunctions.sbl" class="COMBOBOX" />
+				</engine>
+				<engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827">
+					<libraryInfo name="CFComboBox" doc="org/safs/rational/CFComboBox.html"
+						sourcecode="org.safs.rational.CFComboBox.java" class="COMBOBOX" />
+				</engine>
+				<engine name="WinRunner" since="20040618" tool="WinRunner"
+					vendor="Mercury Interactive">
+					<libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
+						sourcecode="ComboBoxFunctions">
+					</libraryInfo>
+				</engine>
+				<engine vendor="OpenQA" tool="Selenium" name="Selenium"
+					since="20070130">
+					<libraryInfo name="CFComboBox" doc="org/safs/selenium/CFComboBox.html"
+						sourcecode="org.safs.selenium.CFComboBox.java" class="COMBOBOX" />
+				</engine>
+				<engine name="Test Complete" since="20081027" tool="TestComplete"
+					vendor="AutomatedQA">
+					<libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
+						sourcecode="ComboBoxFunctions.SVB">
+					</libraryInfo>
+				</engine>
+				<engine vendor="Google" tool="Android" name="Android" since="20120911">
+					<libraryInfo name="CFComboBoxFunctions"
+						doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFComboBoxFunctions.html"
+						sourcecode="org.safs.android.CFComboBoxFunctions.java" class="COMBOBOX" />
+					<domains>
+						<domain name="DEV" since="20120911">
+							<libraryInfo name="ComboBoxProcessor"
+								doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/ComboBoxProcessor.html"
+								sourcecode="org.safs.android.engine.ComboBoxProcessor.java"
+								class="COMBOBOX" />
+						</domain>
+					</domains>
+				</engine>
+				<engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
+					since="20140116">
+					<libraryInfo name="CFComboBox"
+						doc="org/safs/selenium/webdriver/CFComboBox.html" sourcecode="org.safs.selenium.webdriver.CFComboBox.java"
+						class="MISC" />
+				</engine>
+			</engines>
+
+			<parameters>
+				<parameter name="INDEXVALUE" displayText="IndexValue"
+					optional="NO">
+					<description>
+						<short_desc>
+							The item index in the drop down list to select.
+						</short_desc>
+						<detailed_desc>
+							Some combo lists are 0-based (start with 0). Some are
+							1-based
+							(start with 1).
+							The user will have to determine the index base for their particular
+							combo list.
+							<br />
+							It would appear that HTML Combo lists are 1-based.
+						</detailed_desc>
+					</description>
+				</parameter>
+				<parameter name="FORCEREFRESH" displayText="ForceRefresh"
+					optional="Yes">
+					<description>
+						<short_desc>
+							Force refreshing to update stale element after selection.
+						</short_desc>
+						<note>
+							<engines>
+								<engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
+									since="20160316" />
+							</engines>
+							<value>First implemented in March 2016 for Selenium2.0 and
+								might
+								not be supported in all engines yet.
+							</value>
+						</note>
+					</description>
+				</parameter>
+			</parameters>
+			<examples>
+
+				<example>
+					<usage>T, WINDOW, ComboBox, SELECTINDEX, "1"</usage>
+					<description>
+						<short_desc>
+							This action attempts to Click AND Select item #1 from the ComboBox
+							list.
+						</short_desc>
+					</description>
+				</example>
+
+				<example>
+					<usage>T, WINDOW, ComboBox, SELECTINDEX, "1", "true"</usage>
+					<description>
+						<short_desc>
+							This action attempts to Click AND Select item #1 from the ComboBox
+							list, and force refreshing after selection.
+						</short_desc>
+					</description>
+				</example>
+
+			</examples>
+		</keyword>
+
+		<keyword name="SETTEXTVALUE" displayText="SetTextValue"
+			deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
+
+			<description>
+				<short_desc>
+					Set the text of the combobox
+				</short_desc>
+				<detailed_desc>
+					<p>This action sets the text of the combobox. This version
+						allows
+						the use
+						of special character combinations and substrings to identify
+						specific
+						keyboard keys. These are the same special characters and interpretation
+						used for Robot's InputKeys command and the Windows Scripting
+						Host.
+					</p>
+					<p>
+						~^+%{( are primarily the characters that induce special processing.</p>
+					<p>
+						The routine verifies we can read the text property, sets the text
+						value
+						and will verify that the property has been set to that value *IF*
+						none
+						of the special characters exist in the provided text value. If those
+						special characters exist, then no post-set verification will
+						occur.
+					</p>
+				</detailed_desc>
+			</description>
+
+			<engines>
+				<engine vendor="Rational" tool="Robot" name="Robot" since="20030827">
+					<libraryInfo name="ComboBoxFunctions" doc="ComboBoxFunctions.htm"
+						sourcecode="ComboBoxFunctions.sbl" class="COMBOBOX" />
+				</engine>
+				<engine vendor="Rational" tool="RobotJ" name="RobotJ" since="200505224">
+					<libraryInfo name="CFComboBox" doc="org/safs/rational/CFComboBox.html"
+						sourcecode="org.safs.rational.CFComboBox.java" class="COMBOBOX" />
+				</engine>
+				<engine name="WinRunner" since="20040618" tool="WinRunner"
+					vendor="Mercury Interactive">
+					<libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
+						sourcecode="ComboBoxFunctions">
+					</libraryInfo>
+				</engine>
+				<engine name="Test Complete" since="20081027" tool="TestComplete"
+					vendor="AutomatedQA">
+					<libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
+						sourcecode="ComboBoxFunctions.SVB">
+					</libraryInfo>
+				</engine>
+				<engine name="Selenium2.0" since="20160115" tool="Selenium"
+					vendor="OpenQA">
+					<libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
+						doc="org/safs/selenium/webdriver/CFComboBox.html" sourcecode="org.safs.selenium.webdriver.CFComboBox.java" />
+				</engine>
+			</engines>
+
+			<parameters>
+
+				<parameter name="TEXTVALUE" displayText="TextValue"
+					optional="YES" default="">
+					<description>
+						<short_desc>
+							The text that will be typed into the ComboBox.
+						</short_desc>
+						<detailed_desc>
+							TextValue will be the text that will be typed into the Combobox.
+							Quoted text may be used to ensure proper expected value retrieval.
+							There is also no check for a missing field because that
+							would be
+							the same as specifying no text ("")--which is valid.
+						</detailed_desc>
+					</description>
+				</parameter>
+
+			</parameters>
+			<examples>
+
+				<example>
+					<usage>T, WINDOW, ComboBox, SETTEXTVALUE, "MyPassword"</usage>
+					<description>
+						<short_desc>
+							"MyPassword" is typed into the Combobox
+						</short_desc>
+					</description>
+				</example>
+
+			</examples>
+		</keyword>
+
+		<keyword name="SETUNVERIFIEDTEXTVALUE" displayText="SetUnverifiedTextValue"
+			deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
+
+			<description>
+				<short_desc>
+					Set the text of the combobox without verification
+				</short_desc>
+				<detailed_desc>
+					<p>This action sets the text of the combobox. This version
+						allows
+						the use
+						of special character combinations and substrings to identify
+						specific
+						keyboard keys. These are the same special characters and interpretation
+						used for Robot's InputKeys command and the Windows Scripting
+						Host.
+					</p>
+					<p>
+						~^+%{( are primarily the characters that induce special processing.</p>
+					<p>
+						The routine verifies we can read the text property, sets the text
+						value
+						but does not verify that the property has been set to that value
+						whether or not
+						any of the special characters exist in the provided text value.
+					</p>
+				</detailed_desc>
+			</description>
+
+			<engines>
+				<engine vendor="Rational" tool="Robot" name="Robot" since="20041230">
+					<libraryInfo name="ComboBoxFunctions" doc="ComboBoxFunctions.htm"
+						sourcecode="ComboBoxFunctions.sbl" class="COMBOBOX" />
+				</engine>
+				<engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20050622">
+					<libraryInfo name="CFComboBox" doc="org/safs/rational/CFComboBox.html"
+						sourcecode="org.safs.rational.CFComboBox.java" class="COMBOBOX" />
+				</engine>
+				<engine name="Test Complete" since="20081027" tool="TestComplete"
+					vendor="AutomatedQA">
+					<libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
+						sourcecode="ComboBoxFunctions.SVB">
+					</libraryInfo>
+				</engine>
+			</engines>
+
+			<parameters>
+
+				<parameter name="TEXTVALUE" displayText="TextValue"
+					optional="YES" default="">
+					<description>
+						<short_desc>
+							The text that will be typed into the ComboBox.
+						</short_desc>
+						<detailed_desc>
+							TextValue will be the text that will be typed into the Combobox.
+							Quoted text may be used to ensure proper expected value retrieval.
+							There is also no check for a missing field because that
+							would be
+							the same as specifying no text ("")--which is valid.
+						</detailed_desc>
+					</description>
+				</parameter>
+
+			</parameters>
+			<examples>
+
+				<example>
+					<usage>T, WINDOW, ComboBox, SETUNVERIFIEDTEXTVALUE,
+						"MyPassword"
+					</usage>
+					<description>
+						<short_desc>
+							"MyPassword" is typed into the Combobox
+						</short_desc>
+					</description>
+				</example>
+
+			</examples>
+		</keyword>
+
+		<keyword name="SELECTPARTIALMATCH" displayText="SelectPartialMatch"
+			deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
+
+			<description>
+				<short_desc>
+					Select an item via a partial text match in a combobox.
+				</short_desc>
+				<detailed_desc>
+					<p>Select an item via a partial text match in a combobox.
+						This method combines the initial Click required to expose the list
+						of items and then the subsequent selection of a text item from the
+						list.
+					</p>
+					<p>
+						The routine will first attempt to see if the item exists in the list
+						and should provide a warning if it cannot find the item or
+						cannot
+						read the list of items. The routine will then attempt the
+						selection.
+					</p>
+					<p>
+						After the selection is attempted, the routine tries to verify that the
+						list has the specified item as the selected item. A warning
+						will
+						be
+						issued if the routine cannot read the list. A failure will be issued
+						if the routine CAN read the list and determines that the specified
+						item is NOT the currently selected item.
+					</p>
+				</detailed_desc>
+			</description>
+
+			<engines>
+				<engine vendor="Rational" tool="Robot" name="Robot" since="20030827">
+					<libraryInfo name="ComboBoxFunctions" doc="ComboBoxFunctions.htm"
+						sourcecode="ComboBoxFunctions.sbl" class="COMBOBOX" />
+				</engine>
+				<engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827">
+					<libraryInfo name="CFComboBox" doc="org/safs/rational/CFComboBox.html"
+						sourcecode="org.safs.rational.CFComboBox.java" class="COMBOBOX" />
+				</engine>
+				<engine name="WinRunner" since="20040618" tool="WinRunner"
+					vendor="Mercury Interactive">
+					<libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
+						sourcecode="ComboBoxFunctions">
+					</libraryInfo>
+				</engine>
+				<engine vendor="OpenQA" tool="Selenium" name="Selenium"
+					since="20070130">
+					<libraryInfo name="CFComboBox" doc="org/safs/selenium/CFComboBox.html"
+						sourcecode="org.safs.selenium.CFComboBox.java" class="COMBOBOX" />
+				</engine>
+				<engine name="Test Complete" since="20081027" tool="TestComplete"
+					vendor="AutomatedQA">
+					<libraryInfo class="COMBOBOX" name="ComboBoxFunctions"
+						sourcecode="ComboBoxFunctions.SVB">
+					</libraryInfo>
+				</engine>
+				<engine vendor="Google" tool="Android" name="Android" since="20120911">
+					<libraryInfo name="CFComboBoxFunctions"
+						doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFComboBoxFunctions.html"
+						sourcecode="org.safs.android.CFComboBoxFunctions.java" class="COMBOBOX" />
+					<domains>
+						<domain name="DEV" since="20120911">
+							<libraryInfo name="ComboBoxProcessor"
+								doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/ComboBoxProcessor.html"
+								sourcecode="org.safs.android.engine.ComboBoxProcessor.java"
+								class="COMBOBOX" />
+						</domain>
+					</domains>
+				</engine>
+				<engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
+					since="20140116">
+					<libraryInfo name="CFComboBox"
+						doc="org/safs/selenium/webdriver/CFComboBox.html" sourcecode="org.safs.selenium.webdriver.CFComboBox.java"
+						class="MISC" />
+				</engine>
+			</engines>
+
+			<parameters>
+				<parameter name="TEXTVALUE" displayText="TextValue"
+					optional="NO">
+					<description>
+						<short_desc>
+							The case-sensitive substring of an item in the drop down list to
+							select.
+						</short_desc>
+					</description>
+				</parameter>
+				<parameter name="FORCEREFRESH" displayText="ForceRefresh"
+					optional="Yes">
+					<description>
+						<short_desc>
+							Force refreshing to update stale element after selection.
+						</short_desc>
+						<note>
+							<engines>
+								<engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
+									since="20160316" />
+							</engines>
+							<value>First implemented in March 2016 for Selenium2.0 and
+								might
+								not be supported in all engines yet.
+							</value>
+						</note>
+					</description>
+				</parameter>
+			</parameters>
+			<examples>
+
+				<example>
+					<usage>T, WINDOW, ComboBox, SelectPartialMatch,
+						"ATextSubstring"
+					</usage>
+					<description>
+						<short_desc>
+							This action attempts to Click AND Select the first item containing
+							the
+							substring provided.
+						</short_desc>
+					</description>
+				</example>
+
+				<example>
+					<usage>T, WINDOW, ComboBox, SelectPartialMatch,
+						"ATextSubstring",
+						"true"
+					</usage>
+					<description>
+						<short_desc>
+							This action attempts to Click AND Select the first item containing
+							the
+							substring provided, and force refreshing after selection.
+						</short_desc>
+					</description>
+				</example>
+
+			</examples>
+		</keyword>
+
+		<keyword name="VERIFYSELECTED" displayText="VerifySelected"
+			deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
+
+			<description>
+				<short_desc>
+					Verify Selected item is equal to specified parameter
+				</short_desc>
+				<detailed_desc>
+					Verify Selected item is equal to specified parameter
+				</detailed_desc>
+			</description>
+
+			<engines>
+				<engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20031124">
+					<libraryInfo name="CFComboBox" doc="org/safs/rational/CFComboBox.html"
+						sourcecode="org.safs.rational.CFComboBox.java" class="COMBOBOX" />
+				</engine>
+				<engine name="Test Complete" since="20110905" tool="TestComplete"
+					vendor="AutomatedQA">
+					<libraryInfo class="ComboBox" name="ComboBoxFunctions"
+						sourcecode="ComboBoxFunctions.SVB">
+					</libraryInfo>
+				</engine>
+				<engine vendor="Google" tool="Android" name="Android" since="20120911">
+					<libraryInfo name="CFComboBoxFunctions"
+						doc="http://safsdev.sourceforge.net/doc/org/safs/android/CFComboBoxFunctions.html"
+						sourcecode="org.safs.android.CFComboBoxFunctions.java" class="COMBOBOX" />
+					<domains>
+						<domain name="DEV" since="20120911">
+							<libraryInfo name="ComboBoxProcessor"
+								doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/ComboBoxProcessor.html"
+								sourcecode="org.safs.android.engine.ComboBoxProcessor.java"
+								class="COMBOBOX" />
+						</domain>
+					</domains>
+				</engine>
+				<engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
+					since="20140116">
+					<libraryInfo name="CFComboBox"
+						doc="org/safs/selenium/webdriver/CFComboBox.html" sourcecode="org.safs.selenium.webdriver.CFComboBox.java"
+						class="MISC" />
+				</engine>
+			</engines>
+
+			<parameters>
+				<parameter name="TEXTVALUE" displayText="TextValue"
+					optional="NO">
+					<description>
+						<short_desc>
+							The case-sensitive substring to compare.
+						</short_desc>
+					</description>
+				</parameter>
+			</parameters>
+			<examples>
+
+				<example>
+					<usage>T, WINDOW, ComboBox, VerifySelected, "ATextSubstring"
+					</usage>
+					<description>
+						<short_desc>
+							This action verifies that the selected item is ATextSubstring.
+						</short_desc>
+					</description>
+				</example>
+
+			</examples>
+		</keyword>
+
+		<keyword name="SHOWLIST" displayText="ShowList" deprecated="NO"
+			expectFailSupport="NO" expectWarnSupport="NO">
+
+			<description>
+				<short_desc>
+					Show the combo box list (expose it).
+				</short_desc>
+				<detailed_desc>
+					<p>show the list so that the next step can be a click
+						on an item. This would only be necessary in cases
+						where the state of the combo box is not known ahead
+						of time.
+					</p>
+				</detailed_desc>
+			</description>
+
+			<engines>
+				<engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827">
+					<libraryInfo name="CFComboBox" doc="org/safs/rational/CFComboBox.html"
+						sourcecode="org.safs.rational.CFComboBox.java" class="COMBOBOX" />
+				</engine>
+				<engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
+					since="20140116">
+					<libraryInfo name="CFComboBox"
+						doc="org/safs/selenium/webdriver/CFComboBox.html" sourcecode="org.safs.selenium.webdriver.CFComboBox.java"
+						class="MISC" />
+				</engine>
+			</engines>
+
+			<parameters>
+			</parameters>
+			<examples>
+
+				<example>
+					<usage>T, WINDOW, ComboBox, ShowList</usage>
+					<description>
+						<short_desc>
+							Show the combo box list
+						</short_desc>
+					</description>
+				</example>
+			</examples>
+		</keyword>
+
+		<keyword name="HIDELIST" displayText="HideList" deprecated="NO"
+			expectFailSupport="NO" expectWarnSupport="NO">
+
+			<description>
+				<short_desc>
+					Hide the combo box list (equivalent to an ESC or two ESCs).
+				</short_desc>
+				<detailed_desc>
+					<p>hide the list. This would only be necessary in cases
+						where the state of the combo box is not known ahead
+						of time.
+					</p>
+				</detailed_desc>
+			</description>
+
+			<engines>
+				<engine vendor="Rational" tool="RobotJ" name="RobotJ" since="20030827">
+					<libraryInfo name="CFComboBox" doc="org/safs/rational/CFComboBox.html"
+						sourcecode="org.safs.rational.CFComboBox.java" class="COMBOBOX" />
+				</engine>
+				<engine vendor="OpenQA" tool="Selenium" name="Selenium2.0"
+					since="20140116">
+					<libraryInfo name="CFComboBox"
+						doc="org/safs/selenium/webdriver/CFComboBox.html" sourcecode="org.safs.selenium.webdriver.CFComboBox.java"
+						class="MISC" />
+				</engine>
+			</engines>
+
+			<parameters>
+			</parameters>
+			<examples>
+
+				<example>
+					<usage>T, WINDOW, ComboBox, HideList</usage>
+					<description>
+						<short_desc>
+							Hide the combo box list
+						</short_desc>
+					</description>
+				</example>
+			</examples>
+		</keyword>
+
+	</keywords>
 </keyword_library>
