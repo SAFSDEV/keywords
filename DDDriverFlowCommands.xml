@@ -1702,6 +1702,12 @@
                             sourcecode="org.safs.selenium.DCDriverCommand.java" 
                             class="FLOW" />
            </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160331" >
+	       <libraryInfo name="DDDriverCommands" 
+                            doc="org/safs/selenium/webdriver/DCDriverCommand.html" 
+                            sourcecode="org.safs.selenium.webdriver.DCDriverCommand.java" 
+                            class="FLOW" />
+           </engine>
            <engine name="Test Complete" 
 		   	   	   			       since="20081028" 
 		   	   	   			       tool="TestComplete" 
@@ -1805,6 +1811,12 @@
 	       <libraryInfo name="DDDriverCommands" 
                             doc="org/safs/selenium/DCDriverCommand.html" 
                             sourcecode="org.safs.selenium.DCDriverCommand.java" 
+                            class="FLOW" />
+           </engine>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160331" >
+           <libraryInfo name="DDDriverCommands" 
+                            doc="org/safs/selenium/webdriver/DCDriverCommand.html" 
+                            sourcecode="org.safs.selenium.webdriver.DCDriverCommand.java" 
                             class="FLOW" />
            </engine>
            <engine name="Test Complete" 
