@@ -1161,6 +1161,23 @@
               </detailed_desc>
            </description>
         </parameter>
+        <parameter name="AUTOSCROLL" displayText="AutoScroll" optional="YES">
+           <description>
+              <short_desc> 
+                (Optional) True|False. If the component will be scrolled into view automatically before clicking. The default value is true.
+              </short_desc>
+              <detailed_desc>
+                If the component is out of view, the click action will not succeed. Normally we will scroll the component into view,
+                and then perform the click action. But sometimes, the component is partially shown and click could work and user does not
+                want the component shift, then we could turn off the auto-scroll ability by setting this parameter to false.<br/>
+                If this auto-scroll is turned off, user needs to make sure that component is shown by himself.
+              </detailed_desc>
+              <note>
+                <engines><engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160422"/></engines>
+                <value>For now, this optional parameter is only supported in Selenium2.0 Engine. </value>
+              </note>
+           </description>
+        </parameter>
      </parameters><examples>
 
         <example>
@@ -1215,7 +1232,7 @@
                Field  5 : TQ String. The item does not exist in the app map so will be 
                treated as literal text.  Note we allow semi-colon delimited coordinates 
                to support the case when commas are used as field delimiters and cannot be 
-               used to delimite the X and Y coordinates.
+               used to delimit the X and Y coordinates.
               </detailed_desc>
            </description>
         </example>
@@ -1229,11 +1246,29 @@
                Field  5 : TQ String. The item does not exist in the app map so will be 
                treated as literal text.  Note we allow semi-colon delimited coordinates 
                to support the case when commas are used as field delimiters and cannot be 
-               used to delimite the X and Y coordinates.
+               used to delimit the X and Y coordinates.
               </detailed_desc>
            </description>
         </example>
-
+        <example>
+           <usage>T, WINDOW, AnObject, CLICK, 10;20, False</usage>
+           <description>
+              <short_desc> 
+               A single click will be performed at coordinate 10,20 in the object. <b>And the object
+               will not be scrolled into view automatically before clicking.</b>
+              </short_desc>
+              <detailed_desc> 
+               Field  5 : TQ String. The item does not exist in the app map so will be 
+               treated as literal text.  Note we allow semi-colon delimited coordinates 
+               to support the case when commas are used as field delimiters and cannot be 
+               used to delimit the X and Y coordinates.
+              </detailed_desc>
+              <note>
+                <engines><engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160422"/></engines>
+                <value>Auto-scroll will be turned off.</value>
+              </note>
+           </description>
+        </example>
      </examples></keyword>
      <keyword name="MOUSECLICK" 
            displayText="MouseClick" 
@@ -1409,7 +1444,7 @@
                Field  5 : TQ String. The item does not exist in the app map so will be 
                treated as literal text.  Note we allow semi-colon delimited coordinates 
                to support the case when commas are used as field delimiters and cannot be 
-               used to delimite the X and Y coordinates.
+               used to delimit the X and Y coordinates.
               </detailed_desc>
            </description>
         </example>
@@ -1423,7 +1458,7 @@
                Field  5 : TQ String. The item does not exist in the app map so will be 
                treated as literal text.  Note we allow semi-colon delimited coordinates 
                to support the case when commas are used as field delimiters and cannot be 
-               used to delimite the X and Y coordinates.
+               used to delimit the X and Y coordinates.
               </detailed_desc>
            </description>
         </example>
@@ -1604,7 +1639,7 @@
                Field  5 : TQ String. The item does not exist in the app map so will be 
                treated as literal text.  Note we allow semi-colon delimited coordinates 
                to support the case when commas are used as field delimiters and cannot be 
-               used to delimite the X and Y coordinates.
+               used to delimit the X and Y coordinates.
               </detailed_desc>
            </description>
         </example>
@@ -1618,7 +1653,7 @@
                Field  5 : TQ String. The item does not exist in the app map so will be 
                treated as literal text.  Note we allow semi-colon delimited coordinates 
                to support the case when commas are used as field delimiters and cannot be 
-               used to delimite the X and Y coordinates.
+               used to delimit the X and Y coordinates.
               </detailed_desc>
            </description>
         </example>
@@ -1745,7 +1780,7 @@
                Field  5 : TQ String. The item does not exist in the app map so will be 
                treated as literal text.  Note we allow semi-colon delimited coordinates 
                to support the case when commas are used as field delimiters and cannot be 
-               used to delimite the X and Y coordinates.
+               used to delimit the X and Y coordinates.
               </detailed_desc>
            </description>
         </example>
@@ -1759,7 +1794,7 @@
                Field  5 : TQ String. The item does not exist in the app map so will be 
                treated as literal text.  Note we allow semi-colon delimited coordinates 
                to support the case when commas are used as field delimiters and cannot be 
-               used to delimite the X and Y coordinates.
+               used to delimit the X and Y coordinates.
               </detailed_desc>
            </description>
         </example>
@@ -2479,6 +2514,23 @@
               </detailed_desc>
            </description>
         </parameter>
+        <parameter name="AUTOSCROLL" displayText="AutoScroll" optional="YES">
+           <description>
+              <short_desc> 
+                (Optional) True|False. If the component will be scrolled into view automatically before clicking. The default value is true.
+              </short_desc>
+              <detailed_desc>
+                If the component is out of view, the click action will not succeed. Normally we will scroll the component into view,
+                and then perform the click action. But sometimes, the component is partially shown and click could work and user does not
+                want the component shift, then we could turn off the auto-scroll ability by setting this parameter to false.<br/>
+                If this auto-scroll is turned off, user needs to make sure that component is shown by himself.
+              </detailed_desc>
+              <note>
+                <engines><engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160422"/></engines>
+                <value>For now, this optional parameter is only supported in Selenium2.0 Engine. </value>
+              </note>
+           </description>
+        </parameter>
      </parameters><examples>
 
         <example>
@@ -2490,6 +2542,19 @@
               <detailed_desc> 
                A double click should be performed on the center of the object.
               </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, COMPONENT, DOUBLECLICK, , False</usage>
+           <description>
+              <short_desc> 
+               A double click should be performed on the center of the object. <b>And the object
+               will not be scrolled into view automatically before clicking.</b>
+              </short_desc>
+              <note>
+                <engines><engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160422"/></engines>
+                <value>Auto-scroll will be turned off.</value>
+              </note>
            </description>
         </example>
         <example>
@@ -2533,7 +2598,7 @@
                Field  5 : TQ String. The item does not exist in the app map so will be 
                treated as literal text.  Note we allow semi-colon delimited coordinates 
                to support the case when commas are used as field delimiters and cannot be 
-               used to delimite the X and Y coordinates.
+               used to delimit the X and Y coordinates.
               </detailed_desc>
            </description>
         </example>
@@ -3004,6 +3069,23 @@
               </detailed_desc>
            </description>
         </parameter>
+        <parameter name="AUTOSCROLL" displayText="AutoScroll" optional="YES">
+           <description>
+              <short_desc> 
+                (Optional) True|False. If the component will be scrolled into view automatically before clicking. The default value is true.
+              </short_desc>
+              <detailed_desc>
+                If the component is out of view, the click action will not succeed. Normally we will scroll the component into view,
+                and then perform the click action. But sometimes, the component is partially shown and click could work and user does not
+                want the component shift, then we could turn off the auto-scroll ability by setting this parameter to false.<br/>
+                If this auto-scroll is turned off, user needs to make sure that component is shown by himself.
+              </detailed_desc>
+              <note>
+                <engines><engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160422"/></engines>
+                <value>For now, this optional parameter is only supported in Selenium2.0 Engine. </value>
+              </note>
+           </description>
+        </parameter>
      </parameters><examples>
 
         <example>
@@ -3015,6 +3097,19 @@
               <detailed_desc> 
                A right click will be performed on the center of the object.
               </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, WINDOW, RIGHTCLICK, , False</usage>
+           <description>
+              <short_desc> 
+               A right click will be performed on the center of the object. <b>And the object
+               will not be scrolled into view automatically before clicking.</b>
+              </short_desc>
+              <note>
+                <engines><engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160422"/></engines>
+                <value>Auto-scroll will be turned off.</value>
+              </note>
            </description>
         </example>
         <example>
@@ -3058,7 +3153,7 @@
                Field  5 : TQ String. The item does not exist in the app map so will be 
                treated as literal text.  Note we allow semi-colon delimited coordinates 
                to support the case when commas are used as field delimiters and cannot be 
-               used to delimite the X and Y coordinates.
+               used to delimit the X and Y coordinates.
               </detailed_desc>
            </description>
         </example>
@@ -3491,6 +3586,23 @@
               </detailed_desc>
            </description>
         </parameter>
+        <parameter name="AUTOSCROLL" displayText="AutoScroll" optional="YES">
+           <description>
+              <short_desc> 
+                (Optional) True|False. If the component will be scrolled into view automatically before clicking. The default value is true.
+              </short_desc>
+              <detailed_desc>
+                If the component is out of view, the click action will not succeed. Normally we will scroll the component into view,
+                and then perform the click action. But sometimes, the component is partially shown and click could work and user does not
+                want the component shift, then we could turn off the auto-scroll ability by setting this parameter to false.<br/>
+                If this auto-scroll is turned off, user needs to make sure that component is shown by himself.
+              </detailed_desc>
+              <note>
+                <engines><engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160422"/></engines>
+                <value>For now, this optional parameter is only supported in Selenium2.0 Engine. </value>
+              </note>
+           </description>
+        </parameter>
      </parameters><examples>
 
         <example>
@@ -3502,6 +3614,19 @@
               <detailed_desc>
                A CTRL-click will be performed on the center of the object.
               </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, WINDOW, CTRLCLICK, , False</usage>
+           <description>
+              <short_desc>
+               A CTRL-click will be performed on the center of the object. <b>And the object
+               will not be scrolled into view automatically before clicking.</b>
+              </short_desc>
+              <note>
+                <engines><engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160422"/></engines>
+                <value>Auto-scroll will be turned off.</value>
+              </note>
            </description>
         </example>
         <example>
@@ -3638,6 +3763,23 @@
               </detailed_desc>
            </description>
         </parameter>
+        <parameter name="AUTOSCROLL" displayText="AutoScroll" optional="YES">
+           <description>
+              <short_desc> 
+                (Optional) True|False. If the component will be scrolled into view automatically before clicking. The default value is true.
+              </short_desc>
+              <detailed_desc>
+                If the component is out of view, the click action will not succeed. Normally we will scroll the component into view,
+                and then perform the click action. But sometimes, the component is partially shown and click could work and user does not
+                want the component shift, then we could turn off the auto-scroll ability by setting this parameter to false.<br/>
+                If this auto-scroll is turned off, user needs to make sure that component is shown by himself.
+              </detailed_desc>
+              <note>
+                <engines><engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160422"/></engines>
+                <value>For now, this optional parameter is only supported in Selenium2.0 Engine. </value>
+              </note>
+           </description>
+        </parameter>
      </parameters><examples>
 
         <example>
@@ -3649,6 +3791,19 @@
               <detailed_desc>
                A CTRL-Right-Click will be performed on the center of the object.
               </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, WINDOW, CtrlRightClick, , False</usage>
+           <description>
+              <short_desc>
+               A CTRL-Right-Click will be performed on the center of the object. <b>And the object
+               will not be scrolled into view automatically before clicking.</b>
+              </short_desc>
+              <note>
+                <engines><engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160422"/></engines>
+                <value>Auto-scroll will be turned off.</value>
+              </note>
            </description>
         </example>
         <example>
@@ -3830,6 +3985,23 @@
               </detailed_desc>
            </description>
         </parameter>
+        <parameter name="AUTOSCROLL" displayText="AutoScroll" optional="YES">
+           <description>
+              <short_desc> 
+                (Optional) True|False. If the component will be scrolled into view automatically before clicking. The default value is true.
+              </short_desc>
+              <detailed_desc>
+                If the component is out of view, the click action will not succeed. Normally we will scroll the component into view,
+                and then perform the click action. But sometimes, the component is partially shown and click could work and user does not
+                want the component shift, then we could turn off the auto-scroll ability by setting this parameter to false.<br/>
+                If this auto-scroll is turned off, user needs to make sure that component is shown by himself.
+              </detailed_desc>
+              <note>
+                <engines><engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160422"/></engines>
+                <value>For now, this optional parameter is only supported in Selenium2.0 Engine. </value>
+              </note>
+           </description>
+        </parameter>
      </parameters><examples>
 
         <example>
@@ -3841,6 +4013,19 @@
               <detailed_desc>
                A SHIFT click will be performed on the center of the object.
               </detailed_desc>
+           </description>
+        </example>
+        <example>
+           <usage>T, WINDOW, WINDOW, SHIFTCLICK, , False</usage>
+           <description>
+              <short_desc>
+               A SHIFT click will be performed on the center of the object. <b>And the object
+               will not be scrolled into view automatically before clicking.</b>
+              </short_desc>
+              <note>
+                <engines><engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160422"/></engines>
+                <value>Auto-scroll will be turned off.</value>
+              </note>
            </description>
         </example>
         <example>
@@ -4043,7 +4228,7 @@
                Field  5 : TQ String. The item does not exist in the app map so will be 
                treated as literal text.  Note we allow semi-colon delimited coordinates 
                to support the case when commas are used as field delimiters and cannot be 
-               used to delimite the X and Y coordinates.
+               used to delimit the X and Y coordinates.
               </detailed_desc>
            </description>
         </example>
@@ -4379,7 +4564,7 @@
                Field  5 : TQ String. The item does not exist in the app map so will be 
                treated as literal text.  Note we allow semi-colon delimited coordinates 
                to support the case when commas are used as field delimiters and cannot be 
-               used to delimite the X and Y coordinates.
+               used to delimit the X and Y coordinates.
               </detailed_desc>
            </description>
         </example>
@@ -4759,7 +4944,7 @@
                  Field  5 : TQ String. The item does not exist in the app map so will be 
                  treated as literal text.  Note we allow semi-colon delimited coordinates 
                  to support the case when commas are used as field delimiters and cannot be 
-                 used to delimite the X and Y coordinates.
+                 used to delimit the X and Y coordinates.
                 </detailed_desc>
              </description>
           </example>
@@ -4886,7 +5071,7 @@
                  Field  5 : TQ String. The item does not exist in the app map so will be 
                  treated as literal text.  Note we allow semi-colon delimited coordinates 
                  to support the case when commas are used as field delimiters and cannot be 
-                 used to delimite the X and Y coordinates.
+                 used to delimit the X and Y coordinates.
                 </detailed_desc>
              </description>
           </example>
@@ -5013,7 +5198,7 @@
                  Field  5 : TQ String. The item does not exist in the app map so will be 
                  treated as literal text.  Note we allow semi-colon delimited coordinates 
                  to support the case when commas are used as field delimiters and cannot be 
-                 used to delimite the X and Y coordinates.
+                 used to delimit the X and Y coordinates.
                 </detailed_desc>
              </description>
           </example>
@@ -5140,7 +5325,7 @@
                  Field  5 : TQ String. The item does not exist in the app map so will be 
                  treated as literal text.  Note we allow semi-colon delimited coordinates 
                  to support the case when commas are used as field delimiters and cannot be 
-                 used to delimite the X and Y coordinates.
+                 used to delimit the X and Y coordinates.
                 </detailed_desc>
              </description>
           </example>
@@ -5267,7 +5452,7 @@
                  Field  5 : TQ String. The item does not exist in the app map so will be 
                  treated as literal text.  Note we allow semi-colon delimited coordinates 
                  to support the case when commas are used as field delimiters and cannot be 
-                 used to delimite the X and Y coordinates.
+                 used to delimit the X and Y coordinates.
                 </detailed_desc>
              </description>
           </example>
