@@ -80,6 +80,84 @@
     <runtime platform="Windows" engine="Robot" version="2000" />
     <keywords>
   
+    <keyword name="CALLJUNIT" 
+             displayText="CallJUnit" 
+             deprecated="NO" 
+             expectFailSupport="NO" 
+             expectWarnSupport="NO">
+             
+         <description> <short_desc> 
+                 Invoke one or more JUnit tests using the provided Class name(s).
+              </short_desc>  <detailed_desc> 
+                 Because JUnit is a testing framework; test_record, test_passes, and test_failure counts within the status counters 
+                 will be updated when possible.
+                 <p>
+                 If properly configured with SAFS RuntimeDataAwareness (dependency injection of SAFS Driver instances) the JUnit 
+                 test has full access to all SAFS services including SAFS App Map data and SAFS Variable storage.
+                 </p>
+                 <p>JUnit tests can be intermixed with other SAFS tests.</p>
+              </detailed_desc> 
+	      <note>
+			<engines>
+				<engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160520">
+				<domains>
+					<domain name="HTML"></domain>
+				</domains>
+				</engine>
+			</engines>
+			<value>
+			    All SeleniumPlus actions, command, and libraries are available.  <br/>
+			    Access SeleniumPlus actions and commands through the SeleniumPlus static methods and fields.
+			</value>
+	      </note>
+       </description>
+           
+       <engines>
+           <engine vendor="SAFS" tool="TIDDriverFlowCommands" name="Tool-Independent Driver" since="20160520" >
+	       <libraryInfo name="TIDDriverFlowCommands" 
+                            doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
+                            sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
+                            class="FLOW" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="CLASSNAME" displayText="ClassName" optional="NO">
+           <description> <short_desc> 
+                 The name of one or more Classes to execute.
+              </short_desc> <detailed_desc>
+                 Class names are in the normal full package.Class format.  
+                 Multiple classes can be separated by SEMI-COLONs, COLONs, COMMAs, or SPACES--
+                 whichever is NOT being used as the test record separator.  
+                 The same separator should be used between all Classes.
+                 <p>The Classes to execute must be findable within the JVM ClassPath.</p>
+              </detailed_desc>
+           </description> 
+        </parameter>
+       </parameters>
+       <examples>
+        <example>
+           <usage>C, CallJUnit, "com.sas.spock.tests.SpockExperiment" </usage>
+           <description> <short_desc> 
+                 Have JUnit execute the com.sas.spock.tests.SpockExperiment Class.
+              </short_desc> <detailed_desc>
+                 Test Records, Test Passes, and Test Failures will be added to the overall SAFS Test Status 
+                 upon completion of the JUnit test.
+              </detailed_desc>
+           </description> 
+        </example>
+        <example>
+           <usage>C, CallJUnit, "myapp.tests.APITest myapp.tests.RESTTest"</usage>
+           <description> <short_desc> 
+                 Have JUnit execute 2 different tests.
+              </short_desc> <detailed_desc>
+                 Test Records, Test Passes, and Test Failures will be added to the overall SAFS Test Status 
+                 upon completion of the JUnit tests.
+              </detailed_desc>
+           </description>
+        </example>
+     </examples></keyword>
+
     <keyword name="CALLSCRIPT" 
              displayText="CallScript" 
              deprecated="NO" 
