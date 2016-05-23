@@ -162,7 +162,8 @@
 					<xsl:text disable-output-escaping="yes"> TITLE='SmartBear Test Complete'></xsl:text>
 					<xsl:text disable-output-escaping="yes">TC</xsl:text>
 				</xsl:when>
-				<xsl:when test="$tool='TIDDriverCommands'">
+				<!-- TIDDriverXXXCommands will all match here and shown as TID Engine -->
+				<xsl:when test="starts-with($tool, 'TIDDriver')  and contains($tool, 'Commands')">
 					<xsl:text disable-output-escaping="yes"> TITLE='SAFS TID Commands'></xsl:text>
 					<xsl:text disable-output-escaping="yes">TID</xsl:text>
 				</xsl:when>
