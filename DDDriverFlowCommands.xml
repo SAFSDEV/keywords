@@ -113,7 +113,7 @@
        </description>
            
        <engines>
-           <engine vendor="SAFS" tool="TIDDriverFlowCommands" name="Tool-Independent Driver" since="20160520" >
+           <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20160520" >
 	       <libraryInfo name="TIDDriverFlowCommands" 
                             doc="org/safs/tools/engines/TIDDriverFlowCommands.html" 
                             sourcecode="org.safs.tools.engines.TIDDriverFlowCommands.java" 
