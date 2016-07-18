@@ -425,11 +425,12 @@
       <description>
         <short_desc>
           Open an existing file with the filename, mode and access provided.<br/>
-		  <b>TID Note: </b>Three ways to open a file:
+		  <b>TID Note: </b>Multiple ways to open a file:
 			<ol>
 				<li>Mode=Input, Access=Read</li>
 				<li>Mode=Output, Access=Write</li>
 				<li>Mode=Append, Access=Write</li>
+				<li>Mode=AppendRaw, Access=Write</li>
 			</ol>	
         </short_desc>
       </description>
@@ -471,9 +472,14 @@
         </parameter>
         <parameter displayText="Mode" name="MODE" optional="NO">
           <description>
-            <short_desc>
-              Mode to be used to open the file, Input, Output or Append. Random and Binary not supported
-            </short_desc>
+            <short_desc>Mode to be used to open the file, Input, Output, Append, and AppendRaw.</short_desc>
+            <detailed_desc>
+            Text Files only.  Random Access and Binary files are not supported.
+            <p>Append Mode generally rewrites existing file contents with a NEWLINE between textual lines--stripping out OS-specific newline characters and making the file the same regardless of the platform.
+            </p><p>
+            AppendRaw Mode rewrites existing file contents without modification before appending any new data to the file.
+            </p>
+            </detailed_desc>
           </description>
         </parameter>
         <parameter displayText="Access" name="ACCESS" optional="NO">
@@ -521,15 +527,17 @@
         </example>
       </examples>
     </keyword>
+    
     <keyword name="OPENUTF8FILE" deprecated="NO" displayText="OpenUTF8File" expectFailSupport="NO" expectWarnSupport="NO">
       <description>
         <short_desc>
           Open an existing UTF-8 file with the filename, mode and access provided.<br/>
-	      <b>TID Note: </b>Three ways to open a file:
+	      <b>TID Note: </b>Multiple ways to open a file:
 			<ol>
 				<li>Mode=Input, Access=Read</li>
 				<li>Mode=Output, Access=Write</li>
 				<li>Mode=Append, Access=Write</li>
+				<li>Mode=AppendRaw, Access=Write</li>
 			</ol>
         </short_desc>
       </description>
@@ -567,9 +575,14 @@
         </parameter>
         <parameter displayText="Mode" name="MODE" optional="NO">
           <description>
-            <short_desc>
-              Mode to be used to open the UTF-8 file, Input, Output or Append. Random and Binary not supported
-            </short_desc>
+            <short_desc>Mode to be used to open the file, Input, Output, Append, and AppendRaw.</short_desc>
+            <detailed_desc>
+            Text Files only.  Random Access and Binary files are not supported.
+            <p>Append Mode generally rewrites existing file contents with a NEWLINE between textual lines--stripping out OS-specific newline characters and making the file the same regardless of the platform.
+            </p><p>
+            AppendRaw Mode rewrites existing file contents without modification before appending any new data to the file.
+            </p>
+            </detailed_desc>
           </description>
         </parameter>
         <parameter displayText="Access" name="ACCESS" optional="NO">
