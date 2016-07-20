@@ -186,6 +186,10 @@
 						<xsl:text disable-output-escaping="yes">SE2</xsl:text>
 					</xsl:if>
 				</xsl:when>
+				<xsl:when test="$tool='Autoit'">
+                    <xsl:text disable-output-escaping="yes"> TITLE='AutoIT'></xsl:text>
+                    <xsl:text disable-output-escaping="yes">AUT</xsl:text>
+                </xsl:when>
 			</xsl:choose>
 		<xsl:text disable-output-escaping="yes">&lt;/SPAN></xsl:text>
 

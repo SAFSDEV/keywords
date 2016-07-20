@@ -103,7 +103,13 @@
                              class="EDITBOX" />
                     </domain>
                 </domains>
-            </engine>             
+            </engine> 
+           <engine vendor="AUTOIT Team" tool="Autoit" name="Autoit" since="20160720" >
+                <libraryInfo name="AutoItComponent" 
+                            doc="org/safs/tools/engines/AutoItComponent.html" 
+                            sourcecode="org.safs.tools.engines.AutoItComponent.java" 
+                            class="EDITBOX" />
+           </engine>
        </engines>
 
        <parameters>
