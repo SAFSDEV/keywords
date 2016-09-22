@@ -5483,9 +5483,24 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
                 expectFailSupport="NO" 
                 expectWarnSupport="NO">
                 
-            <description> <short_desc>Send email notification with attachments.</short_desc> <detailed_desc>Send email notification with attachments.
+            <description>
+                <short_desc>Send email notification with attachments.</short_desc> 
+                <detailed_desc>Send email notification with attachments.
                       Mutiple TOs, custom subject line, custom message and attachment are allowed. 
-                      HTML tag pass into message to display message into HTML format.</detailed_desc> </description>
+                      HTML tag pass into message to display message into HTML format.
+                </detailed_desc>
+                <note>
+                    <value>Prerequisite: Provide mail setting in <a href="http://safsdev.sourceforge.net/sqabasic2000/JSAFSFrameworkContent.htm#configfile">configuration file (.ini)</a>, 
+                                         you could ask your IT administrator to set them correctly.<br/>
+					   <b>[SAFS_DRIVERCOMMANDS]</b><br/>
+					   <span class="property_key">OUT_MAILSERVER</span>="mail server"<br/>
+					   <span class="property_key">OUT_MAILSERVERPORT</span>=25|465|587<br/>
+					   <span class="property_key">OUT_MAILSERVERPROTOCOL</span>=SMTP|SMTPS|TLS<br/>
+					   <span class="property_key">OUT_MAILUSER</span>=user.name@mail.com<br/>
+					   <span class="property_key">OUT_MAILPASS</span>=user.password<br/>
+                    </value>
+                </note>
+            </description>
                 
             <engines>
                 <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20150609" >
