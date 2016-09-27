@@ -54,7 +54,7 @@
     <xsl:template name="navBar">
 	<A HREF="DDEngineSetup.htm" target="_blank">DDE Setup</A>, 
 	<A HREF="DDEngineReference.htm" target="_blank">DDEngineReference</A>, 
-	<A HREF="SQABasicLibraries.htm" target="_blank">SQABasic Libraries</A>, 
+	<!-- A HREF="SQABasicLibraries.htm" target="_blank">SQABasic Libraries</A>, -->
 	<A HREF="UsingDDVariables.htm" target="_blank">Using DDVariables</A>, 
 	<A HREF="UsingFlowControl.htm" target="_blank">Error Recovery and Flow Control</A>, 
 	<A HREF="UsingCustomExtensions.htm" target="_blank">Custom Extensions</A>

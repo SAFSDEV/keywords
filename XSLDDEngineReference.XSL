@@ -2,34 +2,27 @@
 		xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
 		xmlns='http://www.w3.org/TR/REC-html40'>
     
-    <xsl:output method="html" version="3.2" omit-xml-declaration="yes"/>
+    <xsl:output method="html" version="3.2" encoding="UTF-8" omit-xml-declaration="yes"/>
     <xsl:param name="engine"/>
     <xsl:include href="XSLCommonDDE.XSL"/>
 
     <xsl:template match='/'>
     	<HTML>
-    	<HEAD><TITLE>Data Driven Engine (DDE) Driver Commands
+    	<HEAD><TITLE>SAFS Dynamic Engine Reference
     	</TITLE>
-	<SCRIPT language="JavaScript" fptype="dynamicoutline">
-	    <xsl:text disable-output-escaping="yes">&#xA;</xsl:text>
-	    <xsl:comment>&#xA;function dynOutline() {}&#xA;//</xsl:comment>
-	    <xsl:text disable-output-escaping="yes">&#xA;</xsl:text>
-	</SCRIPT>
-	<SCRIPT language="JavaScript1.2" fptype="dynamicoutline" src="outline.js"></SCRIPT>
-	<SCRIPT language="JavaScript1.2" fptype="dynamicoutline" for="document" event="onreadystatechange()">
-	    <xsl:text disable-output-escaping="yes">&#xA;</xsl:text>
-	    <xsl:comment>&#xA;initOutline()&#xA;//</xsl:comment>
-	    <xsl:text disable-output-escaping="yes">&#xA;</xsl:text>
-	</SCRIPT>
+	    <SCRIPT src="outline.js"></SCRIPT>
+	    <SCRIPT>
+            document.onreadystatechange = initOutline;
+	    </SCRIPT>
     	</HEAD>
-    	<BODY BGCOLOR="#FFFFFF" ONCLICK="dynOutline()">
+    	<BODY BGCOLOR="#FFFFFF" onclick="dynOutline()">
     	
-	<P align="center"><BIG><BIG><BIG>Data-Driven Engine Reference</BIG></BIG></BIG></P>
-	<CENTER><SMALL>(updated 
-	<script language="JavaScript">
+	<P align="left"><BIG><BIG><BIG>SAFS Dynamic Engine Reference</BIG></BIG></BIG></P>
+	<SMALL>(updated 
+	<script>
           document.write(document.lastModified)
 	</script>
-        )</SMALL></CENTER>
+        )</SMALL>
 	<P align="left">The following reference material is in a format similar to an
 	outline.  When you click on an item it will expand (or collapse) to show or
 	hide the information available within that section.  Here you will find
@@ -39,17 +32,18 @@
 	while a solid disk or square indicates the item does expand (or collapse).</P>
 
 	<UL dynamicoutline="dynamicoutline" initcollapsed="initcollapsed">
-	  <LI><U>Background and Examples:</U></LI>
+	  <LI><U>Background and Examples:</U>
 	  <UL type="circle">
 	    <LI><P align="left"><A href="../FRAMESDataDrivenTestAutomationFrameworks.htm" target="_blank" >
-	        Test Automation Frameworks</A> for information on various forms of test automation
-	        and specifically on our data driven or keyword driven form of automation.</P></LI>
+	        Test Automation Frameworks Whitepaper</A> for information on various forms of test automation
+	        and, specifically, the data-driven or keyword-driven form of SAFS test automation.</P></LI>
 	    <LI><A href="CreateAppMap.htm" target="_blank">Creating an Application Map</A> 
 	        for your application.</LI>
-	    <LI>Download <A href="ClassicsC_V2001.zip">ClassicsC Excel Examples</A> 
-	        for Excel-based samples of tests and scripts that can interact with the engine.</LI>
+	    <LI><A href="SAFSRecordFormats.html" target="_blank">Official SAFS Test Table Record Formats</A>.</LI>
+	    <!-- LI>Download <A href="ClassicsC_V2001.zip">ClassicsC Excel Examples</A> 
+	        for Excel-based samples of tests and scripts that can interact with the engine.</LI -->
 	    <LI><A href="NotepadMap.txt" target="_blank">Sample Application Map</A>
-	        developed with <A href="ProcessContainer.htm" target="_blank">ProcessContainer</A>
+	        developed with a version of a <A href="ProcessContainer.htm" target="_blank">ProcessContainer</A>
 	        tool.</LI>
 	    <LI><A href="NotepadStepFile.txt" target="_blank">Sample Test Table for StepDriver</A></LI>
 	    <LI><A href="DDNotepad.txt" target="_blank">Sample Script to Launch StepDriver.</A><BR />
@@ -58,30 +52,29 @@
 	        Map and its use.  CycleDriver and SuiteDriver do not generally access the Application
 	        Map.)</LI>
 	  </UL>
+	  </LI>
 	</UL>
 
     	<xsl:call-template name="ShellTop"/>
     		
 	<P align="left">Reference:</P>
 	<UL dynamicoutline="dynamicoutline" initcollapsed="initcollapsed">
-	    <LI type="circle"><A href="RRAFS_Details_Index.htm">
-	        Framework Details and Instruction</A></LI>
   	    <LI><U>A few of notes on the general format of the reference below:</U>
 	        <UL>
 	            <LI><FONT color="#0000FF">When an item has multiple syntax examples,
-		    usually only the last one can be expanded to see the field explanations.</FONT></LI>
+		            usually only the last one can be expanded to see the field explanations.</FONT></LI>
 	            <LI><FONT color="#0000FF">Although some examples shown might be wrapped
-		    onto two or more lines here, the full syntax for these commands is
-		    expected to be all on one line in the actual data/step file.</FONT></LI>
+		            onto two or more lines here, the full syntax for these commands is
+		            expected to be all on one line in the actual data/step file.</FONT></LI>
 	            <LI><FONT color="#0000FF">The syntax examples often show a comma (,)
-		    as a record field separator.&#032; Data/Step files can actually use
-		    almost any field separator desired.&#032; The separator will be
-		    specified to the drivers during the initialization of the DDE or when
-		    the test table is passed to the driver.</FONT></LI>
+		            as a record field separator.&#032; Data/Step files can actually use
+		            almost any field separator desired.&#032; The separator will be
+		            specified to the drivers during the initialization of the DDE or when
+		            the test table is passed to the driver.</FONT></LI>
 	            <LI><FONT color="#0000FF">When a command keyword accepts parameters, 
-	            OPTIONAL fields are shown enclosed in brackets []. However, in general, 
-	            OPTIONAL fields must be provided (or left blank\empty) if subsequent fields 
-	            are provided.</FONT></LI>
+	                OPTIONAL fields are shown enclosed in brackets []. However, in general, 
+	                OPTIONAL fields must be provided (or left blank\empty) if subsequent fields 
+	                are provided.</FONT></LI>
 	            <LI type="disc"><U><FONT color="#0000FF">Field Types definitions:</FONT></U>
 		        <UL>
 		            <LI><FONT color="#800080">TQ String: Trimmed Quoted String:&#032;</FONT>
@@ -110,7 +103,7 @@
 		                </UL>
 		            </LI>
 		        </UL>
-		    </LI>
+		        </LI>
 	        </UL>
 	    </LI>
 	</UL>
@@ -118,7 +111,7 @@
   	    <A name="core_drivers" />
 	    <LI><U><STRONG>CORE DRIVERS:</STRONG></U>
 	        <UL>
-	            <LI type="disc">Common Record Types and DriverCommands for CycleDriver, SuiteDriver, and StepDriver
+	            <LI type="disc">Common Record Types and DriverCommands for Cycles, Suites, and Steps
 	      	        <UL>
 		            <LI><FONT color="#0000FF">Skip RecordType&#032;&#032; (RecordType = &quot;S&quot;)</FONT>
 		                <UL>
@@ -146,8 +139,8 @@
 				            Declares or defines a named reference point
 			                    in this file.&#032; This is used for naming or
 			                    referencing the start of a block or section in the
-			                    file and is the target point for the GOTO Driver Commands and
-				            Flow Control/Error Recovery Driver Commands.</FONT></LI>
+			                    file and is the target point for the <A href="UsingFlowControl.htm" target="_blank">Flow Control/Error Recovery Driver Commands</A>.
+			                    </FONT></LI>
 			                </UL>
 		                    </LI>
 		                </UL>
@@ -158,7 +151,7 @@
 				    <FONT color="#008000">
 				    Sets a breakpoint in the test table for when running the table
 				    in Debug Mode.  Breakpoints can be set, but not ENABLED.  To use
-				    breakpoints Robot must be running in Debug Mode AND breakpoints
+				    breakpoints, the specific Driver or Engine must be running in its Debug Mode AND breakpoints
 				    must be turned &quot;ON&quot; with the BREAKPOINTS Driver Command.</FONT></LI>
 		                </UL>
 		            </LI>
@@ -170,20 +163,20 @@
 
 			        </UL>
            		    </LI>
-			</UL>
-		    </LI>
+			    </UL>
+		        </LI>
     		</UL>
   	    </LI>
   	    <BR/>
   	    <A name="component_functions" />
   	    <LI><U><STRONG>COMPONENT FUNCTIONS:</STRONG></U>
 
-                <UL>
+            <UL>
 		    <LI type="square"><FONT color="#0000FF"><STRONG>Generally, Component Function
 		        Data/Step tests (RecordTypes = &quot;T&quot;, &quot;TW&quot;, &quot;TF&quot;)</STRONG></FONT><BR/>
                         <SMALL>(T=Test; W=Warning Expected\Allowed; F=Failure Expected\Allowed)</SMALL>
                         <FONT color="#0000FF"><STRONG> formatted as: </STRONG></FONT><SMALL> (expand to view)</SMALL>
-			<UL>
+			  <UL>
 			    <LI type="circle"><FONT color="#800080">T, WindowID, WindowID,
 			        AWindowAction, Param1, ...</FONT></LI>
 			    <LI type="circle"><FONT color="#800080">T, WindowID, WindowID,
@@ -205,20 +198,18 @@
 				    </FONT></LI>
 				</UL>
 			    </LI>
-			</UL>
+			  </UL>
 		    </LI>
 		    
 		    <xsl:variable name="component" select="document('XSLComponentFunctions.xml')" />		
 		    <xsl:apply-templates select="$component/componentfunctions" mode="reference" />
 		    
-  	        </UL>
-  	        
-    	    </LI>
-    	</UL>
-    	
+  	        </UL>  	        
+    	</LI>
+      </UL>
     	<!-- Footer Area -->
     	<xsl:call-template name="ShellBottom"/>
-    	</BODY></HTML>
+      </BODY></HTML>
     	
     </xsl:template>
 
@@ -258,14 +249,14 @@
             </xsl:if>
             </FONT>
     	    <UL>
-  	        <LI type="circle"><A HREF="{/keyword_library/libraryInfo/@doc}" target="_blank">
+  	            <LI type="circle"><A HREF="{/keyword_library/libraryInfo/@doc}" target="_blank">
   	            <FONT color="#000000">
     	            <xsl:value-of select="/keyword_library/libraryInfo/@name" /> Documentation.</FONT></A>
     	        </LI>   
 
-	        <xsl:call-template name="Keywords" />
+	            <xsl:call-template name="Keywords" />
 
-	    </UL>
+	        </UL>
         </LI>
     </xsl:template>
 
@@ -289,17 +280,25 @@
                 <xsl:if test="@expectWarnSupport='YES'" >W</xsl:if>
                 <xsl:if test="@expectFailSupport='YES'" >&#044;&#032;F</xsl:if>
                 &#041;</FONT></SMALL></SMALL>
-                
-	        <UL>
+		    <xsl:if test="count(examples) &gt; 0">                
+	           <UL>
     	            
 	            <xsl:call-template name="Examples"/>
 
-	        </UL>
-            </LI>
+	           </UL>
+	       </xsl:if>
+		    <xsl:if test="count(examples) &lt; 1">                
+				<xsl:if test="count(parameters) &gt; 0">                
+				   <UL>
+
+					<xsl:call-template name="ParametersOnly"/>
+
+				   </UL>
+			   </xsl:if>
+	       </xsl:if>	       
+           </LI>
         </xsl:for-each>       
     </xsl:template>
-
-
 
     <xsl:template name="Examples">    
         <xsl:for-each select='examples/example'>	    
@@ -308,10 +307,10 @@
             	    
             	    <LI type="circle"><FONT color="#800080"><xsl:value-of select="usage"/></FONT></LI>
             	    
-            	</xsl:when>
-            	<xsl:otherwise>            	    
+            </xsl:when>
+            <xsl:otherwise>            	    
 		    
-		    <xsl:if test="count(../../parameters/parameter) &gt; 0">
+		        <xsl:if test="count(../../parameters/parameter) &gt; 0">
                	        <LI><FONT color="#800080"><xsl:copy-of select="usage"/></FONT>
             	            <UL type="circle">
 
@@ -319,22 +318,18 @@
             	        
             	            </UL>
             	        </LI>	        
-            	    </xsl:if>                	    
+            	</xsl:if>                	    
 
-		    <xsl:if test="count(../../parameters/parameter) &lt; 1">
+		        <xsl:if test="count(../../parameters/parameter) &lt; 1">
             	        <LI type="circle"><FONT color="#800080"><xsl:value-of select="usage"/></FONT></LI>
-            	    </xsl:if>                	    
+                </xsl:if>                	    
             	    
-            	</xsl:otherwise>
+            </xsl:otherwise>
 	    </xsl:choose>	    
         </xsl:for-each>	        
     </xsl:template>
 
-
-
-    <xsl:template name="Parameters">
-        <xsl:for-each select='../../parameters/parameter'>	    
-	        
+    <xsl:template name="OneParameter">
 	    <LI><FONT color="#008000">Field 
 	    <xsl:if test="starts-with(@optional,'Y')">[</xsl:if>	    
 	    <xsl:if test="not(starts-with(@optional,'Y'))">&#032;&#032;</xsl:if>
@@ -353,8 +348,20 @@
             	<xsl:copy-of select="description/detailed_desc"/>
             	</FONT>
             </xsl:if>                	    
-            </LI>
-        
+        </LI>
+    </xsl:template>
+
+
+    <xsl:template name="Parameters">
+        <xsl:for-each select='../../parameters/parameter'>	    
+ 	        <xsl:call-template name="OneParameter"/>			
+        </xsl:for-each>	        
+    </xsl:template>
+
+
+    <xsl:template name="ParametersOnly">
+        <xsl:for-each select='parameters/parameter'>	    
+ 	        <xsl:call-template name="OneParameter"/>			
         </xsl:for-each>	        
     </xsl:template>
 
