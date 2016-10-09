@@ -4246,43 +4246,41 @@
              expectFailSupport="NO" 
              expectWarnSupport="NO">
              
-         <description>
-                <short_desc> 
-                  A left mouse drag is performed from one object to another object based on the offsets values.
-                </short_desc>
-                <detailed_desc>
-                  <p>Drag will be performed from component (from-component) to another to-component. Offsets value are the drag object select location. The location (drag and release) calucate by X and Y percentage cordination. DragTo also supports sub item of component and  sub item of to-component.</p>
-                  
-                  <p> The coordination specify by offsets value. First two values are for from-component and another are for to-component.</p>
-                  <pre>
-        Offsets can be 50%,50%,50%,50% or 50%;50%;50%;50%
-                  </pre>
-                   <pre>
-	T, WINDOW,COMPONENT, DRAGTO, ToWINDOW,ToCOMPONENT,"50%,50%,50%,50%"
-	Where first 50%,50% are COMPONENT or their subitem's X and Y location
-	and second 50%,50% are ToCOMPONENT or their subitem's X and Y location.
-		   </pre>          
-                </detailed_desc>
-                <note>
-                   <engines>
-			           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20150902"/>
-         		  </engines>
-         		  <value>
-         		    The optional parameter 'FromSubItem' and 'ToSubItem' are not supported yet.<br/>
-         		    The parameter 'Offsets' can be also given in pixel, like '20, 20, 70, 90'; or even in mix format, like "50%, 50%, 70, 90".<br/>
-         		  </value>
-                </note>
-             </description>
+
+    <description>
+        <short_desc>
+            A left mouse drag is performed from one object to another object based
+            on the offsets values.
+        </short_desc>
+        <detailed_desc>
+            <p>Drag will be performed from component (from-component) to another
+                to-component. Offsets value are the drag object select location. The
+                location (drag and release) calucate by X and Y percentage
+                cordination. DragTo also supports sub item of component and sub item
+                of to-component.</p>
+            <p> The coordination specify by offsets value. First two values are
+                for from-component and another are for to-component.</p>
+        </detailed_desc>
+        <note>
+          <value>
+            Offsets can be 50%,50%,50%,50% or 50%;50%;50%;50%<br/>
+            T, WINDOW,COMPONENT, DRAGTO, ToWINDOW,ToCOMPONENT,"50%,50%,50%,50%"
+            Where first 50%,50% are COMPONENT or their subitem's X and Y location
+            and second 50%,50% are ToCOMPONENT or their subitem's X and Y
+            location.
+          </value>
+        </note>
+    </description>
              
          <engines>
            <engine name="Test Complete" since="20111212" tool="TestComplete" vendor="Automated QA">
-  			 <libraryInfo class="GENERIC" 
-  					        name="GenericObjectFunctions" 
-  					        sourcecode="GenericObjectFunctions.SVB">
-  			 </libraryInfo>
+             <libraryInfo class="GENERIC" 
+                            name="GenericObjectFunctions" 
+                            sourcecode="GenericObjectFunctions.SVB">
+             </libraryInfo>
            </engine>
            <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20150902" >
-	         <libraryInfo name="GenericObjectFunctions" 
+             <libraryInfo name="GenericObjectFunctions" 
                           doc="org/safs/selenium/webdriver/CFComponent.html" 
                           sourcecode="org.safs.selenium.webdriver.CFComponent.java" 
                           class="GENERIC"/>
@@ -4291,61 +4289,70 @@
          <parameters>
           <parameter name="TOWINDOW" displayText="ToWindow" optional="NO">
              <description>
-                <short_desc> 
-                  ToWindow object.
-                </short_desc>
-                <detailed_desc>
-                  <p>ToWindow recognition string define into AppMap.</p>                                    
-                </detailed_desc>
+                <short_desc>ToWindow object.</short_desc>
+                <detailed_desc>ToWindow recognition string define into AppMap.</detailed_desc>
              </description>
           </parameter>
           
           <parameter name="TOCOMPONET" displayText="ToComponent" optional="NO">
-	       <description>
-		  <short_desc> 
-		    ToComponent object.
-		  </short_desc>
-		  <detailed_desc>
-		    <p>ToComponent recognition string define into AppMap.</p>                  		    
-		  </detailed_desc>
-	       </description>
+            <description>
+              <short_desc>ToComponent object.</short_desc>
+              <detailed_desc>ToComponent recognition string define into AppMap.</detailed_desc>
+            </description>
           </parameter>
           
           <parameter name="OFFSETS" displayText="Offsets" optional="YES">
-	       <description>
-		  <short_desc> 
-		    Drag and release location of from-component and to-component. Offsets syntax will be "50%,50%,70%,70%, where first two percentages for from-component's X and Y location and second two are for to-component's X and Y location. If offsets isn't specify then center will be used."
-		    <p>Default value, both components center</p>
-		  </short_desc>
-		  <detailed_desc>
-		    <p></p>                  		    
-		  </detailed_desc>
-	       </description>
+            <description>
+              <short_desc> 
+                Drag and release location of from-component and to-component. 
+                Offsets syntax will be "50%,50%,70%,70%"", where first two percentages are for from-component 
+                and second two are for to-component. If offsets are not specified then center will be used.<br/>
+                Default value, both components center.
+              </short_desc>
+              <note>
+                <engines><engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20150902"/></engines>
+                <value>The parameter 'Offsets' can be also given in pixel, like '20, 20, 70, 90'; or even in mix format, like "50%, 50%, 70, 90".</value>
+              </note>
+           </description>
           </parameter>
           
           <parameter name="FROMSUBITEM" displayText="FromSubItem" optional="YES">
-	       <description>
-		  <short_desc> 
-		    Text of from-component's sub item.
-		  </short_desc>
-		  <detailed_desc>
-		    <p>FromSubItem as text. e.g tree node or list item or any sub main component's item</p>                  		    
-		  </detailed_desc>
-	       </description>
+            <description>
+              <short_desc>Text of from-component's sub item.</short_desc>
+              <detailed_desc>FromSubItem as text. e.g tree node or list item or any sub main component's item.</detailed_desc>
+              <note>
+                <engines><engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20150902"/></engines>
+                <value>NOT supported yet.</value>
+              </note>
+           </description>
           </parameter>
           
           <parameter name="TOSUBITEM" displayText="ToSubItem" optional="YES">
-	       <description>
-		  <short_desc> 
-		    Text of to-component's sub item.
-		  </short_desc>
-		  <detailed_desc>
-		    <p>ToSubItem as text. e.g tree node or list item or any sub main component item</p>                  		    
-		  </detailed_desc>
-	       </description>
+            <description>
+              <short_desc>Text of to-component's sub item.</short_desc>
+              <detailed_desc>ToSubItem as text. e.g tree node or list item or any sub main component item.</detailed_desc>
+              <note>
+                <engines><engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20150902"/></engines>
+                <value>NOT supported yet.</value>
+              </note>
+            </description>
           </parameter>      
           
+          <parameter name="PAUSE" displayText="Pause" optional="YES">
+            <description>
+              <short_desc>Pause time in millisecond to hold the button before releasing.</short_desc>
+              <detailed_desc>
+                The default pause time is 800 milliseconds, which may not enough for the AUT to react.
+                User could provide a larger value according to his needs.
+              </detailed_desc>
+              <note>
+                <engines><engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20160929"/></engines>
+                <value>Initially implemented, may not be supported for other engines.</value>
+              </note>
+           </description>
+          </parameter>
        </parameters>
+
        <examples>
     	    <example>
 	       <usage>T, WINDOW,COMPONENT, DRAGTO, ToWINDOW,ToCOMPONENT</usage>
