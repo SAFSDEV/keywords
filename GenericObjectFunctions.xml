@@ -2465,6 +2465,12 @@
                             sourcecode="org.safs.selenium.webdriver.CFComponent.java" 
                             class="CFComponent"/>
            </engine>
+           <engine vendor="AUTOIT Team" tool="Autoit" name="Autoit" since="20161014" >
+                <libraryInfo name="AutoItComponent" 
+                         doc="org/safs/tools/engines/AutoItComponent.html" 
+                         sourcecode="org.safs.tools.engines.AutoItComponent.java" 
+                         class="CFComponent" />
+           </engine>
        </engines>
 
        <parameters>
