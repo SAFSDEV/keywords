@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+	<libraryType type="DRIVER" />
+
+	<libraryInfo name="DCDriverRestCommands"
+		doc="DCDriverRestCommands.htm" sourcecode="DCDriverRestCommands.java"
+		class="REST" chainTo="SAFSDRIVERCOMMANDS.java">
+
+		<description>
+			<short_desc>
+				REST Driver Commands for handling Response like store,
+				delete etc.
+			</short_desc>
+			<detailed_desc>
+				<p>
+					This keyword library provides Driver Commands that
+					can be used by all three DDE Drivers--CycleDriver,
+					SuiteDriver, and StepDriver. That means they can be
+					used in any keyword driven test tables regardless of
+					the test tables level--Cycle, Suite, or Step.
+				</p>
+				<p>
+					Each different driver command has different
+					parameters as described in its documentation. For
+					reference, the first fields of ALL Driver Command
+					test records are defined below:
+				</p>
+				<dl>
+					<dd>Field #1</dd>
+					<dt>
+						The "C" = DRIVER COMMAND record type specifier.
+					</dt>
+
+					<dd>Field #2</dd>
+					<dt>The Driver Command keyword.</dt>
+				</dl>
+				<p>Example:</p>
+
+				<code>
+					C, RestStoreResponse, responseId, varnamePrefix
+				</code>
+
+				<p>
+					Driver Command parameters must be placed in the test
+					record in the field position specified in the
+					documentation. Some parameters are optional.
+					However, the field associated with that parameter
+					must be honored. If you wish to skip an optional
+					parameter you must still provide an empty field for
+					that parameter.
+				</p>
+				<p>Example:</p>
+
+				<code>
+					c, LaunchApplication, NOTEPAD, NOTEPAD.EXE, , ,
+					"AppMap.map"
+				</code>
+
+				<p>
+					The above example shows two optional fields after
+					NOTEPAD.EXE which are given no value(skipped).
+				</p>
+			</detailed_desc>
+		</description>
+	</libraryInfo>
+	<!-- The runtime's platform is not really concerned, as the implementation is by JAVA. -->
+	<runtime platform="Windows" engine="SAFSDRIVERCOMMANDS.java" version="2016" />
+	
+	<!-- Begin to specify all supported keywords: a draft version -->
+	<keywords>
+
+		<keyword name="RESTDELETERESPONSE" displayText="RestDeleteResponse"
+			deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
+
+			<description>
+				<short_desc>
+					Delete a REST response (and request if it is stored) from the variable storage.
+				</short_desc>
+				<detailed_desc>
+					Delete a REST response (and request if it is stored) from the variable storage. 
+					The REST response/request is supposed to store in a series of variables (refer to explanation of parameter <b>variablePrefix</b>).
+					So these variables will be deleted from the variable storage.
+				</detailed_desc>
+			</description>
+
+			<engines>
+				<engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20161231">
+					<libraryInfo name="DCDriverRestCommands" doc="DCDriverRestCommands.htm"
+						sourcecode="DCDriverRestCommands.java" class="REST" chainTo="SAFSDRIVERCOMMANDS.java"/>
+				</engine>
+			</engines>
+
+			<parameters>
+				<parameter name="VARIABLEPREFIX" displayText="variablePrefix" optional="NO">
+					<description>
+						<short_desc>
+							The prefix of the variables (storing the informations of a REST response/request) to be deleted.
+						</short_desc>
+						<detailed_desc>
+                            The variablePrefix is used to deduce variables to be deleted.
+                            Deduced variables regarding response are listed as below:
+                            <ul>
+                                <li>variablePrefix.Response.Id</li>
+                                <li>variablePrefix.Response.StatusCode</li>
+                                <li>variablePrefix.Response.HttpVersion</li>
+                                <li>etc...</li>
+                            </ul>
+                            Deduced variables regarding request are listed as below:
+                            <ul>
+                                <li>variablePrefix.Request.Method</li>
+                                <li>variablePrefix.Request.URI</li>
+                                <li>etc...</li>
+                            </ul>
+                            Please refer to keyword <b>RestStoreResponse</b> if you want to know exactly what are
+                            those variables used to store a REST response/request.
+						</detailed_desc>
+					</description>
+				</parameter>
+			</parameters>
+			<examples>
+				<example>
+					<usage>C, RestDeleteResponse, BayerCustomerGet</usage>
+					<description>
+						<short_desc>
+							Delete from the variable storage the variables related to a REST response/request. 
+						</short_desc>
+						<detailed_desc>
+                            The variables to be deleted are listed as below:
+                            <ul>
+	                           <li>BayerCustomerGet.Response.Id</li>
+	                           <li>BayerCustomerGet.Response.StatusCode</li>
+	                           <li>BayerCustomerGet.Response.HttpVersion</li>
+	                           <li>etc...</li>
+	                        </ul>
+                            <ul>
+	                           <li>BayerCustomerGet.Request.Method</li>
+	                           <li>BayerCustomerGet.Request.URI</li>
+	                           <li>etc...</li>
+	                        </ul>
+						</detailed_desc>
+						
+					</description>
+				</example>
+			</examples>
+		</keyword>
+
+		<keyword name="RESTSTORERESPONSESTORE" displayText="RestDeleteResponseStore"
+			deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
+
+            <description>
+                <short_desc>
+                    Delete ALL REST responses (and requests if stored) from the variable storage.
+                </short_desc>
+                <detailed_desc>
+                    Delete ALL REST responses (and requests if stored) from the variable storage. 
+                    The REST response/request is supposed to store in a series of variables (refer to explanation of parameter <b>variablePrefix</b>).
+                    So these variables related to all responses/requests will be deleted, which
+                    means the variable storage will be cleaned up for all REST responses/requests.
+                </detailed_desc>
+            </description>
+
+            <engines>
+                <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20161231">
+                    <libraryInfo name="DCDriverRestCommands" doc="DCDriverRestCommands.htm"
+                        sourcecode="DCDriverRestCommands.java" class="REST" chainTo="SAFSDRIVERCOMMANDS.java"/>
+                </engine>
+            </engines>
+
+            <parameters/>
+
+            <examples>
+                <example>
+                    <usage>C, RestDeleteResponseStore</usage>
+                    <description>
+                        <short_desc>
+                            Delete from the variable storage the all variables related to ALL REST responses/requests. 
+                        </short_desc>
+                        <detailed_desc>
+                            Delete ALL the variables ended with suffix listed below:
+                            <ul>
+                               <li>.Response.Id</li>
+                               <li>.Response.StatusCode</li>
+                               <li>.Response.HttpVersion</li>
+                               <li>etc...</li>
+                            </ul>
+                            <ul>
+                               <li>.Request.Method</li>
+                               <li>.Request.URI</li>
+                               <li>etc...</li>
+                            </ul>
+                        </detailed_desc>
+                    </description>
+                </example>
+            </examples>
+		</keyword>
+
+        <keyword name="RESTSTORERESPONSE" displayText="RestStoreResponse"
+            deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
+
+            <description>
+                <short_desc>Store a REST response into a series of variables.</short_desc>
+                <detailed_desc>
+                    Retrieve a REST response according to the responseID, and store the response into
+                    a series of variables (refer to explanation of parameter <b>variablePrefix</b>).
+                </detailed_desc>
+            </description>
+
+            <engines>
+                <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20161231">
+                    <libraryInfo name="DCDriverRestCommands" doc="DCDriverRestCommands.htm"
+                        sourcecode="DCDriverRestCommands.java" class="REST" chainTo="SAFSDRIVERCOMMANDS.java"/>
+                </engine>
+            </engines>
+
+            <parameters>
+                <parameter name="RESPONSEID" displayText="responseID" optional="NO">
+                    <description>
+                        <short_desc>
+                            The ID used to retrieve Response Object from internal Map.
+                        </short_desc>
+                        <detailed_desc>
+                            Every single Request generates a new Response, which will be stored
+                            in a map internally. This responseID is the key to get that Response
+                            Object from that map. This responseID should be generated by SAFS after
+                            executing a REST request, such as GET, POST, DELETE, PUT etc.
+                        </detailed_desc>
+                    </description>
+                </parameter>
+                <parameter name="VARIABLEPREFIX" displayText="variablePrefix" optional="NO">
+                    <description>
+                        <short_desc>
+                            The prefix of the variables to store the informations of a REST response.
+                        </short_desc>
+                        <detailed_desc>
+                            The variablePrefix is used to deduce variables to store a REST response. Deduced variables listed as below:
+                            <ul>
+                                <li>variablePrefix.Response.Id</li>
+                                <li>variablePrefix.Response.StatusCode</li>
+                                <li>variablePrefix.Response.HttpVersion</li>
+                                <li>variablePrefix.Response.ContentType</li>
+                                <li>variablePrefix.Response.EntityBody</li>
+                                <li>variablePrefix.Response.EntityLength</li>
+                                <li>variablePrefix.Response.Headers</li><!-- maybe in json format? -->
+                                <li>to be added ...</li>
+                            </ul>
+                            If the parameter <b>storeRequest</b> is true, then the originating REST Request 
+                            will also be stored in the deduced variables listed as below:
+                            <ul>
+                                <li>variablePrefix.Request.Method</li>
+                                <li>variablePrefix.Request.URI</li>
+                                <li>variablePrefix.Request.HttpVersion</li>
+                                <li>variablePrefix.Request.Headers</li><!-- maybe in json format? -->
+                                <li>variablePrefix.Request.MessageBody</li>
+                                <li>to be added ...</li>
+                            </ul>
+                        </detailed_desc>
+                    </description>
+                </parameter>
+                <parameter name="STOREREQUEST" default="False" displayText="storeRequest" optional="YES">
+                    <description>
+                        <short_desc>Store the originating Request information if this parameter is true. The default value is false.</short_desc>
+                    </description>
+                </parameter>
+            </parameters>
+            <examples>
+                <example>
+                    <usage>C, RestStoreResponse, ResponseID, BayerCustomerGet</usage>
+                    <description>
+                        <short_desc>
+                            Store a REST response into a series of variables prefixed by "BayerCustomerGet".
+                        </short_desc>
+                        <detailed_desc>
+                            After executing a REST GET request on "http://www.thomas-bayer.com/sqlrest/CUSTOMER/", SAFS
+                            returns a ResponseID. Here the keyword 'RestStoreResponse' is going to store the Response
+                            into a series of variables prefixed by "BayerCustomerGet", such as:
+                            <ul>
+                                <li>BayerCustomerGet.Response.StatusCode</li>
+                                <li>BayerCustomerGet.Response.ContentType</li>
+                                <li>BayerCustomerGet.Response.EntityBody</li>
+                                <li>etc...</li>
+                            </ul>
+                        </detailed_desc>
+                    </description>
+                </example>
+                <example>
+                    <usage>C, RestStoreResponse, ResponseID, BayerCustomerGet, True</usage>
+                    <description>
+                        <short_desc>
+                            Store a REST response and originating request into a series of variables prefixed by "BayerCustomerGet".
+                        </short_desc>
+                        <detailed_desc>
+                            After executing a REST GET request on "http://www.thomas-bayer.com/sqlrest/CUSTOMER/", SAFS
+                            returns a ResponseID. Here the keyword 'RestStoreResponse' is going to store the Response
+                            into a series of variables prefixed by "BayerCustomerGet", such as:
+                            <ul>
+                                <li>BayerCustomerGet.Response.StatusCode</li>
+                                <li>BayerCustomerGet.Response.ContentType</li>
+                                <li>BayerCustomerGet.Response.EntityBody</li>
+                                <li>etc...</li>
+                            </ul>
+                            and at the same time it is going to store the originating REST Request 
+                            into a series of variables prefixed by "BayerCustomerGet", such as:
+                            <ul>
+                                <li>BayerCustomerGet.Request.Method</li>
+                                <li>BayerCustomerGet.Request.URI</li>
+                                <li>BayerCustomerGet.Request.Headers</li><!-- maybe in json format? -->
+                                <li>BayerCustomerGet.Request.MessageBody</li>
+                                <li>etc...</li>
+                            </ul>
+                        </detailed_desc>
+                    </description>
+                </example>
+            </examples>
+        </keyword>
+
+	</keywords>
+</keyword_library>
