@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
+<keyword_library>
+
+	<libraryType type="COMPONENT"/> <!-- Leave it as Component, no much choice. -->
+
+	<libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
+		sourcecode="TIDRestFunctions.java" chainTo="TIDComponent.java"
+		class="REST">
+
+		<description>
+			<short_desc>
+				Actions for REST request such as GET, PUT, POST, DELETE etc.
+			</short_desc>
+            <detailed_desc>
+                <p>
+                    This keyword library provides REST Actions that
+                    can be used by all three DDE Drivers--CycleDriver,
+                    SuiteDriver, and StepDriver. That means they can be
+                    used in any keyword driven test tables regardless of
+                    the test tables level--Cycle, Suite, or Step.
+                </p>
+                <p>
+                    Each different action has different
+                    parameters as described in its documentation. For
+                    reference, the first fields of ALL REST Action
+                    test records are defined below:
+                </p>
+                <dl>
+                    <dd>Field #1</dd>
+                    <dt>The "T" = Component Action record type specifier.</dt>
+
+                    <dd>Field #2</dd>
+                    <dt>The REST Action keyword.</dt>
+                </dl>
+                <p>Example:</p>
+
+                <code>
+                    T, RestGet, sessionID, relativeURI, body, ContentType, responseIDVar
+                </code>
+
+                <p>
+                    REST Action parameters must be placed in the test
+                    record in the field position specified in the
+                    documentation. Some parameters are optional.
+                    However, the field associated with that parameter
+                    must be honored. If you wish to skip an optional
+                    parameter you must still provide an empty field for
+                    that parameter.
+                </p>
+                <p>Example:</p>
+
+                <code>
+                    T, RestGet, sessionID, relativeURI, , , responseIDVar
+                </code>
+
+                <p>
+                    The above example shows two optional fields after
+                    relativeURI which are given no value(skipped).
+                </p>
+            </detailed_desc>
+		</description>
+
+	</libraryInfo>
+
+    <!-- The runtime's platform is not really concerned, as the implementation is by JAVA. -->
+    <runtime platform="Windows" engine="TIDComponent.java" version="2016"/>	
+
+	<keywords>
+
+		<keyword name="RESTGET" displayText="RestGet" deprecated="NO"
+			     expectFailSupport="NO" expectWarnSupport="NO">
+
+			<description>
+				<short_desc>
+					Perform the "GET" method on a REST service within a session.
+				</short_desc>
+				<detailed_desc>
+					<p>Perform the "GET" method on a REST service within a session.</p>
+					The requested content type could be "BINARY", "JSON", "TEXT", "XML", "HTML", "IMAGE", "CSS" and "SCRIPT" etc.
+					The keyword <b>RestStartServiceSession</b> MUST be executed before executing this keyword.
+				</detailed_desc>
+			</description>
+
+            <engines>
+                <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
+                    <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
+                        sourcecode="TIDRestFunctions.java" class="REST" chainTo="TIDComponent.java"/>
+                </engine>
+            </engines>
+
+			<parameters>
+                <parameter name="RESTACTION" displayText="RestAction" optional="NO">
+                	<description></description>
+                </parameter>
+                <parameter name="SESSIONID" displayText="sessionID" optional="NO">
+                	<description></description>
+                </parameter>
+                <parameter name="RELATIVEURI" displayText="relativeURI" optional="NO">
+                	<description></description>
+                </parameter>
+                <parameter name="BODY" displayText="body" optional="YES">
+                	<description></description>
+                </parameter>
+                <parameter name="CONTENTTYPE" displayText="contentType" optional="NO">
+                	<description></description>
+                </parameter>
+                <parameter name="RESPONSEIDVAR" displayText="responseIdVar" optional="NO">
+                	<description></description>
+                </parameter>
+			</parameters>
+			
+			<examples>
+
+				<example>
+					<usage>T, RestGet, "BayerCustomerSession", "sqlrest/CUSTOMER/", , XML, "BayerCustomerGetResponseIDVariable"</usage>
+					<description>
+						<short_desc>
+							<p>Execute a REST GET method to get the XML content from URL combined with base-URL and relative-URI "sqlrest/CUSTOMER/".</p>
+						</short_desc>
+						<detailed_desc>
+							<p>Execute a REST GET method to get the XML content from URL combined with base-URL and relative-URI "sqlrest/CUSTOMER/".</p>
+							<p>
+                            The base-URL is got according to sessionID "BayerCustomerSession" (assigned when executing keyword <b>RestStartServiceSession</b>).
+                            If it is "http://www.thomas-bayer.com/", then the full REST Service URL is "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".
+                            The Response Object will be stored into an internal Map with a generated ID, which will be stored to a variable BayerCustomerGetResponseIDVariable.
+                            </p>
+						</detailed_desc>
+					</description>
+				</example>
+
+			</examples>
+		</keyword>
+		
+		<keyword name="RESTGETNOSESSION" displayText="RestGetNoSession" deprecated="NO"
+			     expectFailSupport="NO" expectWarnSupport="NO">
+
+			<description>
+				<short_desc>
+					Perform the "GET" method on a REST service without session.
+				</short_desc>
+				<detailed_desc>
+					<p>Perform the "GET" method on a REST service without session.</p>
+					The requested content type could be "BINARY", "JSON", "TEXT", "XML", "HTML", "IMAGE", "CSS" and "SCRIPT" etc.
+				</detailed_desc>
+			</description>
+
+            <engines>
+                <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
+                    <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
+                        sourcecode="TIDRestFunctions.java" class="REST" chainTo="TIDComponent.java"/>
+                </engine>
+            </engines>
+
+			<parameters>
+                <parameter name="RESTACTION" displayText="RestAction" optional="NO">
+                	<description></description>
+                </parameter>
+                <parameter name="FULLURL" displayText="fullURL" optional="NO">
+                	<description></description>
+                </parameter>
+                <parameter name="BODY" displayText="body" optional="YES">
+                	<description></description>
+                </parameter>
+                <parameter name="CONTENTTYPE" displayText="contentType" optional="NO">
+                	<description></description>
+                </parameter>
+                <parameter name="RESPONSEIDVAR" displayText="responseIdVar" optional="NO">
+                	<description></description>
+                </parameter>
+			</parameters>
+			
+			<examples>
+
+				<example>
+					<usage>T, RestGetNoSession, "http://www.thomas-bayer.com/sqlrest/CUSTOMER/", , XML, "BayerCustomerGetResponseIDVariable"</usage>
+					<description>
+						<short_desc>
+							<p>Execute a REST GET method to get the XML content from URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".</p>
+						</short_desc>
+						<detailed_desc>
+							<p>Execute a REST GET method to get the XML content from URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".</p>
+							<p>
+                            The Response Object will be stored into an internal Map with a generated ID, which will be stored to a variable BayerCustomerGetResponseIDVariable.
+                            </p>
+						</detailed_desc>
+					</description>
+				</example>
+
+			</examples>
+		</keyword>
+
+        <keyword name="RESTSTARTSERVICESESSION" displayText="RestStartServiceSession" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+
+            <description>
+                <short_desc>
+                    Start a session for a REST service.
+                </short_desc>
+                <detailed_desc>
+                    <p>Start a session for a REST service.</p>
+                </detailed_desc>
+            </description>
+
+            <engines>
+                <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
+                    <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
+                        sourcecode="TIDRestFunctions.java" class="REST" chainTo="TIDComponent.java"/>
+                </engine>
+            </engines>
+
+            <parameters>
+                <parameter name="SESSIONID" displayText="sessionID" optional="NO">
+                    <description></description>
+                </parameter>
+                <parameter name="BASEURL" displayText="baseURL" optional="NO">
+                    <description></description>
+                </parameter>
+            </parameters>
+            
+            <examples>
+
+                <example>
+                    <usage>T, RestStartServiceSession, "BayerCustomerSession", "http://www.thomas-bayer.com/"</usage>
+                    <description>
+                        <short_desc>
+                            <p>Start a session for a REST service based on URL "http://www.thomas-bayer.com/".</p>
+                        </short_desc>
+                        <detailed_desc>
+                            <p>Start a session for a REST service based on URL "http://www.thomas-bayer.com/".</p>
+                            This session will be assigned with ID as "BayerCustomerSession".
+                        </detailed_desc>
+                    </description>
+                </example>
+
+            </examples>
+        </keyword>
+        
+        <keyword name="RESTENDSERVICESESSION" displayText="RestEndServiceSession" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+
+            <description>
+                <short_desc>
+                    Stop a session for a REST service.
+                </short_desc>
+                <detailed_desc>
+                    Stop a session for a REST service.
+                </detailed_desc>
+            </description>
+
+            <engines>
+                <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
+                    <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
+                        sourcecode="TIDRestFunctions.java" class="REST" chainTo="TIDComponent.java"/>
+                </engine>
+            </engines>
+
+            <parameters>
+                <parameter name="SESSIONID" displayText="sessionID" optional="NO">
+                    <description></description>
+                </parameter>
+            </parameters>
+            
+            <examples>
+
+                <example>
+                    <usage>T, RestEndServiceSession, "BayerCustomerSession"</usage>
+                    <description>
+                        <short_desc>
+                            <p>Stop a session identified by "BayerCustomerSession" for a REST service.</p>
+                        </short_desc>
+                        <detailed_desc>
+                            <p>Stop a session identified by "BayerCustomerSession" for a REST service.</p>
+                        </detailed_desc>
+                    </description>
+                </example>
+
+            </examples>
+            
+        </keyword>
+		
+	</keywords>
+</keyword_library>
