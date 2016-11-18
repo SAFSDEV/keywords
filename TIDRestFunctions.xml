@@ -2,7 +2,7 @@
 <!DOCTYPE keyword_library SYSTEM "keyword_library.dtd">
 <keyword_library>
 
-	<libraryType type="COMPONENT"/> <!-- Leave it as Component, no much choice. -->
+	<libraryType type="COMPONENT"/> <!-- Leave it as Component, not much choice. -->
 
 	<libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
 		sourcecode="TIDRestFunctions.java" chainTo="TIDComponent.java"
@@ -27,14 +27,14 @@
                     test records are defined below:
                 </p>
                 <dl>
-                    <dd>Field #1</dd>
-                    <dt>The "T" = Component Action record type specifier.</dt>
+                    <dt>Field #1</dt>
+                    <dd>The "T" = Component Action record type specifier.</dd>
 
-                    <dd>Field #2</dd>
-                    <dt>The "SAFSREST" = Flag for REST action.</dt>
+                    <dt>Field #2</dt>
+                    <dd>The "SAFSREST" = Flag for REST action.</dd>
                     
-                    <dd>Field #3</dd>
-                    <dt>The REST Action keyword.</dt>
+                    <dt>Field #3</dt>
+                    <dd>The REST Action keyword.</dd>
                 </dl>
                 <p>Example:</p>
 
@@ -66,7 +66,7 @@
 
 	</libraryInfo>
 
-    <!-- The runtime's platform is not really concerned, as the implementation is by JAVA. -->
+    <!-- The runtime platform is not really a concern because the implementation is with Java. -->
     <runtime platform="Windows" engine="TIDComponent.java" version="2016"/>	
 
 	<keywords>
@@ -93,12 +93,17 @@
             </engines>
 
 			<parameters>
-                <parameter name="SESSIONID" displayText="sessionID" optional="NO">
+                <!-- TODO Should this sessionID be optional? -->
+                <parameter name="SESSIONID" displayText="sessionID" optional="YES">
                 	<description>
                 	   <short_desc>The ID used to identify a session.</short_desc>
                 	   <detailed_desc>
-                	       There is a base URL stored for the session, and it will be used to 
-                	       prepend a relative URI to form a REST service URL.
+                	       There is a base URL stored for the session, and it will be
+                	       prepended to a relative URI to form a REST service URL.<br/>
+                	       If the ID is not provided or invalid, then this keyword will be
+                	       handled as "no session" scenario; the following parameter 'relativeURI'
+                	       should be provided with a full-path URL; user might need to provide
+                	       some extra information such as authentication etc.
                 	   </detailed_desc>
                 	</description>
                 </parameter>
@@ -109,14 +114,17 @@
                 </parameter>
                 <parameter name="BODY" displayText="body" optional="YES">
                 	<description>
-                	   <short_desc>The body to sent with this REST request.</short_desc>
+                		<short_desc>The body to send with this REST request.</short_desc>
                 	</description>
                 </parameter>
-                <parameter name="CONTENTTYPE" displayText="contentType" optional="NO">
+                <parameter name="CONTENTTYPE" displayText="contentType" optional="YES">
                 	<description>
-                	   <short_desc>The content type that this REST request is asking for.</short_desc>
+                	   <short_desc>
+                	       The content type of the body included in this REST request. It is ONLY useful when the parameter
+                	       <b>body</b> is specified; otherwise it will be ignored.
+                	   </short_desc>
                 	   <detailed_desc>
-                	       The content type could be one of following options:
+                	       The content type can be one of following options:
                 	       <ul>
                 	       <li>BINARY</li>
                 	       <li>JSON</li>
@@ -138,22 +146,41 @@
                 	    </short_desc>
                 	</description>
                 </parameter>
+                <!-- TODO  We might allow user to provide more headers. -->
+                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
+                <parameter name="HEADERS" displayText="headers" optional="YES">
+                	<description>
+                	   <short_desc>
+                	       The headers to be included in this REST GET request.
+                	       Such as "If-Modified-Since: Sat, 29 OCT 1994 19:43:31 GMT".
+                	    </short_desc>
+                	</description>
+                </parameter>
+                <!-- TODO We might allow user to provide information about authentication. -->
+                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
+                <parameter name="AUTHENTICATION" displayText="authentication" optional="YES">
+                    <description>
+                       <short_desc>
+                           The authentication information to guarantee this one-shot connection successful.
+                        </short_desc>
+                    </description>
+                </parameter>
 			</parameters>
 			
 			<examples>
 
 				<example>
-					<usage>T, SAFSREST, RestGet, "BayerCustomerSession", "sqlrest/CUSTOMER/", , XML, "BayerCustomerGetResponseIDVariable"</usage>
+					<usage>T, SAFSREST, RestGet, "BayerCustomerService", "sqlrest/CUSTOMER/", , , "BayerCustomerGetResponseIDVariable"</usage>
 					<description>
 						<short_desc>
-							<p>Execute a REST GET method to get the XML content from URL combined with base-URL and relative-URI "sqlrest/CUSTOMER/".</p>
+							<p>Execute a GET method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/CUSTOMER/"</p>
 						</short_desc>
 						<detailed_desc>
-							<p>Execute a REST GET method to get the XML content from URL combined with base-URL and relative-URI "sqlrest/CUSTOMER/".</p>
+							<p>Execute a GET method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/CUSTOMER/"</p>
 							<p>
-                            The base-URL is got according to sessionID "BayerCustomerSession" (assigned when executing keyword <b>RestStartServiceSession</b>).
+                            The <b>base-URL</b> is gotten according to sessionID "BayerCustomerService" (assigned when executing keyword <b>RestStartServiceSession</b>).
                             If it is "http://www.thomas-bayer.com/", then the full REST Service URL is "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".
-                            The Response Object will be stored into an internal Map with a generated ID, which will be stored to a variable BayerCustomerGetResponseIDVariable.
+                            The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerCustomerGetResponseIDVariable.
                             </p>
 						</detailed_desc>
 					</description>
@@ -162,6 +189,7 @@
 			</examples>
 		</keyword>
 		
+		<!-- TODO This keyword might be removed if we agreed that RestGet is sufficient -->
 		<keyword name="RESTGETNOSESSION" displayText="RestGetNoSession" deprecated="NO"
 			     expectFailSupport="NO" expectWarnSupport="NO">
 
@@ -190,14 +218,17 @@
                 </parameter>
                 <parameter name="BODY" displayText="body" optional="YES">
                     <description>
-                       <short_desc>The body to sent with this REST request.</short_desc>
+                        <short_desc>The body to send with this REST request.</short_desc>
                     </description>
                 </parameter>
-                <parameter name="CONTENTTYPE" displayText="contentType" optional="NO">
+                <parameter name="CONTENTTYPE" displayText="contentType" optional="YES">
                     <description>
-                       <short_desc>The content type that this REST request is asking for.</short_desc>
+                       <short_desc>
+                           The content type of the body included in this REST request. It is ONLY useful when the parameter
+                           <b>body</b> is specified; otherwise it will be ignored.
+                       </short_desc>
                        <detailed_desc>
-                           The content type could be one of following options:
+                           The content type can be one of following options:
                            <ul>
                            <li>BINARY</li>
                            <li>JSON</li>
@@ -219,20 +250,39 @@
                         </short_desc>
                     </description>
                 </parameter>
+                <!-- TODO We might allow user to provide more headers. -->
+                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
+                <parameter name="HEADERS" displayText="headers" optional="YES">
+                    <description>
+                       <short_desc>
+                           The headers to be included in this REST GET request.
+                           Such as "If-Modified-Since: Sat, 29 OCT 1994 19:43:31 GMT".
+                        </short_desc>
+                    </description>
+                </parameter>
+                <!-- TODO We might allow user to provide information about authentication. -->
+                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
+                <parameter name="AUTHENTICATION" displayText="authentication" optional="YES">
+                    <description>
+                       <short_desc>
+                           The authentication information to guarantee this one-shot connection successful.
+                        </short_desc>
+                    </description>
+                </parameter>
 			</parameters>
 			
 			<examples>
 
 				<example>
-					<usage>T, SAFSREST, RestGetNoSession, "http://www.thomas-bayer.com/sqlrest/CUSTOMER/", , XML, "BayerCustomerGetResponseIDVariable"</usage>
+					<usage>T, SAFSREST, RestGetNoSession, "http://www.thomas-bayer.com/sqlrest/CUSTOMER/", , , "BayerCustomerGetResponseIDVariable"</usage>
 					<description>
 						<short_desc>
-							<p>Execute a REST GET method to get the XML content from URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".</p>
+							<p>Execute a GET method on REST service URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".</p>
 						</short_desc>
 						<detailed_desc>
-							<p>Execute a REST GET method to get the XML content from URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".</p>
+							<p>Execute a GET method on REST service URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".</p>
 							<p>
-                            The Response Object will be stored into an internal Map with a generated ID, which will be stored to a variable BayerCustomerGetResponseIDVariable.
+                            The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerCustomerGetResponseIDVariable.
                             </p>
 						</detailed_desc>
 					</description>
@@ -271,7 +321,7 @@
                     <description>
                        <short_desc>The base URL to be stored with a session.</short_desc>
                        <detailed_desc>
-                           This base URL will be used to prepend a relative URI to form a REST service URL.
+                           This base URL will be prepended to a relative URI to form a REST service URL.
                        </detailed_desc>
                     </description>
                 </parameter>
@@ -280,14 +330,14 @@
             <examples>
 
                 <example>
-                    <usage>T, SAFSREST, RestStartServiceSession, "BayerCustomerSession", "http://www.thomas-bayer.com/"</usage>
+                    <usage>T, SAFSREST, RestStartServiceSession, "BayerCustomerService", "http://www.thomas-bayer.com/"</usage>
                     <description>
                         <short_desc>
                             <p>Start a session for a REST service based on URL "http://www.thomas-bayer.com/".</p>
                         </short_desc>
                         <detailed_desc>
                             <p>Start a session for a REST service based on URL "http://www.thomas-bayer.com/".</p>
-                            This session will be assigned with ID as "BayerCustomerSession".
+                            This session will be assigned with ID as "BayerCustomerService".
                         </detailed_desc>
                     </description>
                 </example>
@@ -325,13 +375,13 @@
             <examples>
 
                 <example>
-                    <usage>T, SAFSREST, RestEndServiceSession, "BayerCustomerSession"</usage>
+                    <usage>T, SAFSREST, RestEndServiceSession, "BayerCustomerService"</usage>
                     <description>
                         <short_desc>
-                            <p>Stop a session identified by "BayerCustomerSession" for a REST service.</p>
+                            <p>Stop a session identified by "BayerCustomerService" for a REST service.</p>
                         </short_desc>
                         <detailed_desc>
-                            <p>Stop a session identified by "BayerCustomerSession" for a REST service.</p>
+                            <p>Stop a session identified by "BayerCustomerService" for a REST service.</p>
                         </detailed_desc>
                     </description>
                 </example>

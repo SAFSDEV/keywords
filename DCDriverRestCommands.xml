@@ -28,13 +28,13 @@
 					test records are defined below:
 				</p>
 				<dl>
-					<dd>Field #1</dd>
-					<dt>
+					<dt>Field #1</dt>
+					<dd>
 						The "C" = DRIVER COMMAND record type specifier.
-					</dt>
+					</dd>
 
-					<dd>Field #2</dd>
-					<dt>The Driver Command keyword.</dt>
+					<dt>Field #2</dt>
+					<dd>The Driver Command keyword.</dd>
 				</dl>
 				<p>Example:</p>
 
@@ -54,8 +54,7 @@
 				<p>Example:</p>
 
 				<code>
-					c, LaunchApplication, NOTEPAD, NOTEPAD.EXE, , ,
-					"AppMap.map"
+					C, LaunchApplication, NOTEPAD, NOTEPAD.EXE, , , "AppMap.map"
 				</code>
 
 				<p>
@@ -65,7 +64,7 @@
 			</detailed_desc>
 		</description>
 	</libraryInfo>
-	<!-- The runtime's platform is not really concerned, as the implementation is by JAVA. -->
+	<!-- The runtime platform is not really a concern because the implementation is with Java. -->
 	<runtime platform="Windows" engine="SAFSDRIVERCOMMANDS.java" version="2016" />
 	
 	<!-- Begin to specify all supported keywords: a draft version -->
@@ -96,7 +95,7 @@
 				<parameter name="VARIABLEPREFIX" displayText="variablePrefix" optional="NO">
 					<description>
 						<short_desc>
-							The prefix of the variables (storing the informations of a REST response/request) to be deleted.
+							The prefix of the variables (storing the information of a REST response/request) to be deleted.
 						</short_desc>
 						<detailed_desc>
                             The variablePrefix is used to deduce variables to be deleted.
@@ -113,8 +112,8 @@
                                 <li>variablePrefix.Request.URI</li>
                                 <li>etc...</li>
                             </ul>
-                            Please refer to keyword <b>RestStoreResponse</b> if you want to know exactly what are
-                            those variables used to store a REST response/request.
+                            Please refer to keyword <b>RestStoreResponse</b> if you want to know exactly what variables
+                            are used to store a REST response/request.
 						</detailed_desc>
 					</description>
 				</parameter>
@@ -146,7 +145,7 @@
 			</examples>
 		</keyword>
 
-		<keyword name="RESTSTORERESPONSESTORE" displayText="RestDeleteResponseStore"
+		<keyword name="RESTDELETERESPONSESTORE" displayText="RestDeleteResponseStore"
 			deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
 
             <description>
@@ -231,7 +230,7 @@
                 <parameter name="VARIABLEPREFIX" displayText="variablePrefix" optional="NO">
                     <description>
                         <short_desc>
-                            The prefix of the variables to store the informations of a REST response.
+                            The prefix of the variables to store the information of a REST response.
                         </short_desc>
                         <detailed_desc>
                             The variablePrefix is used to deduce variables to store a REST response. Deduced variables listed as below:
