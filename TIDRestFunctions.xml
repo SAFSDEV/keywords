@@ -34,12 +34,26 @@
                     <dd>The "SAFSREST" = Flag for REST action.</dd>
                     
                     <dt>Field #3</dt>
+                    <dd>
+                        The "^SessionIDVariable" = The variable storing the Session ID.<br/>
+                        The variable "SessionIDVariable" can be specified under section <b>[SAFSREST]</b> or <b>[ApplicationConstant]</b>.<br/>
+                        This ID is assigned by user, who needs to guarantee it is unique.<br/>
+                        If the variable SessionIDVariable is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed 
+                        before executing each action keyword, which will be handled within a session.
+                        There is a base URL stored for the session, and it will be prepended to a relative URI to form a REST service URL. 
+                        The authentication information is also stored for the session for later action execution.<br/><br/>
+                        Otherwise, it will be considered as a one-shot connection, and NO <b>RestStartServiceSession</b>
+                        needs to be called and user may need to provide authentication information.
+                        The parameter <b>relativeURI</b> should be provided with a full-path URL<br/>
+                    </dd>
+                    
+                    <dt>Field #4</dt>
                     <dd>The REST Action keyword.</dd>
                 </dl>
                 <p>Example:</p>
 
                 <code>
-                    T, SAFSREST, RestGet, sessionID, relativeURI, body, ContentType, responseIDVar
+                    T, SAFSREST, ^sessionID, RestGetXML, relativeURI, responseIDVar [, body] [, headers]  [, authentication]
                 </code>
 
                 <p>
@@ -54,10 +68,11 @@
                 <p>Example:</p>
 
                 <code>
-                    T, SAFSREST, RestGet, sessionID, relativeURI, , , responseIDVar
+                    <!--  TO BE PROVIDED -->
                 </code>
 
                 <p>
+                    <!-- TO BE MODIFIED ACCORDING TO EXAMPLE -->
                     The above example shows two optional fields after
                     relativeURI which are given no value(skipped).
                 </p>
@@ -90,24 +105,18 @@
                 </engine>
             </engines>
 
-            <parameters>
-                <parameter name="SESSIONID" displayText="sessionID" optional="NO">
-                    <description>
-                        <short_desc>The ID indicating the session to be ended.</short_desc>
-                    </description>
-                </parameter>
-            </parameters>
+            <parameters/>
             
             <examples>
 
                 <example>
-                    <usage>T, SAFSREST, RestEndServiceSession, "BayerCustomerService"</usage>
+                    <usage>T, SAFSREST, ^BayerSessionVar, RestEndServiceSession</usage>
                     <description>
                         <short_desc>
-                            <p>Stop a session identified by "BayerCustomerService" for a REST service.</p>
+                            <p>Stop a session identified by value of variable BayerSessionVar for a REST service.</p>
                         </short_desc>
                         <detailed_desc>
-                            <p>Stop a session identified by "BayerCustomerService" for a REST service.</p>
+                            <p>Stop a session identified by value of variable BayerSessionVar for a REST service.</p>
                         </detailed_desc>
                     </description>
                 </example>
@@ -121,14 +130,13 @@
 
             <description>
                 <short_desc>
-                    Perform the "DELETE" method on a REST service within a session.
+                    Perform the "DELETE" method on a REST service.
                 </short_desc>
                 <detailed_desc>
-                    <p>Perform the "DELETE" method on a REST service within a session.</p>
+                    <p>Perform the "DELETE" method on a REST service.</p>
                     <p>
-	                    The keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword.
-	                    If the parameter <b>sessionID</b> is not provided or invalid, it will be considered as a one-shot connection, 
-	                    then <b>RestStartServiceSession</b> needs NOT to be called and user may need to provide authentication information.
+	                    If the parameter sessionId is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword; and this action will be handled within a session.
+	                    Otherwise, it will be considered as a one-shot connection, and NO <b>RestStartServiceSession</b> needs to be called and user may need to provide authentication information.
                     </p>
                 </detailed_desc>
             </description>
@@ -147,8 +155,8 @@
                        <short_desc>The ID used to identify a session.</short_desc>
                        <detailed_desc>
                            There is a base URL stored for the session, and it will be
-                           prepended to a relative URI to form a REST service URL.<br/>
-                           If the ID is not provided or invalid, then this keyword will be
+                           prepended to a relative URI to form a REST service URL. For the session, authentication information is also stored for later action execution.<br/>
+                           If the ID is not provided, then this keyword will be
                            handled as "no session" scenario; the following parameter 'relativeURI'
                            should be provided with a full-path URL; user might need to provide
                            some extra information such as authentication etc.
@@ -276,14 +284,14 @@
 
 			<description>
 				<short_desc>
-					Perform the "GET" method on a REST service within a session.
+					Perform the "GET" method on a REST service.
 				</short_desc>
 				<detailed_desc>
-					<p>Perform the "GET" method on a REST service within a session.</p>
+					<p>Perform the "GET" method on a REST service.</p>
 					<p>
-						The keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword.
-						If the parameter <b>sessionID</b> is not provided or invalid, it will be considered as a one-shot connection, 
-						then <b>RestStartServiceSession</b> needs NOT to be called and user may need to provide authentication information.
+						If the parameter sessionId is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword; and this action will be handled within a session.
+						Otherwise, it will be considered as a one-shot connection, 
+						and NO <b>RestStartServiceSession</b> needs to be called and user may need to provide authentication information.
 					</p>
 				</detailed_desc>
 			</description>
@@ -302,8 +310,8 @@
                 	   <short_desc>The ID used to identify a session.</short_desc>
                 	   <detailed_desc>
                 	       There is a base URL stored for the session, and it will be
-                	       prepended to a relative URI to form a REST service URL.<br/>
-                	       If the ID is not provided or invalid, then this keyword will be
+                	       prepended to a relative URI to form a REST service URL. For the session, authentication information is also stored for later action execution.<br/>
+                	       If the ID is not provided, then this keyword will be
                 	       handled as "no session" scenario; the following parameter 'relativeURI'
                 	       should be provided with a full-path URL; user might need to provide
                 	       some extra information such as authentication etc.
@@ -431,14 +439,14 @@
 
             <description>
                 <short_desc>
-                    Perform the "HEAD" method on a REST service within a session.
+                    Perform the "HEAD" method on a REST service.
                 </short_desc>
                 <detailed_desc>
-                    <p>Perform the "HEAD" method on a REST service within a session.</p>
+                    <p>Perform the "HEAD" method on a REST service.</p>
                     <p>
-	                    The keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword.
-	                    If the parameter <b>sessionID</b> is not provided or invalid, it will be considered as a one-shot connection, 
-	                    then <b>RestStartServiceSession</b> needs NOT to be called and user may need to provide authentication information.
+	                    If the parameter sessionId is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword; and this action will be handled within a session.
+	                    Otherwise, it will be considered as a one-shot connection, 
+	                    and NO <b>RestStartServiceSession</b> needs to be called and user may need to provide authentication information.
                     </p>
                 </detailed_desc>
             </description>
@@ -457,8 +465,8 @@
                        <short_desc>The ID used to identify a session.</short_desc>
                        <detailed_desc>
                            There is a base URL stored for the session, and it will be
-                           prepended to a relative URI to form a REST service URL.<br/>
-                           If the ID is not provided or invalid, then this keyword will be
+                           prepended to a relative URI to form a REST service URL. For the session, authentication information is also stored for later action execution.<br/>
+                           If the ID is not provided, then this keyword will be
                            handled as "no session" scenario; the following parameter 'relativeURI'
                            should be provided with a full-path URL; user might need to provide
                            some extra information such as authentication etc.
@@ -580,14 +588,14 @@
 
             <description>
                 <short_desc>
-                    Perform the "PATCH" method on a REST service within a session.
+                    Perform the "PATCH" method on a REST service.
                 </short_desc>
                 <detailed_desc>
-                    <p>Perform the "PATCH" method on a REST service within a session.</p>
+                    <p>Perform the "PATCH" method on a REST service.</p>
                     <p>
-	                    The keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword.
-	                    If the parameter <b>sessionID</b> is not provided or invalid, it will be considered as a one-shot connection, 
-	                    then <b>RestStartServiceSession</b> needs NOT to be called and user may need to provide authentication information.
+	                    If the parameter sessionId is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword; and this action will be handled within a session.
+	                    Otherwise, it will be considered as a one-shot connection, 
+	                    and NO <b>RestStartServiceSession</b> needs to be called and user may need to provide authentication information.
                     </p>
                 </detailed_desc>
             </description>
@@ -606,8 +614,8 @@
                        <short_desc>The ID used to identify a session.</short_desc>
                        <detailed_desc>
                            There is a base URL stored for the session, and it will be
-                           prepended to a relative URI to form a REST service URL.<br/>
-                           If the ID is not provided or invalid, then this keyword will be
+                           prepended to a relative URI to form a REST service URL. For the session, authentication information is also stored for later action execution.<br/>
+                           If the ID is not provided, then this keyword will be
                            handled as "no session" scenario; the following parameter 'relativeURI'
                            should be provided with a full-path URL; user might need to provide
                            some extra information such as authentication etc.
@@ -731,14 +739,14 @@
 
             <description>
                 <short_desc>
-                    Perform the "POST" method on a REST service within a session.
+                    Perform the "POST" method on a REST service.
                 </short_desc>
                 <detailed_desc>
-                    <p>Perform the "POST" method on a REST service within a session.</p>
+                    <p>Perform the "POST" method on a REST service.</p>
                     <p>
-	                    The keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword.
-	                    If the parameter <b>sessionID</b> is not provided or invalid, it will be considered as a one-shot connection, 
-	                    then <b>RestStartServiceSession</b> needs NOT to be called and user may need to provide authentication information.
+	                    If the parameter sessionId is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword; and this action will be handled within a session.
+	                    Otherwise, it will be considered as a one-shot connection, 
+	                    and NO <b>RestStartServiceSession</b> needs to be called and user may need to provide authentication information.
                     </p>
                 </detailed_desc>
             </description>
@@ -757,8 +765,8 @@
                        <short_desc>The ID used to identify a session.</short_desc>
                        <detailed_desc>
                            There is a base URL stored for the session, and it will be
-                           prepended to a relative URI to form a REST service URL.<br/>
-                           If the ID is not provided or invalid, then this keyword will be
+                           prepended to a relative URI to form a REST service URL. For the session, authentication information is also stored for later action execution.<br/>
+                           If the ID is not provided, then this keyword will be
                            handled as "no session" scenario; the following parameter 'relativeURI'
                            should be provided with a full-path URL; user might need to provide
                            some extra information such as authentication etc.
@@ -886,14 +894,14 @@
 
             <description>
                 <short_desc>
-                    Perform the "PUT" method on a REST service within a session.
+                    Perform the "PUT" method on a REST service.
                 </short_desc>
                 <detailed_desc>
-                    <p>Perform the "PUT" method on a REST service within a session.</p>
+                    <p>Perform the "PUT" method on a REST service.</p>
                     <p>
-	                    The keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword.
-	                    If the parameter <b>sessionID</b> is not provided or invalid, it will be considered as a one-shot connection, 
-	                    then <b>RestStartServiceSession</b> needs NOT to be called and user may need to provide authentication information.
+	                    If the parameter sessionId is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword; and this action will be handled within a session.
+	                    Otherwise, it will be considered as a one-shot connection, 
+	                    and NO <b>RestStartServiceSession</b> needs to be called and user may need to provide authentication information.
                     </p>
                 </detailed_desc>
             </description>
@@ -912,8 +920,8 @@
                        <short_desc>The ID used to identify a session.</short_desc>
                        <detailed_desc>
                            There is a base URL stored for the session, and it will be
-                           prepended to a relative URI to form a REST service URL.<br/>
-                           If the ID is not provided or invalid, then this keyword will be
+                           prepended to a relative URI to form a REST service URL. For the session, authentication information is also stored for later action execution.<br/>
+                           If the ID is not provided, then this keyword will be
                            handled as "no session" scenario; the following parameter 'relativeURI'
                            should be provided with a full-path URL; user might need to provide
                            some extra information such as authentication etc.
@@ -1036,6 +1044,135 @@
             </examples>
         </keyword>
 
+        <keyword name="RESTREQUEST" displayText="RestRequest" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+
+            <description>
+                <short_desc>
+                    Perform an HTTP method on a REST service.
+                </short_desc>
+                <detailed_desc>
+                    <p>Perform an HTTP method on a REST service.</p>
+                    <p>
+                        If the test field SessionIDVar is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed 
+                        before executing this keyword; and this action will be handled within a session.
+                        Otherwise, it will be considered as a one-shot connection, 
+                        and NO <b>RestStartServiceSession</b> needs to be called and user may need to provide authentication information.
+                    </p>
+                </detailed_desc>
+            </description>
+
+            <engines>
+                <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
+                    <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
+                        sourcecode="TIDRestFunctions.java" class="REST" chainTo="TIDComponent.java"/>
+                </engine>
+            </engines>
+
+            <parameters>
+                <parameter name="HTTPMETHOD" displayText="HTTPMethod" optional="NO">
+                    <description>
+                       <short_desc>The HTTP method to execute.</short_desc>
+                       <detailed_desc>
+                           <p>It can be one of "GET" "DELETE" "POST" "PUT" "PATCH" "HEAD".</p>
+                       </detailed_desc>
+                    </description>
+                </parameter>
+                <parameter name="RELATIVEURI" displayText="relativeURI" optional="NO">
+                    <description>
+                       <short_desc>The relative URI combined with a base-URL (stored in a session) to form a REST service URL.</short_desc>
+                       <detailed_desc>
+                           <p>
+                           This is normally a relative URI as the base-URL is provided in a session.
+                           BUT it should be <b>full path URL</b> if the parameter <b>sessionID</b> is <b>not provided</b> or <b>invalid</b>.
+                           </p>
+                       </detailed_desc>
+                    </description>
+                </parameter>
+                <parameter name="RESPONSEIDVAR" displayText="responseIdVar" optional="NO">
+                    <description>
+                       <short_desc>
+                           The name of the variable holding the ID (generated internally), which is used to
+                           get the Response Object from the internal Map.
+                        </short_desc>
+                    </description>
+                </parameter>
+                <parameter name="BODY" displayText="body" optional="YES">
+                    <description>
+                        <short_desc>The body to send with this REST request.</short_desc>
+                        <detailed_desc>
+                            <p>
+                            The body could be a literal text string for something simple.
+                            The body could also be a project-relative or full path to a file of larger body content in the proper format.
+                            </p>
+                        </detailed_desc>
+                    </description>
+                </parameter>
+                <!-- TODO  We might allow user to provide more headers. -->
+                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
+                <parameter name="HEADERS" displayText="headers" optional="YES">
+                    <description>
+                       <short_desc>
+                           The headers to be included in this REST request.
+                           Such as "If-Modified-Since: Sat, 29 OCT 1994 19:43:31 GMT".
+                        </short_desc>
+                    </description>
+                </parameter>
+                <!-- TODO We might allow user to provide information about authentication. -->
+                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
+                <parameter name="AUTHENTICATION" displayText="authentication" optional="YES">
+                    <description>
+                       <short_desc>
+                           The authentication information to guarantee this one-shot connection successful.
+                        </short_desc>
+                    </description>
+                </parameter>
+            </parameters>
+            
+            <examples>
+
+                <example>
+                    <usage>T, SAFSREST, ^BayerService, RestRequest, PUT, "sqlrest/PRODUCT/61/", "BayerProductPutResponseIDVariable", "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>", "Content-Type: text/xml"</usage>
+                    <description>
+                        <short_desc>
+                            <p>Execute a PUT method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/PRODUCT/61/"</p>
+                        </short_desc>
+                        <detailed_desc>
+                            <p>
+                            Execute a PUT method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/PRODUCT/61/"
+                            It will send XML body "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>" to sever so that "product #61" will be created.
+                            </p>
+                            <p>
+                            The <b>base-URL</b> is gotten according to sessionID "BayerProductService" (assigned when executing keyword <b>RestStartServiceSession</b>).
+                            If it is "http://www.thomas-bayer.com/", then the full REST Service URL is "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/".
+                            The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerProductPutResponseIDVariable.
+                            </p>
+                        </detailed_desc>
+                    </description>
+                </example>
+                <example>
+                    <usage>T, SAFSREST, ^BayerServiceNonExist, RestPut, PUT, "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/", "BayerProductPutResponseIDVariable", "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>", "Content-Type: text/xml"</usage>
+                    <description>
+                        <short_desc>
+                            <p>Execute a PUT method on REST service URL "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/".</p>
+                        </short_desc>
+                        <detailed_desc>
+                            <p>
+                            Execute a PUT method on REST service URL "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/".
+                            It will send XML body "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>" to sever so that "product #61" will be created.
+                            </p>
+                            <p>
+                            The field <b>BayerServiceNonExist</b> is <b>NOT existing</b>, this action is handled as one-shot connection.
+                            The parameter <b>relativeURI</b> is provided a <b>full path URL</b> "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/".
+                            The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerProductPutResponseIDVariable.
+                            </p>
+                        </detailed_desc>
+                    </description>
+                </example>
+
+            </examples>
+        </keyword>
+        
         <keyword name="RESTSTARTSERVICESESSION" displayText="RestStartServiceSession" deprecated="NO"
                  expectFailSupport="NO" expectWarnSupport="NO">
 
@@ -1056,12 +1193,6 @@
             </engines>
 
             <parameters>
-                <parameter name="SESSIONID" displayText="sessionID" optional="NO">
-                    <description>
-                        <short_desc>The ID to identify a session.</short_desc>
-                        <detailed_desc>This ID is assigned by user, who needs to guarantee it is unique.</detailed_desc>
-                    </description>
-                </parameter>
                 <parameter name="BASEURL" displayText="baseURL" optional="NO">
                     <description>
                        <short_desc>The base URL to be stored with a session.</short_desc>
@@ -1070,19 +1201,36 @@
                        </detailed_desc>
                     </description>
                 </parameter>
+                <!-- TODO We might allow user to provide information about authentication, finer than global settings -->
+                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
+                <parameter name="AUTHENTICATION" displayText="authentication" optional="YES">
+                    <description>
+                       <short_desc>
+                           The authentication information to be used during this session.
+                        </short_desc>
+                        <detailed_desc>
+                            <p>
+                                Normally, the authentication information will be loaded from "JVM -D parameters", "Map", or global
+                                external file. Those settings are considered to be global. This parameter can
+                                be used to alternate the authentication information, it will override the global settings.
+                                If it is provided as <b>NOAUTHENTICATION</b>, then no authentication is needed during the session
+                                even the global settings are set.
+                            </p>
+                        </detailed_desc>
+                    </description>
+                </parameter>
             </parameters>
             
             <examples>
-
                 <example>
-                    <usage>T, SAFSREST, RestStartServiceSession, "BayerCustomerService", "http://www.thomas-bayer.com/"</usage>
+                    <usage>T, SAFSREST, ^BayerSessionVar, RestStartServiceSession, "http://www.thomas-bayer.com/"</usage>
                     <description>
                         <short_desc>
                             <p>Start a session for a REST service based on URL "http://www.thomas-bayer.com/".</p>
                         </short_desc>
                         <detailed_desc>
                             <p>Start a session for a REST service based on URL "http://www.thomas-bayer.com/".</p>
-                            This session will be assigned with ID as "BayerCustomerService".
+                            <p>This session will be assigned with ID as value of variable BayerSessionVar.</p>
                         </detailed_desc>
                     </description>
                 </example>
