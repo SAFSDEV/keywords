@@ -5,8 +5,7 @@
 	<libraryType type="COMPONENT"/> <!-- Leave it as Component, not much choice. -->
 
 	<libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
-		sourcecode="TIDRestFunctions.java" chainTo="TIDComponent.java"
-		class="REST">
+		sourcecode="TIDRestComponent.java" class="REST">
 
 		<description>
 			<short_desc>
@@ -35,14 +34,19 @@
                     
                     <dt>Field #3</dt>
                     <dd>
-                        The "^SessionIDVariable" = The variable storing the Session ID.<br/>
-                        The variable "SessionIDVariable" can be specified under section <b>[SAFSREST]</b> or <b>[ApplicationConstant]</b>.<br/>
+                        The "SessionIDItem" = The map item storing the Session ID.<br/>
+                        The variable "SessionIDItem" can be specified under section <b>[SAFSREST]</b> or 
+                        <b>[ApplicationConstant]</b> in the map file, example as below:<br/>
+                        --------- Map file example  -------<br/>
+                        [SAFSREST]<br/>
+                        SessionIDItem=UserAssignedSessionID<br/>
+                        -----------------------------------<br/>
                         This ID is assigned by user, who needs to guarantee it is unique.<br/>
-                        If the variable SessionIDVariable is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed 
+                        If the SessionIDItem is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed 
                         before executing each action keyword, which will be handled within a session.
                         There is a base URL stored for the session, and it will be prepended to a relative URI to form a REST service URL. 
                         The authentication information is also stored for the session for later action execution.<br/><br/>
-                        Otherwise, it will be considered as a one-shot connection, and NO <b>RestStartServiceSession</b>
+                        Otherwise (no SessionIDItem provided), it will be considered as a one-shot connection, and NO <b>RestStartServiceSession</b>
                         needs to be called and user may need to provide authentication information.
                         The parameter <b>relativeURI</b> should be provided with a full-path URL<br/>
                     </dd>
@@ -53,7 +57,7 @@
                 <p>Example:</p>
 
                 <code>
-                    T, SAFSREST, ^sessionID, RestGetXML, relativeURI, responseIDVar [, body] [, headers]  [, authentication]
+                    T, SAFSREST, sessionIDItem, RestGetXML, relativeURI, responseIDVar [, body] [, headers]  [, authentication]
                 </code>
 
                 <p>
@@ -101,7 +105,7 @@
             <engines>
                 <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
                     <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
-                        sourcecode="TIDRestFunctions.java" class="REST" chainTo="TIDComponent.java"/>
+                        sourcecode="TIDRestComponent.java" class="REST" chainTo="TIDComponent.java"/>
                 </engine>
             </engines>
 
@@ -110,13 +114,13 @@
             <examples>
 
                 <example>
-                    <usage>T, SAFSREST, ^BayerSessionVar, RestEndServiceSession</usage>
+                    <usage>T, SAFSREST, BayerSessionID, RestEndServiceSession</usage>
                     <description>
                         <short_desc>
-                            <p>Stop a session identified by value of variable BayerSessionVar for a REST service.</p>
+                            <p>Stop a session identified by value of map item BayerSessionID for a REST service.</p>
                         </short_desc>
                         <detailed_desc>
-                            <p>Stop a session identified by value of variable BayerSessionVar for a REST service.</p>
+                            <p>Stop a session identified by value of map item BayerSessionID for a REST service.</p>
                         </detailed_desc>
                     </description>
                 </example>
@@ -124,174 +128,24 @@
             </examples>
             
         </keyword>
-    
-        <keyword name="RESTDELETE" displayText="RestDelete" deprecated="NO"
-                 expectFailSupport="NO" expectWarnSupport="NO">
 
-            <description>
-                <short_desc>
-                    Perform the "DELETE" method on a REST service.
-                </short_desc>
-                <detailed_desc>
-                    <p>Perform the "DELETE" method on a REST service.</p>
-                    <p>
-	                    If the parameter sessionId is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword; and this action will be handled within a session.
-	                    Otherwise, it will be considered as a one-shot connection, and NO <b>RestStartServiceSession</b> needs to be called and user may need to provide authentication information.
-                    </p>
-                </detailed_desc>
-            </description>
-
-            <engines>
-                <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
-                    <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
-                        sourcecode="TIDRestFunctions.java" class="REST" chainTo="TIDComponent.java"/>
-                </engine>
-            </engines>
-
-            <parameters>
-                <!-- TODO Should this sessionID be optional? -->
-                <parameter name="SESSIONID" displayText="sessionID" optional="YES">
-                    <description>
-                       <short_desc>The ID used to identify a session.</short_desc>
-                       <detailed_desc>
-                           There is a base URL stored for the session, and it will be
-                           prepended to a relative URI to form a REST service URL. For the session, authentication information is also stored for later action execution.<br/>
-                           If the ID is not provided, then this keyword will be
-                           handled as "no session" scenario; the following parameter 'relativeURI'
-                           should be provided with a full-path URL; user might need to provide
-                           some extra information such as authentication etc.
-                       </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="RELATIVEURI" displayText="relativeURI" optional="NO">
-                    <description>
-                       <short_desc>The relative URI combined with a base-URL (stored in a session) to form a REST service URL.</short_desc>
-                       <detailed_desc>
-                           <p>
-                           This is normally a relative URI as the base-URL is provided in a session.
-                           BUT it should be <b>full path URL</b> if the parameter <b>sessionID</b> is <b>not provided</b> or <b>invalid</b>.
-                           </p>
-                       </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="BODY" displayText="body" optional="YES">
-                    <description>
-                        <short_desc>The body to send with this REST request.</short_desc>
-                        <detailed_desc>
-                            <p>
-                            The body could be a literal text string for something simple.
-                            The body could also be a project-relative or full path to a file of larger body content in the proper format.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="CONTENTTYPE" displayText="contentType" optional="YES">
-                    <description>
-                       <short_desc>
-                           The content type of the body included in this REST request. It is ONLY useful when the parameter
-                           <b>body</b> is specified; otherwise it will be ignored.
-                       </short_desc>
-                       <detailed_desc>
-                           The content type can be one of following options:
-                           <ul>
-                           <li>BINARY</li>
-                           <li>JSON</li>
-                           <li>TEXT</li>
-                           <li>XML</li>
-                           <li>HTML</li>
-                           <li>IMAGE</li>
-                           <li>CSS</li>
-                           <li>SCRIPT</li>
-                           </ul>
-                       </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="RESPONSEIDVAR" displayText="responseIdVar" optional="NO">
-                    <description>
-                       <short_desc>
-                           The name of the variable holding the ID (generated internally), which is used to
-                           get the Response Object from the internal Map.
-                        </short_desc>
-                    </description>
-                </parameter>
-                <!-- TODO  We might allow user to provide more headers. -->
-                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
-                <parameter name="HEADERS" displayText="headers" optional="YES">
-                    <description>
-                       <short_desc>
-                           The headers to be included in this REST request.
-                           Such as "If-Modified-Since: Sat, 29 OCT 1994 19:43:31 GMT".
-                        </short_desc>
-                    </description>
-                </parameter>
-                <!-- TODO We might allow user to provide information about authentication. -->
-                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
-                <parameter name="AUTHENTICATION" displayText="authentication" optional="YES">
-                    <description>
-                       <short_desc>
-                           The authentication information to guarantee this one-shot connection successful.
-                        </short_desc>
-                    </description>
-                </parameter>
-            </parameters>
-            
-            <examples>
-
-                <example>
-                    <usage>T, SAFSREST, RestDelete, "BayerCustomerService", "sqlrest/CUSTOMER/0/", , , "BayerCustomerDeleteResponseIDVariable"</usage>
-                    <description>
-                        <short_desc>
-                            <p>Execute a DELETE method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/CUSTOMER/0/"</p>
-                        </short_desc>
-                        <detailed_desc>
-                            <p>
-                            Execute a DELETE method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/CUSTOMER/0/"
-                            The "customer #0" will be deleted.
-                            </p>
-                            <p>
-                            The <b>base-URL</b> is gotten according to sessionID "BayerCustomerService" (assigned when executing keyword <b>RestStartServiceSession</b>).
-                            If it is "http://www.thomas-bayer.com/", then the full REST Service URL is "http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/".
-                            The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerCustomerDeleteResponseIDVariable.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </example>
-                <example>
-                    <usage>T, SAFSREST, RestDelete, , "http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/", , , "BayerCustomerDeleteResponseIDVariable"</usage>
-                    <description>
-                        <short_desc>
-                            <p>Execute a DELETE method on REST service URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/".</p>
-                        </short_desc>
-                        <detailed_desc>
-                            <p>
-                            Execute a DELETE method on REST service URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/".
-                            The "customer #0" will be deleted.
-                            </p>
-                            <p>
-                            The parameter <b>sessionID</b> is <b>NOT provided</b>, this action is handled as one-shot connection.
-                            The parameter <b>relativeURI</b> is provided a <b>full path URL</b> "http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/".
-                            The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerCustomerDeleteResponseIDVariable.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </example>
-
-            </examples>
-        </keyword>
-
-		<keyword name="RESTGET" displayText="RestGet" deprecated="NO"
+		<keyword name="RESTGETBINARY" displayText="RestGetBinary" deprecated="NO"
 			     expectFailSupport="NO" expectWarnSupport="NO">
 
 			<description>
 				<short_desc>
-					Perform the "GET" method on a REST service.
+					Perform the "GET" method on a REST service, and try to get back the binary content.
 				</short_desc>
 				<detailed_desc>
-					<p>Perform the "GET" method on a REST service.</p>
+				    <p>
+				        This action will send the "GET" method with Headers containing "Accept : application/octet-stream".
+				        It only tells the server what type of content is expected, and it is not guarantee that the server will return it.
+				    </p>
 					<p>
-						If the parameter sessionId is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword; and this action will be handled within a session.
+						If the field <b>SessionIDItem is provided</b> in the map, the keyword <b>RestStartServiceSession</b> SHOULD be executed 
+						before executing this action, which will be handled within a session.<br/>
 						Otherwise, it will be considered as a one-shot connection, 
-						and NO <b>RestStartServiceSession</b> needs to be called and user may need to provide authentication information.
+						and NO RestStartServiceSession needs to be called and user may need to provide authentication information.
 					</p>
 				</detailed_desc>
 			</description>
@@ -299,66 +153,18 @@
             <engines>
                 <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
                     <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
-                        sourcecode="TIDRestFunctions.java" class="REST" chainTo="TIDComponent.java"/>
+                        sourcecode="TIDRestComponent.java" class="REST" chainTo="TIDComponent.java"/>
                 </engine>
             </engines>
 
 			<parameters>
-                <!-- TODO Should this sessionID be optional? -->
-                <parameter name="SESSIONID" displayText="sessionID" optional="YES">
-                	<description>
-                	   <short_desc>The ID used to identify a session.</short_desc>
-                	   <detailed_desc>
-                	       There is a base URL stored for the session, and it will be
-                	       prepended to a relative URI to form a REST service URL. For the session, authentication information is also stored for later action execution.<br/>
-                	       If the ID is not provided, then this keyword will be
-                	       handled as "no session" scenario; the following parameter 'relativeURI'
-                	       should be provided with a full-path URL; user might need to provide
-                	       some extra information such as authentication etc.
-                	   </detailed_desc>
-                	</description>
-                </parameter>
                 <parameter name="RELATIVEURI" displayText="relativeURI" optional="NO">
                 	<description>
                 	   <short_desc>The relative URI combined with a base-URL (stored in a session) to form a REST service URL.</short_desc>
                        <detailed_desc>
-                           <p>
                            This is normally a relative URI as the base-URL is provided in a session.
-                           BUT it should be <b>full path URL</b> if the parameter <b>sessionID</b> is <b>not provided</b> or <b>invalid</b>.
-                           </p>
+                           BUT it should be <b>full path URL</b> if the field <b>SessionIDItem</b> is <b>not provided</b> or <b>invalid</b>.
                        </detailed_desc>
-                	</description>
-                </parameter>
-                <parameter name="BODY" displayText="body" optional="YES">
-                	<description>
-                		<short_desc>The body to send with this REST request.</short_desc>
-                        <detailed_desc>
-                            <p>
-                            The body could be a literal text string for something simple.
-                            The body could also be a project-relative or full path to a file of larger body content in the proper format.
-                            </p>
-                        </detailed_desc>
-                	</description>
-                </parameter>
-                <parameter name="CONTENTTYPE" displayText="contentType" optional="YES">
-                	<description>
-                	   <short_desc>
-                	       The content type of the body included in this REST request. It is ONLY useful when the parameter
-                	       <b>body</b> is specified; otherwise it will be ignored.
-                	   </short_desc>
-                	   <detailed_desc>
-                	       The content type can be one of following options:
-                	       <ul>
-                	       <li>BINARY</li>
-                	       <li>JSON</li>
-                	       <li>TEXT</li>
-                	       <li>XML</li>
-                	       <li>HTML</li>
-                	       <li>IMAGE</li>
-                	       <li>CSS</li>
-                	       <li>SCRIPT</li>
-                	       </ul>
-                	   </detailed_desc>
                 	</description>
                 </parameter>
                 <parameter name="RESPONSEIDVAR" displayText="responseIdVar" optional="NO">
@@ -368,6 +174,16 @@
                 	       get the Response Object from the internal Map.
                 	    </short_desc>
                 	</description>
+                </parameter>
+                <parameter name="BODY" displayText="body" optional="YES">
+                    <description>
+                        <short_desc>The body to send with this REST request.</short_desc>
+                        <detailed_desc>
+                            The body could be a literal text string for something simple.
+                            The body could also be a project-relative or full path to a file of larger body content in the proper format.
+                            The body's content-type could be defined in the headers.
+                        </detailed_desc>
+                    </description>
                 </parameter>
                 <!-- TODO  We might allow user to provide more headers. -->
                 <!-- TODO What format? a simple string, variable holding a file path, or ... -->
@@ -384,7 +200,8 @@
                 <parameter name="AUTHENTICATION" displayText="authentication" optional="YES">
                     <description>
                        <short_desc>
-                           The authentication information to guarantee this one-shot connection successful.
+                           The authentication information to guarantee the one-shot connection successful.
+                           It is ONLY useful for the situation without session; otherwise it is ignored.
                         </short_desc>
                     </description>
                 </parameter>
@@ -393,656 +210,40 @@
 			<examples>
 
 				<example>
-					<usage>T, SAFSREST, RestGet, "BayerCustomerService", "sqlrest/CUSTOMER/", , , "BayerCustomerGetResponseIDVariable"</usage>
+					<usage>T, SAFSREST, BayerServiceIdItem, RestGetBinary, "sqlrest/CUSTOMER/", "BayerCustomerGetResponseIDVariable"</usage>
 					<description>
 						<short_desc>
-							<p>Execute a GET method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/CUSTOMER/"</p>
+							<p>Within a session, execute a GET method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/CUSTOMER/"</p>
 						</short_desc>
 						<detailed_desc>
-							<p>
-							Execute a GET method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/CUSTOMER/"
-							The customer list will be returned.
-							</p>
-							<p>
-                            The <b>base-URL</b> is gotten according to sessionID "BayerCustomerService" (assigned when executing keyword <b>RestStartServiceSession</b>).
-                            If it is "http://www.thomas-bayer.com/", then the full REST Service URL is "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".
+							The item "BayerServiceIdItem" <b>MUST</b> be defined in the map such as:<br/>
+							[SAFSREST]<br/>
+							BayerServiceIdItem=BayerServiceSession001<br/>
+							The session is identified by sessionID "BayerServiceSession001", according to which the base-URL is gotten.
+                            If the base-URL is "http://www.thomas-bayer.com/", then the full REST Service URL is "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".
                             The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerCustomerGetResponseIDVariable.
-                            </p>
 						</detailed_desc>
 					</description>
 				</example>
 				<example>
-					<usage>T, SAFSREST, RestGet, , "http://www.thomas-bayer.com/sqlrest/CUSTOMER/", , , "BayerCustomerGetResponseIDVariable"</usage>
+					<usage>T, SAFSREST, BayerServiceIdItemNonExist, RestGet, "http://www.thomas-bayer.com/sqlrest/CUSTOMER/", "BayerCustomerGetResponseIDVariable"</usage>
 					<description>
 						<short_desc>
-							<p>Execute a GET method on REST service URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".</p>
+							<p>Without session, execute a GET method on REST service URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".</p>
 						</short_desc>
 						<detailed_desc>
-							<p>
-							Execute a GET method on REST service URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".
-							The customer list will be returned.
-							</p>
-							<p>
-                            The parameter <b>sessionID</b> is <b>NOT provided</b>, this action is handled as one-shot connection.
+							The item "BayerServiceIdItemNonExist" should <b>NOT</b> be defined, or defined with an empty value in the map:<br/>
+                            [SAFSREST]<br/>
+                            BayerServiceIdItemNonExist=<br/>
+                            This action is handled as one-shot connection.
                             The parameter <b>relativeURI</b> is provided a <b>full path URL</b> "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".
                             The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerCustomerGetResponseIDVariable.
-                            </p>
 						</detailed_desc>
 					</description>
 				</example>
 
 			</examples>
 		</keyword>
-	
-        <keyword name="RESTHEAD" displayText="RestHead" deprecated="NO"
-                 expectFailSupport="NO" expectWarnSupport="NO">
-
-            <description>
-                <short_desc>
-                    Perform the "HEAD" method on a REST service.
-                </short_desc>
-                <detailed_desc>
-                    <p>Perform the "HEAD" method on a REST service.</p>
-                    <p>
-	                    If the parameter sessionId is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword; and this action will be handled within a session.
-	                    Otherwise, it will be considered as a one-shot connection, 
-	                    and NO <b>RestStartServiceSession</b> needs to be called and user may need to provide authentication information.
-                    </p>
-                </detailed_desc>
-            </description>
-
-            <engines>
-                <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
-                    <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
-                        sourcecode="TIDRestFunctions.java" class="REST" chainTo="TIDComponent.java"/>
-                </engine>
-            </engines>
-
-            <parameters>
-                <!-- TODO Should this sessionID be optional? -->
-                <parameter name="SESSIONID" displayText="sessionID" optional="YES">
-                    <description>
-                       <short_desc>The ID used to identify a session.</short_desc>
-                       <detailed_desc>
-                           There is a base URL stored for the session, and it will be
-                           prepended to a relative URI to form a REST service URL. For the session, authentication information is also stored for later action execution.<br/>
-                           If the ID is not provided, then this keyword will be
-                           handled as "no session" scenario; the following parameter 'relativeURI'
-                           should be provided with a full-path URL; user might need to provide
-                           some extra information such as authentication etc.
-                       </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="RELATIVEURI" displayText="relativeURI" optional="NO">
-                    <description>
-                       <short_desc>The relative URI combined with a base-URL (stored in a session) to form a REST service URL.</short_desc>
-                       <detailed_desc>
-                           <p>
-                           This is normally a relative URI as the base-URL is provided in a session.
-                           BUT it should be <b>full path URL</b> if the parameter <b>sessionID</b> is <b>not provided</b> or <b>invalid</b>.
-                           </p>
-                       </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="BODY" displayText="body" optional="YES">
-                    <description>
-                        <short_desc>The body to send with this REST request.</short_desc>
-                        <detailed_desc>
-                            <p>
-                            The body could be a literal text string for something simple.
-                            The body could also be a project-relative or full path to a file of larger body content in the proper format.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="CONTENTTYPE" displayText="contentType" optional="YES">
-                    <description>
-                       <short_desc>
-                           The content type of the body included in this REST request. It is ONLY useful when the parameter
-                           <b>body</b> is specified; otherwise it will be ignored.
-                       </short_desc>
-                       <detailed_desc>
-                           The content type can be one of following options:
-                           <ul>
-                           <li>BINARY</li>
-                           <li>JSON</li>
-                           <li>TEXT</li>
-                           <li>XML</li>
-                           <li>HTML</li>
-                           <li>IMAGE</li>
-                           <li>CSS</li>
-                           <li>SCRIPT</li>
-                           </ul>
-                       </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="RESPONSEIDVAR" displayText="responseIdVar" optional="NO">
-                    <description>
-                       <short_desc>
-                           The name of the variable holding the ID (generated internally), which is used to
-                           get the Response Object from the internal Map.
-                        </short_desc>
-                    </description>
-                </parameter>
-                <!-- TODO  We might allow user to provide more headers. -->
-                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
-                <parameter name="HEADERS" displayText="headers" optional="YES">
-                    <description>
-                       <short_desc>
-                           The headers to be included in this REST request.
-                           Such as "If-Modified-Since: Sat, 29 OCT 1994 19:43:31 GMT".
-                        </short_desc>
-                    </description>
-                </parameter>
-                <!-- TODO We might allow user to provide information about authentication. -->
-                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
-                <parameter name="AUTHENTICATION" displayText="authentication" optional="YES">
-                    <description>
-                       <short_desc>
-                           The authentication information to guarantee this one-shot connection successful.
-                        </short_desc>
-                    </description>
-                </parameter>
-            </parameters>
-            
-            <examples>
-
-                <example>
-                    <usage>T, SAFSREST, RestHead, "BayerCustomerService", "sqlrest/CUSTOMER/", , , "BayerCustomerHeadResponseIDVariable"</usage>
-                    <description>
-                        <short_desc>
-                            <p>Execute a HEAD method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/CUSTOMER/"</p>
-                        </short_desc>
-                        <detailed_desc>
-                            <p>Execute a HEAD method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/CUSTOMER/"</p>
-                            <p>
-                            The <b>base-URL</b> is gotten according to sessionID "BayerCustomerService" (assigned when executing keyword <b>RestStartServiceSession</b>).
-                            If it is "http://www.thomas-bayer.com/", then the full REST Service URL is "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".
-                            The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerCustomerHeadResponseIDVariable.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </example>
-                <example>
-                    <usage>T, SAFSREST, RestHead, , "http://www.thomas-bayer.com/sqlrest/CUSTOMER/", , , "BayerCustomerHeadResponseIDVariable"</usage>
-                    <description>
-                        <short_desc>
-                            <p>Execute a HEAD method on REST service URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".</p>
-                        </short_desc>
-                        <detailed_desc>
-                            <p>Execute a HEAD method on REST service URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".</p>
-                            <p>
-                            The parameter <b>sessionID</b> is <b>NOT provided</b>, this action is handled as one-shot connection.
-                            The parameter <b>relativeURI</b> is provided a <b>full path URL</b> "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".
-                            The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerCustomerHeadResponseIDVariable.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </example>
-
-            </examples>
-        </keyword>
-        
-        <keyword name="RESTPATCH" displayText="RestPatch" deprecated="NO"
-                 expectFailSupport="NO" expectWarnSupport="NO">
-
-            <description>
-                <short_desc>
-                    Perform the "PATCH" method on a REST service.
-                </short_desc>
-                <detailed_desc>
-                    <p>Perform the "PATCH" method on a REST service.</p>
-                    <p>
-	                    If the parameter sessionId is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword; and this action will be handled within a session.
-	                    Otherwise, it will be considered as a one-shot connection, 
-	                    and NO <b>RestStartServiceSession</b> needs to be called and user may need to provide authentication information.
-                    </p>
-                </detailed_desc>
-            </description>
-
-            <engines>
-                <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
-                    <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
-                        sourcecode="TIDRestFunctions.java" class="REST" chainTo="TIDComponent.java"/>
-                </engine>
-            </engines>
-
-            <parameters>
-                <!-- TODO Should this sessionID be optional? -->
-                <parameter name="SESSIONID" displayText="sessionID" optional="YES">
-                    <description>
-                       <short_desc>The ID used to identify a session.</short_desc>
-                       <detailed_desc>
-                           There is a base URL stored for the session, and it will be
-                           prepended to a relative URI to form a REST service URL. For the session, authentication information is also stored for later action execution.<br/>
-                           If the ID is not provided, then this keyword will be
-                           handled as "no session" scenario; the following parameter 'relativeURI'
-                           should be provided with a full-path URL; user might need to provide
-                           some extra information such as authentication etc.
-                       </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="RELATIVEURI" displayText="relativeURI" optional="NO">
-                    <description>
-                       <short_desc>The relative URI combined with a base-URL (stored in a session) to form a REST service URL.</short_desc>
-                       <detailed_desc>
-                           <p>
-                           This is normally a relative URI as the base-URL is provided in a session.
-                           BUT it should be <b>full path URL</b> if the parameter <b>sessionID</b> is <b>not provided</b> or <b>invalid</b>.
-                           </p>
-                       </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="BODY" displayText="body" optional="YES">
-                    <description>
-                        <short_desc>The body to send with this REST request.</short_desc>
-                        <detailed_desc>
-                            <p>
-                            The body could be a literal text string for something simple.
-                            The body could also be a project-relative or full path to a file of larger body content in the proper format.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="CONTENTTYPE" displayText="contentType" optional="YES">
-                    <description>
-                       <short_desc>
-                           The content type of the body included in this REST request. It is ONLY useful when the parameter
-                           <b>body</b> is specified; otherwise it will be ignored.
-                       </short_desc>
-                       <detailed_desc>
-                           The content type can be one of following options:
-                           <ul>
-                           <li>BINARY</li>
-                           <li>JSON</li>
-                           <li>TEXT</li>
-                           <li>XML</li>
-                           <li>HTML</li>
-                           <li>IMAGE</li>
-                           <li>CSS</li>
-                           <li>SCRIPT</li>
-                           </ul>
-                       </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="RESPONSEIDVAR" displayText="responseIdVar" optional="NO">
-                    <description>
-                       <short_desc>
-                           The name of the variable holding the ID (generated internally), which is used to
-                           get the Response Object from the internal Map.
-                        </short_desc>
-                    </description>
-                </parameter>
-                <!-- TODO  We might allow user to provide more headers. -->
-                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
-                <parameter name="HEADERS" displayText="headers" optional="YES">
-                    <description>
-                       <short_desc>
-                           The headers to be included in this REST request.
-                           Such as "If-Modified-Since: Sat, 29 OCT 1994 19:43:31 GMT".
-                        </short_desc>
-                    </description>
-                </parameter>
-                <!-- TODO We might allow user to provide information about authentication. -->
-                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
-                <parameter name="AUTHENTICATION" displayText="authentication" optional="YES">
-                    <description>
-                       <short_desc>
-                           The authentication information to guarantee this one-shot connection successful.
-                        </short_desc>
-                    </description>
-                </parameter>
-            </parameters>
-            
-            <examples>
-
-                <!-- TODO provide a valid example -->
-                <example>
-                    <usage>T, SAFSREST, RestPatch, "BayerCustomerService", "sqlrest/CUSTOMER/0/", , , "BayerCustomerPatchResponseIDVariable"</usage>
-                    <description>
-                        <short_desc>
-                            <p>Execute a PATCH method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/CUSTOMER/0/"</p>
-                        </short_desc>
-                        <detailed_desc>
-                            <p>Execute a PATCH method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/CUSTOMER/0/"</p>
-                            <p>
-                            The <b>base-URL</b> is gotten according to sessionID "BayerCustomerService" (assigned when executing keyword <b>RestStartServiceSession</b>).
-                            If it is "http://www.thomas-bayer.com/", then the full REST Service URL is "http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/".
-                            The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerCustomerPatchResponseIDVariable.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </example>
-                <!-- TODO provide a valid example -->
-                <example>
-                    <usage>T, SAFSREST, RestPatch, , "http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/", , , "BayerCustomerPatchResponseIDVariable"</usage>
-                    <description>
-                        <short_desc>
-                            <p>Execute a PATCH method on REST service URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/".</p>
-                        </short_desc>
-                        <detailed_desc>
-                            <p>Execute a PATCH method on REST service URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/".</p>
-                            <p>
-                            The parameter <b>sessionID</b> is <b>NOT provided</b>, this action is handled as one-shot connection.
-                            The parameter <b>relativeURI</b> is provided a <b>full path URL</b> "http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/".
-                            The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerCustomerPatchResponseIDVariable.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </example>
-
-            </examples>
-        </keyword>
-        
-        <keyword name="RESTPOST" displayText="RestPost" deprecated="NO"
-                 expectFailSupport="NO" expectWarnSupport="NO">
-
-            <description>
-                <short_desc>
-                    Perform the "POST" method on a REST service.
-                </short_desc>
-                <detailed_desc>
-                    <p>Perform the "POST" method on a REST service.</p>
-                    <p>
-	                    If the parameter sessionId is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword; and this action will be handled within a session.
-	                    Otherwise, it will be considered as a one-shot connection, 
-	                    and NO <b>RestStartServiceSession</b> needs to be called and user may need to provide authentication information.
-                    </p>
-                </detailed_desc>
-            </description>
-
-            <engines>
-                <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
-                    <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
-                        sourcecode="TIDRestFunctions.java" class="REST" chainTo="TIDComponent.java"/>
-                </engine>
-            </engines>
-
-            <parameters>
-                <!-- TODO Should this sessionID be optional? -->
-                <parameter name="SESSIONID" displayText="sessionID" optional="YES">
-                    <description>
-                       <short_desc>The ID used to identify a session.</short_desc>
-                       <detailed_desc>
-                           There is a base URL stored for the session, and it will be
-                           prepended to a relative URI to form a REST service URL. For the session, authentication information is also stored for later action execution.<br/>
-                           If the ID is not provided, then this keyword will be
-                           handled as "no session" scenario; the following parameter 'relativeURI'
-                           should be provided with a full-path URL; user might need to provide
-                           some extra information such as authentication etc.
-                       </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="RELATIVEURI" displayText="relativeURI" optional="NO">
-                    <description>
-                       <short_desc>The relative URI combined with a base-URL (stored in a session) to form a REST service URL.</short_desc>
-                       <detailed_desc>
-                           <p>
-                           This is normally a relative URI as the base-URL is provided in a session.
-                           BUT it should be <b>full path URL</b> if the parameter <b>sessionID</b> is <b>not provided</b> or <b>invalid</b>.
-                           </p>
-                       </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="BODY" displayText="body" optional="YES">
-                    <description>
-                        <short_desc>The body to send with this REST request.</short_desc>
-                        <detailed_desc>
-                            <p>
-                            The body could be a literal text string for something simple.
-                            The body could also be a project-relative or full path to a file of larger body content in the proper format.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="CONTENTTYPE" displayText="contentType" optional="YES">
-                    <description>
-                       <short_desc>
-                           The content type of the body included in this REST request. It is ONLY useful when the parameter
-                           <b>body</b> is specified; otherwise it will be ignored.
-                       </short_desc>
-                       <detailed_desc>
-                           The content type can be one of following options:
-                           <ul>
-                           <li>BINARY</li>
-                           <li>JSON</li>
-                           <li>TEXT</li>
-                           <li>XML</li>
-                           <li>HTML</li>
-                           <li>IMAGE</li>
-                           <li>CSS</li>
-                           <li>SCRIPT</li>
-                           </ul>
-                       </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="RESPONSEIDVAR" displayText="responseIdVar" optional="NO">
-                    <description>
-                       <short_desc>
-                           The name of the variable holding the ID (generated internally), which is used to
-                           get the Response Object from the internal Map.
-                        </short_desc>
-                    </description>
-                </parameter>
-                <!-- TODO  We might allow user to provide more headers. -->
-                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
-                <parameter name="HEADERS" displayText="headers" optional="YES">
-                    <description>
-                       <short_desc>
-                           The headers to be included in this REST request.
-                           Such as "If-Modified-Since: Sat, 29 OCT 1994 19:43:31 GMT".
-                        </short_desc>
-                    </description>
-                </parameter>
-                <!-- TODO We might allow user to provide information about authentication. -->
-                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
-                <parameter name="AUTHENTICATION" displayText="authentication" optional="YES">
-                    <description>
-                       <short_desc>
-                           The authentication information to guarantee this one-shot connection successful.
-                        </short_desc>
-                    </description>
-                </parameter>
-            </parameters>
-            
-            <examples>
-
-                <example>
-                    <usage>T, SAFSREST, RestPost, "BayerProductService", "sqlrest/PRODUCT/28/", "<resource><PRICE>9.50</PRICE></resource>", XML, "BayerProductPostResponseIDVariable"</usage>
-                    <description>
-                        <short_desc>
-                            <p>Execute a POST method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/PRODUCT/28/"</p>
-                        </short_desc>
-                        <detailed_desc>
-                            <p>
-                            Execute a POST method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/PRODUCT/28/"
-                            It will send XML body "<resource><PRICE>9.50</PRICE></resource>" to sever so that the price of "product #28" will be updated.
-                            </p>
-                            <p>
-                            The <b>base-URL</b> is gotten according to sessionID "BayerProductService" (assigned when executing keyword <b>RestStartServiceSession</b>).
-                            If it is "http://www.thomas-bayer.com/", then the full REST Service URL is "http://www.thomas-bayer.com/sqlrest/PRODUCT/28/".
-                            The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerProductPostResponseIDVariable.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </example>
-                <example>
-                    <usage>T, SAFSREST, RestPost, , "http://www.thomas-bayer.com/sqlrest/PRODUCT/28/", "<resource><PRICE>9.50</PRICE></resource>", XML, "BayerProductPostResponseIDVariable"</usage>
-                    <description>
-                        <short_desc>
-                            <p>Execute a POST method on REST service URL "http://www.thomas-bayer.com/sqlrest/PRODUCT/28/".</p>
-                        </short_desc>
-                        <detailed_desc>
-                            <p>
-                            Execute a POST method on REST service URL "http://www.thomas-bayer.com/sqlrest/PRODUCT/28/".
-                            It will send XML body "<resource><PRICE>9.50</PRICE></resource>" to sever so that the price of "product #28" will be updated.
-                            </p>
-                            <p>
-                            The parameter <b>sessionID</b> is <b>NOT provided</b>, this action is handled as one-shot connection.
-                            The parameter <b>relativeURI</b> is provided a <b>full path URL</b> "http://www.thomas-bayer.com/sqlrest/PRODUCT/28/".
-                            The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerProductPostResponseIDVariable.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </example>
-
-            </examples>
-        </keyword>
-        
-        <keyword name="RESTPUT" displayText="RestPut" deprecated="NO"
-                 expectFailSupport="NO" expectWarnSupport="NO">
-
-            <description>
-                <short_desc>
-                    Perform the "PUT" method on a REST service.
-                </short_desc>
-                <detailed_desc>
-                    <p>Perform the "PUT" method on a REST service.</p>
-                    <p>
-	                    If the parameter sessionId is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed before executing this keyword; and this action will be handled within a session.
-	                    Otherwise, it will be considered as a one-shot connection, 
-	                    and NO <b>RestStartServiceSession</b> needs to be called and user may need to provide authentication information.
-                    </p>
-                </detailed_desc>
-            </description>
-
-            <engines>
-                <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
-                    <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
-                        sourcecode="TIDRestFunctions.java" class="REST" chainTo="TIDComponent.java"/>
-                </engine>
-            </engines>
-
-            <parameters>
-                <!-- TODO Should this sessionID be optional? -->
-                <parameter name="SESSIONID" displayText="sessionID" optional="YES">
-                    <description>
-                       <short_desc>The ID used to identify a session.</short_desc>
-                       <detailed_desc>
-                           There is a base URL stored for the session, and it will be
-                           prepended to a relative URI to form a REST service URL. For the session, authentication information is also stored for later action execution.<br/>
-                           If the ID is not provided, then this keyword will be
-                           handled as "no session" scenario; the following parameter 'relativeURI'
-                           should be provided with a full-path URL; user might need to provide
-                           some extra information such as authentication etc.
-                       </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="RELATIVEURI" displayText="relativeURI" optional="NO">
-                    <description>
-                       <short_desc>The relative URI combined with a base-URL (stored in a session) to form a REST service URL.</short_desc>
-                       <detailed_desc>
-                           <p>
-                           This is normally a relative URI as the base-URL is provided in a session.
-                           BUT it should be <b>full path URL</b> if the parameter <b>sessionID</b> is <b>not provided</b> or <b>invalid</b>.
-                           </p>
-                       </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="BODY" displayText="body" optional="YES">
-                    <description>
-                        <short_desc>The body to send with this REST request.</short_desc>
-                        <detailed_desc>
-                            <p>
-                            The body could be a literal text string for something simple.
-                            The body could also be a project-relative or full path to a file of larger body content in the proper format.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="CONTENTTYPE" displayText="contentType" optional="YES">
-                    <description>
-                       <short_desc>
-                           The content type of the body included in this REST request. It is ONLY useful when the parameter
-                           <b>body</b> is specified; otherwise it will be ignored.
-                       </short_desc>
-                       <detailed_desc>
-                           The content type can be one of following options:
-                           <ul>
-                           <li>BINARY</li>
-                           <li>JSON</li>
-                           <li>TEXT</li>
-                           <li>XML</li>
-                           <li>HTML</li>
-                           <li>IMAGE</li>
-                           <li>CSS</li>
-                           <li>SCRIPT</li>
-                           </ul>
-                       </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="RESPONSEIDVAR" displayText="responseIdVar" optional="NO">
-                    <description>
-                       <short_desc>
-                           The name of the variable holding the ID (generated internally), which is used to
-                           get the Response Object from the internal Map.
-                        </short_desc>
-                    </description>
-                </parameter>
-                <!-- TODO  We might allow user to provide more headers. -->
-                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
-                <parameter name="HEADERS" displayText="headers" optional="YES">
-                    <description>
-                       <short_desc>
-                           The headers to be included in this REST request.
-                           Such as "If-Modified-Since: Sat, 29 OCT 1994 19:43:31 GMT".
-                        </short_desc>
-                    </description>
-                </parameter>
-                <!-- TODO We might allow user to provide information about authentication. -->
-                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
-                <parameter name="AUTHENTICATION" displayText="authentication" optional="YES">
-                    <description>
-                       <short_desc>
-                           The authentication information to guarantee this one-shot connection successful.
-                        </short_desc>
-                    </description>
-                </parameter>
-            </parameters>
-            
-            <examples>
-
-                <example>
-                    <usage>T, SAFSREST, RestPut, "BayerProductService", "sqlrest/PRODUCT/61/", "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>", XML, "BayerProductPutResponseIDVariable"</usage>
-                    <description>
-                        <short_desc>
-                            <p>Execute a PUT method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/PRODUCT/61/"</p>
-                        </short_desc>
-                        <detailed_desc>
-                            <p>
-                            Execute a PUT method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/PRODUCT/61/"
-                            It will send XML body "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>" to sever so that "product #61" will be created.
-                            </p>
-                            <p>
-                            The <b>base-URL</b> is gotten according to sessionID "BayerProductService" (assigned when executing keyword <b>RestStartServiceSession</b>).
-                            If it is "http://www.thomas-bayer.com/", then the full REST Service URL is "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/".
-                            The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerProductPutResponseIDVariable.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </example>
-                <example>
-                    <usage>T, SAFSREST, RestPut, , "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/", "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>", XML, "BayerProductPutResponseIDVariable"</usage>
-                    <description>
-                        <short_desc>
-                            <p>Execute a PUT method on REST service URL "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/".</p>
-                        </short_desc>
-                        <detailed_desc>
-                            <p>
-                            Execute a PUT method on REST service URL "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/".
-                            It will send XML body "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>" to sever so that "product #61" will be created.
-                            </p>
-                            <p>
-                            The parameter <b>sessionID</b> is <b>NOT provided</b>, this action is handled as one-shot connection.
-                            The parameter <b>relativeURI</b> is provided a <b>full path URL</b> "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/".
-                            The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerProductPutResponseIDVariable.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </example>
-
-            </examples>
-        </keyword>
 
         <keyword name="RESTREQUEST" displayText="RestRequest" deprecated="NO"
                  expectFailSupport="NO" expectWarnSupport="NO">
@@ -1052,20 +253,17 @@
                     Perform an HTTP method on a REST service.
                 </short_desc>
                 <detailed_desc>
-                    <p>Perform an HTTP method on a REST service.</p>
-                    <p>
-                        If the test field SessionIDVar is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed 
-                        before executing this keyword; and this action will be handled within a session.
-                        Otherwise, it will be considered as a one-shot connection, 
-                        and NO <b>RestStartServiceSession</b> needs to be called and user may need to provide authentication information.
-                    </p>
+                    If the test field SessionIDItem is provided, the keyword <b>RestStartServiceSession</b> SHOULD be executed 
+                    before executing this action, which will be handled within a session.
+                    Otherwise, it will be considered as a one-shot connection, 
+                    and NO <b>RestStartServiceSession</b> needs to be called and user may need to provide authentication information.
                 </detailed_desc>
             </description>
 
             <engines>
                 <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
                     <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
-                        sourcecode="TIDRestFunctions.java" class="REST" chainTo="TIDComponent.java"/>
+                        sourcecode="TIDRestComponent.java" class="REST" chainTo="TIDComponent.java"/>
                 </engine>
             </engines>
 
@@ -1074,7 +272,7 @@
                     <description>
                        <short_desc>The HTTP method to execute.</short_desc>
                        <detailed_desc>
-                           <p>It can be one of "GET" "DELETE" "POST" "PUT" "PATCH" "HEAD".</p>
+                           It can be one of "GET" "DELETE" "POST" "PUT" "PATCH" "HEAD".
                        </detailed_desc>
                     </description>
                 </parameter>
@@ -1082,10 +280,8 @@
                     <description>
                        <short_desc>The relative URI combined with a base-URL (stored in a session) to form a REST service URL.</short_desc>
                        <detailed_desc>
-                           <p>
                            This is normally a relative URI as the base-URL is provided in a session.
-                           BUT it should be <b>full path URL</b> if the parameter <b>sessionID</b> is <b>not provided</b> or <b>invalid</b>.
-                           </p>
+                           BUT it should be <b>full path URL</b> if the parameter <b>sessionID</b> is <b>not provided</b>.
                        </detailed_desc>
                     </description>
                 </parameter>
@@ -1101,10 +297,8 @@
                     <description>
                         <short_desc>The body to send with this REST request.</short_desc>
                         <detailed_desc>
-                            <p>
                             The body could be a literal text string for something simple.
                             The body could also be a project-relative or full path to a file of larger body content in the proper format.
-                            </p>
                         </detailed_desc>
                     </description>
                 </parameter>
@@ -1132,10 +326,10 @@
             <examples>
 
                 <example>
-                    <usage>T, SAFSREST, ^BayerService, RestRequest, PUT, "sqlrest/PRODUCT/61/", "BayerProductPutResponseIDVariable", "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>", "Content-Type: text/xml"</usage>
+                    <usage>T, SAFSREST, BayerServiceItem, RestRequest, PUT, "sqlrest/PRODUCT/61/", "BayerProductPutResponseIDVariable", "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>", "Content-Type: text/xml"</usage>
                     <description>
                         <short_desc>
-                            <p>Execute a PUT method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/PRODUCT/61/"</p>
+                            Execute a PUT method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/PRODUCT/61/"
                         </short_desc>
                         <detailed_desc>
                             <p>
@@ -1151,10 +345,10 @@
                     </description>
                 </example>
                 <example>
-                    <usage>T, SAFSREST, ^BayerServiceNonExist, RestPut, PUT, "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/", "BayerProductPutResponseIDVariable", "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>", "Content-Type: text/xml"</usage>
+                    <usage>T, SAFSREST, BayerServiceItemNonExist, RestPut, PUT, "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/", "BayerProductPutResponseIDVariable", "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>", "Content-Type: text/xml"</usage>
                     <description>
                         <short_desc>
-                            <p>Execute a PUT method on REST service URL "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/".</p>
+                            Execute a PUT method on REST service URL "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/".
                         </short_desc>
                         <detailed_desc>
                             <p>
@@ -1162,7 +356,7 @@
                             It will send XML body "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>" to sever so that "product #61" will be created.
                             </p>
                             <p>
-                            The field <b>BayerServiceNonExist</b> is <b>NOT existing</b>, this action is handled as one-shot connection.
+                            The map item <b>BayerServiceItemNonExist</b> does <b>NOT exist</b>, this action is handled as one-shot connection.
                             The parameter <b>relativeURI</b> is provided a <b>full path URL</b> "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/".
                             The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerProductPutResponseIDVariable.
                             </p>
@@ -1181,14 +375,14 @@
                     Start a session for a REST service.
                 </short_desc>
                 <detailed_desc>
-                    <p>Start a session for a REST service.</p>
+                    <p>Currently the "base URL" and "authentication information" will be stored for the opened session.</p>
                 </detailed_desc>
             </description>
 
             <engines>
                 <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
                     <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
-                        sourcecode="TIDRestFunctions.java" class="REST" chainTo="TIDComponent.java"/>
+                        sourcecode="TIDRestComponent.java" class="REST" chainTo="TIDComponent.java"/>
                 </engine>
             </engines>
 
@@ -1197,7 +391,8 @@
                     <description>
                        <short_desc>The base URL to be stored with a session.</short_desc>
                        <detailed_desc>
-                           This base URL will be prepended to a relative URI to form a REST service URL.
+                           This base URL will be prepended to a relative URI to form a REST service URL for the 
+                           later invocation of other REST actions. 
                        </detailed_desc>
                     </description>
                 </parameter>
@@ -1209,13 +404,11 @@
                            The authentication information to be used during this session.
                         </short_desc>
                         <detailed_desc>
-                            <p>
-                                Normally, the authentication information will be loaded from "JVM -D parameters", "Map", or global
-                                external file. Those settings are considered to be global. This parameter can
-                                be used to alternate the authentication information, it will override the global settings.
-                                If it is provided as <b>NOAUTHENTICATION</b>, then no authentication is needed during the session
-                                even the global settings are set.
-                            </p>
+                            Normally, the authentication information will be loaded from "JVM -D parameters", "Map", or global
+                            external file. Those settings are considered to be global. This parameter can
+                            be used to alternate the authentication information, it will override the global settings.
+                            If it is provided as <b>NOAUTHENTICATION</b>, then no authentication is needed during the session
+                            even the global settings are set.
                         </detailed_desc>
                     </description>
                 </parameter>
@@ -1223,14 +416,13 @@
             
             <examples>
                 <example>
-                    <usage>T, SAFSREST, ^BayerSessionVar, RestStartServiceSession, "http://www.thomas-bayer.com/"</usage>
+                    <usage>T, SAFSREST, BayerSessionID, RestStartServiceSession, "http://www.thomas-bayer.com/"</usage>
                     <description>
                         <short_desc>
-                            <p>Start a session for a REST service based on URL "http://www.thomas-bayer.com/".</p>
+                            Start a session for a REST service based on URL "http://www.thomas-bayer.com/".
                         </short_desc>
                         <detailed_desc>
-                            <p>Start a session for a REST service based on URL "http://www.thomas-bayer.com/".</p>
-                            <p>This session will be assigned with ID as value of variable BayerSessionVar.</p>
+                            <p>This session will be assigned with ID as value of map item BayerSessionID.</p>
                         </detailed_desc>
                     </description>
                 </example>
@@ -1238,113 +430,6 @@
             </examples>
         </keyword>
 
-        <!-- TODO This keyword might be removed if we agreed that RestGet is sufficient -->
-        <keyword name="RESTGETNOSESSION" displayText="RestGetNoSession" deprecated="NO"
-                 expectFailSupport="NO" expectWarnSupport="NO">
-
-            <description>
-                <short_desc>
-                    Perform the "GET" method on a REST service without session.
-                </short_desc>
-                <detailed_desc>
-                    <p>Perform the "GET" method on a REST service without session.</p>
-                    It is supposed to be a one-shot connection, user may need to provide authentication information.
-                </detailed_desc>
-            </description>
-
-            <engines>
-                <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
-                    <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
-                        sourcecode="TIDRestFunctions.java" class="REST" chainTo="TIDComponent.java"/>
-                </engine>
-            </engines>
-
-            <parameters>
-                <parameter name="FULLURL" displayText="fullURL" optional="NO">
-                    <description>
-                       <short_desc>The full REST service URL.</short_desc>
-                    </description>
-                </parameter>
-                <parameter name="BODY" displayText="body" optional="YES">
-                    <description>
-                        <short_desc>The body to send with this REST request.</short_desc>
-                        <detailed_desc>
-                            <p>
-                            The body could be a literal text string for something simple.
-                            The body could also be a project-relative or full path to a file of larger body content in the proper format.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="CONTENTTYPE" displayText="contentType" optional="YES">
-                    <description>
-                       <short_desc>
-                           The content type of the body included in this REST request. It is ONLY useful when the parameter
-                           <b>body</b> is specified; otherwise it will be ignored.
-                       </short_desc>
-                       <detailed_desc>
-                           The content type can be one of following options:
-                           <ul>
-                           <li>BINARY</li>
-                           <li>JSON</li>
-                           <li>TEXT</li>
-                           <li>XML</li>
-                           <li>HTML</li>
-                           <li>IMAGE</li>
-                           <li>CSS</li>
-                           <li>SCRIPT</li>
-                           </ul>
-                       </detailed_desc>
-                    </description>
-                </parameter>
-                <parameter name="RESPONSEIDVAR" displayText="responseIdVar" optional="NO">
-                    <description>
-                       <short_desc>
-                           The name of the variable holding the ID (generated internally), which is used to
-                           get the Response Object from the internal Map.
-                        </short_desc>
-                    </description>
-                </parameter>
-                <!-- TODO We might allow user to provide more headers. -->
-                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
-                <parameter name="HEADERS" displayText="headers" optional="YES">
-                    <description>
-                       <short_desc>
-                           The headers to be included in this REST request.
-                           Such as "If-Modified-Since: Sat, 29 OCT 1994 19:43:31 GMT".
-                        </short_desc>
-                    </description>
-                </parameter>
-                <!-- TODO We might allow user to provide information about authentication. -->
-                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
-                <parameter name="AUTHENTICATION" displayText="authentication" optional="YES">
-                    <description>
-                       <short_desc>
-                           The authentication information to guarantee this one-shot connection successful.
-                        </short_desc>
-                    </description>
-                </parameter>
-            </parameters>
-            
-            <examples>
-
-                <example>
-                    <usage>T, SAFSREST, RestGetNoSession, "http://www.thomas-bayer.com/sqlrest/CUSTOMER/", , , "BayerCustomerGetResponseIDVariable"</usage>
-                    <description>
-                        <short_desc>
-                            <p>Execute a GET method on REST service URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".</p>
-                        </short_desc>
-                        <detailed_desc>
-                            <p>Execute a GET method on REST service URL "http://www.thomas-bayer.com/sqlrest/CUSTOMER/".</p>
-                            <p>
-                            The Response Object will be stored in an internal Map with a generated ID, which will be saved to a variable BayerCustomerGetResponseIDVariable.
-                            </p>
-                        </detailed_desc>
-                    </description>
-                </example>
-
-            </examples>
-        </keyword>
         
 	</keywords>
 </keyword_library>
