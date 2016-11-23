@@ -5,7 +5,7 @@
 	<libraryType type="COMPONENT"/> <!-- Leave it as Component, not much choice. -->
 
 	<libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
-		sourcecode="TIDRestComponent.java" class="REST">
+		sourcecode="TIDComponent.java" class="REST">
 
 		<description>
 			<short_desc>
@@ -105,7 +105,7 @@
             <engines>
                 <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
                     <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
-                        sourcecode="TIDRestComponent.java" class="REST" chainTo="TIDComponent.java"/>
+                        sourcecode="TIDComponent.java" class="REST"/>
                 </engine>
             </engines>
 
@@ -127,6 +127,34 @@
 
             </examples>
             
+        </keyword>
+
+        <keyword name="RESTDELETEBINARY" displayText="RestDeleteBinary" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTDELETECSS" displayText="RestDeleteCSS" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTDELETECUSTOM" displayText="RestDeleteCustom" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTDELETEHTML" displayText="RestDeleteHTML" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTDELETEJSON" displayText="RestDeleteJSON" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTDELETEIMAGE" displayText="RestDeleteImage" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTDELETESCRIPT" displayText="RestDeleteScript" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTDELETETEXT" displayText="RestDeleteText" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTDELETEXML" displayText="RestDeleteXML" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
         </keyword>
 
 		<keyword name="RESTGETBINARY" displayText="RestGetBinary" deprecated="NO"
@@ -153,7 +181,7 @@
             <engines>
                 <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
                     <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
-                        sourcecode="TIDRestComponent.java" class="REST" chainTo="TIDComponent.java"/>
+                        sourcecode="TIDComponent.java" class="REST"/>
                 </engine>
             </engines>
 
@@ -244,6 +272,142 @@
 
 			</examples>
 		</keyword>
+        <keyword name="RESTGETCSS" displayText="RestGetCSS" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTGETCUSTOM" displayText="RestGetCustom" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTGETHTML" displayText="RestGetHTML" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTGETJSON" displayText="RestGetJSON" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTGETIMAGE" displayText="RestGetImage" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTGETSCRIPT" displayText="RestGetScript" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTGETTEXT" displayText="RestGetText" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTGETXML" displayText="RestGetXML" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+
+        <keyword name="RESTHEADBINARY" displayText="RestHeadBinary" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTHEADCSS" displayText="RestHeadCSS" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTHEADCUSTOM" displayText="RestHeadCustom" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTHEADHTML" displayText="RestHeadHTML" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTHEADJSON" displayText="RestHeadJSON" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTHEADIMAGE" displayText="RestHeadImage" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTHEADSCRIPT" displayText="RestHeadScript" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTHEADTEXT" displayText="RestHeadText" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTHEADXML" displayText="RestHeadXML" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        
+        <keyword name="RESTPATCHBINARY" displayText="RestPatchBinary" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPATCHCSS" displayText="RestPatchCSS" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPATCHCUSTOM" displayText="RestPatchCustom" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPATCHHTML" displayText="RestPatchHTML" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPATCHJSON" displayText="RestPatchJSON" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPATCHIMAGE" displayText="RestPatchImage" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPATCHSCRIPT" displayText="RestPatchScript" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPATCHTEXT" displayText="RestPatchText" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPATCHXML" displayText="RestPatchXML" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        
+        <keyword name="RESTPOSTBINARY" displayText="RestPostBinary" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPOSTCSS" displayText="RestPostCSS" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPOSTCUSTOM" displayText="RestPostCustom" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPOSTHTML" displayText="RestPostHTML" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPOSTJSON" displayText="RestPostJSON" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPOSTIMAGE" displayText="RestPostImage" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPOSTSCRIPT" displayText="RestPostScript" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPOSTTEXT" displayText="RestPostText" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPOSTXML" displayText="RestPostXML" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        
+        <keyword name="RESTPUTBINARY" displayText="RestPutBinary" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPUTCSS" displayText="RestPutCSS" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPUTCUSTOM" displayText="RestPutCustom" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPUTHTML" displayText="RestPutHTML" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPUTJSON" displayText="RestPutJSON" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPUTIMAGE" displayText="RestPutImage" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPUTSCRIPT" displayText="RestPutScript" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPUTTEXT" displayText="RestPutText" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
+        <keyword name="RESTPUTXML" displayText="RestPutXML" deprecated="NO"
+                 expectFailSupport="NO" expectWarnSupport="NO">
+        </keyword>
 
         <keyword name="RESTREQUEST" displayText="RestRequest" deprecated="NO"
                  expectFailSupport="NO" expectWarnSupport="NO">
@@ -263,7 +427,7 @@
             <engines>
                 <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
                     <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
-                        sourcecode="TIDRestComponent.java" class="REST" chainTo="TIDComponent.java"/>
+                        sourcecode="TIDComponent.java" class="REST"/>
                 </engine>
             </engines>
 
@@ -382,7 +546,7 @@
             <engines>
                 <engine vendor="SAFS" tool="TIDComponent" name="SAFS TID Components" since="20161231">
                     <libraryInfo name="TIDRestFunctions" doc="TIDRestFunctions.htm"
-                        sourcecode="TIDRestComponent.java" class="REST" chainTo="TIDComponent.java"/>
+                        sourcecode="TIDComponent.java" class="REST"/>
                 </engine>
             </engines>
 

@@ -4,9 +4,9 @@
 
 	<libraryType type="DRIVER" />
 
-	<libraryInfo name="DCDriverRestCommands"
-		doc="DCDriverRestCommands.htm" sourcecode="DCDriverRestCommands.java"
-		class="REST" chainTo="SAFSDRIVERCOMMANDS.java">
+	<libraryInfo name="DDDriverRestCommands"
+		doc="DDDriverRestCommands.htm" sourcecode="TIDDriverRestCommands.java"
+		class="REST" chainTo="TIDDriverCommands.java">
 
 		<description>
 			<short_desc>
@@ -65,7 +65,7 @@
 		</description>
 	</libraryInfo>
 	<!-- The runtime platform is not really a concern because the implementation is with Java. -->
-	<runtime platform="Windows" engine="SAFSDRIVERCOMMANDS.java" version="2016" />
+	<runtime platform="Windows" engine="TIDDriverCommands.java" version="2016" />
 	
 	<!-- Begin to specify all supported keywords: a draft version -->
 	<keywords>
@@ -85,9 +85,9 @@
 			</description>
 
 			<engines>
-				<engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20161231">
-					<libraryInfo name="DCDriverRestCommands" doc="DCDriverRestCommands.htm"
-						sourcecode="DCDriverRestCommands.java" class="REST" chainTo="SAFSDRIVERCOMMANDS.java"/>
+				<engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20161231">
+					<libraryInfo name="DDDriverRestCommands" doc="DDDriverRestCommands.htm"
+						sourcecode="TIDDriverRestCommands.java" class="REST" chainTo="TIDDriverCommands.java"/>
 				</engine>
 			</engines>
 
@@ -161,9 +161,9 @@
             </description>
 
             <engines>
-                <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20161231">
-                    <libraryInfo name="DCDriverRestCommands" doc="DCDriverRestCommands.htm"
-                        sourcecode="DCDriverRestCommands.java" class="REST" chainTo="SAFSDRIVERCOMMANDS.java"/>
+                <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20161231">
+                    <libraryInfo name="DDDriverRestCommands" doc="DDDriverRestCommands.htm"
+                        sourcecode="TIDDriverRestCommands.java" class="REST" chainTo="TIDDriverCommands.java"/>
                 </engine>
             </engines>
 
@@ -207,9 +207,9 @@
             </description>
 
             <engines>
-                <engine vendor="SAFS" tool="SDCommands" name="SAFS Driver Commands" since="20161231">
-                    <libraryInfo name="DCDriverRestCommands" doc="DCDriverRestCommands.htm"
-                        sourcecode="DCDriverRestCommands.java" class="REST" chainTo="SAFSDRIVERCOMMANDS.java"/>
+                <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20161231">
+                    <libraryInfo name="DDDriverRestCommands" doc="DDDriverRestCommands.htm"
+                        sourcecode="TIDDriverRestCommands.java" class="REST" chainTo="TIDDriverCommands.java"/>
                 </engine>
             </engines>
 
