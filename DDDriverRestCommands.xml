@@ -195,6 +195,127 @@
             </examples>
 		</keyword>
 
+        <!-- TODO The keyword name and parameters, headers file format etc. -->
+        <keyword name="RESTHEADERSLOAD" displayText="RestHeadersLoad"
+            deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
+
+            <description>
+                <short_desc>
+                    Load headers from a file.
+                </short_desc>
+                <detailed_desc>
+                    This might be called before invoking a REST action, like RESTGetXML etc.
+                    And the loaded headers will be used when executing that REST action 
+                    if no headers are provided as parameter of that REST action.
+                </detailed_desc>
+            </description>
+
+            <engines>
+                <engine vendor="SAFS" tool="TIDDriverCommands" name="Tool-Independent Driver" since="20161231">
+                    <libraryInfo name="DDDriverRestCommands" doc="DDDriverRestCommands.htm"
+                        sourcecode="TIDDriverRestCommands.java" class="REST" chainTo="TIDDriverCommands.java"/>
+                </engine>
+            </engines>
+
+            <parameters>
+                <parameter name="HEADERSFILE" displayText="headersFile" optional="NO">
+                    <description>
+                        <short_desc>
+                            The path to file holding headers information.
+                        </short_desc>
+                        <detailed_desc>
+                            The content is to be decided.<!-- TODO what is the format, a properties file, a json file, XML file? -->
+                            JSON=single/multi-line header<br/>
+                            XML=single/multi-line header<br/>
+                        </detailed_desc>
+                    </description>
+                </parameter>
+                <parameter name="METHOD" displayText="method" optional="YES">
+                    <description>
+                        <short_desc>
+                            The method is used to load the "headers" from a file.<br/>
+                            If this parameter is not provided, then "headers" of all methods will be loaded.<br/> 
+                        </short_desc>
+                        <detailed_desc>
+                            The possible methods are listed below:
+                            <ul>
+                               <li>DELETE</li>
+                               <li>GET</li>
+                               <li>HEAD</li>
+                               <li>PATCH</li>
+                               <li>POST</li>
+                               <li>PUT</li>
+                            </ul>
+                        </detailed_desc>
+                    </description>
+                </parameter>
+                <parameter name="TYPE" displayText="type" optional="YES">
+                    <description>
+                        <short_desc>
+                            The type is used to load the "headers" from a file.<br/>
+                            If this parameter is not provided, then "headers" of all types will be loaded.<br/> 
+                        </short_desc>
+                        <detailed_desc>
+                            The possible types are listed below:
+                            <ul>
+                               <li>BINARY</li>
+                               <li>CSS</li>
+                               <li>CUSTOM</li>
+                               <li>HTML</li>
+                               <li>JSON</li>
+                               <li>IMAGE</li>
+                               <li>SCRIPT</li>
+                               <li>TEXT</li>
+                               <li>XML</li>
+                            </ul>
+                        </detailed_desc>
+                    </description>
+                </parameter>
+            </parameters>
+            <examples>
+                <example>
+                    <usage>C, RestHeadersLoad, C:\SAFS\projects\rest\HeadersFile, GET, JSON</usage>
+                    <description>
+                        <short_desc>
+                            Load the "headers" of type "JSON" for method "GET" from file HeadersFile. 
+                        </short_desc>
+                        <detailed_desc>
+                        </detailed_desc>
+                    </description>
+                </example>
+                <example>
+                    <usage>C, RestHeadersLoad, C:\SAFS\projects\rest\HeadersFile, DELETE</usage>
+                    <description>
+                        <short_desc>
+                            Load the "headers" of all types for method "DELETE" from file HeadersFile. 
+                        </short_desc>
+                        <detailed_desc>
+                        </detailed_desc>
+                    </description>
+                </example>
+                <example>
+                    <usage>C, RestHeadersLoad, C:\SAFS\projects\rest\HeadersFile, , JSON</usage>
+                    <description>
+                        <short_desc>
+                            Load the "headers" of type "JSON" for all methods from file HeadersFile. 
+                        </short_desc>
+                        <detailed_desc>
+                        </detailed_desc>
+                    </description>
+                </example>
+                <example>
+                    <usage>C, RestHeadersLoad, C:\SAFS\projects\rest\HeadersFile</usage>
+                    <description>
+                        <short_desc>
+                            Load all "headers" from file HeadersFile. 
+                        </short_desc>
+                        <detailed_desc>
+                        </detailed_desc>
+                    </description>
+                </example>
+            </examples>
+        </keyword>
+
         <keyword name="RESTSTORERESPONSE" displayText="RestStoreResponse"
             deprecated="NO" expectFailSupport="NO" expectWarnSupport="NO">
 
