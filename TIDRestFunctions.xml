@@ -490,7 +490,7 @@
             <examples>
 
                 <example>
-                    <usage>T, SAFSREST, BayerServiceItem, RestRequest, PUT, "sqlrest/PRODUCT/61/", "BayerProductPutResponseIDVariable", "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>", "Content-Type: text/xml"</usage>
+                    <usage>T, SAFSREST, BayerServiceItem, RestRequest, PUT, "sqlrest/PRODUCT/61/", "BayerProductPutResponseIDVariable", "<![CDATA[<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>]]>", "Content-Type: text/xml"</usage>
                     <description>
                         <short_desc>
                             Execute a PUT method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/PRODUCT/61/"
@@ -498,7 +498,7 @@
                         <detailed_desc>
                             <p>
                             Execute a PUT method on REST service URL formed by prepending the <b>base-URL</b> to the relative-URI "sqlrest/PRODUCT/61/"
-                            It will send XML body "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>" to sever so that "product #61" will be created.
+                            It will send XML body "<![CDATA[<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>]]>" to sever so that "product #61" will be created.
                             </p>
                             <p>
                             The <b>base-URL</b> is gotten according to sessionID "BayerProductService" (assigned when executing keyword <b>RestStartServiceSession</b>).
@@ -509,7 +509,7 @@
                     </description>
                 </example>
                 <example>
-                    <usage>T, SAFSREST, BayerServiceItemNonExist, RestPut, PUT, "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/", "BayerProductPutResponseIDVariable", "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>", "Content-Type: text/xml"</usage>
+                    <usage>T, SAFSREST, BayerServiceItemNonExist, RestPut, PUT, "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/", "BayerProductPutResponseIDVariable", "<![CDATA[<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>]]>", "Content-Type: text/xml"</usage>
                     <description>
                         <short_desc>
                             Execute a PUT method on REST service URL "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/".
@@ -517,7 +517,7 @@
                         <detailed_desc>
                             <p>
                             Execute a PUT method on REST service URL "http://www.thomas-bayer.com/sqlrest/PRODUCT/61/".
-                            It will send XML body "<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>" to sever so that "product #61" will be created.
+                            It will send XML body "<![CDATA[<resource><NAME>CarSeat</NAME><PRICE>125.00</PRICE></resource>]]>" to sever so that "product #61" will be created.
                             </p>
                             <p>
                             The map item <b>BayerServiceItemNonExist</b> does <b>NOT exist</b>, this action is handled as one-shot connection.
@@ -586,7 +586,7 @@
                             Start a session for a REST service based on URL "http://www.thomas-bayer.com/".
                         </short_desc>
                         <detailed_desc>
-                            <p>This session will be assigned with ID as value of map item BayerSessionID.</p>
+                            <p>This session will be assigned with ID as value of map item BayerSessionID under section SAFSREST.</p>
                         </detailed_desc>
                     </description>
                 </example>
