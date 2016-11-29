@@ -1508,7 +1508,8 @@
     <keyword deprecated="NO" displayText="ReadFileChars" expectFailSupport="NO" expectWarnSupport="NO" name="READFILECHARS">
       <description>
         <short_desc>
-          Read the number of characters from the file defined by file number                 and assign a string containing the characters read to a DDV variable.
+          Read the number of characters from the file defined by file number 
+          and assign a string containing the characters read to a DDV variable.
         </short_desc>
       </description>
       <engines>
@@ -1550,14 +1551,15 @@
         <parameter displayText="NumberOfChar" name="NUMBEROFCHAR" optional="NO">
           <description>
             <short_desc>
-              Number of characters to be read from the file
+              Number of characters to be read from the file<br/>
+              If the number is -1, then the whole content will be read .
             </short_desc>
           </description>
         </parameter>
         <parameter displayText="VariableName" name="VARIABLENAME" optional="NO">
           <description>
             <short_desc>
-              Name of the DDV variable in which to store the characters                 read from the file
+              Name of the DDV variable in which to store the characters read from the file
             </short_desc>
           </description>
         </parameter>
@@ -1569,7 +1571,8 @@
           </usage>
           <description>
             <short_desc>
-              Five characters are read from the file identified by the                 value in filenumb and they are assigned to the                  DDV variable charread
+              Five characters are read from the file identified by the
+              value in filenum and they are assigned to the DDV variable charread
             </short_desc>
           </description>
         </example>
@@ -1579,7 +1582,19 @@
           </usage>
           <description>
             <short_desc>
-              Five characters are read from the file identified by filenumber 8                 and they are assigned to the DDV variable charread
+              Five characters are read from the file identified by filenumber 8
+              and they are assigned to the DDV variable charread
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, ReadFileChars, 8, -1,"^charread"
+          </usage>
+          <description>
+            <short_desc>
+              All characters are read from the file identified by filenumber 8
+              and they are assigned to the DDV variable charread
             </short_desc>
           </description>
         </example>
