@@ -156,16 +156,18 @@
               The destination string (could come from a ^variable) to compare.
             </short_desc>
             <detailed_desc>
-              This is normally a simple string; but it could be a regular expression if the
-              parameter 'regexMatch' is true.
+              This is normally a simple string;<br/>
+              But it could be a regular expression if the parameter 'regexMatch' is true.
+              <b>Do NOT forget</b> the leading symbol <b>^</b> and the ending symbol <b>$</b> if 
+              the whole string should be considered; Without them, if a sub-string of the 'sourceString'
+              can match the regex pattern, then it is considered matched.
             </detailed_desc>
           </description>
         </parameter>
         <parameter displayText="resultVar" name="RESULTVAR" optional="NO">
           <description>
             <short_desc>
-              the resultVar to place the result of the
-              operation into
+              the resultVar to place the result of the operation into
             </short_desc>
           </description>
         </parameter>
@@ -177,6 +179,8 @@
             <detailed_desc>
               This parameter is optional, the default value is false.
               If this is true, then the parameter 'dstString' should be provided with a regular expression.
+              Else if this is false or not provided, the parameter 'dstString' will be treated as a normal
+              string even if it is provided with a regular expression.  
             </detailed_desc>
           </description>
         </parameter>
@@ -194,11 +198,24 @@
         </example>
         <example>
           <usage>
-            C, Compare, "Hello World", "[H|h]ello [W|w]orld", var, true
+            C, Compare, "Hi, Hello World with happy", "[H|h]ello [W|w]orld", var, true
           </usage>
           <description>
             <short_desc>
-              variable 'var' should contain 'true'
+              variable 'var' should contain 'true', as sub-string "Hello World" of the source string
+              "Hi, Hello World with happy" can match the regex pattern "[H|h]ello [W|w]orld"
+            </short_desc>
+          </description>
+        </example>
+        <example>
+          <usage>
+            C, Compare, "Hi, Hello World with happy", "<font color='red'>^</font>[H|h]ello [W|w]orld<font color='red'>$</font>", var, true
+          </usage>
+          <description>
+            <short_desc>
+              variable 'var' should contain 'false'. With leading symbol ^ and ending symbol $,
+              it is expected that the whole string of "Hi, Hello World with happy" matches
+              with the regex pattern "^[H|h]ello [W|w]orld$", but it does not unfortunately.
             </short_desc>
           </description>
         </example>
