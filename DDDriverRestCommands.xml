@@ -629,7 +629,8 @@
                 <short_desc>Verify a REST response is what is expected.</short_desc>
                 <detailed_desc>
                     Retrieve a REST response according to the responseID, and compare the response with
-                    the content stored in a bench file.
+                    the content stored in a bench file.<br/>
+                    The comparison should be defined by parameter <b>verifyRequest</b>, <b>valueContains</b> and <b>valueCaseSensitive</b>.
                 </detailed_desc>
             </description>
 
@@ -731,11 +732,20 @@
                         </short_desc>
                     </description>
                 </parameter>
-                <parameter name="EXACTMATCHFIELD" default="TRUE" displayText="exactMatchfield" optional="YES">
+                <parameter name="VALUECONTAINS" default="FALSE" displayText="valueContains" optional="YES">
                     <description>
                         <short_desc>
-                            If true, then verify that Response/Request field's value matches exactly with that in benchFile;<br/>
-                            Otherwise, then verify that Response/Request field's value contains case-insensitively that in benchFile;<br/>
+                            If true, then verify that Response/Request field's value contains that in benchFile;<br/>
+                            Otherwise, then verify that Response/Request field's value matches wholly with that in benchFile;<br/>
+                            The default value is false;<br/>
+                        </short_desc>
+                    </description>
+                </parameter>
+                <parameter name="VALUECASESENSITIVE" default="TRUE" displayText="valueCaseSensitive" optional="YES">
+                    <description>
+                        <short_desc>
+                            If true, then verify that Response/Request field's value matches case sensitively with that in benchFile;<br/>
+                            Otherwise, then verify that Response/Request field's value matches case insensitively with that in benchFile;<br/>
                             The default value is true;<br/>
                         </short_desc>
                     </description>
@@ -751,6 +761,7 @@
                         <detailed_desc>
                             According to the ResponseID, a Response object will be retrieved from the internal Map
                             storage, and it will be compared with the content stored in the JSON BenchFile.<br/>
+                            The field's value of Response object should match the value in bench file case-sensitively.<br/>
                             The 'verification result' will be automatically saved to the variable "&lt;responseID&gt;.verification.result".
                         </detailed_desc>
                     </description>
@@ -764,6 +775,7 @@
                         <detailed_desc>
                             According to the ResponseID, a Response object will be retrieved from the internal Map
                             storage, and it will be compared with the content stored in the XML BenchFile.<br/>
+                            The field's value of Response object should match the value in bench file case-sensitively.<br/>
                             The 'verification result' will be automatically saved to the variable "&lt;responseID&gt;.verification.result".
                         </detailed_desc>
                     </description>
@@ -777,6 +789,7 @@
                         <detailed_desc>
                             According to the ResponseID, a Response object will be retrieved from the internal Map
                             storage, and it will be compared with the content stored in the XML BenchFile.<br/>
+                            The field's value of Response object should match the value in bench file case-sensitively.<br/>
                             The 'verification result' will be automatically saved to the variable "verifyResult".
                         </detailed_desc>
                     </description>
@@ -788,8 +801,37 @@
                             Compare the Response (including Request) identified by ResponseID with the content stored in the XML BenchFile.
                         </short_desc>
                         <detailed_desc>
+                            According to the ResponseID, a Response(including Request) object will be retrieved from the internal Map
+                            storage, and it will be compared with the content stored in the XML BenchFile.<br/>
+                            The field's value of Response(including Request) object should match the value in bench file case-sensitively.<br/>
+                            The 'verification result' will be automatically saved to the variable "&lt;responseID&gt;.verification.result".
+                        </detailed_desc>
+                    </description>
+                </example>
+                <example>
+                    <usage>C, RestVerifyResponse, ResponseID, BenchFile, XML, , true, true, false</usage>
+                    <description>
+                        <short_desc>
+                            Compare the Response (including Request) identified by ResponseID with the content stored in the XML BenchFile.
+                        </short_desc>
+                        <detailed_desc>
                             According to the ResponseID, a Response (including Request) object will be retrieved from the internal Map
                             storage, and it will be compared with the content stored in the XML BenchFile.<br/>
+                            The field's value of Response(including Request) object should contain the value in bench file case-insensitively.<br/>
+                            The 'verification result' will be automatically saved to the variable "&lt;responseID&gt;.verification.result".
+                        </detailed_desc>
+                    </description>
+                </example>
+                <example>
+                    <usage>C, RestVerifyResponse, ResponseID, BenchFile, XML, , false, false, false</usage>
+                    <description>
+                        <short_desc>
+                            Compare the Response identified by ResponseID with the content stored in the XML BenchFile.
+                        </short_desc>
+                        <detailed_desc>
+                            According to the ResponseID, a Response object will be retrieved from the internal Map
+                            storage, and it will be compared with the content stored in the XML BenchFile.<br/>
+                            The field's value of Response object should match the value in bench file case-insensitively.<br/>
                             The 'verification result' will be automatically saved to the variable "&lt;responseID&gt;.verification.result".
                         </detailed_desc>
                     </description>
@@ -805,8 +847,9 @@
                 <detailed_desc>
                     Retrieve a REST response according to the responseID, and verify that the response contains
                     the content stored in a bench file.<br/>
-                    The <b>Contains</b> in keyword RestVerifyResponseContains means the Response contains the fields
-                     defined in the bench file, for the field's value, it should be exact match.
+                    The <b>Contains</b> in keyword RestVerifyResponseContains means the Response/Request contains the fields
+                    defined in the bench file, that is to say not all fields of Response/Request should be matched<br/>
+                    For the field's value, it should be defined by parameter <b>valueContains</b> and <b>valueCaseSensitive</b>.
                 </detailed_desc>
             </description>
 
@@ -908,11 +951,20 @@
                         </short_desc>
                     </description>
                 </parameter>
-                <parameter name="EXACTMATCHFIELD" default="TRUE" displayText="exactMatchfield" optional="YES">
+                <parameter name="VALUECONTAINS" default="FALSE" displayText="valueContains" optional="YES">
                     <description>
                         <short_desc>
-                            If true, then verify that Response/Request field's value matches exactly with that in benchFile;<br/>
-                            Otherwise, then verify that Response/Request field's value contains case-insensitively that in benchFile;<br/>
+                            If true, then verify that Response/Request field's value contains that in benchFile;<br/>
+                            Otherwise, then verify that Response/Request field's value matches wholly with that in benchFile;<br/>
+                            The default value is false;<br/>
+                        </short_desc>
+                    </description>
+                </parameter>
+                <parameter name="VALUECASESENSITIVE" default="TRUE" displayText="valueCaseSensitive" optional="YES">
+                    <description>
+                        <short_desc>
+                            If true, then verify that Response/Request field's value matches case sensitively with that in benchFile;<br/>
+                            Otherwise, then verify that Response/Request field's value matches case insensitively with that in benchFile;<br/>
                             The default value is true;<br/>
                         </short_desc>
                     </description>
@@ -928,6 +980,8 @@
                         <detailed_desc>
                             According to the ResponseID, a Response object will be retrieved from the internal Map
                             storage, and it will be used to verify containing the content stored in the the JSON BenchFile.<br/>
+                            Not all fields of Response will be checked, only those defined in the JSON BenchFile.<br/>
+                            The field's value of Response object should match the value in bench file case-sensitively.<br/>
                             The 'verification result' will be automatically saved to the variable "&lt;responseID&gt;.verification.result".
                         </detailed_desc>
                     </description>
@@ -941,6 +995,8 @@
                         <detailed_desc>
                             According to the ResponseID, a Response object will be retrieved from the internal Map
                             storage, and it will be used to verify containing the content stored in the the XML BenchFile.<br/>
+                            Not all fields of Response will be checked, only those defined in the XML BenchFile.<br/>
+                            The field's value of Response object should match the value in bench file case-sensitively.<br/>
                             The 'verification result' will be automatically saved to the variable "&lt;responseID&gt;.verification.result".
                         </detailed_desc>
                     </description>
@@ -954,6 +1010,8 @@
                         <detailed_desc>
                             According to the ResponseID, a Response object will be retrieved from the internal Map
                             storage, and it will be used to verify containing the content stored in the the XML BenchFile.<br/>
+                            Not all fields of Response will be checked, only those defined in the XML BenchFile.<br/>
+                            The field's value of Response object should match the value in bench file case-sensitively.<br/>
                             The 'verification result' will be automatically saved to the variable "verifyResult".
                         </detailed_desc>
                     </description>
@@ -967,6 +1025,23 @@
                         <detailed_desc>
                             According to the ResponseID, a Response (including Request) object will be retrieved from the internal Map
                             storage, and it will be used to verify containing the content stored in the the XML BenchFile.<br/>
+                            Not all fields of Response(including Request) will be checked, only those defined in the XML BenchFile.<br/>
+                            The field's value of Response(including Request) object should match the value in bench file case-sensitively.<br/>
+                            The 'verification result' will be automatically saved to the variable "&lt;responseID&gt;.verification.result".
+                        </detailed_desc>
+                    </description>
+                </example>
+                <example>
+                    <usage>C, RestVerifyResponseContains, ResponseID, BenchFile, XML, , true, true, false</usage>
+                    <description>
+                        <short_desc>
+                            Verify that the Response (including Request) identified by ResponseID contains the content stored in the XML BenchFile.
+                        </short_desc>
+                        <detailed_desc>
+                            According to the ResponseID, a Response (including Request) object will be retrieved from the internal Map
+                            storage, and it will be used to verify containing the content stored in the the XML BenchFile.<br/>
+                            Not all fields of Response(including Request) will be checked, only those defined in the XML BenchFile.<br/>
+                            The field's value of Response(including Request) object should contain the value in bench file case-insensitively.<br/>
                             The 'verification result' will be automatically saved to the variable "&lt;responseID&gt;.verification.result".
                         </detailed_desc>
                     </description>
