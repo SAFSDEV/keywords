@@ -443,40 +443,48 @@
 								If this parameter means a <b>file name</b>, then the information of a REST Response 
 								(and Request if the parameter <b>storeRequest</b> is true) will be stored in a file.<br/>
 								The file could be a property file, a json file, or an XML file, examples as below:<br/>
+								Please pay attention to the <b>special characters</b> (new-line, double-quote, &lt;?XML etc.)
+								escaped by the <font color="red">escape character</font> shown in read as below.<br/>
 <pre>
     a <b>JSON</b> file example
     {
-      "Response": {
-        "StatusCode": "200",
-        "Headers": "{Date=Tue, 06 Dec 2016 03:08:12 GMT, Content-Length=4574, Via=1.1 inetgw38 (squid), Connection=keep-alive, Content-Type=application/xml, X-Cache=MISS from inetgw38, Server=Apache-Coyote/1.1}",
-        "Request": {
-          "Method": "GET",
-          "Headers" : "Content-Type:application/octet-stream Accept:application/octet-stream",
-          "HttpVersion" : "HTTP/1.1"
-        }
+    "Response":{
+      "StatusCode": "200",
+      "Headers" : "{Date=Tue, 13 Dec 2016 03:32:13 GMT, Content-Length=4574, Content-Type=application/xml}",
+      "EntityBody" : "&lt;?xml version=<font color="red">\"</font>1.0<font color="red">\"</font>?>&lt;CUSTOMERList xmlns:xlink=<font color="red">\"</font>http://www.w3.org/1999/xlink<font color="red">\"</font>&gt;<font color="red">\n</font>    &lt;CUSTOMER xlink:href=<font color="red">\"</font>http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/<font color="red">\"</font>&gt;0&lt;/CUSTOMER&gt;    <font color="red">\n</font>&lt;/CUSTOMERList&gt;",
+      "Request": {
+         "Method": "GET",
+         "Headers": "{Date=Tue, 06 Dec 2016 03:08:12 GMT, Content-Length=4574}"
       }
+     }
     }
     
     an <b>XML</b> file example:
     &lt;Response&gt;
-    &lt;Headers&gt;{Date=Tue, 06 Dec 2016 03:08:12 GMT, Content-Length=4574, Via=1.1 inetgw38 (squid), Connection=keep-alive, Content-Type=application/xml, X-Cache=MISS from inetgw38, Server=Apache-Coyote/1.1}&lt;/Headers&gt;
-    &lt;StatusCode&gt;200&lt;/StatusCode&gt;
-    &lt;ID&gt;SAFSREST_response_1480993694138&lt;/ID&gt;
-    &lt;EntityLength&gt;0&lt;/EntityLength&gt;
-    &lt;StatusLine&gt;UNKNOWN&lt;/StatusLine&gt;
-    &lt;Request&gt;
-    	&lt;Headers&gt;Content-Type:application/octet-stream
-    	Accept:application/octet-stream
-    	&lt;/Headers&gt;
-    	&lt;MessageBody&gt;UNKNOWN&lt;/MessageBody&gt;
-    	&lt;Method&gt;GET&lt;/Method&gt;
-    	&lt;HttpVersion&gt;HTTP/1.1&lt;/HttpVersion&gt;
-    	&lt;URI&gt;http://www.thomas-bayer.com/sqlrest///CUSTOMER/&lt;/URI&gt;
-    &lt;/Request&gt;
-    
-    &lt;HttpVersion&gt;UNKNOWN&lt;/HttpVersion&gt;
-    &lt;ContentType&gt;application/xml&lt;/ContentType&gt;
+      &lt;StatusCode&gt;200&lt;/StatusCode&gt;
+      &lt;Headers>{Date=Tue, 13 Dec 2016 03:29:27 GMT, Content-Length=4574, Connection=keep-alive, Content-Type=application/xml}&lt;/Headers&gt;
+      &lt;EntityBody&gt;<font color="red">&lt;![CDATA[</font><font color="green">&lt;?xml</font> version="1.0"?&gt;&lt;CUSTOMERList xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
+        &lt;CUSTOMER xlink:href="http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/"&gt;0&lt;/CUSTOMER&gt;
+        &lt;CUSTOMER xlink:href="http://www.thomas-bayer.com/sqlrest/CUSTOMER/49/"&gt;49&lt;/CUSTOMER&gt;
+        &lt;/CUSTOMERList&gt;<font color="red">]]&gt;</font>&lt;/EntityBody&gt;
+      &lt;Request&gt;
+        &lt;Method&gt;GET&lt;/Method&gt;
+        &lt;Headers&gt;
+          Content-Type:application/octet-stream, Accept:application/octet-stream
+        &lt;/Headers&gt;
+      &lt;/Request&gt;
     &lt;/Response&gt;
+    
+    a <b>Properties</b> file example:
+    Response.ContentType : application/xml
+    Response.EntityBody : &lt;?xml version="1.0"?&gt;&lt;CUSTOMERList xmlns:xlink="http://www.w3.org/1999/xlink"&gt;<font color="red">\</font><br/>
+        <font color="red">\n</font>    &lt;CUSTOMER xlink:href="http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/"&gt;0&lt;/CUSTOMER&gt;<font color="red">\</font><br/>
+        <font color="red">\n</font>    &lt;CUSTOMER xlink:href="http://www.thomas-bayer.com/sqlrest/CUSTOMER/1/"&gt;1&lt;/CUSTOMER&gt;<font color="red">\</font><br/>
+        <font color="red">\n</font>  &lt;/CUSTOMERList&gt;
+    Response.EntityLength : 0
+    Response.Headers : {Date=Mon, 12 Dec 2016 05:17:19 GMT, Content-Length=4762, Via=1.1 inetgw38 (squid), Connection=keep-alive, Content-Type=application/xml, X-Cache=MISS from inetgw38, Server=Apache-Coyote/1.1}
+    Response.Request.Headers : Content-Type:application/octet-stream
+    Accept:application/octet-stream
  </pre>
                             </p>
                         </detailed_desc>
@@ -662,40 +670,48 @@
                         </short_desc>
                         <detailed_desc>
                             The bench file can be a property file, a json file, or an XML file. Examples listed as below:<br/>
+                            Please pay attention to the <b>special characters</b> (new-line, double-quote, &lt;?XML etc.)
+                            escaped by the <font color="red">escape character</font> shown in read as below.<br/>
 <pre>
     a <b>JSON</b> file example
     {
-      "Response": {
-        "StatusCode": "200",
-        "Headers": "{Date=Tue, 06 Dec 2016 03:08:12 GMT, Content-Length=4574, Via=1.1 inetgw38 (squid), Connection=keep-alive, Content-Type=application/xml, X-Cache=MISS from inetgw38, Server=Apache-Coyote/1.1}",
-        "Request": {
-          "Method": "GET",
-          "Headers" : "Content-Type:application/octet-stream Accept:application/octet-stream",
-          "HttpVersion" : "HTTP/1.1"
-        }
+    "Response":{
+      "StatusCode": "200",
+      "Headers" : "{Date=Tue, 13 Dec 2016 03:32:13 GMT, Content-Length=4574, Content-Type=application/xml}",
+      "EntityBody" : "&lt;?xml version=<font color="red">\"</font>1.0<font color="red">\"</font>?>&lt;CUSTOMERList xmlns:xlink=<font color="red">\"</font>http://www.w3.org/1999/xlink<font color="red">\"</font>&gt;<font color="red">\n</font>    &lt;CUSTOMER xlink:href=<font color="red">\"</font>http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/<font color="red">\"</font>&gt;0&lt;/CUSTOMER&gt;    <font color="red">\n</font>&lt;/CUSTOMERList&gt;",
+      "Request": {
+         "Method": "GET",
+         "Headers": "{Date=Tue, 06 Dec 2016 03:08:12 GMT, Content-Length=4574}"
       }
+     }
     }
     
     an <b>XML</b> file example:
     &lt;Response&gt;
-    &lt;Headers&gt;{Date=Tue, 06 Dec 2016 03:08:12 GMT, Content-Length=4574, Via=1.1 inetgw38 (squid), Connection=keep-alive, Content-Type=application/xml, X-Cache=MISS from inetgw38, Server=Apache-Coyote/1.1}&lt;/Headers&gt;
-    &lt;StatusCode&gt;200&lt;/StatusCode&gt;
-    &lt;ID&gt;SAFSREST_response_1480993694138&lt;/ID&gt;
-    &lt;EntityLength&gt;0&lt;/EntityLength&gt;
-    &lt;StatusLine&gt;UNKNOWN&lt;/StatusLine&gt;
-    &lt;Request&gt;
-        &lt;Headers&gt;Content-Type:application/octet-stream
-        Accept:application/octet-stream
-        &lt;/Headers&gt;
-        &lt;MessageBody&gt;UNKNOWN&lt;/MessageBody&gt;
+      &lt;StatusCode&gt;200&lt;/StatusCode&gt;
+      &lt;Headers>{Date=Tue, 13 Dec 2016 03:29:27 GMT, Content-Length=4574, Connection=keep-alive, Content-Type=application/xml}&lt;/Headers&gt;
+      &lt;EntityBody&gt;<font color="red">&lt;![CDATA[</font><font color="green">&lt;?xml</font> version="1.0"?&gt;&lt;CUSTOMERList xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
+        &lt;CUSTOMER xlink:href="http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/"&gt;0&lt;/CUSTOMER&gt;
+        &lt;CUSTOMER xlink:href="http://www.thomas-bayer.com/sqlrest/CUSTOMER/49/"&gt;49&lt;/CUSTOMER&gt;
+        &lt;/CUSTOMERList&gt;<font color="red">]]&gt;</font>&lt;/EntityBody&gt;
+      &lt;Request&gt;
         &lt;Method&gt;GET&lt;/Method&gt;
-        &lt;HttpVersion&gt;HTTP/1.1&lt;/HttpVersion&gt;
-        &lt;URI&gt;http://www.thomas-bayer.com/sqlrest///CUSTOMER/&lt;/URI&gt;
-    &lt;/Request&gt;
-    
-    &lt;HttpVersion&gt;UNKNOWN&lt;/HttpVersion&gt;
-    &lt;ContentType&gt;application/xml&lt;/ContentType&gt;
+        &lt;Headers&gt;
+          Content-Type:application/octet-stream, Accept:application/octet-stream
+        &lt;/Headers&gt;
+      &lt;/Request&gt;
     &lt;/Response&gt;
+    
+    a <b>Properties</b> file example:
+    Response.ContentType : application/xml
+    Response.EntityBody : &lt;?xml version="1.0"?&gt;&lt;CUSTOMERList xmlns:xlink="http://www.w3.org/1999/xlink"&gt;<font color="red">\</font><br/>
+        <font color="red">\n</font>    &lt;CUSTOMER xlink:href="http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/"&gt;0&lt;/CUSTOMER&gt;<font color="red">\</font><br/>
+        <font color="red">\n</font>    &lt;CUSTOMER xlink:href="http://www.thomas-bayer.com/sqlrest/CUSTOMER/1/"&gt;1&lt;/CUSTOMER&gt;<font color="red">\</font><br/>
+        <font color="red">\n</font>  &lt;/CUSTOMERList&gt;
+    Response.EntityLength : 0
+    Response.Headers : {Date=Mon, 12 Dec 2016 05:17:19 GMT, Content-Length=4762, Via=1.1 inetgw38 (squid), Connection=keep-alive, Content-Type=application/xml, X-Cache=MISS from inetgw38, Server=Apache-Coyote/1.1}
+    Response.Request.Headers : Content-Type:application/octet-stream
+    Accept:application/octet-stream
  </pre>
                         </detailed_desc>
                     </description>
@@ -881,40 +897,48 @@
                         </short_desc>
                         <detailed_desc>
                             The bench file can be a property file, a json file, or an XML file. Examples listed as below:<br/>
+                            Please pay attention to the <b>special characters</b> (new-line, double-quote, &lt;?XML etc.)
+                            escaped by the <font color="red">escape character</font> shown in read as below.<br/>
 <pre>
     a <b>JSON</b> file example
     {
-      "Response": {
-        "StatusCode": "200",
-        "Headers": "{Date=Tue, 06 Dec 2016 03:08:12 GMT, Content-Length=4574, Via=1.1 inetgw38 (squid), Connection=keep-alive, Content-Type=application/xml, X-Cache=MISS from inetgw38, Server=Apache-Coyote/1.1}",
-        "Request": {
-          "Method": "GET",
-          "Headers" : "Content-Type:application/octet-stream Accept:application/octet-stream",
-          "HttpVersion" : "HTTP/1.1"
-        }
+    "Response":{
+      "StatusCode": "200",
+      "Headers" : "{Date=Tue, 13 Dec 2016 03:32:13 GMT, Content-Length=4574, Content-Type=application/xml}",
+      "EntityBody" : "&lt;?xml version=<font color="red">\"</font>1.0<font color="red">\"</font>?>&lt;CUSTOMERList xmlns:xlink=<font color="red">\"</font>http://www.w3.org/1999/xlink<font color="red">\"</font>&gt;<font color="red">\n</font>    &lt;CUSTOMER xlink:href=<font color="red">\"</font>http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/<font color="red">\"</font>&gt;0&lt;/CUSTOMER&gt;    <font color="red">\n</font>&lt;/CUSTOMERList&gt;",
+      "Request": {
+         "Method": "GET",
+         "Headers": "{Date=Tue, 06 Dec 2016 03:08:12 GMT, Content-Length=4574}"
       }
+     }
     }
     
     an <b>XML</b> file example:
     &lt;Response&gt;
-    &lt;Headers&gt;{Date=Tue, 06 Dec 2016 03:08:12 GMT, Content-Length=4574, Via=1.1 inetgw38 (squid), Connection=keep-alive, Content-Type=application/xml, X-Cache=MISS from inetgw38, Server=Apache-Coyote/1.1}&lt;/Headers&gt;
-    &lt;StatusCode&gt;200&lt;/StatusCode&gt;
-    &lt;ID&gt;SAFSREST_response_1480993694138&lt;/ID&gt;
-    &lt;EntityLength&gt;0&lt;/EntityLength&gt;
-    &lt;StatusLine&gt;UNKNOWN&lt;/StatusLine&gt;
-    &lt;Request&gt;
-        &lt;Headers&gt;Content-Type:application/octet-stream
-        Accept:application/octet-stream
-        &lt;/Headers&gt;
-        &lt;MessageBody&gt;UNKNOWN&lt;/MessageBody&gt;
+      &lt;StatusCode&gt;200&lt;/StatusCode&gt;
+      &lt;Headers>{Date=Tue, 13 Dec 2016 03:29:27 GMT, Content-Length=4574, Connection=keep-alive, Content-Type=application/xml}&lt;/Headers&gt;
+      &lt;EntityBody&gt;<font color="red">&lt;![CDATA[</font><font color="green">&lt;?xml</font> version="1.0"?&gt;&lt;CUSTOMERList xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
+        &lt;CUSTOMER xlink:href="http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/"&gt;0&lt;/CUSTOMER&gt;
+        &lt;CUSTOMER xlink:href="http://www.thomas-bayer.com/sqlrest/CUSTOMER/49/"&gt;49&lt;/CUSTOMER&gt;
+        &lt;/CUSTOMERList&gt;<font color="red">]]&gt;</font>&lt;/EntityBody&gt;
+      &lt;Request&gt;
         &lt;Method&gt;GET&lt;/Method&gt;
-        &lt;HttpVersion&gt;HTTP/1.1&lt;/HttpVersion&gt;
-        &lt;URI&gt;http://www.thomas-bayer.com/sqlrest///CUSTOMER/&lt;/URI&gt;
-    &lt;/Request&gt;
-    
-    &lt;HttpVersion&gt;UNKNOWN&lt;/HttpVersion&gt;
-    &lt;ContentType&gt;application/xml&lt;/ContentType&gt;
+        &lt;Headers&gt;
+          Content-Type:application/octet-stream, Accept:application/octet-stream
+        &lt;/Headers&gt;
+      &lt;/Request&gt;
     &lt;/Response&gt;
+    
+    a <b>Properties</b> file example:
+    Response.ContentType : application/xml
+    Response.EntityBody : &lt;?xml version="1.0"?&gt;&lt;CUSTOMERList xmlns:xlink="http://www.w3.org/1999/xlink"&gt;<font color="red">\</font><br/>
+        <font color="red">\n</font>    &lt;CUSTOMER xlink:href="http://www.thomas-bayer.com/sqlrest/CUSTOMER/0/"&gt;0&lt;/CUSTOMER&gt;<font color="red">\</font><br/>
+        <font color="red">\n</font>    &lt;CUSTOMER xlink:href="http://www.thomas-bayer.com/sqlrest/CUSTOMER/1/"&gt;1&lt;/CUSTOMER&gt;<font color="red">\</font><br/>
+        <font color="red">\n</font>  &lt;/CUSTOMERList&gt;
+    Response.EntityLength : 0
+    Response.Headers : {Date=Mon, 12 Dec 2016 05:17:19 GMT, Content-Length=4762, Via=1.1 inetgw38 (squid), Connection=keep-alive, Content-Type=application/xml, X-Cache=MISS from inetgw38, Server=Apache-Coyote/1.1}
+    Response.Request.Headers : Content-Type:application/octet-stream
+    Accept:application/octet-stream
  </pre>
                         </detailed_desc>
                     </description>
