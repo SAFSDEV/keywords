@@ -560,17 +560,18 @@
                        </detailed_desc>
                     </description>
                 </parameter>
-                <!-- TODO We might allow user to provide information about authentication, finer than global settings -->
-                <!-- TODO What format? a simple string, variable holding a file path, or ... -->
+                <!-- We allow user to provide information about authentication, finer than global settings -->
                 <parameter name="AUTHENTICATION" displayText="authentication" optional="YES">
                     <description>
                        <short_desc>
-                           The authentication information to be used during this session.
+                           The file holding authentication information to be used during this session.
                         </short_desc>
                         <detailed_desc>
                             Normally, the authentication information will be loaded from "JVM -D parameters", "Map", or global
-                            external file. Those settings are considered to be global. This parameter can
-                            be used to alternate the authentication information, it will override the global settings.
+                            external file, those settings are considered to be global. This parameter can
+                            be used to alternate the authentication information, it will override the global settings.<br/>
+                            It is normally provided as a file name holding the authentication information. The file is relative
+                            to the project's root directory, and it can contain sub directories.<br/>
                             If it is provided as <b>NOAUTHENTICATION</b>, then no authentication is needed during the session
                             even the global settings are set.
                         </detailed_desc>
@@ -587,6 +588,25 @@
                         </short_desc>
                         <detailed_desc>
                             <p>This session will be assigned with ID as value of map item BayerSessionID under section SAFSREST.</p>
+                        </detailed_desc>
+                    </description>
+                </example>
+                <example>
+                    <usage>T, SAFSREST, BayerSessionID, RestStartServiceSession, "http://www.thomas-bayer.com/", configure/simpleauth.xml</usage>
+                    <description>
+                        <short_desc>
+                            Start a session for a REST service based on URL "http://www.thomas-bayer.com/", and this session will use
+                            authentication information stored in file &lt;project&gt;/configure/simpleauth.xml.
+                        </short_desc>
+                        <detailed_desc>
+                            <p>This session will be assigned with ID as value of map item BayerSessionID under section SAFSREST.</p>
+                            The file &lt;project&gt;/configure/simpleauth.xml contains authentication information, example as below:
+<pre>
+  &lt;SimpleAuth classname="org.safs.auth.SimpleAuth"&gt;
+    &lt;password&gt;unitA123&lt;/password&gt;
+    &lt;userName&gt;Mark&lt;/userName&gt;
+  &lt;/SimpleAuth&gt;
+</pre>
                         </detailed_desc>
                     </description>
                 </example>
