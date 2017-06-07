@@ -51,7 +51,7 @@
           The above example shows two optional fields after NOTEPAD.EXE 
           which are given no value(skipped).</p>
           <p>
-          Note that the full availablility of all Driver Commands is now 
+          Note that the full availability of all Driver Commands is now 
           spread across several files.  Together, all of these files provide 
           all the Driver Commands available to the core framework.</p>
           </detailed_desc>
@@ -2110,7 +2110,7 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
                  <detailed_desc>
                  This Tag might be used by some test tools to track specific browser instances, 
                  but not all test tools are able to support this type of browser Tagging.<br/>
-		<B>SE2</B>The indentifier used to store the webdriver for the opened browser. It can be used to
+		<B>SE2</B>The identifier used to store the webdriver for the opened browser. It can be used to
 		switch between opened browsers or close one of them.
 		</detailed_desc>
              </description> </parameter>
@@ -2240,7 +2240,7 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
        <parameters>
         <parameter name="BROWSERID" displayText="BrowserID" optional="YES" default="MainApp">
            <description> <short_desc> 
-				The indentifier used to get the webdriver for the opened browser. This ID is assigned by user
+				The identifier used to get the webdriver for the opened browser. This ID is assigned by user
              	during calling keyword StartWebBrowser.
              </short_desc> </description> </parameter>
              
@@ -2285,7 +2285,7 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
        <parameters>
         <parameter name="BROWSERID" displayText="BrowserID" optional="YES" default="MainApp">
            <description> <short_desc> 
-				The indentifier used to get the webdriver for the opened browser. This ID is assigned by user
+				The identifier used to get the webdriver for the opened browser. This ID is assigned by user
              	during calling keyword StartWebBrowser.
              </short_desc> </description> </parameter>
              
@@ -5898,6 +5898,116 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
 				 and verify request's result from server with the content "some expected response content".
               </short_desc></description>
 	    </example>
+     </examples>
+	</keyword>
+	
+	<keyword name="SWITCHWINDOW"
+             displayText="SwitchWindow"
+             deprecated="NO"
+             expectFailSupport="NO"
+             expectWarnSupport="NO">
+       <description>
+            <short_desc>Switch between multiple windows according to its title.</short_desc>
+	   </description>
+
+       <engines>
+	       <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20170602">
+	           <libraryInfo name="DDDriverCommands" 
+                            doc="org/safs/selenium/webdriver/DCDriverCommand.html" 
+                            sourcecode="org.safs.selenium.webdriver.DCDriverCommand.java" 
+                            class="MISC" />
+           </engine>
+     </engines>
+     <parameters>
+        <parameter name="TITLE" displayText="Title" optional="No">
+           <description>
+		     <short_desc>The Title of the window to switch to.</short_desc>
+		     <detailed_desc>The title can be a normal string; a wildcard string or a regular-expression string.
+		     </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="BROWSERID" displayText="BrowserID" optional="Yes">
+           <description>
+		     <short_desc>The ID representing the opened browser from where to search the window.</short_desc>
+		     <detailed_desc>The browser ID is assigned by user when calling StartWebBrowser.
+		                    This parameter is optional, if not provided then the last opened browser will be used.
+		     </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="EXPECTEDMATCHINDEX" displayText="ExpectedMatchIndex" optional="Yes">
+           <description>
+		     <short_desc>If more than one windows can be found according to the title, then this parameter
+		               will decide which one to return, the index is 1 based.
+		     </short_desc>
+             <detailed_desc>The default index is 1, which means the first matched window will be returned.
+             </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="PARTIALMATCH" displayText="PartialMatch" optional="Yes">
+           <description>
+              <short_desc>If the parameter 'title' will match partially (be sub-string) with
+                          the title of the existing windows.
+              </short_desc>
+              <detailed_desc>The default value is false; which means that the parameter 'title'
+                             should be fully matched.<br/>
+                             This parameter will only be valid if the parameter 'title' is normal string.
+              </detailed_desc>
+           </description>
+        </parameter>
+        <parameter name="IGNORECASE" displayText="IgnoreCase" optional="Yes">
+           <description>
+              <short_desc>If the parameter 'title' will match case-insentitively with
+                          the title of the existing windows.
+              </short_desc>
+              <detailed_desc>The default value is true; which means that the parameter 'title'
+                             will be matched case insensitively.<br/>
+                             This parameter will only be valid if the parameter 'title' is normal string.
+              </detailed_desc>
+           </description>
+        </parameter>
+     </parameters>
+	 <examples>
+        <example>
+           <usage>C, SwitchWindow, "Google"</usage>
+           <description><short_desc>
+             Switch to the first window having "Google" as title within the last used browser.
+           </short_desc></description>
+	    </example>
+        <example>
+           <usage>C, SwitchWindow, "[G|g]oogle"</usage>
+           <description>
+             <short_desc>
+               Switch to the first window having "Google" or "google" as title within the last used browser.
+             </short_desc>
+             <detailed_desc>
+               The parameter 'title' is provided as a regular expression.
+             </detailed_desc>
+           </description>
+        </example>	    
+        <example>
+           <usage>C, SwitchWindow, "Google", "TestGooglePage"</usage>
+           <description><short_desc>
+             Switch to the first window having "Google" as title within the browser opened with ID "TestGooglePage".
+           </short_desc></description>
+	    </example>
+        <example>
+           <usage>C, SwitchWindow, "Google", "TestGooglePage" ,2</usage>
+           <description><short_desc>
+             Switch to the 2th window having "Google" as title within the browser opened with ID "TestGooglePage".
+           </short_desc></description>
+	    </example>
+        <example>
+           <usage>C, SwitchWindow, "gle", "TestGooglePage", 2, true</usage>
+           <description><short_desc>
+             Switch to the 2th window having title containing "gle" within the browser opened with ID "TestGooglePage".
+           </short_desc></description>
+        </example>
+        <example>
+           <usage>C, SwitchWindow, "Goog", "TestGooglePage", 2, true, false</usage>
+           <description><short_desc>
+             Switch to the 2th window having title containing "Goog" (case sensitive) within the browser opened with ID "TestGooglePage".
+           </short_desc></description>
+        </example>
      </examples>
 	</keyword>	
 	
