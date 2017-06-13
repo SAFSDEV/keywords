@@ -39,6 +39,7 @@
     <file href="TabControlFunctions.xml" type="standard" />
     <file href="TableViewFunctions.xml" type="standard" />
     <file href="ToolBarFunctions.xml" type="standard" />
+	<file href="TIDRestFunctions.xml" type="rest" />
     <file href="TimePickerFunctions.xml" type="standard" />
     <file href="TreeViewFunctions.xml" type="standard" />
     <file href="VSFlexGridFunctions.xml" type="special" />

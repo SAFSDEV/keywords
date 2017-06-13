@@ -3,6 +3,7 @@
 <libraries>
 
   <drivercommands>
+    <file href="DDDriverRestCommands.xml" type="rest" />
     <file href="DDDriverCommands.xml" type="core" />
     <file href="DDDriverCounterCommands.xml" type="counter" />
     <file href="DDDriverDatabaseCommands.xml" type="database" />
@@ -55,6 +56,7 @@
     <file href="TabControlFunctions.xml" type="standard" />
     <file href="TableViewFunctions.xml" type="standard" />
     <file href="TimePickerFunctions.xml" type="standard" />
+	<file href="TIDRestFunctions.xml" type="rest" />
     <file href="ToolBarFunctions.xml" type="standard" />
     <file href="TreeViewFunctions.xml" type="standard" />
     <file href="VSFlexGridFunctions.xml" type="special" />

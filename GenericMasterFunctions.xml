@@ -3798,7 +3798,8 @@
 	                (Optional)Number of milliseconds to hover.
 	              </short_desc>
 	              <detailed_desc>
-	                If not specified, the mouse will hover for 2000 milliseconds over the object,
+	                If not specified, the mouse will hover for 2000 milliseconds over the object.<br/>
+	                If it is provided as <a href="http://safsdev.github.io/doc/org/safs/Constants.html#TIMEOUT_HOVERMOUSE_STAY_FOREVER" target="_blank">Constants.TIMEOUT_HOVERMOUSE_STAY_FOREVER</a>, the mouse will saty forever over the object.<br/>
 	              </detailed_desc>
 	           </description>
         </parameter>
@@ -3816,15 +3817,26 @@
            </description>
         </example>
         <example>
-	   <usage>T, WINDOW, AnObject, HoverMouse, "Coords=200,400"</usage>
-	   <description>
-	      <short_desc> 
-	       Hover the mouse over coordinates 200,400 of AnObject for 2000 milliseconds.
-	      </short_desc>
-	      <detailed_desc> 
-	       Hover the mouse over coordinates 200,400 of AnObject for 2000 milliseconds.
-	      </detailed_desc>
-	   </description>
+           <usage>T, WINDOW, WINDOW, HoverMouse, , -1</usage>
+           <description>
+              <short_desc> 
+               Hover the mouse over the center of WINDOW forever.
+              </short_desc>
+              <detailed_desc> 
+               Hover the mouse over the center of WINDOW forever.
+              </detailed_desc>
+           </description>
+        </example>
+        <example>
+		   <usage>T, WINDOW, AnObject, HoverMouse, "Coords=200,400"</usage>
+		   <description>
+		      <short_desc> 
+		       Hover the mouse over coordinates 200,400 of AnObject for 2000 milliseconds.
+		      </short_desc>
+		      <detailed_desc> 
+		       Hover the mouse over coordinates 200,400 of AnObject for 2000 milliseconds.
+		      </detailed_desc>
+		   </description>
         </example>
         <example>
            <usage>T, WINDOW, AnObject, HoverMouse, ASubObject, 1000</usage>
@@ -3844,14 +3856,14 @@
         </example>
         <example>
 	   <usage>T, WINDOW, AnObject, HoverMouse, , 3000</usage>
-	   <description>
-	      <short_desc> 
-	       Hover the mouse over the center of AnObject for 3000 milliseconds.
-	      </short_desc>
-	      <detailed_desc> 
-	       Hover the mouse over the center of AnObject for 3000 milliseconds.
-	      </detailed_desc>
-	   </description>
+		   <description>
+		      <short_desc> 
+		       Hover the mouse over the center of AnObject for 3000 milliseconds.
+		      </short_desc>
+		      <detailed_desc> 
+		       Hover the mouse over the center of AnObject for 3000 milliseconds.
+		      </detailed_desc>
+		   </description>
         </example>
      </examples></keyword>     
 

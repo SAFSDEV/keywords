@@ -7,7 +7,8 @@
     <file href="DDDriverFileCommands.xml" type="file" />
     <file href="DDDriverFlowCommands.xml" type="flow" />
     <file href="DDDriverLogCommands.xml" type="log" />
-    <file href="DDDriverStringCommands.xml" type="string" />
+    <file href="DDDriverRestCommands.xml" type="rest" />
+	<file href="DDDriverStringCommands.xml" type="string" />
     <file href="DDDriverTimerCommands.xml" type="string" />
     <file href="DDDriverDeprecatedCommands.xml" type="deprecated" />
 </drivercommands>
