@@ -20,7 +20,7 @@
             </p><p>
             For example, these commands are heavily 
             used by 
-            <a href="http://safsdev.sourceforge.net/doc/org/safs/tools/drivers/STAFProcessContainer.html" target="_blank">STAFProcessContainer</a> 
+            <a href="../doc/org/safs/tools/drivers/STAFProcessContainer.html" target="_blank">STAFProcessContainer</a> 
             during test design time.
             </p><p>
             Each engine command has different parameters 
@@ -61,7 +61,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             <p>
@@ -77,12 +77,12 @@
             </pre>
             <p>
             The TestRecordData.statuscode is set to 
-            <a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.STATUS_NO_SCRIPT_FAILURE" 
+            <a href="../doc/constant-values.html#org.safs.tools.drivers.DriverConstant.STATUS_NO_SCRIPT_FAILURE" 
             target="_blank">NO_SCRIPT_FAILURE</a> 
             if the engine supports and processes the command. This is true even if the 
             command results in an empty, missing, or null return value.  
             </p><p>
-            <a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.STATUS_SCRIPT_NOT_EXECUTED" 
+            <a href="../doc/constant-values.html#org.safs.tools.drivers.DriverConstant.STATUS_SCRIPT_NOT_EXECUTED" 
             target="_blank">SCRIPT_NOT_EXECUTED</a> 
             should be returned in TestRecordData.statuscode if the engine does not support 
             the command.
@@ -154,7 +154,7 @@
             <detailed_desc>
                 Normally, this is only valid for window or child window components.  
                 If no caption is present, or the component does not support captions, the 
-                engine should return &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+                engine should return &quot;<a href="../doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
             <p>
             The Android Engine also persists these values as SAFS variables.
             </p><pre>
@@ -162,7 +162,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             </detailed_desc>
@@ -235,7 +235,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             </detailed_desc>
@@ -303,7 +303,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             </detailed_desc>
@@ -379,7 +379,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             </detailed_desc>
@@ -450,7 +450,7 @@
             <short_desc>Get the Classname of a component.</short_desc>
             <detailed_desc>
                 If no classname is returned, or the domain does not support "classes", the 
-                engine should return &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+                engine should return &quot;<a href="../doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
             <p>
             The Android Engine also persists these values as SAFS variables.
             </p><pre>
@@ -458,7 +458,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             </detailed_desc>
@@ -524,7 +524,7 @@
             <short_desc>Get the ID of a component, if any.</short_desc>
             <detailed_desc>
                 If no ID is present, or the component does not support IDs, the 
-                engine should return &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+                engine should return &quot;<a href="../doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
             <p>
             The Android Engine also persists these values as SAFS variables.
             </p><pre>
@@ -532,7 +532,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             </detailed_desc>
@@ -658,7 +658,7 @@
             <detailed_desc>
                 Normally, this is only valid for window or other container components.  
                 If no matching child objects exist then the engine should return 
-                &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+                &quot;<a href="../doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
                 <p>
                 Returns a character delimited string of child references. The first character in the returned string 
                 defines the delimiter used to separate the items. 
@@ -671,7 +671,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             </detailed_desc>
@@ -718,7 +718,7 @@
 			The recognition string is normally considered to be relative to the parent Component 
 			provided.  Thus, information identifying the parent should normally NOT be 
 			part of the provided recognition string.  For details on Recognition strings see:
-			<a href="http://safsdev.sourceforge.net/doc/org/safs/GuiObjectRecognition.html" target="_blank">Gui Object Recognition</a>;
+			<a href="../doc/org/safs/GuiObjectRecognition.html" target="_blank">Gui Object Recognition</a>;
                     </detailed_desc>
                 </description>
             </parameter>
@@ -759,7 +759,7 @@
             <detailed_desc>
             	Locate a toplevel Window\Parent matching the recognition string and return a unique 
             	reference to that component.  If no match is found the engine should return 
-            	&quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+            	&quot;<a href="../doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
             <p>
             The Android Engine also persists these values as SAFS variables.
             </p><pre>
@@ -767,7 +767,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             </detailed_desc>
@@ -805,7 +805,7 @@
                     	should uniquely identify the target window or incorrect matches will result.
                     	<p>
 			For details on Recognition strings see:
-			<a href="http://safsdev.sourceforge.net/doc/org/safs/GuiObjectRecognition.html" target="_blank">Gui Object Recognition</a>;
+			<a href="../doc/org/safs/GuiObjectRecognition.html" target="_blank">Gui Object Recognition</a>;
 			</p>
                     </detailed_desc>
                 </description>
@@ -840,7 +840,7 @@
                 by Path syntax: Root->Branch->Leaf.  This is often the case for Menus, MenuItems, and Tree nodes.
                 <p>
                 If no match is found the engine should return: 
-                &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+                &quot;<a href="../doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
                 </p>
             </detailed_desc>
         </description>
@@ -909,7 +909,7 @@
             <short_desc>Get the Name (AccessibleName or Name) of the component, if any. The AccessibleName shall be found first and returned, if any.</short_desc>
             <detailed_desc>
                 If no Name is present the engine should return 
-                &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+                &quot;<a href="../doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
             <p>
             The Android Engine also persists these values as SAFS variables.
             </p><pre>
@@ -917,7 +917,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             </detailed_desc>
@@ -983,7 +983,7 @@
             <short_desc>Get the AccessibleName of the component, if any.</short_desc>
             <detailed_desc>
                 If no AccessibleName is present the engine should return 
-                &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+                &quot;<a href="../doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
             <p>
             The Android Engine also persists these values as SAFS variables.
             </p><pre>
@@ -991,7 +991,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             </detailed_desc>
@@ -1057,7 +1057,7 @@
             <short_desc>Get the non-AccessibleName (Name except for AccessibleName) of the component, if any.</short_desc>
             <detailed_desc>
                 If no non-AccessibleName is present the engine should return 
-                &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+                &quot;<a href="../doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
             <p>
             The Android Engine also persists these values as SAFS variables.
             </p><pre>
@@ -1065,7 +1065,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             </detailed_desc>
@@ -1132,7 +1132,7 @@
             <detailed_desc>
                 Retrieves the value of the specified property.  Property names are case-sensitive.
                 If the property name provided is invalid or unsupported the engine should return 
-                &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+                &quot;<a href="../doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
             <p>
             The Android Engine also persists these values as SAFS variables.
             </p><pre>
@@ -1140,7 +1140,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             </detailed_desc>
@@ -1223,7 +1223,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             </detailed_desc>
@@ -1311,7 +1311,7 @@
                 part of the value.
                 </p><p>
                 If there is no retrievable text or data the engine should return 
-                &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+                &quot;<a href="../doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
                 </p>
             </detailed_desc>
         </description>
@@ -1377,7 +1377,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             </detailed_desc>
@@ -1448,7 +1448,7 @@
             <short_desc>Get the (text) value of a component, if any.</short_desc>
             <detailed_desc>
                 If the component does not have text or any "value" the engine should return 
-                &quot;<a href="http://safsdev.sourceforge.net/doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
+                &quot;<a href="../doc/constant-values.html#org.safs.tools.drivers.DriverConstant.SAFS_NULL" target="_blank">&lt;SAFS_NULL></a>&quot;.
             <p>
             The Android Engine also persists these values as SAFS variables.
             </p><pre>
@@ -1456,7 +1456,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             </detailed_desc>
@@ -1531,7 +1531,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             <p>
@@ -1616,7 +1616,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             <p>
@@ -1703,7 +1703,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             <p>
@@ -1849,7 +1849,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             <p>
@@ -1937,7 +1937,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             <p>
@@ -2025,7 +2025,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             <p>
@@ -2108,7 +2108,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             <p>
@@ -2190,7 +2190,7 @@
             ^DroidEngine.StatusCode = [statuscode string]
             ^DroidEngine.StatusInfo = [statusinfo]
             </pre><p>
-            See <a href="http://safsdev.sourceforge.net/doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
+            See <a href="../doc/org/safs/android/DEngineCommandProcessor.html#setStatusVars()" 
             target="_blank">DEngineCommandProcessor.setStatusVars()</a>.
             </p>
             <p>

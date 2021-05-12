@@ -2078,7 +2078,7 @@
        </engines>
 
        <parameters>
-        <parameter name="VARIABLE" displayText="Varibale" optional="NO">
+        <parameter name="VARIABLE" displayText="Variable" optional="NO">
            <description>
               <short_desc> 
                  Name of variable to assign value

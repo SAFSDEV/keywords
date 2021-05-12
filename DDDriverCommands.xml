@@ -1428,7 +1428,7 @@
                  Enabling image debugging allows the system to output full-resolution BMP images into the 
                  Datapool\Test directory instead of JPG images.  It also writes more verbose debug information 
                  into the SAFS Debug Log if the user has the Debug Log running during the test. 
-                 See: <a href="http://safsdev.sourceforge.net/doc/org/safs/Log.html" target="blank">Debug Log Doc</a></p>
+                 See: <a href="../doc/org/safs/Log.html" target="blank">Debug Log Doc</a></p>
               </detailed_desc> </description>
            
        <engines>
@@ -1553,13 +1553,13 @@
        <engines>
             <engine vendor="Google" tool="Android" name="Android" since="20120501" >
 				<libraryInfo name="DDriverCommand" 
-					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DDriverCommand.html" 
+					 doc="../doc/org/safs/android/DDriverCommand.html" 
 					 sourcecode="org.safs.android.DDriverCommand.java" 
 					 class="MISC" />
             	<domains>
             		<domain name="DEV" since="20120501">
 	        			<libraryInfo name="SoloRemoteControl" 
-                             doc="http://safsdev.sourceforge.net/doc/com/jayway/android/robotium/remotecontrol/solo/SoloRemoteControl.html" 
+                             doc="../doc/com/jayway/android/robotium/remotecontrol/solo/SoloRemoteControl.html" 
                              sourcecode="com.jayway.android.robotium.remotecontrol.solo.SoloRemoteControl.java" 
                              class="MISC" />
                     </domain>
@@ -1780,13 +1780,13 @@
        <engines>
             <engine vendor="Google" tool="Android" name="Android" since="20120501" >
 				<libraryInfo name="DDriverCommand" 
-					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DDriverCommand.html" 
+					 doc="../doc/org/safs/android/DDriverCommand.html" 
 					 sourcecode="org.safs.android.DDriverCommand.java" 
 					 class="MISC" />
             	<domains>
             		<domain name="DEV" since="20120501">
 	        			<libraryInfo name="SoloRemoteControl" 
-                             doc="http://safsdev.sourceforge.net/doc/com/jayway/android/robotium/remotecontrol/solo/SoloRemoteControl.html" 
+                             doc="../doc/com/jayway/android/robotium/remotecontrol/solo/SoloRemoteControl.html" 
                              sourcecode="com.jayway.android.robotium.remotecontrol.solo.SoloRemoteControl.java" 
                              class="MISC" />
                     </domain>
@@ -2133,7 +2133,7 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
         <parameter name="EXTRAPARAMKEY" displayText="ExtraParamKey" optional="YES">
            <description> <short_desc> 
 				<B>SE2</B>The extra parameter key. You can use one of 
-				<a href="http://safsdev.sourceforge.net/doc/org/safs/selenium/webdriver/lib/SelectBrowser.html#getExtraParameterKeys()" 
+				<a href="../doc/org/safs/Constants.BrowserConstants.html#getExtraParameterKeys--" 
 					target="reference" alt="Extra parameter keys">Extra parameter keys</a>.
              </short_desc> </description> </parameter>
         <parameter name="EXTRAPARAMVALUE" displayText="ExtraParamValue" optional="YES">
@@ -2210,6 +2210,18 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
                  (chrome://version/, see "Profile Path"), Google page will be loaded, 
                  this browser will be stored with ID 'GoogleMain' and on this page the search of webelement has a timeout of 20 seconds.<br/>
                  The value "disable-component-update; ignore-certificate-errors" can also be separated by comma if semicolon conflicts with your test-record-separator
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, StartWebBrowser, "http://www.google.com", "", "GoogleMain", "chrome", 20, "", "setNetworkConditions", "{"offline":false, "latency":5, "download_throughput":500000 , "upload_throughput":500000}"</usage>
+           <description> <short_desc> 
+                 <B>SE2</B>Launch a new chrome browser with network conditions {"offline":false, "latency":5, "download_throughput":500000 , "upload_throughput":500000},
+                 Google page will be loaded, this browser will be stored with ID 'GoogleMain' and on this page the search of webelement has a timeout of 20 seconds.<br/>
+              </short_desc> </description> </example>
+        <example>
+           <usage>C, StartWebBrowser, "http://www.google.com", "", "GoogleMain", "chrome", 20, "", "setNetworkConditions", ""</usage>
+           <description> <short_desc> 
+                 <B>SE2</B>Launch a new chrome browser with "network conditions control" ability turned on,
+                 Google page will be loaded, this browser will be stored with ID 'GoogleMain' and on this page the search of webelement has a timeout of 20 seconds.<br/>
               </short_desc> </description> </example>
      </examples></keyword>
      
@@ -2508,7 +2520,7 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
               </short_desc> <detailed_desc>
 		<p>
 		Note: the TID supports this command using 
-		<a href="http://safsdev.sourceforge.net/sqabasic2000/SAFSImageBasedRecognition.htm" 
+		<a href="../sqabasic2000/SAFSImageBasedRecognition.htm" 
 		target="imagebased" alt="SAFS Image-Based Recognition Doc">Image-Based Testing</a> 
 		techniques and App Map entries.
 		</p></detailed_desc>
@@ -2516,13 +2528,13 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
        <engines>
             <engine vendor="Google" tool="Android" name="Android" since="20120531" >
 				<libraryInfo name="DDriverCommand" 
-					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DDriverCommand.html" 
+					 doc="../doc/org/safs/android/DDriverCommand.html" 
 					 sourcecode="org.safs.android.DDriverCommand.java" 
 					 class="MISC" />
             	<domains>
             		<domain name="DEV" since="20120531">
 	        			<libraryInfo name="DriverProcessor" 
-                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/DriverProcessor.html" 
+                             doc="../doc/org/safs/android/engine/processor/DriverProcessor.html" 
                              sourcecode="org.safs.android.engine.processor.DriverProcessor.java" 
                              class="MISC" />
                     </domain>
@@ -2629,7 +2641,7 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
               </short_desc> <detailed_desc>
 		<p>
 		Note: the TID supports this command using 
-		<a href="http://safsdev.sourceforge.net/sqabasic2000/SAFSImageBasedRecognition.htm" 
+		<a href="../sqabasic2000/SAFSImageBasedRecognition.htm" 
 		target="imagebased" alt="SAFS Image-Based Recognition Doc">Image-Based Testing</a> 
 		techniques and App Map entries.
 		</p></detailed_desc>
@@ -2637,13 +2649,13 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
        <engines>
             <engine vendor="Google" tool="Android" name="Android" since="20120531" >
 				<libraryInfo name="DDriverCommand" 
-					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DDriverCommand.html" 
+					 doc="../doc/org/safs/android/DDriverCommand.html" 
 					 sourcecode="org.safs.android.DDriverCommand.java" 
 					 class="MISC" />
             	<domains>
             		<domain name="DEV" since="20120531">
 	        			<libraryInfo name="DriverProcessor" 
-                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/DriverProcessor.html" 
+                             doc="../doc/org/safs/android/engine/processor/DriverProcessor.html" 
                              sourcecode="org.safs.android.engine.processor.DriverProcessor.java" 
                              class="MISC" />
                     </domain>
@@ -3392,13 +3404,13 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
            </engine>
            <engine vendor="Google" tool="Android" name="Android" since="20121106" >
 				<libraryInfo name="DDDriverCommands" 
-					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DDDriverCommand.html" 
+					 doc="../doc/org/safs/android/DDDriverCommand.html" 
 					 sourcecode="org.safs.android.DDDriverCommand.java" 
 					 class="MISC" />
             	<domains>
             		<domain name="DEV" since="20121106">
 	        			<libraryInfo name="DriverProcessor" 
-                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/DriverProcessor.html" 
+                             doc="../doc/org/safs/android/engine/processor/DriverProcessor.html" 
                              sourcecode="org.safs.android.engine.processor.DriverProcessor.java" 
                              class="MISC" />
                     </domain>
@@ -3480,13 +3492,13 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
                </engine>
            <engine vendor="Google" tool="Android" name="Android" since="20121106" >
 				<libraryInfo name="DDDriverCommands" 
-					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DDDriverCommand.html" 
+					 doc="../doc/org/safs/android/DDDriverCommand.html" 
 					 sourcecode="org.safs.android.DDDriverCommand.java" 
 					 class="MISC" />
             	<domains>
             		<domain name="DEV" since="20121106">
 	        			<libraryInfo name="DriverProcessor" 
-                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/DriverProcessor.html" 
+                             doc="../doc/org/safs/android/engine/processor/DriverProcessor.html" 
                              sourcecode="org.safs.android.engine.processor.DriverProcessor.java" 
                              class="MISC" />
                     </domain>
@@ -3547,13 +3559,13 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
            </engine>
            <engine vendor="Google" tool="Android" name="Android" since="20121106" >
 				<libraryInfo name="DDDriverCommands" 
-					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DDDriverCommand.html" 
+					 doc="../doc/org/safs/android/DDDriverCommand.html" 
 					 sourcecode="org.safs.android.DDDriverCommand.java" 
 					 class="MISC" />
             	<domains>
             		<domain name="DEV" since="20121106">
 	        			<libraryInfo name="DriverProcessor" 
-                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/DriverProcessor.html" 
+                             doc="../doc/org/safs/android/engine/processor/DriverProcessor.html" 
                              sourcecode="org.safs.android.engine.processor.DriverProcessor.java" 
                              class="MISC" />
                     </domain>
@@ -3653,13 +3665,13 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
            </engine>
            <engine vendor="Google" tool="Android" name="Android" since="20121106" >
 				<libraryInfo name="DDDriverCommands" 
-					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DDDriverCommand.html" 
+					 doc="../doc/org/safs/android/DDDriverCommand.html" 
 					 sourcecode="org.safs.android.DDDriverCommand.java" 
 					 class="MISC" />
             	<domains>
             		<domain name="DEV" since="20121106">
 	        			<libraryInfo name="DriverProcessor" 
-                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/DriverProcessor.html" 
+                             doc="../doc/org/safs/android/engine/processor/DriverProcessor.html" 
                              sourcecode="org.safs.android.engine.processor.DriverProcessor.java" 
                              class="MISC" />
                     </domain>
@@ -3744,13 +3756,13 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
            </engine>
            <engine vendor="Google" tool="Android" name="Android" since="20121106" >
 				<libraryInfo name="DDDriverCommands" 
-					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DDDriverCommand.html" 
+					 doc="../doc/org/safs/android/DDDriverCommand.html" 
 					 sourcecode="org.safs.android.DDDriverCommand.java" 
 					 class="MISC" />
             	<domains>
             		<domain name="DEV" since="20121106">
 	        			<libraryInfo name="DriverProcessor" 
-                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/DriverProcessor.html" 
+                             doc="../doc/org/safs/android/engine/processor/DriverProcessor.html" 
                              sourcecode="org.safs.android.engine.processor.DriverProcessor.java" 
                              class="MISC" />
                     </domain>
@@ -4324,13 +4336,13 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
            </engine>
            <engine vendor="Google" tool="Android" name="Android" since="20130419" >
 				<libraryInfo name="DDDriverCommands" 
-					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DDDriverCommand.html" 
+					 doc="../doc/org/safs/android/DDDriverCommand.html" 
 					 sourcecode="org.safs.android.DDDriverCommand.java" 
 					 class="MISC" />
             	<domains>
             		<domain name="DEV" since="20130419">
 	        			<libraryInfo name="DriverProcessor" 
-                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/DriverProcessor.html" 
+                             doc="../doc/org/safs/android/engine/processor/DriverProcessor.html" 
                              sourcecode="org.safs.android.engine.processor.DriverProcessor.java" 
                              class="MISC" />
                     </domain>
@@ -5255,13 +5267,13 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
        <engines>
            <engine vendor="Google" tool="Android" name="Android" since="20121121" >
 				<libraryInfo name="DDDriverCommands" 
-					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DDDriverCommand.html" 
+					 doc="../doc/org/safs/android/DDDriverCommand.html" 
 					 sourcecode="org.safs.android.DDDriverCommand.java" 
 					 class="MISC" />
             	<domains>
             		<domain name="DEV" since="20121121">
 	        			<libraryInfo name="DriverProcessor" 
-                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/DriverProcessor.html" 
+                             doc="../doc/org/safs/android/engine/processor/DriverProcessor.html" 
                              sourcecode="org.safs.android.engine.processor.DriverProcessor.java" 
                              class="MISC" />
                     </domain>
@@ -5358,13 +5370,13 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
        <engines>
            <engine vendor="Google" tool="Android" name="Android" since="20130313" >
 				<libraryInfo name="DDDriverCommands" 
-					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DDDriverCommand.html" 
+					 doc="../doc/org/safs/android/DDDriverCommand.html" 
 					 sourcecode="org.safs.android.DDDriverCommand.java" 
 					 class="MISC" />
             	<domains>
             		<domain name="DEV" since="20130313">
 	        			<libraryInfo name="DriverProcessor" 
-                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/DriverProcessor.html" 
+                             doc="../doc/org/safs/android/engine/processor/DriverProcessor.html" 
                              sourcecode="org.safs.android.engine.processor.DriverProcessor.java" 
                              class="MISC" />
                     </domain>
@@ -5396,13 +5408,13 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
        <engines>
            <engine vendor="Google" tool="Android" name="Android" since="20130313" >
 				<libraryInfo name="DDDriverCommands" 
-					 doc="http://safsdev.sourceforge.net/doc/org/safs/android/DDDriverCommand.html" 
+					 doc="../doc/org/safs/android/DDDriverCommand.html" 
 					 sourcecode="org.safs.android.DDDriverCommand.java" 
 					 class="MISC" />
             	<domains>
             		<domain name="DEV" since="20130313">
 	        			<libraryInfo name="DriverProcessor" 
-                             doc="http://safsdev.sourceforge.net/doc/org/safs/android/engine/processor/DriverProcessor.html" 
+                             doc="../doc/org/safs/android/engine/processor/DriverProcessor.html" 
                              sourcecode="org.safs.android.engine.processor.DriverProcessor.java" 
                              class="MISC" />
                     </domain>
@@ -5490,7 +5502,7 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
                       HTML tag pass into message to display message into HTML format.
                 </detailed_desc>
                 <note>
-                    <value>Prerequisite: Provide mail setting in <a href="http://safsdev.sourceforge.net/sqabasic2000/JSAFSFrameworkContent.htm#configfile">configuration file (.ini)</a>, 
+                    <value>Prerequisite: Provide mail setting in <a href="../sqabasic2000/JSAFSFrameworkContent.htm#configfile">configuration file (.ini)</a>, 
                                          you could ask your IT administrator to set them correctly.<br/>
 					   <b>[SAFS_DRIVERCOMMANDS]</b><br/>
 					   <span class="property_key">OUT_MAILSERVER</span>="mail server"<br/>
@@ -6009,7 +6021,110 @@ SAFSWebBrowserPath="C:\Program Files\Mozilla Firefox\firefox.exe"
            </short_desc></description>
         </example>
      </examples>
-	</keyword>	
-	
+	</keyword>
+
+    <keyword name="GETNETWORKCONDITIONS" 
+           displayText="GetNetworkConditions" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+           <short_desc>Get network conditions.</short_desc>
+       	   <note><value>
+       	     This keyword only works for chrome browser for now.<br/> 
+       	     We must have called keyword 'StartWebBrowser' with parameter <a href="../doc/org/safs/Constants.BrowserConstants.html#KEY_SET_NETWORK_CONDITIONS" target="reference" >setNetworkConditions</a>	
+       	   </value></note>
+       </description>
+
+       <engines>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20190617" >
+	           <libraryInfo name="DDDriverCommands" 
+                            doc="DCDriverMiscCommands.htm" 
+                            sourcecode="org.safs.selenium.webdriver.DCDriverCommand.java" 
+                            class="MISC" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="NETWORKCONDITIONSVAR" displayText="NetworkConditionsVar" optional="NO">
+           <description> <short_desc> 
+                 The variable to hold the network's conditions.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, GetNetworkConditions, "networkConditionsVar"</usage>
+           <description> <short_desc> 
+                 Get network condition and save it to variable .
+              </short_desc> </description> </example>
+     </examples></keyword>
+
+    <keyword name="SETNETWORKCONDITIONS" 
+           displayText="SetNetworkConditions" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+           <short_desc>Set network conditions.</short_desc>
+       	   <note><value>
+       	     This keyword only works for chrome browser for now.<br/> 
+       	     We must have called keyword 'StartWebBrowser' with parameter <a href="../doc/org/safs/Constants.BrowserConstants.html#KEY_SET_NETWORK_CONDITIONS" target="reference" >setNetworkConditions</a>	
+       	   </value></note>
+       </description>
+
+       <engines>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20190617" >
+	           <libraryInfo name="DDDriverCommands" 
+                            doc="DCDriverMiscCommands.htm" 
+                            sourcecode="org.safs.selenium.webdriver.DCDriverCommand.java" 
+                            class="MISC" />
+           </engine>
+       </engines>
+
+       <parameters>
+        <parameter name="NETWORKCONDITIONS" displayText="NetworkConditions" optional="NO">
+           <description> <short_desc> 
+                 The network's conditions to set.
+              </short_desc> </description> </parameter>
+     </parameters><examples>
+        <example>
+           <usage>C, SetNetworkConditions, {"offline":false, "latency":5, "download_throughput":5000 , "upload_throughput":5000}</usage>
+           <description> <short_desc> 
+                 Set network condition as {"offline":false, "latency":5, "download_throughput":5000 , "upload_throughput":5000}.
+              </short_desc> </description> </example>
+     </examples></keyword>
+     
+    <keyword name="DELETENETWORKCONDITIONS" 
+           displayText="DeleteNetworkConditions" 
+           deprecated="NO" 
+           expectFailSupport="NO" 
+           expectWarnSupport="NO">
+           
+       <description>
+           <short_desc>Delete network conditions.</short_desc>
+       	   <note><value>
+       	     This keyword only works for chrome browser for now.<br/> 
+       	     We must have called keyword 'StartWebBrowser' with parameter <a href="../doc/org/safs/Constants.BrowserConstants.html#KEY_SET_NETWORK_CONDITIONS" target="reference" >setNetworkConditions</a>	
+       	   </value></note>
+       </description>
+
+       <engines>
+           <engine vendor="OpenQA" tool="Selenium" name="Selenium2.0" since="20190617" >
+	           <libraryInfo name="DDDriverCommands" 
+                            doc="DCDriverMiscCommands.htm" 
+                            sourcecode="org.safs.selenium.webdriver.DCDriverCommand.java" 
+                            class="MISC" />
+           </engine>
+       </engines>
+
+       <parameters></parameters>
+     <examples>
+        <example>
+           <usage>C, DeleteNetworkConditions</usage>
+           <description> <short_desc> 
+                 Delete network condition.
+              </short_desc> </description> </example>
+     </examples></keyword>
 </keywords></keyword_library>
     
